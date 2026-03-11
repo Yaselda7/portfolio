@@ -1,0 +1,2101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Victoria Parkhotik — Websites, Apps & AI Agents</title>
+<meta name="description" content="Digital products for European and Latin American businesses — in your language, with your market in mind.">
+<meta property="og:title" content="Victoria Parkhotik — Digital Builder">
+<meta property="og:description" content="Websites, Apps & AI Agents for Europe & Latin America">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://YOUR-PROJECT.vercel.app/">
+<meta property="og:image" content="https://YOUR-PROJECT.vercel.app/foto-portfolio.JPG">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Victoria Parkhotik — Digital Builder">
+<meta name="twitter:description" content="Websites, Apps & AI Agents for Europe & Latin America">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ─── RESET & BASE ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* ── Backgrounds ── */
+  --bg:          #F7F8F5;   /* молочно-белое небо */
+  --bg2:         #EEF2ED;   /* бледный шалфей */
+  --bg3:         #EBF0F5;   /* стальная дымка, как вода на фото */
+
+  /* ── Accents (из фото) ── */
+  --steel:       #3D6480;   /* сталь-синий — вода, архитектура */
+  --steel-glow:  rgba(61,100,128,0.18);
+  --steel-soft:  rgba(61,100,128,0.08);
+  --sage:        #5A7A4E;   /* шалфей — трава */
+  --ochre:       #9B7A3A;   /* охра — осенняя листва */
+
+  /* ── Text ── */
+  --text:        #252830;   /* тёмный графит, не чёрный */
+  --text2:       rgba(37,40,48,0.56);
+  --text3:       rgba(37,40,48,0.34);
+
+  /* ── UI ── */
+  --border:      rgba(61,100,128,0.12);
+  --card-bg:     rgba(255,255,255,0.85);
+  --radius:      16px;
+  --radius-sm:   10px;
+
+  /* aliases used in JS */
+  --navy:        #5A7A4E;
+  --indigo:      #5A7A4E;
+  --indigo-glow: rgba(90,122,78,0.18);
+  --indigo-soft: rgba(90,122,78,0.08);
+  --green:       #5A7A4E;
+  --orange:      #9B7A3A;
+  --violet:      #5A7A4E;
+  --violet-glow: rgba(90,122,78,0.18);
+  --violet-soft: rgba(90,122,78,0.08);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+@media (hover: none) { body { cursor: auto; } }
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; }
+
+/* ─── CUSTOM CURSOR ────────────────────────────────────────── */
+.cursor {
+  position: fixed;
+  width: 12px; height: 12px;
+  background: var(--steel);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.15s ease, opacity 0.2s;
+  transform: translate(-50%, -50%);
+}
+.cursor-ring {
+  position: fixed;
+  width: 36px; height: 36px;
+  border: 1px solid rgba(61,100,128,0.4);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transition: transform 0.35s ease, width 0.2s, height 0.2s, opacity 0.2s;
+  transform: translate(-50%, -50%);
+}
+@media (hover: none) { .cursor, .cursor-ring { display: none; } }
+
+/* ─── SPOTLIGHT ────────────────────────────────────────────── */
+.spotlight {
+  position: fixed; inset: 0;
+  background: radial-gradient(
+    500px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(59,53,184,0.06), transparent 80%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+@media (hover: none) { .spotlight { display: none; } }
+
+/* ─── GRID BG ──────────────────────────────────────────────── */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(27,42,74,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(27,42,74,0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* ─── HEADER ───────────────────────────────────────────────── */
+header {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 0 2rem;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background 0.3s, border-color 0.3s;
+}
+header.scrolled {
+  background: rgba(250,250,247,0.92);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 1px 20px rgba(27,42,74,0.07);
+}
+header:not(.scrolled) .logo { color: #fff; }
+header:not(.scrolled) .logo-cursor { color: rgba(255,255,255,0.75); }
+header:not(.scrolled) nav a { color: rgba(255,255,255,0.72); }
+header:not(.scrolled) nav a:hover { color: #fff; }
+header:not(.scrolled) nav a::after { background: #fff; }
+header:not(.scrolled) .lang-btn { color: rgba(255,255,255,0.58); }
+header:not(.scrolled) .lang-btn:hover { color: #fff; border-color: rgba(255,255,255,0.35); }
+header:not(.scrolled) .lang-btn.active { color: #fff; border-color: rgba(255,255,255,0.45); background: rgba(255,255,255,0.12); }
+header:not(.scrolled) .burger span { background: #fff; }
+
+.logo {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1rem;
+  color: var(--text);
+  display: flex; align-items: center; gap: 0.4rem;
+}
+.logo-cursor {
+  color: var(--indigo);
+  animation: blink 1s step-end infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+nav {
+  display: flex; align-items: center; gap: 2rem;
+}
+nav a {
+  font-size: 0.875rem;
+  color: var(--text2);
+  transition: color 0.2s;
+  position: relative;
+}
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0; right: 0;
+  height: 1px;
+  background: var(--indigo);
+  transform: scaleX(0);
+  transition: transform 0.2s;
+}
+nav a:hover { color: var(--text); }
+nav a:hover::after { transform: scaleX(1); }
+
+.lang-switcher {
+  display: flex; gap: 0.25rem;
+}
+.lang-btn {
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  background: transparent;
+  color: var(--text2);
+  border: 1px solid transparent;
+  transition: all 0.2s;
+}
+.lang-btn:hover { color: var(--text); border-color: var(--border); }
+.lang-btn.active {
+  color: var(--indigo);
+  border-color: rgba(90,122,78,0.38);
+  background: var(--indigo-soft);
+}
+
+.burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  padding: 4px;
+}
+.burger span {
+  display: block;
+  width: 22px; height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+/* ─── MOBILE NAV ───────────────────────────────────────────── */
+.mobile-nav {
+  position: fixed; inset: 0;
+  background: rgba(250,250,247,0.98);
+  backdrop-filter: blur(24px);
+  z-index: 99;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 2.5rem;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s;
+}
+.mobile-nav.open { opacity: 1; pointer-events: all; }
+.mobile-nav a {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text2);
+  transition: color 0.2s;
+}
+.mobile-nav a:hover { color: var(--text); }
+.mobile-nav .lang-switcher { margin-top: 1rem; }
+
+/* ─── SECTION SHARED ───────────────────────────────────────── */
+section { position: relative; padding: 6rem 2rem; }
+.container { max-width: 1100px; margin: 0 auto; }
+
+.section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  color: var(--green);
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.section-label::before {
+  content: '';
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  background: var(--sage);
+  opacity: 0.72;
+  flex-shrink: 0;
+}
+
+/* ─── PAGE ENTRANCE ─────────────────────────────────────────── */
+@keyframes page-in { from { opacity: 0; } to { opacity: 1; } }
+body { animation: page-in 0.5s ease both; }
+
+/* ─── CUSTOM SCROLLBAR ──────────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(90,122,78,0.35); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(90,122,78,0.65); }
+
+/* scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal.visible { opacity: 1; transform: none; }
+.reveal-delay-1 { transition-delay: 0.10s; }
+.reveal-delay-2 { transition-delay: 0.20s; }
+.reveal-delay-3 { transition-delay: 0.30s; }
+.reveal-delay-4 { transition-delay: 0.40s; }
+.reveal-delay-5 { transition-delay: 0.50s; }
+
+/* ─── CLIP-PATH TITLE REVEAL ────────────────────────────────── */
+.section-title {
+  overflow: hidden;
+}
+.section-title span, .section-title em {
+  display: inline-block;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 0.9s cubic-bezier(0.16,1,0.3,1), opacity 0.9s ease;
+}
+.reveal.visible .section-title span,
+.reveal.visible .section-title em,
+.section-title.visible span,
+.section-title.visible em {
+  transform: translateY(0);
+  opacity: 1;
+}
+.section-title em { transition-delay: 0.12s; }
+
+/* ─── HERO ─────────────────────────────────────────────────── */
+@keyframes hero-drift {
+  0%,100% { background-position: 20% 40%, 80% 70%, center; }
+  50%      { background-position: 28% 52%, 72% 42%, center; }
+}
+#hero {
+  min-height: 100vh;
+  display: flex; align-items: center;
+  padding-top: 80px;
+  background:
+    radial-gradient(ellipse 60% 50% at 20% 40%, rgba(255,255,255,0.08) 0%, transparent 100%),
+    radial-gradient(ellipse 50% 60% at 80% 70%, rgba(0,0,0,0.07) 0%, transparent 100%),
+    #5A7A4E;
+  background-size: 100% 100%, 100% 100%, auto;
+  animation: hero-drift 30s ease-in-out infinite;
+}
+#hero::after {
+  content: '';
+  position: absolute;
+  right: 0; top: 0; bottom: 0;
+  width: 38.2%;
+  background: linear-gradient(to left,
+    rgba(255,255,255,0.06) 0%,
+    transparent 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+#hero .container {
+  display: grid;
+  grid-template-columns: 1.618fr 1fr;
+  align-items: center;
+  gap: 4.236rem;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-content { max-width: 680px; }
+
+.hero-name {
+  font-size: clamp(2.8rem, 8vw, 7.5rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  margin-bottom: 1.25rem;
+  background: linear-gradient(135deg, #ffffff 50%, rgba(255,255,255,0.82));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: name-in 1s cubic-bezier(0.16,1,0.3,1) both;
+}
+@keyframes name-in {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.hero-typewriter-row {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(1rem, 2.5vw, 1.35rem);
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 1.5rem;
+  display: flex; align-items: center; gap: 0.5rem;
+  animation: name-in 1s 0.2s cubic-bezier(0.16,1,0.3,1) both;
+}
+.tw-prefix { color: rgba(255,255,255,0.65); }
+.tw-word { color: #fff; }
+.tw-cursor {
+  color: rgba(255,255,255,0.8);
+  animation: blink 0.9s step-end infinite;
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  color: rgba(255,255,255,0.72);
+  line-height: 1.65;
+  max-width: 560px;
+  margin-bottom: 2rem;
+  animation: name-in 1s 0.35s cubic-bezier(0.16,1,0.3,1) both;
+}
+
+.hero-markets {
+  display: flex; flex-wrap: wrap; gap: 0.5rem;
+  margin-bottom: 2.25rem;
+  animation: name-in 1s 0.45s cubic-bezier(0.16,1,0.3,1) both;
+}
+.market-pill {
+  padding: 0.3rem 0.75rem;
+  border-radius: 50px;
+  border: 1px solid rgba(255,255,255,0.28);
+  background: rgba(255,255,255,0.14);
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.88);
+  backdrop-filter: blur(8px);
+}
+
+.hero-cta {
+  display: flex; flex-wrap: wrap; gap: 1rem;
+  margin-bottom: 1.25rem;
+  animation: name-in 1s 0.55s cubic-bezier(0.16,1,0.3,1) both;
+}
+
+.hero-availability {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.52);
+  animation: name-in 1s 0.65s cubic-bezier(0.16,1,0.3,1) both;
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.avail-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #C8EDBB;
+  box-shadow: 0 0 8px rgba(200,237,187,0.65);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+.hero-visual {
+  animation: name-in 1s 0.3s cubic-bezier(0.16,1,0.3,1) both;
+}
+.hero-avatar {
+  width: clamp(160px,20vw,260px);
+  aspect-ratio: 1 / 1.618;
+  border-radius: 24px;
+  background: rgba(90,122,78,0.30);
+  border: 2px solid rgba(255,255,255,0.38);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.22), 0 2px 8px rgba(0,0,0,0.12);
+  overflow: hidden;
+  position: relative;
+}
+.hero-avatar img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+.hero-avatar::after {
+  content: '';
+  position: absolute; inset: 0;
+  border-radius: 22px;
+  border: 1px solid rgba(255,255,255,0.18);
+  pointer-events: none;
+}
+
+/* ─── BUTTONS ──────────────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  background: #fff;
+  color: #3D5C30;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.20);
+  transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s;
+}
+.btn-primary:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+  background: #f0f5ee;
+}
+.btn-primary:active { transform: scale(0.97); }
+
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  background: transparent;
+  color: rgba(255,255,255,0.92);
+  border: 1.5px solid rgba(255,255,255,0.45);
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: background 0.2s, border-color 0.2s, transform 0.2s cubic-bezier(0.34,1.56,0.64,1);
+}
+.btn-secondary:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.70);
+  transform: translateY(-2px);
+}
+.btn-secondary:active { transform: scale(0.97); }
+
+/* ─── TRUST BAR ────────────────────────────────────────────── */
+#trust {
+  padding: 1.25rem 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+.trust-track {
+  display: flex;
+  gap: 3rem;
+  white-space: nowrap;
+  animation: marquee 25s linear infinite;
+  width: max-content;
+}
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.trust-item {
+  font-size: 0.875rem;
+  color: var(--text2);
+  display: flex; align-items: center; gap: 0.4rem;
+  flex-shrink: 0;
+}
+.trust-item span { font-size: 1rem; }
+
+/* ─── ABOUT ────────────────────────────────────────────────── */
+#about .about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.618fr;
+  gap: 4.236rem;
+  align-items: start;
+}
+.about-photo {
+  width: 100%; max-width: 280px;
+  aspect-ratio: 1 / 1.618;
+  border-radius: 20px;
+  background: rgba(90,122,78,0.10);
+  border: 1px solid rgba(90,122,78,0.24);
+  box-shadow: 0 8px 32px rgba(61,100,128,0.12);
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.about-photo img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+.about-photo::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, transparent 65%, rgba(90,122,78,0.18));
+  pointer-events: none;
+  z-index: 1;
+}
+#about {
+  position: relative;
+}
+#about::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 38.2%;
+  background: linear-gradient(to right,
+    rgba(90,122,78,0.09) 0%,
+    rgba(90,122,78,0.04) 55%,
+    transparent 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+#about .container {
+  position: relative;
+  z-index: 1;
+}
+
+.section-title {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.25rem;
+}
+.section-title em {
+  font-style: italic;
+  color: var(--violet);
+}
+
+.about-text {
+  color: var(--text2);
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+.about-text p + p { margin-top: 1rem; }
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 130px;
+  gap: 10px;
+  margin-top: 3rem;
+}
+.bento-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  backdrop-filter: blur(12px);
+  transition: transform 0.2s ease, border-color 0.2s, box-shadow 0.2s;
+  overflow: hidden;
+}
+.bento-card:hover {
+  transform: translateY(-5px) scale(1.01);
+  border-color: rgba(90,122,78,0.35);
+  box-shadow: 0 14px 40px rgba(90,122,78,0.13), 0 3px 10px rgba(90,122,78,0.07);
+}
+.bento-card.wide { grid-column: span 2; }
+.bento-card.tall { grid-row: span 2; }
+.bento-card-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--green);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.bento-card-title {
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 0.4rem;
+}
+.bento-card-sub {
+  font-size: 0.8rem;
+  color: var(--text2);
+  line-height: 1.5;
+}
+.bento-flags {
+  display: flex; flex-wrap: wrap; gap: 0.4rem;
+  margin-top: 0.5rem;
+}
+.flag-tag {
+  font-size: 0.78rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  background: rgba(255,255,255,0.07);
+  color: var(--text2);
+}
+.bento-motto {
+  font-size: clamp(0.85rem, 1.5vw, 1.1rem);
+  font-style: italic;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.3;
+}
+
+/* ─── CLIENT CARDS ──────────────────────────────────────────── */
+.clients-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+@media (max-width: 900px) {
+  .clients-grid { grid-template-columns: 1fr; }
+}
+.client-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.client-card:hover {
+  border-color: rgba(90,122,78,0.28);
+  transform: translateY(-3px);
+}
+.client-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+.client-title { font-weight: 700; font-size: 1.05rem; margin-bottom: 0.35rem; }
+.client-who {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--sage);
+  margin-bottom: 1rem;
+  opacity: 0.85;
+}
+.client-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.45rem; }
+.client-list li {
+  font-size: 0.88rem;
+  color: var(--text2);
+  padding-left: 1.1rem;
+  position: relative;
+}
+.client-list li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--sage);
+  opacity: 0.6;
+}
+.client-demo {
+  display: inline-block;
+  margin-top: 1.1rem;
+  font-size: 0.82rem;
+  color: var(--sage);
+  border: 1px solid rgba(90,122,78,0.32);
+  padding: 0.35rem 0.85rem;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+.client-demo:hover { background: rgba(90,122,78,0.08); }
+
+.market-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--text2);
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.15rem 0.5rem;
+  margin-bottom: 0.6rem;
+}
+
+/* ─── SERVICES ─────────────────────────────────────────────── */
+#services { background: var(--bg2); }
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: minmax(170px, auto);
+  gap: 12px;
+  margin-top: 2.5rem;
+}
+
+.service-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  backdrop-filter: blur(12px);
+  transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), border-color 0.2s, box-shadow 0.2s;
+  display: flex; flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  position: relative;
+}
+.service-card::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.03), transparent);
+  pointer-events: none;
+}
+.service-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  border-color: rgba(90,122,78,0.35);
+  box-shadow: 0 16px 48px rgba(90,122,78,0.14), 0 4px 12px rgba(90,122,78,0.08);
+}
+.service-card.ai-card {
+  grid-column: span 2;
+  grid-row: span 2;
+  background: linear-gradient(135deg, rgba(90,122,78,0.10), rgba(90,122,78,0.04));
+  border-color: rgba(90,122,78,0.22);
+}
+.service-card.wide { grid-column: span 2; }
+
+.service-icon { font-size: 1.75rem; margin-bottom: 0.5rem; }
+.service-name {
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+}
+.service-desc { font-size: 0.82rem; color: var(--text2); line-height: 1.5; }
+.service-card.ai-card .service-name { font-size: 1.35rem; }
+.service-card.ai-card .service-desc { font-size: 0.9rem; }
+
+.service-pulse {
+  position: absolute; bottom: 1.5rem; right: 1.5rem;
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: var(--indigo-soft);
+  border: 1px solid rgba(90,122,78,0.22);
+  display: flex; align-items: center; justify-content: center;
+  animation: float 3s ease-in-out infinite;
+}
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+
+.services-note {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.875rem;
+  color: var(--text3);
+  font-style: italic;
+}
+
+/* ─── PROJECTS ─────────────────────────────────────────────── */
+.projects-scroll {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  padding: 1rem 0 1.5rem;
+  margin-top: 2rem;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+.projects-scroll::-webkit-scrollbar { height: 4px; }
+.projects-scroll::-webkit-scrollbar-track { background: var(--border); border-radius: 4px; }
+.projects-scroll::-webkit-scrollbar-thumb { background: var(--violet); border-radius: 4px; }
+
+.project-card {
+  flex: 0 0 min(85vw, 420px);
+  scroll-snap-align: start;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+.project-card:hover {
+  border-color: rgba(90,122,78,0.28);
+  box-shadow: 0 8px 30px rgba(27,42,74,0.1);
+  transform: translateY(-4px);
+}
+
+.project-preview {
+  height: 200px;
+  background: linear-gradient(135deg, rgba(90,122,78,0.10), rgba(42,96,64,0.07));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 3.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.project-body { padding: 1.5rem; }
+.project-cat {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--green);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+.project-title { font-weight: 700; font-size: 1.1rem; margin-bottom: 0.75rem; }
+.project-row {
+  display: flex; gap: 0.4rem;
+  margin-bottom: 0.35rem;
+  font-size: 0.82rem;
+}
+.project-row-label { color: var(--text3); flex-shrink: 0; }
+.project-row-val { color: var(--text2); }
+
+.project-cta {
+  display: flex; gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+.project-link {
+  font-size: 0.82rem;
+  color: var(--indigo);
+  border: 1px solid rgba(90,122,78,0.32);
+  padding: 0.35rem 0.85rem;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+.project-link:hover { background: var(--indigo-soft); }
+
+.projects-coming {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-top: 2rem;
+}
+.projects-coming p {
+  color: var(--text2);
+  margin-bottom: 1.5rem;
+  font-size: 1.05rem;
+}
+
+/* ─── PROCESS ──────────────────────────────────────────────── */
+#process { background: var(--bg2); }
+
+.process-timeline {
+  margin-top: 3rem;
+  position: relative;
+  padding-left: 3rem;
+}
+.process-timeline::before {
+  content: '';
+  position: absolute;
+  left: 1rem; top: 0; bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--indigo), transparent);
+}
+
+.process-step {
+  position: relative;
+  margin-bottom: 3rem;
+}
+.process-step:last-child { margin-bottom: 0; }
+
+.step-dot {
+  position: absolute;
+  left: calc(-3rem + 1rem - 6px);
+  top: 0.15rem;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: rgba(90,122,78,0.14);
+  border: 2px solid var(--indigo);
+  box-shadow: 0 0 14px rgba(90,122,78,0.38);
+}
+.step-dot::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--sage);
+  opacity: 0.8;
+}
+
+.step-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--indigo);
+  margin-bottom: 0.3rem;
+}
+.step-title {
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin-bottom: 0.35rem;
+}
+.step-desc { color: var(--text2); font-size: 0.9rem; line-height: 1.65; }
+
+/* ─── MARKETS ──────────────────────────────────────────────── */
+.markets-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+.market-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+.market-card:hover {
+  border-color: rgba(90,122,78,0.40);
+  box-shadow: 0 8px 30px rgba(90,122,78,0.12);
+  transform: translateY(-3px);
+}
+
+/* ── Market card themes ── */
+
+/* Belarus — мягкая вертикальная тональность, левый акцент */
+.market-card.mc-by {
+  background:
+    linear-gradient(160deg, rgba(90,122,78,0.07) 0%, rgba(90,122,78,0.02) 100%),
+    var(--card-bg);
+  border-left: 3px solid rgba(90,122,78,0.45);
+}
+
+/* Europe — тонкие диагональные штрихи (как техническая бумага) */
+.market-card.mc-eu {
+  background:
+    repeating-linear-gradient(
+      135deg,
+      rgba(90,122,78,0.048) 0px, rgba(90,122,78,0.048) 1px,
+      transparent 1px, transparent 7px
+    ),
+    var(--card-bg);
+  border-left: 3px solid rgba(90,122,78,0.60);
+}
+
+/* Latin America — тёплое радиальное свечение, нотка охры */
+.market-card.mc-latam {
+  background:
+    radial-gradient(ellipse at 25% 55%, rgba(155,122,58,0.09) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(90,122,78,0.07) 0%, transparent 55%),
+    var(--card-bg);
+  border-left: 3px solid rgba(155,122,58,0.50);
+}
+
+/* International — горизонтальные линейки (официально, как документ) */
+.market-card.mc-intl {
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(61,92,48,0.055) 0px, rgba(61,92,48,0.055) 1px,
+      transparent 1px, transparent 9px
+    ),
+    var(--card-bg);
+  border-left: 3px solid rgba(61,92,48,0.55);
+}
+
+/* Remote — широкий, горизонтальный градиент слева направо */
+.market-card.mc-remote {
+  background:
+    linear-gradient(90deg,
+      rgba(90,122,78,0.10) 0%,
+      rgba(90,122,78,0.04) 50%,
+      transparent 100%),
+    var(--card-bg);
+  border-top: 2px solid rgba(90,122,78,0.28);
+  border-left: none;
+}
+.market-card-title {
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.market-flags { margin-bottom: 1rem; font-size: 1.3rem; letter-spacing: 0.15em; }
+.market-desc { color: var(--text2); font-size: 0.875rem; line-height: 1.7; }
+
+.markets-footer {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.875rem;
+  color: var(--text3);
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.03em;
+}
+
+/* ─── WHY ME ───────────────────────────────────────────────── */
+#why { background: var(--bg2); }
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+}
+.why-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem 1.75rem;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+.why-card:hover {
+  border-color: rgba(90,122,78,0.38);
+  box-shadow: 0 8px 30px rgba(90,122,78,0.12);
+  transform: translateY(-4px);
+}
+.why-icon { font-size: 2rem; margin-bottom: 1rem; }
+.why-title { font-weight: 700; font-size: 1.05rem; margin-bottom: 0.65rem; }
+.why-text { color: var(--text2); font-size: 0.875rem; line-height: 1.7; }
+
+/* ─── CONTACT ──────────────────────────────────────────────── */
+#contact {
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(90,122,78,0.13) 0%, transparent 65%),
+    radial-gradient(ellipse at 80% 100%, rgba(90,122,78,0.07) 0%, transparent 50%),
+    var(--bg3);
+}
+.contact-inner {
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+}
+.contact-inner .section-label { text-align: center; }
+.contact-inner .section-title { text-align: center; }
+
+.contact-sub {
+  color: var(--text2);
+  margin-bottom: 2.5rem;
+  font-size: 0.975rem;
+}
+
+.contact-form {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+.form-label {
+  font-size: 0.8rem;
+  color: var(--text3);
+  font-family: 'JetBrains Mono', monospace;
+}
+.form-input, .form-textarea, .form-select {
+  width: 100%;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 1rem;
+  color: var(--text);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.95rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+  -webkit-appearance: none;
+}
+.form-input:focus, .form-textarea:focus, .form-select:focus {
+  border-color: rgba(90,122,78,0.45);
+  box-shadow: 0 0 0 3px rgba(90,122,78,0.09);
+}
+.form-textarea { min-height: 110px; resize: vertical; }
+.form-select option { background: #fff; color: var(--text); }
+
+.form-submit {
+  width: 100%;
+  padding: 0.875rem;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+.form-success {
+  display: none;
+  text-align: center;
+  padding: 2.5rem;
+  background: var(--card-bg);
+  border: 1px solid rgba(42,96,64,0.25);
+  border-radius: var(--radius);
+}
+.form-success.show { display: block; }
+.form-success-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+.form-success p { color: var(--text2); }
+
+.contact-divider {
+  display: flex; align-items: center; gap: 1rem;
+  margin: 1.75rem 0;
+  color: var(--text3);
+  font-size: 0.8rem;
+}
+.contact-divider::before, .contact-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.contact-direct {
+  display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;
+}
+.contact-link {
+  display: flex; align-items: center; gap: 0.5rem;
+  padding: 0.6rem 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--card-bg);
+  font-size: 0.875rem;
+  color: var(--text2);
+  transition: border-color 0.2s, color 0.2s, transform 0.2s;
+}
+.contact-link:hover {
+  border-color: rgba(90,122,78,0.40);
+  color: var(--sage);
+  transform: translateY(-2px);
+}
+.contact-link-icon { font-size: 1.1rem; }
+
+/* ─── FOOTER ───────────────────────────────────────────────── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem 2rem;
+  background: var(--bg2);
+}
+.footer-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 3rem;
+}
+.footer-brand .logo { margin-bottom: 0.75rem; font-size: 1.1rem; }
+.footer-motto {
+  color: var(--text2);
+  font-size: 0.875rem;
+  font-style: italic;
+  line-height: 1.5;
+}
+.footer-col-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--text3);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 1rem;
+}
+.footer-links { display: flex; flex-direction: column; gap: 0.6rem; }
+.footer-links a {
+  font-size: 0.875rem;
+  color: var(--text2);
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--sage); }
+.footer-bottom {
+  max-width: 1100px;
+  margin: 2.5rem auto 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+.footer-copy { font-size: 0.8rem; color: var(--text3); }
+.footer-lang { display: flex; gap: 0.5rem; }
+
+/* ─── RESPONSIVE ───────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .services-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: auto; }
+  .service-card.ai-card { grid-column: span 2; }
+  .why-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+  section { padding: 4rem 1.25rem; }
+  #hero .container { grid-template-columns: 1fr; text-align: center; }
+  .hero-visual { display: none; }
+  .hero-markets { justify-content: center; }
+  .hero-cta { justify-content: center; }
+  .hero-availability { justify-content: center; }
+  #about .about-grid { grid-template-columns: 1fr; }
+  .about-photo { width: 200px; height: 240px; margin: 0 auto; }
+  .bento-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: auto; }
+  .bento-card.wide { grid-column: span 2; }
+  .services-grid { grid-template-columns: 1fr; grid-auto-rows: auto; }
+  .service-card.ai-card { grid-column: span 1; }
+  .service-card.wide { grid-column: span 1; }
+  .markets-grid { grid-template-columns: 1fr; }
+  .why-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+  nav { display: none; }
+  .burger { display: flex; }
+  header { padding: 0 1.25rem; }
+}
+
+@media (max-width: 480px) {
+  .bento-grid { grid-template-columns: 1fr; }
+  .bento-card.wide { grid-column: span 1; }
+  .hero-name { font-size: clamp(2.4rem, 12vw, 3.5rem); }
+}
+
+/* ─── BACK TO TOP ───────────────────────────────────────────── */
+.back-to-top {
+  position: fixed;
+  bottom: 2rem; right: 2rem;
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  background: var(--sage);
+  color: #fff;
+  font-size: 1.1rem;
+  line-height: 1;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 18px rgba(90,122,78,0.35);
+  opacity: 0; pointer-events: none;
+  transform: translateY(14px);
+  transition: opacity 0.35s, transform 0.35s cubic-bezier(0.16,1,0.3,1), background 0.2s;
+  z-index: 90;
+  border: none;
+}
+.back-to-top.visible { opacity: 1; pointer-events: all; transform: translateY(0); }
+.back-to-top:hover { background: #3D5C30; transform: translateY(-3px); }
+
+/* ─── FORM SUCCESS ANIMATION ────────────────────────────────── */
+@keyframes success-in {
+  from { opacity: 0; transform: scale(0.90) translateY(16px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes icon-pop {
+  0%   { transform: scale(0) rotate(-15deg); }
+  70%  { transform: scale(1.2) rotate(5deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+.form-success.show {
+  display: block;
+  animation: success-in 0.65s cubic-bezier(0.16,1,0.3,1) both;
+}
+.form-success.show .form-success-icon {
+  animation: icon-pop 0.6s 0.25s cubic-bezier(0.34,1.56,0.64,1) both;
+  display: block;
+}
+
+/* ─── MOBILE FIX: Remote card full-width ────────────────────── */
+@media (max-width: 768px) {
+  .mc-remote { grid-column: span 1 !important; }
+}
+</style>
+</head>
+<body class="grid-bg">
+
+<!-- Cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- Spotlight -->
+<div class="spotlight" id="spotlight"></div>
+
+<!-- ─── HEADER ─────────────────────────────── -->
+<header id="header">
+  <a href="#hero" class="logo">
+    VP<span class="logo-cursor">_</span>
+  </a>
+
+  <nav>
+    <a href="#about"   data-i18n="nav.about">Обо мне</a>
+    <a href="#process" data-i18n="nav.process">Процесс</a>
+    <a href="#why"     data-i18n="nav.why">Почему я</a>
+    <a href="#contact" data-i18n="nav.contact">Контакты</a>
+  </nav>
+
+  <div style="display:flex;align-items:center;gap:1rem;">
+    <div class="lang-switcher" id="langSwitcher">
+      <button class="lang-btn active" data-lang="ru">РУ</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="es">ES</button>
+      <button class="lang-btn" data-lang="it">IT</button>
+    </div>
+    <button class="burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#about"   data-i18n="nav.about"    onclick="closeMobile()">Обо мне</a>
+  <a href="#process" data-i18n="nav.process"  onclick="closeMobile()">Процесс</a>
+  <a href="#why"     data-i18n="nav.why"      onclick="closeMobile()">Почему я</a>
+  <a href="#contact" data-i18n="nav.contact"  onclick="closeMobile()">Контакты</a>
+  <div class="lang-switcher">
+    <button class="lang-btn active" data-lang="ru">РУ</button>
+    <button class="lang-btn" data-lang="en">EN</button>
+    <button class="lang-btn" data-lang="es">ES</button>
+    <button class="lang-btn" data-lang="it">IT</button>
+  </div>
+</div>
+
+<!-- ─── HERO ───────────────────────────────── -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-content">
+      <h1 class="hero-name"><span data-i18n="hero.name1">Виктория</span><br><span data-i18n="hero.name2">Пархотик</span></h1>
+
+      <div class="hero-typewriter-row">
+        <span class="tw-prefix" data-i18n="hero.prefix">Я создаю</span>
+        <span class="tw-word" id="twWord">сайты</span><span class="tw-cursor">_</span>
+      </div>
+
+      <p class="hero-subtitle" data-i18n="hero.subtitle">
+        Цифровые продукты для бизнеса в Беларуси, странах СНГ, Европе и Латинской Америке — на вашем языке, с пониманием вашего рынка.
+      </p>
+
+      <div class="hero-markets">
+        <span class="market-pill" data-i18n="pill.by">🇧🇾 Беларусь · СНГ</span>
+        <span class="market-pill" data-i18n="pill.uk">🇬🇧 UK · 🇮🇪 Ирландия</span>
+        <span class="market-pill" data-i18n="pill.eu">🇮🇹 Италия · 🇪🇸 Испания · 🇫🇷 Франция</span>
+        <span class="market-pill" data-i18n="pill.latam">🌎 Латинская Америка</span>
+      </div>
+
+      <div class="hero-cta">
+        <a href="#contact" class="btn-primary" data-i18n="hero.cta1">Обсудить проект</a>
+        <a href="#about" class="btn-secondary" data-i18n="hero.cta2">Смотреть работы</a>
+      </div>
+
+      <div class="hero-availability">
+        <span class="avail-dot"></span>
+        <span data-i18n="hero.avail">Открыта для 2 новых проектов</span>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-avatar">
+        <img src="foto-portfolio.JPG" alt="Victoria Parkhotik">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TRUST BAR ──────────────────────────── -->
+<section id="trust">
+  <div class="trust-track">
+    <span class="trust-item"><span>🌍</span> <span data-i18n="trust.geo">Европа и Латинская Америка</span></span>
+    <span class="trust-item"><span>🗣</span> EN · ES · IT · FR</span>
+    <span class="trust-item"><span>⚡</span> <span data-i18n="trust.response">Ответ в течение 24ч</span></span>
+    <span class="trust-item"><span>💬</span> Telegram &amp; WhatsApp</span>
+    <span class="trust-item"><span>🤖</span> <span data-i18n="trust.ai">ИИ-агенты и автоматизации</span></span>
+    <span class="trust-item"><span>🌍</span> <span data-i18n="trust.geo">Европа и Латинская Америка</span></span>
+    <span class="trust-item"><span>🗣</span> EN · ES · IT · FR</span>
+    <span class="trust-item"><span>⚡</span> <span data-i18n="trust.response">Ответ в течение 24ч</span></span>
+    <span class="trust-item"><span>💬</span> Telegram &amp; WhatsApp</span>
+    <span class="trust-item"><span>🤖</span> <span data-i18n="trust.ai">ИИ-агенты и автоматизации</span></span>
+  </div>
+</section>
+
+<!-- ─── ABOUT ──────────────────────────────── -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid reveal">
+      <div class="about-photo">
+        <img src="foto-portfolio-2.JPG" alt="Victoria Parkhotik">
+      </div>
+      <div class="about-text-col">
+        <div class="section-label" data-i18n="about.label">// 01. обо мне</div>
+        <h2 class="section-title">
+          <span data-i18n="about.title1">Разный мир —</span><br>
+          <em><span data-i18n="about.title2">разный подход.</span></em>
+        </h2>
+        <div class="about-text">
+          <p data-i18n="about.p1">Я создаю сайты, приложения и ИИ-инструменты для бизнеса — от простой страницы до систем нейроагентов.</p>
+          <p data-i18n="about.p2">Мой подход — от задачи к системе: вижу потенциал даже маленького проекта и выстраиваю решение с нужными связками между инструментами и людьми. Для меня важно, чтобы результат был полезным и эстетичным — цифровой инструмент, с которым приятно взаимодействовать, работает лучше.</p>
+          <p data-i18n="about.p3">Многолетний опыт в международных коммуникациях научил меня точно считывать задачу в любом контексте. Работаю с клиентами из Беларуси, Европы и Латинской Америки — и понимаю, что «хороший результат» значит разное в Минске, Милане и Гаване.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bento-grid reveal reveal-delay-2">
+      <div class="bento-card wide">
+        <div class="bento-card-label" data-i18n="bento.languages">языки</div>
+        <div class="bento-card-title">🇧🇾 BY · 🇷🇺 RU · 🇪🇸 ES · 🇮🇹 IT · 🇬🇧 EN · 🇫🇷 FR</div>
+        <div class="bento-card-sub" data-i18n="about.langSub">Исследования, тексты и коммуникация на вашем языке</div>
+      </div>
+      <div class="bento-card wide">
+        <div class="bento-card-label" data-i18n="bento.markets">рынки</div>
+        <div class="bento-flags">🇧🇾 🇬🇧 🇮🇪 🇮🇹 🇪🇸 🇫🇷 🇲🇽 🇦🇷 🇨🇴</div>
+        <div class="bento-card-sub" data-i18n="about.marketSub">Беларусь и СНГ · Европа · Латинская Америка</div>
+      </div>
+      <div class="bento-card">
+        <div class="bento-card-label" data-i18n="bento.tools">инструменты</div>
+        <div class="bento-flags" style="font-size:0.8rem;">
+          <div class="flag-tag">Claude Code</div>
+          <div class="flag-tag">Google AI Studio</div>
+          <div class="flag-tag">Lovable</div>
+          <div class="flag-tag">ChatGPT</div>
+          <div class="flag-tag">Cursor</div>
+        </div>
+      </div>
+      <div class="bento-card" style="background:linear-gradient(135deg,rgba(61,100,128,0.08),rgba(90,122,78,0.05));">
+        <div class="bento-motto" data-i18n="about.motto">"Разный мир — разные решения"</div>
+      </div>
+    </div>
+
+    <div class="clients-grid" id="projects">
+      <div class="client-card reveal reveal-delay-1">
+        <div class="client-icon">🌱</div>
+        <span class="market-tag" data-i18n="cl1.market">🇧🇾 РУ рынок</span>
+        <div class="client-title" data-i18n="cl1.title">Первый цифровой шаг</div>
+        <div class="client-who" data-i18n="cl1.who">Фрилансеры · Мастера · Малый бизнес</div>
+        <ul class="client-list">
+          <li data-i18n="cl1.li1">Лендинг или сайт-визитка</li>
+          <li data-i18n="cl1.li2">Цифровая визитка с аватаром</li>
+          <li data-i18n="cl1.li3">Форма записи + Telegram-бот</li>
+        </ul>
+        <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1.1rem;">
+          <a href="kart-1/1-roza-zhivaya.html" target="_blank" class="client-demo" data-i18n="cl1.demo1">Живая Роза →</a>
+          <a href="kart-1/2-usluga.html" target="_blank" class="client-demo" data-i18n="cl1.demo2">Форма записи →</a>
+        </div>
+      </div>
+      <div class="client-card reveal reveal-delay-2">
+        <div class="client-icon">⚙️</div>
+        <span class="market-tag" data-i18n="cl2.market">🌐 Международный</span>
+        <div class="client-title" data-i18n="cl2.title">Цифровая система</div>
+        <div class="client-who" data-i18n="cl2.who">Компании с амбициями роста</div>
+        <ul class="client-list">
+          <li data-i18n="cl2.li1">Сайт + автоматизация процессов</li>
+          <li data-i18n="cl2.li2">ИИ-агенты и системы нейроагентов</li>
+          <li data-i18n="cl2.li3">Связки человек–машина</li>
+        </ul>
+      </div>
+      <div class="client-card reveal reveal-delay-3">
+        <div class="client-icon">🌍</div>
+        <span class="market-tag" data-i18n="cl3.market">🌍 Международный</span>
+        <div class="client-title" data-i18n="cl3.title">Международный уровень</div>
+        <div class="client-who" data-i18n="cl3.who">Иностранные клиенты · НКО · Организации</div>
+        <ul class="client-list">
+          <li data-i18n="cl3.li1">Полный цифровой стек</li>
+          <li data-i18n="cl3.li2">Межкультурный контекст</li>
+          <li data-i18n="cl3.li3">Коммуникация на 6 языках</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- ─── PROCESS ────────────────────────────── -->
+<section id="process">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label" data-i18n="process.label">// 02. процесс</div>
+      <h2 class="section-title" data-i18n="process.title">Как мы будем работать</h2>
+    </div>
+
+    <div class="process-timeline">
+      <div class="process-step reveal reveal-delay-1">
+        <div class="step-dot"></div>
+        <div class="step-num">01_</div>
+        <div class="step-title" data-i18n="step1.title">Знакомство</div>
+        <div class="step-desc" data-i18n="step1.desc">Вы рассказываете о задаче, контексте и целях. Я задаю нужные вопросы, чтобы точно понять, что вам нужно.</div>
+      </div>
+      <div class="process-step reveal reveal-delay-2">
+        <div class="step-dot"></div>
+        <div class="step-num">02_</div>
+        <div class="step-title" data-i18n="step2.title">Предложение</div>
+        <div class="step-desc" data-i18n="step2.desc">Отправляю бриф + подход + сроки. Никаких сюрпризов.</div>
+      </div>
+      <div class="process-step reveal reveal-delay-3">
+        <div class="step-dot"></div>
+        <div class="step-num">03_</div>
+        <div class="step-title" data-i18n="step3.title">Разработка</div>
+        <div class="step-desc" data-i18n="step3.desc">Делаю с регулярными обновлениями. Вы всегда знаете, где мы находимся.</div>
+      </div>
+      <div class="process-step reveal reveal-delay-4">
+        <div class="step-dot"></div>
+        <div class="step-num">04_</div>
+        <div class="step-title" data-i18n="step4.title">Проверка</div>
+        <div class="step-desc" data-i18n="step4.desc">Вы проверяете, вносите правки — я довожу до идеала.</div>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-dot"></div>
+        <div class="step-num">05_</div>
+        <div class="step-title" data-i18n="step5.title">Запуск и поддержка</div>
+        <div class="step-desc" data-i18n="step5.desc">Запускаем. Остаюсь на связи после запуска для вопросов и правок.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── MARKETS ────────────────────────────── -->
+<section id="markets">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label" data-i18n="markets.label">// 05. рынки</div>
+      <h2 class="section-title" data-i18n="markets.title">Рынки</h2>
+    </div>
+
+    <div class="markets-grid">
+      <div class="market-card mc-by reveal reveal-delay-1">
+        <div class="market-card-title">🇧🇾 <span data-i18n="markets.by">Беларусь и СНГ</span></div>
+        <div class="market-flags">🇧🇾 🇷🇺 🇰🇿</div>
+        <div class="market-desc" data-i18n="markets.byDesc">Беларусь, Россия, Казахстан и страны СНГ — компании любого размера, фрилансеры, предприниматели, в том числе бизнес, ориентированный на экспорт.</div>
+      </div>
+      <div class="market-card mc-eu reveal reveal-delay-2">
+        <div class="market-card-title">🇪🇺 <span data-i18n="markets.eu">Европа</span></div>
+        <div class="market-flags">🇪🇸 🇮🇹 🇵🇹 🇻🇦 🇬🇧 🇮🇪 🇫🇷 🇲🇹</div>
+        <div class="market-desc" data-i18n="markets.euDesc">Испания, Италия, Португалия, Ватикан, Великобритания, Ирландия, Франция, Мальта — структурированная коммуникация, чёткие результаты, профессионализм с первого дня.</div>
+      </div>
+      <div class="market-card mc-latam reveal reveal-delay-3">
+        <div class="market-card-title">🌎 <span data-i18n="markets.latam">Латинская Америка</span></div>
+        <div class="market-flags">🇨🇺 🇻🇪 🇲🇽 🇧🇴 🇦🇷</div>
+        <div class="market-desc" data-i18n="markets.latamDesc">Куба, Венесуэла, Мексика, Боливия, Аргентина — тепло, доверие, гибкость и быстрый ответ через WhatsApp.</div>
+      </div>
+      <div class="market-card mc-intl reveal reveal-delay-4">
+        <div class="market-card-title">🏛️ <span data-i18n="markets.intl">Международные организации</span></div>
+        <div class="market-desc" data-i18n="markets.intlDesc">ООН, ФАО, МОМ, ЮНЕСКО, СЕЛАК, АЛБА, ОАГ, ЛАИ, МЕРКОСУР и др. — поддержка проектов, исследования, цифровые инструменты для межправительственных структур.</div>
+      </div>
+      <div class="market-card mc-remote reveal reveal-delay-5" style="grid-column:span 2;">
+        <div class="market-card-title">🌐 <span data-i18n="markets.remote">Удалённо</span></div>
+        <div class="market-desc" data-i18n="markets.remoteDesc">Удалённая работа · Любой часовой пояс · Ответ в течение 24 часов · Telegram и WhatsApp</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── WHY ME ──────────────────────────────── -->
+<section id="why">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label" data-i18n="why.label">// 03. почему я</div>
+      <h2 class="section-title" data-i18n="why.title">Почему я</h2>
+    </div>
+
+    <div class="why-grid">
+      <div class="why-card reveal reveal-delay-1">
+        <div class="why-icon">🎯</div>
+        <div class="why-title" data-i18n="why1.title">От задачи к системе</div>
+        <div class="why-text" data-i18n="why1.text">Вхожу в каждый проект глубоко — вижу потенциал и выстраиваю решение с нужными связками между инструментами и людьми. Без шаблонов, без конвейера. Результат должен быть полезным, эстетичным и работающим на перспективу.</div>
+      </div>
+      <div class="why-card reveal reveal-delay-2">
+        <div class="why-icon">🗺️</div>
+        <div class="why-title" data-i18n="why2.title">Культурный контекст</div>
+        <div class="why-text" data-i18n="why2.text">Я не просто перевожу ваш бриф — я понимаю контекст за ним. Ваш рынок, вашу культуру, ожидания вашего клиента.</div>
+      </div>
+      <div class="why-card reveal reveal-delay-3">
+        <div class="why-icon">⚡</div>
+        <div class="why-title" data-i18n="why3.title">Всегда на связи</div>
+        <div class="why-text" data-i18n="why3.text">Удалённая работа в любом часовом поясе. Telegram, WhatsApp, email — как вам удобнее. Ответ не заставит ждать.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONTACT ─────────────────────────────── -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-inner reveal">
+      <div class="section-label" data-i18n="contact.label">// 07. контакты</div>
+      <h2 class="section-title" data-i18n="contact.title">Начнём</h2>
+      <p class="contact-sub" data-i18n="contact.sub">Расскажите о проекте — я отвечу в течение 24 часов.</p>
+
+      <form class="contact-form" id="contactForm" action="https://formspree.io/f/mvzwzawz" method="POST">
+        <div class="form-group">
+          <label class="form-label" data-i18n="form.name">имя</label>
+          <input class="form-input" type="text" id="fname" name="name" required placeholder="Анна" autocomplete="name">
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="form.contact">email или telegram</label>
+          <input class="form-input" type="text" id="fcontact" name="contact" required placeholder="@username или email@domain.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="form.task">ваша задача</label>
+          <textarea class="form-textarea" id="ftask" name="message" required placeholder="Мне нужен лендинг для бизнеса..."></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="form.channel">удобный канал</label>
+          <select class="form-select" id="fchannel" name="channel">
+            <option value="telegram">Telegram</option>
+            <option value="whatsapp">WhatsApp</option>
+            <option value="email">Email</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-primary form-submit" id="formBtn">
+          <span data-i18n="form.send">Отправить сообщение →</span>
+        </button>
+      </form>
+
+      <div class="form-success" id="formSuccess">
+        <div class="form-success-icon">🎉</div>
+        <p data-i18n="form.success">Сообщение отправлено! Отвечу в течение 24 часов.</p>
+      </div>
+
+      <div class="contact-divider" data-i18n="contact.or">или напишите напрямую</div>
+
+      <div class="contact-direct">
+        <a href="https://t.me/Yaselda" class="contact-link" target="_blank">
+          <span class="contact-link-icon">✈️</span> Telegram
+        </a>
+        <a href="https://wa.me/375257088624" class="contact-link" target="_blank">
+          <span class="contact-link-icon">💬</span> WhatsApp
+        </a>
+        <a href="mailto:yaselda7@gmail.com" class="contact-link">
+          <span class="contact-link-icon">📧</span> Email
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ──────────────────────────────── -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo">VP<span class="logo-cursor">_</span></div>
+      <p class="footer-motto" data-i18n="footer.motto">"Разный мир — разные решения"</p>
+    </div>
+    <div>
+      <div class="footer-col-title" data-i18n="footer.nav">навигация</div>
+      <div class="footer-links">
+        <a href="#about"   data-i18n="nav.about">Обо мне</a>
+        <a href="#process" data-i18n="nav.process">Процесс</a>
+        <a href="#why"     data-i18n="nav.why">Почему я</a>
+        <a href="#contact" data-i18n="nav.contact">Контакты</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title" data-i18n="footer.contacts">контакты</div>
+      <div class="footer-links">
+        <a href="https://t.me/Yaselda" target="_blank">Telegram</a>
+        <a href="https://wa.me/375257088624" target="_blank">WhatsApp</a>
+        <a href="mailto:yaselda7@gmail.com">Email</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy" data-i18n="footer.copy">© 2026 Victoria Parkhotik · Сделано с душой, не по шаблону.</span>
+    <div class="footer-lang lang-switcher">
+      <button class="lang-btn active" data-lang="ru">РУ</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="es">ES</button>
+      <button class="lang-btn" data-lang="it">IT</button>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ─── i18n DATA ──────────────────────────────────────────────
+const i18n = {
+  en: {
+    'nav.about':'About','nav.process':'Process','nav.why':'Why me','nav.contact':'Contact',
+    'hero.name1':'Victoria','hero.name2':'Parkhotik',
+    'hero.prefix':'I build','hero.subtitle':'Digital products for businesses in Europe, CIS and Latin America — in your language, with your market in mind.',
+    'hero.cta1':'Let\'s build it','hero.cta2':'View my work','hero.avail':'Available for 2 new projects',
+    'trust.response':'Response within 24h','trust.ai':'AI Agents & Automations',
+    'about.title1':'A different world —','about.title2':'a different approach.',
+    'about.p1':'I create websites, apps and AI tools for business — from a simple page to neuroagent systems.',
+    'about.p2':'My approach: from task to system. I see the potential in even a small project and build a solution with the right connections between tools and people. What matters to me is that the result is both useful and beautiful — a digital tool that\'s pleasant to use simply works better.',
+    'about.p3':'Years of experience in international communications taught me to read a task accurately in any context. I work with clients from Belarus, Europe and Latin America — and I know that "a great result" means something different in Minsk, Milan and Havana.',
+    'about.langSub':'Research, texts and communication in your language',
+    'about.marketSub':'Europe · Belarus & CIS · Latin America',
+    'about.motto':'"Different world — different solutions"',
+    'cl1.title':'First Digital Step','cl1.who':'Freelancers · Masters · Small business',
+    'cl1.li1':'Landing page or website','cl1.li2':'Digital business card','cl1.li3':'Booking form + Telegram bot',
+    'cl1.market':'🇧🇾 RU market','cl1.demo1':'Live Rose →','cl1.demo2':'Booking Form →',
+    'cl2.title':'Digital System','cl2.who':'Companies with growth ambitions',
+    'cl2.li1':'Website + process automation','cl2.li2':'AI agents and neuroagent systems','cl2.li3':'Human–machine integration',
+    'cl2.market':'🌐 International',
+    'cl3.title':'International Level','cl3.who':'Foreign clients · NGOs · Organisations',
+    'cl3.li1':'Full digital stack','cl3.li2':'Cross-cultural context','cl3.li3':'Communication in 6 languages',
+    'cl3.market':'🌍 International',
+    'services.title':'What I build',
+    'srv.web':'Websites','srv.webDesc':'Landing pages, corporate sites, multi-page projects',
+    'srv.app':'Web Applications','srv.appDesc':'MVPs, web apps, digital tools for your team',
+    'srv.ai':'AI Agents','srv.aiDesc':'Autonomous agents, multi-agent systems, workflow automation — bots that work while you sleep',
+    'srv.sys':'System Solutions','srv.sysDesc':'End-to-end digital architecture for business processes',
+    'srv.tools':'Interactive Tools','srv.toolsDesc':'Telegram & WhatsApp bots, quizzes, calculators',
+    'srv.parse':'Parsers & Automations','srv.parseDesc':'Data collection scripts, processing, API integrations',
+    'srv.analytics':'Analytics & Research','srv.analyticsDesc':'Market research for Europe & LATAM, client scoring',
+    'services.note':'No consulting, articles, or workshops at this stage — only hands-on delivery.',
+    'projects.title':'Selected Work','projects.sub':'Early-stage projects — real tasks, real solutions, real results.',
+    'projects.coming':'Projects are on their way. Meanwhile — let\'s build yours.','projects.cta':'Start a project',
+    'vizitka.cat':'Digital Business Card','vizitka.title':'Business Card with Avatar',
+    'vizitka.task':'Create a personal digital business card with photo and contact links',
+    'vizitka.solution':'Single-page HTML card with avatar, name, role, and quick-access buttons',
+    'vizitka.result':'Ready-to-share link that opens on any device in under 1 second',
+    'proj.task':'Task:','proj.solution':'Solution:','proj.result':'Result:','proj.demo':'View demo →',
+    'process.title':'How we\'ll work together',
+    'step1.title':'Discovery','step1.desc':'You share your task, context, and goals. I ask the right questions to understand exactly what you need.',
+    'step2.title':'Proposal','step2.desc':'I send a brief + approach + timeline. No surprises, no scope creep.',
+    'step3.title':'Build','step3.desc':'I develop with regular updates. You always know where we are and what comes next.',
+    'step4.title':'Review','step4.desc':'You check, suggest changes, I refine until it\'s exactly right.',
+    'step5.title':'Launch & Support','step5.desc':'We go live. I stay available for questions and fixes after launch.',
+    'markets.title':'Where I work',
+    'markets.by':'Belarus & CIS','markets.byDesc':'Belarus, Russia, Kazakhstan and CIS countries — companies of any size, freelancers, entrepreneurs, including businesses oriented toward export.',
+    'markets.eu':'Europe','markets.euDesc':'Spain, Italy, Portugal, Vatican, UK, Ireland, France, Malta — structured communication, clear deliverables, professionalism from day one.',
+    'markets.latam':'Latin America','markets.latamDesc':'Cuba, Venezuela, Mexico, Bolivia, Argentina — warmth, trust, flexibility, and fast response via WhatsApp.',
+    'markets.intl':'International Organisations','markets.intlDesc':'UN, FAO, IOM, UNESCO, CELAC, ALBA, OAS, ALADI, MERCOSUR and others — project support, research, digital tools for intergovernmental structures.',
+    'markets.remote':'Remote','markets.remoteDesc':'Remote work · Any time zone · Response within 24 hours · Telegram & WhatsApp available',
+    'why.title':'Why work with me',
+    'why1.title':'From Task to System','why1.text':'I go deep into every project — see its potential and build a solution with the right connections between tools and people. No templates, no assembly line. The result should be useful, beautiful, and built to grow.',
+    'why2.title':'Cultural Context','why2.text':'I don\'t just translate your brief — I understand the context behind it. Your market, your culture, your client\'s expectations.',
+    'why3.title':'Always Reachable','why3.text':'Remote work across time zones. Telegram, WhatsApp, email — whatever works for you. You won\'t wait days for a reply.',
+    'contact.title':'Let\'s start','contact.sub':'Tell me about your project — and I\'ll get back to you within 24 hours.',
+    'contact.or':'or reach me directly',
+    'form.name':'name','form.contact':'email or telegram','form.task':'your task','form.channel':'preferred channel',
+    'form.send':'Send message →','form.success':'Message sent! I\'ll get back to you within 24 hours.',
+    'footer.motto':'"Different world — different solutions"','footer.nav':'navigation','footer.contacts':'contacts',
+    'about.label':'// 01. about','bento.languages':'languages','bento.markets':'markets','bento.tools':'tools',
+    'form.error':'Error — please try again','form.offline':'No connection',
+    'pill.by':'🇧🇾 Belarus · CIS','pill.uk':'🇬🇧 UK · 🇮🇪 Ireland','pill.eu':'🇮🇹 Italy · 🇪🇸 Spain · 🇫🇷 France','pill.latam':'🌎 Latin America',
+    'process.label':'// 02. process','markets.label':'// 05. markets','why.label':'// 03. why me','contact.label':'// 07. contact',
+    'trust.geo':'Europe & Latin America','footer.copy':'© 2026 Victoria Parkhotik · Built with intention, not a template.'
+  },
+  es: {
+    'nav.about':'Sobre mí','nav.process':'Proceso','nav.why':'Por qué yo','nav.contact':'Contacto',
+    'hero.name1':'Victoria','hero.name2':'Parkhotik',
+    'hero.prefix':'Construyo','hero.subtitle':'Productos digitales para empresas de Europa, CEI y América Latina — en tu idioma, con tu mercado en mente.',
+    'hero.cta1':'Hablemos','hero.cta2':'Ver proyectos','hero.avail':'Disponible para 2 nuevos proyectos',
+    'trust.response':'Respuesta en 24h','trust.ai':'Agentes IA y Automatizaciones',
+    'about.title1':'Un mundo diferente —','about.title2':'un enfoque diferente.',
+    'about.p1':'Creo sitios web, aplicaciones y herramientas de IA para empresas — desde una página sencilla hasta sistemas de neuroagentes.',
+    'about.p2':'Mi enfoque: de la tarea al sistema. Veo el potencial incluso en un proyecto pequeño y construyo una solución con las conexiones adecuadas entre herramientas y personas. Para mí es importante que el resultado sea útil y estético — una herramienta digital con la que sea agradable interactuar simplemente funciona mejor.',
+    'about.p3':'Años de experiencia en comunicaciones internacionales me enseñaron a leer con precisión la tarea en cualquier contexto. Trabajo con clientes de Belarús, Europa y América Latina — y entiendo que "un buen resultado" significa algo diferente en Minsk, Milán y La Habana.',
+    'about.langSub':'Investigación, textos y comunicación en tu idioma',
+    'about.marketSub':'Europa · Belarús & CEI · América Latina',
+    'about.motto':'"Un mundo diferente — una solución diferente"',
+    'cl1.title':'Primer paso digital','cl1.who':'Freelancers · Maestros · Pequeño negocio',
+    'cl1.li1':'Landing page o sitio web','cl1.li2':'Tarjeta de visita digital','cl1.li3':'Formulario de reserva + bot de Telegram',
+    'cl1.market':'🇧🇾 Mercado RU','cl1.demo1':'Rosa Viva →','cl1.demo2':'Formulario de reserva →',
+    'cl2.title':'Sistema digital','cl2.who':'Empresas con ambición de crecimiento',
+    'cl2.li1':'Sitio web + automatización de procesos','cl2.li2':'Agentes IA y sistemas de neuroagentes','cl2.li3':'Integración persona–máquina',
+    'cl2.market':'🌐 Internacional',
+    'cl3.title':'Nivel internacional','cl3.who':'Clientes extranjeros · ONGs · Organizaciones',
+    'cl3.li1':'Stack digital completo','cl3.li2':'Contexto intercultural','cl3.li3':'Comunicación en 6 idiomas',
+    'cl3.market':'🌍 Internacional',
+    'services.title':'Qué construyo',
+    'srv.web':'Sitios web','srv.webDesc':'Landing pages, sitios corporativos, proyectos multipágina',
+    'srv.app':'Aplicaciones web','srv.appDesc':'MVPs, apps, herramientas digitales para tu equipo',
+    'srv.ai':'Agentes de IA','srv.aiDesc':'Agentes autónomos, sistemas multiagente, automatización — bots que trabajan mientras duermes',
+    'srv.sys':'Soluciones de sistema','srv.sysDesc':'Arquitectura digital de extremo a extremo para procesos de negocio',
+    'srv.tools':'Herramientas interactivas','srv.toolsDesc':'Bots de Telegram y WhatsApp, quizzes, calculadoras',
+    'srv.parse':'Parsers y automatizaciones','srv.parseDesc':'Scripts de recopilación de datos, procesamiento, integraciones API',
+    'srv.analytics':'Análisis e investigación','srv.analyticsDesc':'Investigación de mercados para Europa y LATAM, scoring de clientes',
+    'services.note':'Sin consultoría ni cursos por ahora — solo ejecución real.',
+    'projects.title':'Proyectos seleccionados','projects.sub':'Proyectos en etapa inicial — tareas reales, soluciones reales.',
+    'projects.coming':'Los proyectos están en camino. Mientras tanto — construyamos el tuyo.','projects.cta':'Empezar proyecto',
+    'vizitka.cat':'Tarjeta de visita digital','vizitka.title':'Tarjeta con avatar',
+    'vizitka.task':'Crear una tarjeta de visita digital personal con foto y enlaces de contacto',
+    'vizitka.solution':'Página HTML con avatar, nombre, rol y botones de acceso rápido',
+    'vizitka.result':'Enlace listo para compartir que se abre en cualquier dispositivo en menos de 1 segundo',
+    'proj.task':'Tarea:','proj.solution':'Solución:','proj.result':'Resultado:','proj.demo':'Ver demo →',
+    'process.title':'Cómo trabajamos juntos',
+    'step1.title':'Descubrimiento','step1.desc':'Compartes tu tarea, contexto y objetivos. Yo hago las preguntas correctas para entender exactamente qué necesitas.',
+    'step2.title':'Propuesta','step2.desc':'Envío un brief + enfoque + cronograma. Sin sorpresas.',
+    'step3.title':'Desarrollo','step3.desc':'Construyo con actualizaciones regulares. Siempre sabes dónde estamos.',
+    'step4.title':'Revisión','step4.desc':'Revisas, sugieres cambios, refino hasta que esté perfecto.',
+    'step5.title':'Lanzamiento y soporte','step5.desc':'Publicamos. Sigo disponible para preguntas tras el lanzamiento.',
+    'markets.title':'Dónde trabajo',
+    'markets.by':'Belarús & CEI','markets.byDesc':'Belarús, Rusia, Kazajstán y países de la CEI — empresas de cualquier tamaño, freelancers, emprendedores, incluyendo negocios orientados a la exportación.',
+    'markets.eu':'Europa','markets.euDesc':'España, Italia, Portugal, Vaticano, UK, Irlanda, Francia, Malta — comunicación estructurada, entregables claros, profesionalismo desde el día uno.',
+    'markets.latam':'América Latina','markets.latamDesc':'Cuba, Venezuela, México, Bolivia, Argentina — calidez, confianza, flexibilidad y respuesta rápida por WhatsApp.',
+    'markets.intl':'Organizaciones Internacionales','markets.intlDesc':'ONU, FAO, OIM, UNESCO, CELAC, ALBA, OEA, ALADI, MERCOSUR y otros — apoyo a proyectos, investigación, herramientas digitales para estructuras intergubernamentales.',
+    'markets.remote':'Remoto','markets.remoteDesc':'Trabajo remoto · Cualquier zona horaria · Respuesta en 24 horas · Telegram y WhatsApp disponibles',
+    'why.title':'Por qué trabajar conmigo',
+    'why1.title':'De la tarea al sistema','why1.text':'Me sumerjo en cada proyecto a fondo — veo el potencial y construyo una solución con las conexiones adecuadas entre herramientas y personas. Sin plantillas, sin cadena de montaje. El resultado debe ser útil, estético y pensado para crecer.',
+    'why2.title':'Contexto cultural','why2.text':'No solo traduzco tu brief — entiendo el contexto detrás. Tu mercado, tu cultura, las expectativas de tu cliente.',
+    'why3.title':'Siempre disponible','why3.text':'Trabajo en remoto en cualquier zona horaria. Telegram, WhatsApp, email — lo que te vaya mejor.',
+    'contact.title':'Empecemos','contact.sub':'Cuéntame tu proyecto — te respondo en menos de 24 horas.',
+    'contact.or':'o contáctame directamente',
+    'form.name':'nombre','form.contact':'email o telegram','form.task':'tu tarea','form.channel':'canal preferido',
+    'form.send':'Enviar mensaje →','form.success':'¡Mensaje enviado! Te respondo en menos de 24 horas.',
+    'footer.motto':'"Un mundo diferente — una solución diferente"','footer.nav':'navegación','footer.contacts':'contactos',
+    'about.label':'// 01. sobre mí','bento.languages':'idiomas','bento.markets':'mercados','bento.tools':'herramientas',
+    'form.error':'Error — inténtalo de nuevo','form.offline':'Sin conexión',
+    'pill.by':'🇧🇾 Belarús · CEI','pill.uk':'🇬🇧 UK · 🇮🇪 Irlanda','pill.eu':'🇮🇹 Italia · 🇪🇸 España · 🇫🇷 Francia','pill.latam':'🌎 América Latina',
+    'process.label':'// 02. proceso','markets.label':'// 05. mercados','why.label':'// 03. por qué yo','contact.label':'// 07. contacto',
+    'trust.geo':'Europa y América Latina','footer.copy':'© 2026 Victoria Parkhotik · Hecho con intención, no con plantillas.'
+  },
+  it: {
+    'nav.about':'Chi sono','nav.process':'Processo','nav.why':'Perché io','nav.contact':'Contatti',
+    'hero.name1':'Victoria','hero.name2':'Parkhotik',
+    'hero.prefix':'Costruisco','hero.subtitle':'Prodotti digitali per aziende in Europa, CSI e America Latina — nella tua lingua, con la tua realtà di mercato.',
+    'hero.cta1':'Parliamo','hero.cta2':'Vedi i progetti','hero.avail':'Disponibile per 2 nuovi progetti',
+    'trust.response':'Risposta entro 24h','trust.ai':'Agenti IA e Automazioni',
+    'about.title1':'Un mondo diverso —','about.title2':'un approccio diverso.',
+    'about.p1':'Creo siti web, applicazioni e strumenti IA per le aziende — da una semplice pagina a sistemi di neuroagenti.',
+    'about.p2':'Il mio approccio: dal compito al sistema. Vedo il potenziale anche in un piccolo progetto e costruisco una soluzione con i giusti collegamenti tra strumenti e persone. Per me è importante che il risultato sia utile ed estetico — uno strumento digitale con cui è piacevole interagire semplicemente funziona meglio.',
+    'about.p3':'Anni di esperienza nelle comunicazioni internazionali mi hanno insegnato a leggere con precisione il compito in qualsiasi contesto. Lavoro con clienti dalla Bielorussia, dall\'Europa e dall\'America Latina — e capisco che "un buon risultato" significa cose diverse a Minsk, Milano e L\'Avana.',
+    'about.langSub':'Ricerche, testi e comunicazione nella tua lingua',
+    'about.marketSub':'Europa · Belarus & CSI · America Latina',
+    'about.motto':'"Un mondo diverso — una soluzione diversa"',
+    'cl1.title':'Primo passo digitale','cl1.who':'Freelancer · Professionisti · Piccole imprese',
+    'cl1.li1':'Landing page o sito web','cl1.li2':'Biglietto da visita digitale','cl1.li3':'Modulo di prenotazione + bot Telegram',
+    'cl1.market':'🇧🇾 Mercato RU','cl1.demo1':'Rosa Viva →','cl1.demo2':'Modulo prenotazione →',
+    'cl2.title':'Sistema digitale','cl2.who':'Aziende con ambizioni di crescita',
+    'cl2.li1':'Sito web + automazione dei processi','cl2.li2':'Agenti IA e sistemi di neuroagenti','cl2.li3':'Integrazione persona–macchina',
+    'cl2.market':'🌐 Internazionale',
+    'cl3.title':'Livello internazionale','cl3.who':'Clienti esteri · ONG · Organizzazioni',
+    'cl3.li1':'Stack digitale completo','cl3.li2':'Contesto interculturale','cl3.li3':'Comunicazione in 6 lingue',
+    'cl3.market':'🌍 Internazionale',
+    'services.title':'Cosa costruisco',
+    'srv.web':'Siti web','srv.webDesc':'Landing page, siti aziendali, progetti multipagina',
+    'srv.app':'Applicazioni web','srv.appDesc':'MVP, web app, strumenti digitali per il tuo team',
+    'srv.ai':'Agenti IA','srv.aiDesc':'Agenti autonomi, sistemi multi-agente, automazione — bot che lavorano mentre dormi',
+    'srv.sys':'Soluzioni di sistema','srv.sysDesc':'Architettura digitale end-to-end per processi aziendali',
+    'srv.tools':'Strumenti interattivi','srv.toolsDesc':'Bot Telegram e WhatsApp, quiz, calcolatrici',
+    'srv.parse':'Parser e automazioni','srv.parseDesc':'Script di raccolta dati, elaborazione, integrazioni API',
+    'srv.analytics':'Analytics e ricerca','srv.analyticsDesc':'Ricerche di mercato per Europa e LATAM, scoring clienti',
+    'services.note':'Nessuna consulenza o corso per ora — solo esecuzione concreta.',
+    'projects.title':'Progetti selezionati','projects.sub':'Progetti iniziali — compiti reali, soluzioni reali.',
+    'projects.coming':'I progetti sono in arrivo. Nel frattempo — costruiamo il tuo.','projects.cta':'Inizia un progetto',
+    'vizitka.cat':'Biglietto da visita digitale','vizitka.title':'Biglietto con avatar',
+    'vizitka.task':'Creare un biglietto da visita digitale personale con foto e link ai contatti',
+    'vizitka.solution':'Pagina HTML con avatar, nome, ruolo e pulsanti di accesso rapido',
+    'vizitka.result':'Link pronto da condividere che si apre su qualsiasi dispositivo in meno di 1 secondo',
+    'proj.task':'Obiettivo:','proj.solution':'Soluzione:','proj.result':'Risultato:','proj.demo':'Vedi demo →',
+    'process.title':'Come lavoriamo insieme',
+    'step1.title':'Analisi','step1.desc':'Condividi il tuo obiettivo, contesto e traguardi. Faccio le domande giuste per capire esattamente cosa ti serve.',
+    'step2.title':'Proposta','step2.desc':'Invio un brief + approccio + tempi. Nessuna sorpresa.',
+    'step3.title':'Sviluppo','step3.desc':'Creo con aggiornamenti regolari. Sai sempre dove siamo.',
+    'step4.title':'Revisione','step4.desc':'Controlli, suggerisci modifiche, perfeziono finché non è perfetto.',
+    'step5.title':'Lancio e supporto','step5.desc':'Pubblichiamo. Resto disponibile per domande dopo il lancio.',
+    'markets.title':'Dove lavoro',
+    'markets.by':'Belarus & CSI','markets.byDesc':'Belarus, Russia, Kazakhstan e paesi CSI — aziende di qualsiasi dimensione, freelancer, imprenditori, incluse aziende orientate all\'export.',
+    'markets.eu':'Europa','markets.euDesc':'Spagna, Italia, Portogallo, Vaticano, UK, Irlanda, Francia, Malta — comunicazione strutturata, deliverable chiari, professionalità fin dal primo giorno.',
+    'markets.latam':'America Latina','markets.latamDesc':'Cuba, Venezuela, Messico, Bolivia, Argentina — calore, fiducia, flessibilità e risposta rapida via WhatsApp.',
+    'markets.intl':'Organizzazioni Internazionali','markets.intlDesc':'ONU, FAO, OIM, UNESCO, CELAC, ALBA, OSA, ALADI, MERCOSUR e altri — supporto a progetti, ricerca, strumenti digitali per strutture intergovernative.',
+    'markets.remote':'Da remoto','markets.remoteDesc':'Lavoro da remoto · Qualsiasi fuso orario · Risposta entro 24 ore · Telegram e WhatsApp disponibili',
+    'why.title':'Perché lavorare con me',
+    'why1.title':'Dal compito al sistema','why1.text':'Entro in profondità in ogni progetto — vedo il potenziale e costruisco una soluzione con i giusti collegamenti tra strumenti e persone. Nessun template, nessuna catena di montaggio. Il risultato deve essere utile, estetico e pronto a crescere.',
+    'why2.title':'Contesto culturale','why2.text':'Non traduco solo il tuo brief — comprendo il contesto. Il tuo mercato, la tua cultura, le aspettative del tuo cliente.',
+    'why3.title':'Sempre disponibile','why3.text':'Lavoro da remoto in qualsiasi fuso orario. Telegram, WhatsApp, email — come preferisci.',
+    'contact.title':'Iniziamo','contact.sub':'Raccontami del tuo progetto — ti rispondo entro 24 ore.',
+    'contact.or':'o contattami direttamente',
+    'form.name':'nome','form.contact':'email o telegram','form.task':'la tua esigenza','form.channel':'canale preferito',
+    'form.send':'Invia messaggio →','form.success':'Messaggio inviato! Ti rispondo entro 24 ore.',
+    'footer.motto':'"Un mondo diverso — una soluzione diversa"','footer.nav':'navigazione','footer.contacts':'contatti',
+    'about.label':'// 01. chi sono','bento.languages':'lingue','bento.markets':'mercati','bento.tools':'strumenti',
+    'form.error':'Errore — riprova','form.offline':'Nessuna connessione',
+    'pill.by':'🇧🇾 Belarus · CSI','pill.uk':'🇬🇧 UK · 🇮🇪 Irlanda','pill.eu':'🇮🇹 Italia · 🇪🇸 Spagna · 🇫🇷 Francia','pill.latam':'🌎 America Latina',
+    'process.label':'// 02. processo','markets.label':'// 05. mercati','why.label':'// 03. perché io','contact.label':'// 07. contatti',
+    'trust.geo':'Europa e America Latina','footer.copy':'© 2026 Victoria Parkhotik · Fatto con intenzione, non con template.'
+  },
+  ru: {
+    'nav.about':'Обо мне','nav.process':'Процесс','nav.why':'Почему я','nav.contact':'Контакты',
+    'hero.name1':'Виктория','hero.name2':'Пархотик',
+    'hero.prefix':'Я создаю','hero.subtitle':'Цифровые продукты для бизнеса в Беларуси, странах СНГ, Европе и Латинской Америке — на вашем языке, с пониманием вашего рынка.',
+    'hero.cta1':'Обсудить проект','hero.cta2':'Смотреть работы','hero.avail':'Открыта для 2 новых проектов',
+    'trust.response':'Ответ в течение 24ч','trust.ai':'ИИ-агенты и автоматизации',
+    'about.title1':'Разный мир —','about.title2':'разный подход.',
+    'about.p1':'Я создаю сайты, приложения и ИИ-инструменты для бизнеса — от простой страницы до систем нейроагентов.',
+    'about.p2':'Мой подход — от задачи к системе: вижу потенциал даже маленького проекта и выстраиваю решение с нужными связками между инструментами и людьми. Для меня важно, чтобы результат был полезным и эстетичным — цифровой инструмент, с которым приятно взаимодействовать, работает лучше.',
+    'about.p3':'Многолетний опыт в международных коммуникациях научил меня точно считывать задачу в любом контексте. Работаю с клиентами из Беларуси, Европы и Латинской Америки — и понимаю, что «хороший результат» значит разное в Минске, Милане и Гаване.',
+    'about.langSub':'Исследования, тексты и коммуникация на вашем языке',
+    'about.marketSub':'Беларусь и СНГ · Европа · Латинская Америка',
+    'about.motto':'"Разный мир — разные решения"',
+    'cl1.title':'Первый цифровой шаг','cl1.who':'Фрилансеры · Мастера · Малый бизнес',
+    'cl1.li1':'Лендинг или сайт-визитка','cl1.li2':'Цифровая визитка с аватаром','cl1.li3':'Форма записи + Telegram-бот',
+    'cl1.market':'🇧🇾 РУ рынок','cl1.demo1':'Живая Роза →','cl1.demo2':'Форма записи →',
+    'cl2.title':'Цифровая система','cl2.who':'Компании с амбициями роста',
+    'cl2.li1':'Сайт + автоматизация процессов','cl2.li2':'ИИ-агенты и системы нейроагентов','cl2.li3':'Связки человек–машина',
+    'cl2.market':'🌐 Международный',
+    'cl3.title':'Международный уровень','cl3.who':'Иностранные клиенты · НКО · Организации',
+    'cl3.li1':'Полный цифровой стек','cl3.li2':'Межкультурный контекст','cl3.li3':'Коммуникация на 6 языках',
+    'cl3.market':'🌍 Международный',
+    'services.title':'Что я делаю',
+    'srv.web':'Сайты','srv.webDesc':'Лендинги, корпоративные сайты, многостраничные проекты',
+    'srv.app':'Веб-приложения','srv.appDesc':'MVP, веб-приложения, цифровые инструменты для вашей команды',
+    'srv.ai':'ИИ-агенты','srv.aiDesc':'Автономные агенты, мультиагентные системы, автоматизация — боты, работающие пока вы спите',
+    'srv.sys':'Системные решения','srv.sysDesc':'Сквозная цифровая архитектура для бизнес-процессов',
+    'srv.tools':'Интерактивные инструменты','srv.toolsDesc':'Telegram и WhatsApp боты, квизы, калькуляторы',
+    'srv.parse':'Парсеры и автоматизации','srv.parseDesc':'Скрипты сбора данных, обработка, интеграции API',
+    'srv.analytics':'Аналитика и исследования','srv.analyticsDesc':'Исследование рынков Европы и Латинской Америки, проверка клиентов',
+    'services.note':'Консультации и курсы пока не веду — только практическая реализация.',
+    'projects.title':'Избранные работы','projects.sub':'Проекты на старте — реальные задачи, реальные решения.',
+    'projects.coming':'Проекты скоро появятся. А пока — давайте создадим ваш.','projects.cta':'Начать проект',
+    'vizitka.cat':'Цифровая визитка','vizitka.title':'Визитка с аватаром',
+    'vizitka.task':'Создать персональную цифровую визитку с фото и ссылками на контакты',
+    'vizitka.solution':'Одностраничный HTML с аватаром, именем, должностью и кнопками быстрого доступа',
+    'vizitka.result':'Ссылка для отправки, открывается на любом устройстве быстрее 1 секунды',
+    'proj.task':'Задача:','proj.solution':'Решение:','proj.result':'Результат:','proj.demo':'Смотреть пример →',
+    'process.title':'Как мы будем работать',
+    'step1.title':'Знакомство','step1.desc':'Вы рассказываете о задаче, контексте и целях. Я задаю нужные вопросы, чтобы точно понять, что вам нужно.',
+    'step2.title':'Предложение','step2.desc':'Отправляю бриф + подход + сроки. Никаких сюрпризов.',
+    'step3.title':'Разработка','step3.desc':'Делаю с регулярными обновлениями. Вы всегда знаете, где мы находимся.',
+    'step4.title':'Проверка','step4.desc':'Вы проверяете, вносите правки — я довожу до идеала.',
+    'step5.title':'Запуск и поддержка','step5.desc':'Запускаем. Остаюсь на связи после запуска для вопросов и правок.',
+    'markets.title':'Рынки',
+    'markets.by':'Беларусь и СНГ','markets.byDesc':'Беларусь, Россия, Казахстан и страны СНГ — компании любого размера, фрилансеры, предприниматели, в том числе бизнес, ориентированный на экспорт.',
+    'markets.eu':'Европа','markets.euDesc':'Испания, Италия, Португалия, Ватикан, Великобритания, Ирландия, Франция, Мальта — структурированная коммуникация, чёткие результаты, профессионализм с первого дня.',
+    'markets.latam':'Латинская Америка','markets.latamDesc':'Куба, Венесуэла, Мексика, Боливия, Аргентина — тепло, доверие, гибкость и быстрый ответ через WhatsApp.',
+    'markets.intl':'Международные организации','markets.intlDesc':'ООН, ФАО, МОМ, ЮНЕСКО, СЕЛАК, АЛБА, ОАГ, ЛАИ, МЕРКОСУР и др. — поддержка проектов, исследования, цифровые инструменты для межправительственных структур.',
+    'markets.remote':'Удалённо','markets.remoteDesc':'Удалённая работа · Любой часовой пояс · Ответ в течение 24 часов · Telegram и WhatsApp',
+    'why.title':'Почему я',
+    'why1.title':'От задачи к системе','why1.text':'Вхожу в каждый проект глубоко — вижу потенциал и выстраиваю решение с нужными связками между инструментами и людьми. Без шаблонов, без конвейера. Результат должен быть полезным, эстетичным и работающим на перспективу.',
+    'why2.title':'Культурный контекст','why2.text':'Я не просто перевожу ваш бриф — я понимаю контекст за ним. Ваш рынок, вашу культуру, ожидания вашего клиента.',
+    'why3.title':'Всегда на связи','why3.text':'Удалённая работа в любом часовом поясе. Telegram, WhatsApp, email — как вам удобнее. Ответ не заставит ждать.',
+    'contact.title':'Начнём','contact.sub':'Расскажите о проекте — я отвечу в течение 24 часов.',
+    'contact.or':'или напишите напрямую',
+    'form.name':'имя','form.contact':'email или telegram','form.task':'ваша задача','form.channel':'удобный канал',
+    'form.send':'Отправить сообщение →','form.success':'Сообщение отправлено! Отвечу в течение 24 часов.',
+    'footer.motto':'"Разный мир — разные решения"','footer.nav':'навигация','footer.contacts':'контакты',
+    'about.label':'// 01. обо мне','bento.languages':'языки','bento.markets':'рынки','bento.tools':'инструменты',
+    'form.error':'Ошибка — попробуйте ещё раз','form.offline':'Нет соединения',
+    'pill.by':'🇧🇾 Беларусь · СНГ','pill.uk':'🇬🇧 UK · 🇮🇪 Ирландия','pill.eu':'🇮🇹 Италия · 🇪🇸 Испания · 🇫🇷 Франция','pill.latam':'🌎 Латинская Америка',
+    'process.label':'// 02. процесс','markets.label':'// 05. рынки','why.label':'// 03. почему я','contact.label':'// 07. контакты',
+    'trust.geo':'Европа и Латинская Америка','footer.copy':'© 2026 Victoria Parkhotik · Сделано с душой, не по шаблону.'
+  }
+};
+
+// ─── LANGUAGE ENGINE ────────────────────────────────────────
+let currentLang = localStorage.getItem('lang') || 'ru';
+
+function applyLang(lang) {
+  currentLang = lang;
+  localStorage.setItem('lang', lang);
+  const dict = i18n[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (dict[key] !== undefined) el.textContent = dict[key];
+  });
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === lang);
+  });
+  document.documentElement.lang = lang;
+
+  // Update typewriter words and restart animation
+  twWords = {
+    ru: ['сайты', 'приложения', 'ИИ-агенты', 'автоматизации'],
+    en: ['websites', 'web apps', 'AI agents', 'automations'],
+    es: ['sitios web', 'aplicaciones', 'agentes IA', 'automatizaciones'],
+    it: ['siti web', 'applicazioni', 'agenti IA', 'automazioni']
+  }[lang];
+  clearTimeout(twTimeout);
+  twIdx = 0; twChar = 0; twDeleting = false;
+  if (twEl) { twEl.textContent = ''; twTimeout = setTimeout(typewrite, 300); }
+
+  // Update form placeholders
+  const ph = {
+    ru: { name:'Анна', contact:'@username или email@domain.com', task:'Мне нужен лендинг для бизнеса...' },
+    en: { name:'Victoria', contact:'@username or email@domain.com', task:'I need a landing page for my business...' },
+    es: { name:'María', contact:'@username o email@domain.com', task:'Necesito una landing page para mi negocio...' },
+    it: { name:'Maria', contact:'@username o email@domain.com', task:'Ho bisogno di una landing page per il mio business...' }
+  }[lang];
+  if (ph) {
+    const fn = document.getElementById('fname'); if (fn) fn.placeholder = ph.name;
+    const fc = document.getElementById('fcontact'); if (fc) fc.placeholder = ph.contact;
+    const ft = document.getElementById('ftask'); if (ft) ft.placeholder = ph.task;
+  }
+}
+
+document.querySelectorAll('.lang-btn').forEach(btn => {
+  btn.addEventListener('click', () => applyLang(btn.dataset.lang));
+});
+
+// ─── TYPEWRITER ─────────────────────────────────────────────
+let twWords = ['сайты', 'приложения', 'ИИ-агенты', 'автоматизации'];
+let twIdx = 0, twChar = 0, twDeleting = false, twTimeout = null;
+const twEl = document.getElementById('twWord');
+
+function typewrite() {
+  const word = twWords[twIdx % twWords.length];
+  if (!twDeleting) {
+    twEl.textContent = word.slice(0, ++twChar);
+    if (twChar === word.length) { twDeleting = true; twTimeout = setTimeout(typewrite, 1800); return; }
+  } else {
+    twEl.textContent = word.slice(0, --twChar);
+    if (twChar === 0) { twDeleting = false; twIdx++; }
+  }
+  twTimeout = setTimeout(typewrite, twDeleting ? 60 : 110);
+}
+twTimeout = setTimeout(typewrite, 1000);
+
+// ─── CURSOR ─────────────────────────────────────────────────
+const cursor = document.getElementById('cursor');
+const cursorRing = document.getElementById('cursorRing');
+const spotlight = document.getElementById('spotlight');
+let mx = 0, my = 0, rx = 0, ry = 0;
+
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  cursor.style.left = mx + 'px';
+  cursor.style.top  = my + 'px';
+  document.documentElement.style.setProperty('--mx', mx + 'px');
+  document.documentElement.style.setProperty('--my', my + 'px');
+  spotlight.style.background = `radial-gradient(500px circle at ${mx}px ${my}px, rgba(61,100,128,0.06), transparent 80%)`;
+});
+
+(function animRing() {
+  rx += (mx - rx) * 0.12;
+  ry += (my - ry) * 0.12;
+  cursorRing.style.left = rx + 'px';
+  cursorRing.style.top  = ry + 'px';
+  requestAnimationFrame(animRing);
+})();
+
+document.querySelectorAll('a,button,.service-card,.bento-card,.why-card,.market-card,.project-card').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    cursor.style.transform = 'translate(-50%,-50%) scale(1.8)';
+    cursorRing.style.width = '54px';
+    cursorRing.style.height = '54px';
+  });
+  el.addEventListener('mouseleave', () => {
+    cursor.style.transform = 'translate(-50%,-50%) scale(1)';
+    cursorRing.style.width = '36px';
+    cursorRing.style.height = '36px';
+  });
+});
+
+// ─── HEADER SCROLL + PARALLAX ───────────────────────────────
+const header = document.getElementById('header');
+const heroVisual = document.querySelector('.hero-visual');
+window.addEventListener('scroll', () => {
+  const sy = window.scrollY;
+  header.classList.toggle('scrolled', sy > 30);
+  if (heroVisual && sy < window.innerHeight) {
+    heroVisual.style.transform = `translateY(${sy * 0.12}px)`;
+  }
+}, { passive: true });
+
+// ─── MOBILE MENU ────────────────────────────────────────────
+const burger = document.getElementById('burger');
+const mobileNav = document.getElementById('mobileNav');
+
+burger.addEventListener('click', () => {
+  mobileNav.classList.toggle('open');
+  document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
+});
+
+function closeMobile() {
+  mobileNav.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ─── SCROLL REVEAL ──────────────────────────────────────────
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.12 });
+revealEls.forEach(el => observer.observe(el));
+
+// ─── CONTACT FORM ────────────────────────────────────────────
+document.getElementById('contactForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = document.getElementById('formBtn');
+  btn.disabled = true;
+  btn.querySelector('span').textContent = '...';
+
+  try {
+    const response = await fetch(this.action, {
+      method: 'POST',
+      body: new FormData(this),
+      headers: { 'Accept': 'application/json' }
+    });
+    if (response.ok) {
+      this.style.display = 'none';
+      document.getElementById('formSuccess').classList.add('show');
+      document.querySelector('.contact-divider').style.marginTop = '1.75rem';
+    } else {
+      btn.disabled = false;
+      btn.querySelector('span').textContent = i18n[currentLang]['form.error'] || 'Error — try again';
+    }
+  } catch {
+    btn.disabled = false;
+    btn.querySelector('span').textContent = i18n[currentLang]['form.offline'] || 'No connection';
+  }
+});
+
+// ─── BACK TO TOP ─────────────────────────────────────────────
+const backToTopBtn = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+  backToTopBtn.classList.toggle('visible', window.scrollY > 400);
+}, { passive: true });
+backToTopBtn.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// ─── INIT ────────────────────────────────────────────────────
+applyLang(currentLang);
+</script>
+<button class="back-to-top" id="backToTop" aria-label="Наверх">↑</button>
+</body>
+</html>

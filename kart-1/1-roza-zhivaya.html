@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <meta name="theme-color" content="#f9f5f0">
+  <title>Живая Роза — Кейс</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #f9f5f0;
+      --ink:     hsl(15, 10%, 20%);
+      --muted:   hsl(15, 8%, 55%);
+      --accent:  hsl(345, 28%, 50%);
+      --divider: hsl(15, 10%, 86%);
+      --pad:     clamp(24px, 6vw, 72px);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Georgia, 'Times New Roman', serif;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px var(--pad);
+      background: linear-gradient(to bottom, var(--bg) 60%, transparent);
+    }
+
+    .nav-logo {
+      font-size: 13px;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .nav-links { display: flex; gap: clamp(20px, 4vw, 48px); list-style: none; }
+    .nav-links a {
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.25s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 100svh;
+      padding: 0 var(--pad);
+    }
+
+    .hero-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 80px;
+      padding-right: clamp(24px, 4vw, 60px);
+      padding-bottom: 60px;
+    }
+
+    .eyebrow {
+      font-size: 10px;
+      letter-spacing: 0.5em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 24px;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 5.5vw, 76px);
+      font-weight: normal;
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+      margin-bottom: 28px;
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 0.9s ease 0.15s, transform 0.9s ease 0.15s;
+    }
+
+    .hero h1 em { font-style: italic; color: var(--accent); }
+
+    .hero-desc {
+      font-size: clamp(13px, 1.4vw, 16px);
+      line-height: 1.8;
+      color: var(--muted);
+      max-width: 420px;
+      margin-bottom: 44px;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.8s ease 0.45s, transform 0.8s ease 0.45s;
+    }
+
+    .btn-primary {
+      background: var(--ink);
+      color: var(--bg);
+      font-family: Georgia, serif;
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      padding: 14px 32px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.3s;
+    }
+    .btn-primary:hover { background: var(--accent); }
+
+    .btn-ghost {
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      border-bottom: 1px solid var(--divider);
+      padding-bottom: 2px;
+      transition: color 0.25s, border-color 0.25s;
+    }
+    .btn-ghost:hover { color: var(--ink); border-color: var(--ink); }
+
+    .hero-text.visible .eyebrow,
+    .hero-text.visible h1,
+    .hero-text.visible .hero-desc,
+    .hero-text.visible .hero-actions {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hero-visual {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    svg.rose {
+      width: 100%;
+      height: 100%;
+      max-height: 90svh;
+      max-width: 44svh;
+    }
+
+    .replay-btn {
+      position: absolute;
+      bottom: clamp(20px, 3vw, 32px);
+      right: 0;
+      background: transparent;
+      border: 1px solid var(--divider);
+      color: var(--muted);
+      font-family: Georgia, serif;
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      padding: 7px 15px;
+      cursor: pointer;
+      opacity: 0;
+      transition: border-color 0.3s, color 0.3s, background 0.3s;
+      border-radius: 0;
+    }
+    .replay-btn:hover { border-color: var(--ink); color: var(--bg); background: var(--ink); }
+
+    /* ── DIVIDER ── */
+    .section-divider {
+      position: relative;
+      z-index: 1;
+      border: none;
+      border-top: 1px solid var(--divider);
+    }
+
+    /* ── PROCESS ── */
+    .process {
+      position: relative;
+      z-index: 1;
+      padding: clamp(60px, 10vw, 120px) var(--pad);
+    }
+
+    .process-header {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: clamp(32px, 6vw, 80px);
+      margin-bottom: clamp(48px, 8vw, 96px);
+    }
+
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 0.5em;
+      text-transform: uppercase;
+      color: var(--accent);
+      padding-top: 6px;
+    }
+
+    .process-intro h2 {
+      font-size: clamp(22px, 3vw, 38px);
+      font-weight: normal;
+      line-height: 1.25;
+      margin-bottom: 20px;
+    }
+
+    .process-intro p {
+      font-size: clamp(13px, 1.3vw, 16px);
+      line-height: 1.85;
+      color: var(--muted);
+      max-width: 560px;
+    }
+
+    /* steps */
+    .steps {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--divider);
+    }
+
+    .step {
+      background: var(--bg);
+      padding: clamp(28px, 4vw, 52px) clamp(24px, 3.5vw, 48px);
+    }
+
+    .step-num {
+      font-size: 11px;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    .step h3 {
+      font-size: clamp(16px, 1.8vw, 22px);
+      font-weight: normal;
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+
+    .step p {
+      font-size: clamp(12px, 1.2vw, 15px);
+      line-height: 1.8;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    /* prompt quote */
+    .prompt-quote {
+      border-left: 2px solid var(--accent);
+      padding: 16px 20px;
+      background: hsla(345, 30%, 50%, 0.05);
+      margin-top: 4px;
+    }
+
+    .prompt-quote p {
+      font-size: clamp(11px, 1.1vw, 13px);
+      line-height: 1.75;
+      color: var(--ink);
+      font-style: italic;
+      margin: 0;
+    }
+
+    .prompt-quote cite {
+      display: block;
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      font-style: normal;
+      color: var(--accent);
+      margin-top: 10px;
+    }
+
+    /* ── RESULT ── */
+    .result {
+      position: relative;
+      z-index: 1;
+      padding: clamp(40px, 7vw, 80px) var(--pad);
+      border-top: 1px solid var(--divider);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--divider);
+    }
+
+    .result-item {
+      background: var(--bg);
+      padding: clamp(24px, 4vw, 48px) clamp(20px, 3vw, 36px);
+    }
+
+    .result-num {
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: normal;
+      font-style: italic;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .result-text {
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid var(--divider);
+      padding: 28px var(--pad);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    footer span {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      color: var(--muted);
+    }
+    footer em { font-style: italic; color: var(--accent); }
+
+    /* ── MOBILE ── */
+    @media (max-width: 720px) {
+      nav { padding: 16px 24px; }
+      .nav-links { gap: 20px; }
+
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: unset;
+        padding: 0 24px 48px;
+        padding-top: 80px;
+      }
+      .hero-visual { order: -1; height: 52svh; padding-bottom: 40px; }
+      svg.rose { max-height: calc(52svh - 40px); max-width: 29svh; }
+      .replay-btn { bottom: 0; }
+      .hero-text { padding-top: 24px; padding-right: 0; padding-bottom: 0; }
+
+      .process-header { grid-template-columns: 1fr; gap: 16px; }
+      .steps { grid-template-columns: 1fr; }
+      .result { grid-template-columns: 1fr; }
+      footer { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+  <style>
+    .back-btn {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      z-index: 999;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(0,0,0,0.12);
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.85rem;
+      color: #333;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .back-btn:hover { background: #fff; transform: translateX(-2px); }
+  </style>
+</head>
+<body>
+<a class="back-btn" id="back-btn" href="../index.html#projects">← Назад</a>
+<script>
+  (function(){
+    var t={ru:'← Назад',en:'← Back',es:'← Volver',it:'← Indietro'};
+    var l=localStorage.getItem('lang')||'ru';
+    document.getElementById('back-btn').textContent=t[l]||t.ru;
+  })();
+</script>
+
+  <nav>
+    <a href="#" class="nav-logo">Живая Роза</a>
+    <ul class="nav-links">
+      <li><a href="#process">Процесс</a></li>
+      <li><a href="#result">Результат</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text" id="heroText">
+      <div class="eyebrow">Кейс · One Line Art</div>
+      <h1>Роза,<br>рождённая<br><em>из промпта</em></h1>
+      <p class="hero-desc">
+        Концепция, техническое задание и итеративные правки —
+        всё придумано автором. Инструмент — AI.
+        Результат — автономный анимированный компонент для любого сайта.
+      </p>
+      <div class="hero-actions">
+        <a href="#process" class="btn-primary">Смотреть процесс</a>
+        <a href="rose.html" class="btn-ghost">Только роза →</a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <svg
+        class="rose"
+        viewBox="468 22 548 960"
+        preserveAspectRatio="xMidYMid meet"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        role="img"
+        aria-label="Роза в технике one line art"
+      >
+        <g id="fills" style="opacity:0">
+          <path d="M862 54C854 54,846 56,838 59C830 62,823 67,816 74C810 80,805 88,801 96C798 104,796 113,795 122C794 132,795 142,797 152C799 162,802 170,808 178C812 184,818 190,825 195C830 199,836 202,843 205C850 208,858 210,866 211C874 212,882 212,890 210C898 208,905 204,912 199C918 194,922 188,922 178C922 168,920 155,918 135C916 115,912 96,904 82C896 68,886 58,862 54Z" fill="hsla(345,55%,75%,0.32)"/>
+          <path d="M862 82C856 82,850 83,844 86C838 89,833 93,828 98C824 103,820 110,818 117C816 124,815 132,816 140C817 148,820 156,824 162C828 168,834 174,842 178C850 182,858 184,866 185C878 185,890 178,900 168C908 158,914 142,914 125C914 108,908 92,896 84C886 78,872 80,862 82Z" fill="hsla(340,50%,65%,0.38)"/>
+          <path d="M862 105C856 106,850 112,846 120C843 130,844 142,850 152C856 160,866 162,876 158C886 152,894 140,896 126C898 112,892 102,880 100C872 98,862 105,862 105Z" fill="hsla(350,45%,58%,0.44)"/>
+          <path d="M932 405C944 390,968 378,978 386C984 392,978 404,968 414C956 424,940 420,932 412Z" fill="hsla(130,35%,48%,0.34)"/>
+          <path d="M936 628C950 612,976 598,988 608C994 614,988 628,976 638C964 648,946 644,936 636Z" fill="hsla(135,30%,44%,0.34)"/>
+          <path d="M710 951C718 930,738 914,748 922C754 928,748 944,738 954C728 962,716 958,710 953Z" fill="hsla(125,32%,46%,0.30)"/>
+        </g>
+
+        <path id="main"
+          d="M862 198C860 190,857 178,860 168C862 162,866 155,870 150C874 144,878 138,880 132C882 126,884 120,882 115C880 110,876 106,872 105C867 104,862 105,857 108C852 111,848 116,846 122C844 128,843 134,844 140C845 146,848 152,853 156C855 158,858 159,862 160C866 161,870 160,874 158C878 155,883 150,887 145C889 142,892 138,894 133C896 128,898 122,898 116C898 110,896 104,893 99C890 94,886 90,880 87C874 84,868 82,862 82C856 82,850 83,844 86C838 89,833 93,828 98C824 103,820 110,818 117C816 124,815 132,816 140C817 148,820 156,824 162C826 166,830 170,834 174C838 178,843 180,848 182C854 184,860 185,866 185C872 185,878 184,884 181C890 178,896 174,901 168C904 164,907 160,910 155C913 149,916 142,918 135C920 128,922 120,922 112C922 104,920 96,917 89C914 82,910 76,904 71C898 66,892 62,885 59C878 56,870 54,862 54C854 54,846 56,838 59C830 62,823 67,816 74C810 80,805 88,801 96C798 104,796 113,795 122C794 132,795 142,797 152C799 162,802 170,808 178C812 184,818 190,825 195C830 199,836 202,843 205C850 208,858 210,866 211C874 212,882 212,890 210C898 208,905 204,912 199C918 194,922 196,926 202C930 210,932 222,932 238C932 258,926 280,930 305C934 325,938 342,936 362C934 378,928 392,932 410C936 428,942 444,940 462C938 480,930 498,933 518C936 538,942 556,940 575C938 594,932 612,935 632C938 652,944 670,942 690C940 710,934 728,937 748C940 768,946 786,944 806C942 826,938 846,938 866C938 886,936 902,930 918C926 930,918 938,908 942C898 946,885 948,870 949C852 950,835 946,818 949C800 952,782 947,764 950C746 953,728 948,710 951C692 954,674 949,656 952C638 955,620 950,602 953C584 956,566 952,548 955C532 957,516 960,500 962"
+          stroke="hsl(15,10%,25%)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+        <path id="leaf1"
+          d="M932 405C944 390,968 378,978 386C984 392,978 404,968 414C956 424,940 420,932 412 M932 408C955 398,975 390,932 408"
+          stroke="hsl(15,10%,25%)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+
+        <path id="leaf2"
+          d="M936 628C950 612,976 598,988 608C994 614,988 628,976 638C964 648,946 644,936 636 M936 632C960 622,984 614,936 632"
+          stroke="hsl(15,10%,25%)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+
+        <path id="leaf3"
+          d="M710 951C718 930,738 914,748 922C754 928,748 944,738 954C728 962,716 958,710 953 M710 952C728 936,746 926,710 952"
+          stroke="hsl(15,10%,25%)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+
+      <button class="replay-btn" id="replayBtn" aria-label="Повторить анимацию">↺ повторить</button>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- PROCESS -->
+  <section class="process" id="process">
+
+    <div class="process-header">
+      <div class="section-label">Процесс создания</div>
+      <div class="process-intro">
+        <h2>Идея → промпт →<br>итерации → результат</h2>
+        <p>
+          Весь проект начался с авторской концепции: анимированный декоративный
+          элемент для лендинга в стиле one line art. Точное техническое задание,
+          поэтапные правки и визуальный образец для цветовой заливки —
+          всё это формулировал автор, а не инструмент.
+        </p>
+      </div>
+    </div>
+
+    <div class="steps">
+
+      <div class="step">
+        <div class="step-num">Шаг 01</div>
+        <h3>Авторская концепция и первый промпт</h3>
+        <p>
+          Точное описание поведения линии: угол расположения, отступы в сантиметрах,
+          направление движения, количество оборотов лепестков, расположение листьев.
+        </p>
+        <div class="prompt-quote">
+          <p>«Создай в правом верхнем углу экрана анимированную розу в стиле one line art,
+          которая развивается из одной точки... линия опускается по правой стороне экрана
+          вниз слегка волнисто, рисуя по ходу 2–3 листка... Отступ крайнего правого
+          лепестка от края страницы — 1,7 см.»</p>
+          <cite>— из оригинального промпта автора</cite>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">Шаг 02</div>
+        <h3>Первая правка: правдоподобность формы</h3>
+        <p>
+          После первого результата автор сформулировал направление доработки —
+          сделать рисунок более органичным, похожим на настоящий цветок.
+        </p>
+        <div class="prompt-quote">
+          <p>«Принцип правильный, но сделай рисунок более правдоподобным.»</p>
+          <cite>— итерация 1</cite>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">Шаг 03</div>
+        <h3>Вторая правка: характер лепестков</h3>
+        <p>
+          Уточнение геометрии: лепестки должны быть не круглыми, а с живым изгибом.
+          Точный параметр волны — от 0,5 до 0,8 см.
+        </p>
+        <div class="prompt-quote">
+          <p>«Сделай лепестки не совсем круглыми, а с изгибом. Когда рисуешь движение
+          линии по часовой стрелке, описывай не ровный круг, а волны по 0,5–0,8 см.»</p>
+          <cite>— итерация 2</cite>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">Шаг 04</div>
+        <h3>Финальная правка: цветовая заливка</h3>
+        <p>
+          После завершения линии — плавное проявление абстрактной заливки.
+          Автор предоставил визуальный образец с нужной палитрой розовых и зелёных тонов.
+        </p>
+        <div class="prompt-quote">
+          <p>«После того как закончишь прорисовывать всю линию, сделай цветовую
+          абстрактную заливку розы по прилагаемому образцу и цветам.»</p>
+          <cite>— итерация 3</cite>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- RESULT -->
+  <section class="result" id="result">
+    <div class="result-item">
+      <div class="result-num">1</div>
+      <div class="result-text">непрерывная линия</div>
+    </div>
+    <div class="result-item">
+      <div class="result-num">4</div>
+      <div class="result-text">итерации до финала</div>
+    </div>
+    <div class="result-item">
+      <div class="result-num">0</div>
+      <div class="result-text">внешних зависимостей</div>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2025 — <em>Живая Роза</em></span>
+    <span>One Line Art · SVG · HTML · Prompt Engineering</span>
+  </footer>
+
+  <script>
+    (function () {
+      var T = {
+        main:  { dur: 6200, delay:  300 },
+        leaf1: { dur:  850, delay: 3500 },
+        leaf2: { dur:  850, delay: 4300 },
+        leaf3: { dur:  850, delay: 5100 },
+        fills: { dur: 1400, delay: 6500 },
+        replay:{ dur:  500, delay:    0 }
+      };
+
+      function drawPath(el, dur, delay) {
+        var len = el.getTotalLength();
+        el.style.strokeDasharray  = len;
+        el.style.strokeDashoffset = len;
+        return el.animate(
+          [{ strokeDashoffset: String(len) }, { strokeDashoffset: '0' }],
+          { duration: dur, delay: delay, easing: 'ease-in-out', fill: 'forwards' }
+        );
+      }
+
+      function fade(el, from, to, dur, delay) {
+        el.style.opacity = String(from);
+        return el.animate(
+          [{ opacity: String(from) }, { opacity: String(to) }],
+          { duration: dur, delay: delay, easing: 'ease-in-out', fill: 'forwards' }
+        );
+      }
+
+      function runRose() {
+        var main  = document.getElementById('main');
+        var leaf1 = document.getElementById('leaf1');
+        var leaf2 = document.getElementById('leaf2');
+        var leaf3 = document.getElementById('leaf3');
+        var fills = document.getElementById('fills');
+        var btn   = document.getElementById('replayBtn');
+
+        btn.style.opacity       = '0';
+        btn.style.pointerEvents = 'none';
+        fills.style.opacity     = '0';
+
+        [main, leaf1, leaf2, leaf3].forEach(function (el) {
+          var len = el.getTotalLength();
+          el.style.strokeDasharray  = len;
+          el.style.strokeDashoffset = len;
+        });
+
+        drawPath(main,  T.main.dur,  T.main.delay);
+        drawPath(leaf1, T.leaf1.dur, T.leaf1.delay);
+        drawPath(leaf2, T.leaf2.dur, T.leaf2.delay);
+        drawPath(leaf3, T.leaf3.dur, T.leaf3.delay);
+
+        fade(fills, 0, 1, T.fills.dur, T.fills.delay).onfinish = function () {
+          btn.style.pointerEvents = 'auto';
+          fade(btn, 0, 1, T.replay.dur, 0);
+        };
+      }
+
+      document.getElementById('replayBtn').addEventListener('click', runRose);
+
+      window.addEventListener('load', function () {
+        runRose();
+        setTimeout(function () {
+          document.getElementById('heroText').classList.add('visible');
+        }, 80);
+      });
+    })();
+  </script>
+
+</body>
+</html>

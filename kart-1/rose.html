@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Живая Роза</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:     #f9f5f0;
+      --ink:    hsl(15, 10%, 20%);
+      --muted:  hsl(15, 8%, 55%);
+      --accent: hsl(345, 28%, 50%);
+      --divider:hsl(15, 10%, 86%);
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: Georgia, serif;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .wrap {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 2rem;
+    }
+
+    svg.rose {
+      width: min(80vw, 44vh);
+      height: min(80vw, 44vh);
+      max-height: 70vh;
+    }
+
+    .replay-btn {
+      background: transparent;
+      border: 1px solid var(--divider);
+      color: var(--muted);
+      font-family: Georgia, serif;
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      padding: 7px 15px;
+      cursor: pointer;
+      transition: border-color 0.3s, color 0.3s, background 0.3s;
+    }
+    .replay-btn:hover { border-color: var(--ink); color: var(--bg); background: var(--ink); }
+
+    .back-link {
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      border-bottom: 1px solid var(--divider);
+      padding-bottom: 2px;
+      transition: color 0.25s;
+    }
+    .back-link:hover { color: var(--ink); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <svg
+      class="rose"
+      viewBox="468 22 548 960"
+      preserveAspectRatio="xMidYMid meet"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      role="img"
+      aria-label="Роза в технике one line art"
+    >
+      <g id="fills" style="opacity:0">
+        <path d="M862 54C854 54,846 56,838 59C830 62,823 67,816 74C810 80,805 88,801 96C798 104,796 113,795 122C794 132,795 142,797 152C799 162,802 170,808 178C812 184,818 190,825 195C830 199,836 202,843 205C850 208,858 210,866 211C874 212,882 212,890 210C898 208,905 204,912 199C918 194,922 188,922 178C922 168,920 155,918 135C916 115,912 96,904 82C896 68,886 58,862 54Z" fill="hsla(345,55%,75%,0.32)"/>
+        <path d="M862 82C856 82,850 83,844 86C838 89,833 93,828 98C824 103,820 110,818 117C816 124,815 132,816 140C817 148,820 156,824 162C828 168,834 174,842 178C850 182,858 184,866 185C878 185,890 178,900 168C908 158,914 142,914 125C914 108,908 92,896 84C886 78,872 80,862 82Z" fill="hsla(340,50%,65%,0.38)"/>
+        <path d="M862 105C856 106,850 112,846 120C843 130,844 142,850 152C856 160,866 162,876 158C886 152,894 140,896 126C898 112,892 102,880 100C872 98,862 105,862 105Z" fill="hsla(350,45%,58%,0.44)"/>
+        <path d="M932 405C944 390,968 378,978 386C984 392,978 404,968 414C956 424,940 420,932 412Z" fill="hsla(130,35%,48%,0.34)"/>
+        <path d="M936 628C950 612,976 598,988 608C994 614,988 628,976 638C964 648,946 644,936 636Z" fill="hsla(135,30%,44%,0.34)"/>
+        <path d="M710 951C718 930,738 914,748 922C754 928,748 944,738 954C728 962,716 958,710 953Z" fill="hsla(125,32%,46%,0.30)"/>
+      </g>
+      <path id="main"
+        d="M862 198C860 190,857 178,860 168C862 162,866 155,870 150C874 144,878 138,880 132C882 126,884 120,882 115C880 110,876 106,872 105C867 104,862 105,857 108C852 111,848 116,846 122C844 128,843 134,844 140C845 146,848 152,853 156C855 158,858 159,862 160C866 161,870 160,874 158C878 155,883 150,887 145C889 142,892 138,894 133C896 128,898 122,898 116C898 110,896 104,893 99C890 94,886 90,880 87C874 84,868 82,862 82C856 82,850 83,844 86C838 89,833 93,828 98C824 103,820 110,818 117C816 124,815 132,816 140C817 148,820 156,824 162C826 166,830 170,834 174C838 178,843 180,848 182C854 184,860 185,866 185C872 185,878 184,884 181C890 178,896 174,901 168C904 164,907 160,910 155C913 149,916 142,918 135C920 128,922 120,922 112C922 104,920 96,917 89C914 82,910 76,904 71C898 66,892 62,885 59C878 56,870 54,862 54C854 54,846 56,838 59C830 62,823 67,816 74C810 80,805 88,801 96C798 104,796 113,795 122C794 132,795 142,797 152C799 162,802 170,808 178C812 184,818 190,825 195C830 199,836 202,843 205C850 208,858 210,866 211C874 212,882 212,890 210C898 208,905 204,912 199C918 194,922 196,926 202C930 210,932 222,932 238C932 258,926 280,930 305C934 325,938 342,936 362C934 378,928 392,932 410C936 428,942 444,940 462C938 480,930 498,933 518C936 538,942 556,940 575C938 594,932 612,935 632C938 652,944 670,942 690C940 710,934 728,937 748C940 768,946 786,944 806C942 826,938 846,938 866C938 886,936 902,930 918C926 930,918 938,908 942C898 946,885 948,870 949C852 950,835 946,818 949C800 952,782 947,764 950C746 953,728 948,710 951C692 954,674 949,656 952C638 955,620 950,602 953C584 956,566 952,548 955C532 957,516 960,500 962"
+        stroke="hsl(15,10%,25%)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path id="leaf1"
+        d="M932 405C944 390,968 378,978 386C984 392,978 404,968 414C956 424,940 420,932 412 M932 408C955 398,975 390,932 408"
+        stroke="hsl(15,10%,25%)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path id="leaf2"
+        d="M936 628C950 612,976 598,988 608C994 614,988 628,976 638C964 648,946 644,936 636 M936 632C960 622,984 614,936 632"
+        stroke="hsl(15,10%,25%)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path id="leaf3"
+        d="M710 951C718 930,738 914,748 922C754 928,748 944,738 954C728 962,716 958,710 953 M710 952C728 936,746 926,710 952"
+        stroke="hsl(15,10%,25%)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+
+    <button class="replay-btn" id="replayBtn" aria-label="Повторить анимацию">↺ повторить</button>
+    <a class="back-link" href="1-roza-zhivaya.html">← вернуться к кейсу</a>
+  </div>
+
+  <script>
+    (function () {
+      var T = {
+        main:  { dur: 4200, delay: 0 },
+        leaf1: { dur: 600,  delay: 4000 },
+        leaf2: { dur: 600,  delay: 4400 },
+        leaf3: { dur: 500,  delay: 4700 },
+        fills: { dur: 1200, delay: 4800 },
+        replay:{ dur: 600 }
+      };
+
+      function drawPath(el, dur, delay) {
+        var len = el.getTotalLength();
+        el.style.strokeDasharray  = len;
+        el.style.strokeDashoffset = len;
+        el.animate(
+          [{ strokeDashoffset: String(len) }, { strokeDashoffset: '0' }],
+          { duration: dur, delay: delay, easing: 'ease-in-out', fill: 'forwards' }
+        );
+      }
+
+      function fade(el, from, to, dur, delay) {
+        el.style.opacity = String(from);
+        return el.animate(
+          [{ opacity: String(from) }, { opacity: String(to) }],
+          { duration: dur, delay: delay, easing: 'ease-in-out', fill: 'forwards' }
+        );
+      }
+
+      function runRose() {
+        var main  = document.getElementById('main');
+        var leaf1 = document.getElementById('leaf1');
+        var leaf2 = document.getElementById('leaf2');
+        var leaf3 = document.getElementById('leaf3');
+        var fills = document.getElementById('fills');
+        var btn   = document.getElementById('replayBtn');
+
+        btn.style.opacity       = '0';
+        btn.style.pointerEvents = 'none';
+        fills.style.opacity     = '0';
+
+        [main, leaf1, leaf2, leaf3].forEach(function (el) {
+          var len = el.getTotalLength();
+          el.style.strokeDasharray  = len;
+          el.style.strokeDashoffset = len;
+        });
+
+        drawPath(main,  T.main.dur,  T.main.delay);
+        drawPath(leaf1, T.leaf1.dur, T.leaf1.delay);
+        drawPath(leaf2, T.leaf2.dur, T.leaf2.delay);
+        drawPath(leaf3, T.leaf3.dur, T.leaf3.delay);
+
+        fade(fills, 0, 1, T.fills.dur, T.fills.delay).onfinish = function () {
+          btn.style.pointerEvents = 'auto';
+          fade(btn, 0, 1, T.replay.dur, 0);
+        };
+      }
+
+      document.getElementById('replayBtn').addEventListener('click', runRose);
+      window.addEventListener('load', runRose);
+    })();
+  </script>
+</body>
+</html>
