@@ -1083,6 +1083,36 @@ body { animation: page-in 0.5s ease both; }
 .form-textarea { min-height: 110px; resize: vertical; }
 .form-select option { background: #fff; color: var(--text); }
 
+.channel-options { display: flex; flex-direction: column; gap: 0.6rem; margin-top: 0.2rem; }
+.channel-option {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.channel-option input[type="radio"] {
+  width: 17px; height: 17px;
+  accent-color: var(--sage);
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.channel-option-label {
+  min-width: 90px;
+  font-size: 0.9rem;
+  color: var(--text2);
+  cursor: pointer;
+}
+.channel-input {
+  flex: 1;
+  margin: 0;
+  opacity: 0.35;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+.channel-input.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 .form-submit {
   width: 100%;
   padding: 0.875rem;
@@ -1585,26 +1615,33 @@ footer {
           <input class="form-input" type="text" id="fname" name="name" required placeholder="Анна" autocomplete="name">
         </div>
         <div class="form-group">
-          <label class="form-label" data-i18n="form.contact">email или telegram</label>
-          <input class="form-input" type="text" id="fcontact" name="contact" required placeholder="@username или email@domain.com">
-        </div>
-        <div class="form-group">
-          <label class="form-label" data-i18n="form.phone">телефон (WhatsApp / Viber)</label>
-          <input class="form-input" type="tel" id="fphone" name="phone" placeholder="+375 29 000-00-00">
+          <label class="form-label" data-i18n="form.channel">желаемый способ связи</label>
+          <div class="channel-options">
+            <label class="channel-option">
+              <input type="radio" name="channel" value="email" id="ch-email">
+              <span class="channel-option-label">Email</span>
+              <input class="form-input channel-input" type="email" id="fcontact-email" name="contact_email" placeholder="your@email.com">
+            </label>
+            <label class="channel-option">
+              <input type="radio" name="channel" value="telegram" id="ch-telegram" checked>
+              <span class="channel-option-label">Telegram</span>
+              <input class="form-input channel-input active" type="text" id="fcontact-telegram" name="contact_telegram" placeholder="@username">
+            </label>
+            <label class="channel-option">
+              <input type="radio" name="channel" value="whatsapp" id="ch-whatsapp">
+              <span class="channel-option-label">WhatsApp</span>
+              <input class="form-input channel-input" type="tel" id="fcontact-whatsapp" name="contact_whatsapp" placeholder="+375 29 000-00-00">
+            </label>
+            <label class="channel-option">
+              <input type="radio" name="channel" value="viber" id="ch-viber">
+              <span class="channel-option-label">Viber</span>
+              <input class="form-input channel-input" type="tel" id="fcontact-viber" name="contact_viber" placeholder="+375 29 000-00-00">
+            </label>
+          </div>
         </div>
         <div class="form-group">
           <label class="form-label" data-i18n="form.task">ваша задача</label>
           <textarea class="form-textarea" id="ftask" name="message" required placeholder="Мне нужен лендинг для бизнеса..."></textarea>
-        </div>
-        <div class="form-group">
-          <label class="form-label" data-i18n="form.channel">удобный канал</label>
-          <select class="form-select" id="fchannel" name="channel">
-            <option value="telegram">Telegram</option>
-            <option value="whatsapp">WhatsApp</option>
-            <option value="viber">Viber</option>
-            <option value="whatsapp+viber">WhatsApp + Viber</option>
-            <option value="email">Email</option>
-          </select>
         </div>
         <button type="submit" class="btn-primary form-submit" id="formBtn">
           <span data-i18n="form.send">Отправить сообщение →</span>
@@ -2066,18 +2103,35 @@ const observer = new IntersectionObserver((entries) => {
 revealEls.forEach(el => observer.observe(el));
 
 // ─── CONTACT FORM ────────────────────────────────────────────
+// ─── CHANNEL RADIO TOGGLE ────────────────────────────────────
+document.querySelectorAll('input[name="channel"]').forEach(radio => {
+  radio.addEventListener('change', () => {
+    document.querySelectorAll('.channel-input').forEach(input => {
+      input.classList.remove('active');
+    });
+    const activeInput = document.getElementById('fcontact-' + radio.value);
+    if (activeInput) activeInput.classList.add('active');
+  });
+});
+
 document.getElementById('contactForm').addEventListener('submit', async function(e) {
   e.preventDefault();
   const btn = document.getElementById('formBtn');
   btn.disabled = true;
   btn.querySelector('span').textContent = '...';
 
+  const channel = document.querySelector('input[name="channel"]:checked').value;
+  const contactMap = {
+    email:    document.getElementById('fcontact-email').value,
+    telegram: document.getElementById('fcontact-telegram').value,
+    whatsapp: document.getElementById('fcontact-whatsapp').value,
+    viber:    document.getElementById('fcontact-viber').value
+  };
   const data = {
     name:    document.getElementById('fname').value,
-    contact: document.getElementById('fcontact').value,
-    phone:   document.getElementById('fphone').value,
-    message: document.getElementById('ftask').value,
-    channel: document.getElementById('fchannel').value
+    channel: channel,
+    contact: contactMap[channel],
+    message: document.getElementById('ftask').value
   };
 
   try {
