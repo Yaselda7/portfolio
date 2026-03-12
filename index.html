@@ -1577,7 +1577,7 @@ footer {
     <div class="section-label" data-i18n="contact.label">// 05. контакты</div>
     <div class="contact-inner reveal">
       <h2 class="section-title" data-i18n="contact.title">Начнём</h2>
-      <p class="contact-sub" data-i18n="contact.sub">Расскажите о проекте — я отвечу в течение 24 часов.</p>
+      <p class="contact-sub" data-i18n="contact.sub">Расскажите о проекте — отвечу быстро.</p>
 
       <form class="contact-form" id="contactForm" action="https://formspree.io/f/mvzwzawz" method="POST">
         <div class="form-group">
@@ -1589,6 +1589,10 @@ footer {
           <input class="form-input" type="text" id="fcontact" name="contact" required placeholder="@username или email@domain.com">
         </div>
         <div class="form-group">
+          <label class="form-label" data-i18n="form.phone">телефон (WhatsApp / Viber)</label>
+          <input class="form-input" type="tel" id="fphone" name="phone" placeholder="+375 29 000-00-00">
+        </div>
+        <div class="form-group">
           <label class="form-label" data-i18n="form.task">ваша задача</label>
           <textarea class="form-textarea" id="ftask" name="message" required placeholder="Мне нужен лендинг для бизнеса..."></textarea>
         </div>
@@ -1597,6 +1601,8 @@ footer {
           <select class="form-select" id="fchannel" name="channel">
             <option value="telegram">Telegram</option>
             <option value="whatsapp">WhatsApp</option>
+            <option value="viber">Viber</option>
+            <option value="whatsapp+viber">WhatsApp + Viber</option>
             <option value="email">Email</option>
           </select>
         </div>
@@ -1607,7 +1613,7 @@ footer {
 
       <div class="form-success" id="formSuccess">
         <div class="form-success-icon">🎉</div>
-        <p data-i18n="form.success">Сообщение отправлено! Отвечу в течение 24 часов.</p>
+        <p data-i18n="form.success">Сообщение получено! Уже смотрю — скоро свяжусь.</p>
       </div>
 
       <div class="contact-divider" data-i18n="contact.or">или напишите напрямую</div>
@@ -1720,10 +1726,10 @@ const i18n = {
     'why1.title':'From Task to System','why1.text':'I go deep into every project — see its potential and build a solution with the right connections between tools and people. No templates, no assembly line. The result should be useful, beautiful, and built to grow.',
     'why2.title':'Cultural Context','why2.text':'I don\'t just translate your brief — I understand the context behind it. Your market, your culture, your client\'s expectations.',
     'why3.title':'Always Reachable','why3.text':'Remote work across time zones. Telegram, WhatsApp, email — whatever works for you. You won\'t wait days for a reply.',
-    'contact.title':'Let\'s start','contact.sub':'Tell me about your project — and I\'ll get back to you within 24 hours.',
+    'contact.title':'Let\'s start','contact.sub':'Tell me about your project — I\'ll reply quickly.',
     'contact.or':'or reach me directly',
-    'form.name':'name','form.contact':'email or telegram','form.task':'your task','form.channel':'preferred channel',
-    'form.send':'Send message →','form.success':'Message sent! I\'ll get back to you within 24 hours.',
+    'form.name':'name','form.contact':'email or telegram','form.phone':'phone (WhatsApp / Viber)','form.task':'your task','form.channel':'preferred channel',
+    'form.send':'Send message →','form.success':'Message received! On it — will be in touch soon.',
     'footer.motto':'"Different world — different solutions"','footer.nav':'navigation','footer.contacts':'contacts',
     'about.label':'// 01. about','bento.languages':'languages','bento.markets':'markets','bento.tools':'tools',
     'form.error':'Error — please try again','form.offline':'No connection',
@@ -1785,10 +1791,10 @@ const i18n = {
     'why1.title':'De la tarea al sistema','why1.text':'Me sumerjo en cada proyecto a fondo — veo el potencial y construyo una solución con las conexiones adecuadas entre herramientas y personas. Sin plantillas, sin cadena de montaje. El resultado debe ser útil, estético y pensado para crecer.',
     'why2.title':'Contexto cultural','why2.text':'No solo traduzco tu brief — entiendo el contexto detrás. Tu mercado, tu cultura, las expectativas de tu cliente.',
     'why3.title':'Siempre disponible','why3.text':'Trabajo en remoto en cualquier zona horaria. Telegram, WhatsApp, email — lo que te vaya mejor.',
-    'contact.title':'Empecemos','contact.sub':'Cuéntame tu proyecto — te respondo en menos de 24 horas.',
+    'contact.title':'Empecemos','contact.sub':'Cuéntame tu proyecto — te respondo pronto.',
     'contact.or':'o contáctame directamente',
-    'form.name':'nombre','form.contact':'email o telegram','form.task':'tu tarea','form.channel':'canal preferido',
-    'form.send':'Enviar mensaje →','form.success':'¡Mensaje enviado! Te respondo en menos de 24 horas.',
+    'form.name':'nombre','form.contact':'email o telegram','form.phone':'teléfono (WhatsApp / Viber)','form.task':'tu tarea','form.channel':'canal preferido',
+    'form.send':'Enviar mensaje →','form.success':'¡Mensaje recibido! Ya lo veo — me pongo en contacto pronto.',
     'footer.motto':'"Un mundo diferente — una solución diferente"','footer.nav':'navegación','footer.contacts':'contactos',
     'about.label':'// 01. sobre mí','bento.languages':'idiomas','bento.markets':'mercados','bento.tools':'herramientas',
     'form.error':'Error — inténtalo de nuevo','form.offline':'Sin conexión',
@@ -1850,10 +1856,10 @@ const i18n = {
     'why1.title':'Dal compito al sistema','why1.text':'Entro in profondità in ogni progetto — vedo il potenziale e costruisco una soluzione con i giusti collegamenti tra strumenti e persone. Nessun template, nessuna catena di montaggio. Il risultato deve essere utile, estetico e pronto a crescere.',
     'why2.title':'Contesto culturale','why2.text':'Non traduco solo il tuo brief — comprendo il contesto. Il tuo mercato, la tua cultura, le aspettative del tuo cliente.',
     'why3.title':'Sempre disponibile','why3.text':'Lavoro da remoto in qualsiasi fuso orario. Telegram, WhatsApp, email — come preferisci.',
-    'contact.title':'Iniziamo','contact.sub':'Raccontami del tuo progetto — ti rispondo entro 24 ore.',
+    'contact.title':'Iniziamo','contact.sub':'Raccontami del tuo progetto — ti rispondo presto.',
     'contact.or':'o contattami direttamente',
-    'form.name':'nome','form.contact':'email o telegram','form.task':'la tua esigenza','form.channel':'canale preferito',
-    'form.send':'Invia messaggio →','form.success':'Messaggio inviato! Ti rispondo entro 24 ore.',
+    'form.name':'nome','form.contact':'email o telegram','form.phone':'telefono (WhatsApp / Viber)','form.task':'la tua esigenza','form.channel':'canale preferito',
+    'form.send':'Invia messaggio →','form.success':'Messaggio ricevuto! Ci sono — ti scrivo presto.',
     'footer.motto':'"Un mondo diverso — una soluzione diversa"','footer.nav':'navigazione','footer.contacts':'contatti',
     'about.label':'// 01. chi sono','bento.languages':'lingue','bento.markets':'mercati','bento.tools':'strumenti',
     'form.error':'Errore — riprova','form.offline':'Nessuna connessione',
@@ -1915,10 +1921,10 @@ const i18n = {
     'why1.title':'От задачи к системе','why1.text':'Вхожу в каждый проект глубоко — вижу потенциал и выстраиваю решение с нужными связками между инструментами и людьми. Без шаблонов, без конвейера. Результат должен быть полезным, эстетичным и работающим на перспективу.',
     'why2.title':'Культурный контекст','why2.text':'Я не просто перевожу ваш бриф — я понимаю контекст за ним. Ваш рынок, вашу культуру, ожидания вашего клиента.',
     'why3.title':'Всегда на связи','why3.text':'Удалённая работа в любом часовом поясе. Telegram, WhatsApp, email — как вам удобнее. Ответ не заставит ждать.',
-    'contact.title':'Начнём','contact.sub':'Расскажите о проекте — я отвечу в течение 24 часов.',
+    'contact.title':'Начнём','contact.sub':'Расскажите о проекте — отвечу быстро.',
     'contact.or':'или напишите напрямую',
-    'form.name':'имя','form.contact':'email или telegram','form.task':'ваша задача','form.channel':'удобный канал',
-    'form.send':'Отправить сообщение →','form.success':'Сообщение отправлено! Отвечу в течение 24 часов.',
+    'form.name':'имя','form.contact':'email или telegram','form.phone':'телефон (WhatsApp / Viber)','form.task':'ваша задача','form.channel':'удобный канал',
+    'form.send':'Отправить сообщение →','form.success':'Сообщение получено! Уже смотрю — скоро свяжусь.',
     'footer.motto':'"Разный мир — разные решения"','footer.nav':'навигация','footer.contacts':'контакты',
     'about.label':'// 01. обо мне','bento.languages':'языки','bento.markets':'рынки','bento.tools':'инструменты',
     'form.error':'Ошибка — попробуйте ещё раз','form.offline':'Нет соединения',
@@ -2069,6 +2075,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
   const data = {
     name:    document.getElementById('fname').value,
     contact: document.getElementById('fcontact').value,
+    phone:   document.getElementById('fphone').value,
     message: document.getElementById('ftask').value,
     channel: document.getElementById('fchannel').value
   };
