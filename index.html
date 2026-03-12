@@ -1089,7 +1089,7 @@ body { animation: page-in 0.5s ease both; }
   align-items: center;
   gap: 0.75rem;
 }
-.channel-option input[type="radio"] {
+.channel-option input[type="checkbox"] {
   width: 17px; height: 17px;
   accent-color: var(--sage);
   flex-shrink: 0;
@@ -1618,22 +1618,22 @@ footer {
           <label class="form-label" data-i18n="form.channel">желаемый способ связи</label>
           <div class="channel-options">
             <label class="channel-option">
-              <input type="radio" name="channel" value="email" id="ch-email">
+              <input type="checkbox" name="channel" value="email" id="ch-email">
               <span class="channel-option-label">Email</span>
               <input class="form-input channel-input" type="email" id="fcontact-email" name="contact_email" placeholder="your@email.com">
             </label>
             <label class="channel-option">
-              <input type="radio" name="channel" value="telegram" id="ch-telegram" checked>
+              <input type="checkbox" name="channel" value="telegram" id="ch-telegram">
               <span class="channel-option-label">Telegram</span>
-              <input class="form-input channel-input active" type="text" id="fcontact-telegram" name="contact_telegram" placeholder="@username">
+              <input class="form-input channel-input" type="text" id="fcontact-telegram" name="contact_telegram" placeholder="@username">
             </label>
             <label class="channel-option">
-              <input type="radio" name="channel" value="whatsapp" id="ch-whatsapp">
+              <input type="checkbox" name="channel" value="whatsapp" id="ch-whatsapp">
               <span class="channel-option-label">WhatsApp</span>
               <input class="form-input channel-input" type="tel" id="fcontact-whatsapp" name="contact_whatsapp" placeholder="+375 29 000-00-00">
             </label>
             <label class="channel-option">
-              <input type="radio" name="channel" value="viber" id="ch-viber">
+              <input type="checkbox" name="channel" value="viber" id="ch-viber">
               <span class="channel-option-label">Viber</span>
               <input class="form-input channel-input" type="tel" id="fcontact-viber" name="contact_viber" placeholder="+375 29 000-00-00">
             </label>
@@ -2103,14 +2103,11 @@ const observer = new IntersectionObserver((entries) => {
 revealEls.forEach(el => observer.observe(el));
 
 // ─── CONTACT FORM ────────────────────────────────────────────
-// ─── CHANNEL RADIO TOGGLE ────────────────────────────────────
-document.querySelectorAll('input[name="channel"]').forEach(radio => {
-  radio.addEventListener('change', () => {
-    document.querySelectorAll('.channel-input').forEach(input => {
-      input.classList.remove('active');
-    });
-    const activeInput = document.getElementById('fcontact-' + radio.value);
-    if (activeInput) activeInput.classList.add('active');
+// ─── CHANNEL CHECKBOX TOGGLE ─────────────────────────────────
+document.querySelectorAll('input[name="channel"]').forEach(cb => {
+  cb.addEventListener('change', () => {
+    const input = document.getElementById('fcontact-' + cb.value);
+    if (input) input.classList.toggle('active', cb.checked);
   });
 });
 
@@ -2120,17 +2117,13 @@ document.getElementById('contactForm').addEventListener('submit', async function
   btn.disabled = true;
   btn.querySelector('span').textContent = '...';
 
-  const channel = document.querySelector('input[name="channel"]:checked').value;
-  const contactMap = {
-    email:    document.getElementById('fcontact-email').value,
-    telegram: document.getElementById('fcontact-telegram').value,
-    whatsapp: document.getElementById('fcontact-whatsapp').value,
-    viber:    document.getElementById('fcontact-viber').value
-  };
+  const channels = [...document.querySelectorAll('input[name="channel"]:checked')].map(cb => {
+    const val = document.getElementById('fcontact-' + cb.value).value;
+    return cb.value + (val ? ': ' + val : '');
+  }).join(' | ');
   const data = {
     name:    document.getElementById('fname').value,
-    channel: channel,
-    contact: contactMap[channel],
+    contact: channels || '—',
     message: document.getElementById('ftask').value
   };
 
