@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rosalia LBD — История проекта</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=Cormorant+Garamond:wght@400&family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+
+/* ── YASELDA BAR ── */
+.yaselda-bar {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: 52px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 1.25rem;
+  background: rgba(247,248,245,0.96);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(40,120,181,0.13);
+  z-index: 999;
+}
+.yaselda-bar__back {
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  font-family: 'Cormorant Garamond', serif; font-weight: 400;
+  font-size: 1rem; letter-spacing: 0.02em;
+  color: #2878B5; text-decoration: none;
+  transition: opacity 0.2s;
+}
+.yaselda-bar__back:hover { opacity: 0.65; }
+.yaselda-bar__brand {
+  display: inline-flex; align-items: center; gap: 0.55rem;
+  position: absolute; left: 50%; transform: translateX(-50%);
+}
+.yaselda-bar__name { display: inline-flex; align-items: baseline; gap: 0.4em; }
+.yaselda-bar__name-y {
+  font-family: 'Cinzel', serif; font-weight: 500;
+  font-size: 1.0rem; letter-spacing: 0.12em; color: #2878B5;
+}
+.yaselda-bar__name-s {
+  font-family: 'Cinzel', serif; font-weight: 500;
+  font-size: 0.72rem; letter-spacing: 0.18em;
+  text-transform: uppercase; color: #2878B5;
+}
+.yaselda-bar__spacer { width: 60px; }
+
+/* ── BASE ── */
+:root {
+  --milk:   #F6F3F1;
+  --beige:  #E7DDD7;
+  --rose:   #CFA7A5;
+  --rose-d: #B88F8E;
+  --text:   #2E2E2E;
+  --text-m: #6A5A58;
+  --white:  #FFFFFF;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--milk);
+  color: var(--text);
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
+  padding-top: 52px;
+}
+
+/* ── HERO ── */
+.hero {
+  padding: clamp(56px, 10vw, 96px) clamp(24px, 8vw, 120px) clamp(40px, 7vw, 72px);
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+.hero-label {
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.72rem; font-weight: 500;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--rose-d);
+  margin-bottom: 1.4rem;
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 400; line-height: 1.2;
+  letter-spacing: 0.02em;
+  margin-bottom: 1.4rem;
+}
+.hero-sub {
+  font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+  line-height: 1.8;
+  color: var(--text-m);
+  max-width: 620px;
+  margin: 0 auto 2.4rem;
+}
+
+/* ── PROBLEM BLOCK ── */
+.problem {
+  background: var(--beige);
+  padding: clamp(40px, 7vw, 72px) clamp(24px, 8vw, 120px);
+}
+.problem-inner {
+  max-width: 780px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 64px);
+  align-items: center;
+}
+.problem-label {
+  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--rose-d);
+  margin-bottom: 1rem;
+}
+.problem h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  font-weight: 400; line-height: 1.3;
+  margin-bottom: 1.2rem;
+}
+.problem p {
+  font-size: 0.96rem; line-height: 1.8; color: var(--text-m);
+}
+.problem-quote {
+  border-left: 2px solid var(--rose);
+  padding-left: 1.5rem;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  line-height: 1.65;
+  color: var(--text);
+}
+.problem-quote cite {
+  display: block;
+  margin-top: 0.9rem;
+  font-family: 'Raleway', sans-serif;
+  font-style: normal;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  color: var(--text-m);
+}
+@media(max-width:640px){ .problem-inner { grid-template-columns: 1fr; } }
+
+/* ── TIMELINE ── */
+.timeline-section {
+  padding: clamp(56px, 9vw, 96px) clamp(24px, 8vw, 120px);
+  max-width: 1000px; margin: 0 auto;
+}
+.section-label {
+  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--rose-d);
+  text-align: center; margin-bottom: clamp(40px, 6vw, 64px);
+}
+.timeline {
+  display: flex; flex-direction: column;
+  gap: 0;
+}
+.tl-item {
+  display: grid;
+  grid-template-columns: 64px 1px 1fr;
+  gap: 0 clamp(20px, 3vw, 36px);
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.tl-item.on { opacity: 1; transform: translateY(0); }
+
+/* Number column */
+.tl-num {
+  display: flex; align-items: flex-start;
+  justify-content: center;
+  padding-top: 6px;
+}
+.tl-num span {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  border: 1.5px solid var(--rose);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem; color: var(--rose-d);
+  background: var(--white);
+  flex-shrink: 0;
+  transition: background 0.3s, color 0.3s;
+}
+.tl-item:hover .tl-num span {
+  background: var(--rose);
+  color: var(--white);
+}
+
+/* Line column */
+.tl-line {
+  background: linear-gradient(to bottom, var(--rose) 0%, transparent 100%);
+  width: 1px;
+  margin: 46px auto 0;
+}
+.tl-item:last-child .tl-line { background: transparent; }
+
+/* Content column */
+.tl-content {
+  padding: 0 0 clamp(36px, 5vw, 56px) 0;
+}
+.tl-step {
+  font-size: 0.68rem; font-weight: 600; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--rose);
+  margin-bottom: 0.5rem;
+}
+.tl-content h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.1rem, 2vw, 1.45rem);
+  font-weight: 400; line-height: 1.3;
+  margin-bottom: 0.75rem;
+}
+.tl-content p {
+  font-size: 0.93rem; line-height: 1.8;
+  color: var(--text-m);
+  max-width: 520px;
+}
+.tl-tag {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  margin-top: 1rem;
+  font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em;
+  color: var(--rose-d);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rose);
+  padding-bottom: 1px;
+  transition: opacity 0.2s;
+}
+.tl-tag:hover { opacity: 0.65; }
+.tl-tag svg { width: 12px; height: 12px; stroke: currentColor; fill: none; }
+
+/* ── RESULT ── */
+.result-section {
+  background: var(--beige);
+  padding: clamp(48px, 8vw, 80px) clamp(24px, 8vw, 120px);
+}
+.result-inner {
+  max-width: 780px; margin: 0 auto;
+}
+.result-inner .section-label { text-align: left; margin-bottom: 2rem; }
+.result-inner h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 400; line-height: 1.25;
+  margin-bottom: 1.5rem;
+}
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: clamp(16px, 3vw, 28px);
+  margin-bottom: 2rem;
+}
+.metric {
+  background: var(--white);
+  border-radius: 10px;
+  padding: clamp(18px, 3vw, 28px) clamp(16px, 2.5vw, 24px);
+  opacity: 0; transform: translateY(16px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.metric.on { opacity: 1; transform: translateY(0); }
+.metric-val {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 400; color: var(--rose-d);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+.metric-label {
+  font-size: 0.8rem; line-height: 1.5;
+  color: var(--text-m);
+}
+.result-note {
+  font-size: 0.93rem; line-height: 1.8;
+  color: var(--text-m);
+  border-left: 2px solid var(--rose);
+  padding-left: 1.2rem;
+}
+
+/* ── FOOTER ── */
+footer {
+  padding: clamp(32px, 5vw, 48px) clamp(24px, 8vw, 120px);
+  display: flex; align-items: center; justify-content: space-between;
+  border-top: 1px solid rgba(184,143,142,.2);
+  flex-wrap: wrap; gap: 1rem;
+}
+.footer-text {
+  font-size: 0.8rem; color: var(--text-m); letter-spacing: 0.06em;
+}
+.footer-links {
+  display: flex; gap: 1.5rem;
+}
+.footer-links a {
+  font-size: 0.78rem; letter-spacing: 0.08em;
+  color: var(--rose-d); text-decoration: none;
+  transition: opacity 0.2s;
+}
+.footer-links a:hover { opacity: 0.65; }
+
+</style>
+</head>
+<body>
+
+<!-- YASELDA BAR -->
+<header class="yaselda-bar">
+  <a class="yaselda-bar__back" href="../index.html#projects">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 13L5 8l5-5"/></svg>
+    Назад
+  </a>
+  <div class="yaselda-bar__brand">
+    <div class="yaselda-bar__name">
+      <span class="yaselda-bar__name-y">Yaselda</span>
+      <span class="yaselda-bar__name-s">Studio</span>
+    </div>
+  </div>
+  <div class="yaselda-bar__spacer"></div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-label">Кейс · Rosalia LBD</p>
+  <h1>От невидимости<br>к узнаваемому бренду</h1>
+  <p class="hero-sub">Хороший мастер без цифрового присутствия — невидимка. Пять шагов от идеи до работающей экосистемы: лендинг, бренд, Telegram Mini App и сайт-платформа.</p>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem">
+  <div class="problem-inner">
+    <div>
+      <p class="problem-label">Точка входа</p>
+      <h2>Проблема мастера с очередью</h2>
+      <p>Роза — опытный мастер маникюра в Минске с постоянными клиентами и безупречным вкусом. Но без цифрового присутствия весь поток держался на сарафанном радио и личных сообщениях.</p>
+    </div>
+    <blockquote class="problem-quote">
+      «Клиенты есть, но записываться неудобно. Нет калькулятора, нет страницы — непонятно, кто я и сколько это стоит.»
+      <cite>— Роза, мастер маникюра</cite>
+    </blockquote>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="timeline-section">
+  <p class="section-label">Развитие проекта</p>
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-num"><span>1</span></div>
+      <div class="tl-line"></div>
+      <div class="tl-content">
+        <p class="tl-step">Шаг 1 · Образ</p>
+        <h3>Живая Роза — рождение образа</h3>
+        <p>Изучаю характер мастера, её эстетику и ценности. Появляется концепция: тихая роскошь, one line art, анимированная роза как символ бренда. Первое приближение к стилю.</p>
+        <a class="tl-tag" href="1-roza-zhivaya.html">
+          Смотреть работу
+          <svg viewBox="0 0 12 12"><path d="M2 6h8M7 3l3 3-3 3"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-num"><span>2</span></div>
+      <div class="tl-line"></div>
+      <div class="tl-content">
+        <p class="tl-step">Шаг 2 · Инструмент</p>
+        <h3>Лендинг для записи</h3>
+        <p>Первый работающий продукт: одностраничный сайт с услугами, ценами и кнопками записи. Мастер получает цифровой адрес — клиентам есть куда идти.</p>
+        <a class="tl-tag" href="2-usluga.html">
+          Смотреть работу
+          <svg viewBox="0 0 12 12"><path d="M2 6h8M7 3l3 3-3 3"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-num"><span>3</span></div>
+      <div class="tl-line"></div>
+      <div class="tl-content">
+        <p class="tl-step">Шаг 3 · Идентичность</p>
+        <h3>Бренд и фирменный стиль</h3>
+        <p>Понимаю, что инструмент без лица не запоминается. Бренд — это не про красоту: студии с узнаваемым стилем повышают средний чек на 10–15%, а конверсия из просмотра рекламы в запись у них выше на 20%. Разрабатываю полную дизайн-систему: палитра, типографика, символ розы, лого-пак.</p>
+        <a class="tl-tag" href="3-rosalia-brand.html">
+          Смотреть работу
+          <svg viewBox="0 0 12 12"><path d="M2 6h8M7 3l3 3-3 3"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-num"><span>4</span></div>
+      <div class="tl-line"></div>
+      <div class="tl-content">
+        <p class="tl-step">Шаг 4 · Автоматизация</p>
+        <h3>Telegram Mini App с калькулятором</h3>
+        <p>Основная аудитория — в Telegram. Запускаю полноценный Mini App: выбор услуги, калькулятор стоимости, онлайн-запись. Telegram-бот с двумя функциями: мгновенно сообщает мастеру о новой записи и отправляет клиенту напоминание за 24 часа до приёма.</p>
+        <a class="tl-tag" href="4-miniapp-preview.html">
+          Смотреть работу
+          <svg viewBox="0 0 12 12"><path d="M2 6h8M7 3l3 3-3 3"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-num"><span>5</span></div>
+      <div class="tl-line"></div>
+      <div class="tl-content">
+        <p class="tl-step">Шаг 5 · Платформа</p>
+        <h3>Финальный сайт + интеграция</h3>
+        <p>Сайт даёт мастеру полноценное лицо в сети. Наличие сайта в сочетании с онлайн-записью в среднем увеличивает количество заявок на 25–70%. Кнопка «Записаться» ведёт прямо в Mini App — экосистема замкнулась.</p>
+        <a class="tl-tag" href="5-roza-preview.html" target="_blank">
+          Открыть сайт
+          <svg viewBox="0 0 12 12"><path d="M2 6h8M7 3l3 3-3 3"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- RESULT -->
+<section class="result-section">
+  <div class="result-inner">
+    <p class="section-label">Итог</p>
+    <h2>Система, которая работает<br>без участия мастера</h2>
+    <div class="metrics">
+      <div class="metric">
+        <div class="metric-val">5</div>
+        <div class="metric-label">продуктов в единой дизайн-системе</div>
+      </div>
+      <div class="metric">
+        <div class="metric-val">2</div>
+        <div class="metric-label">функции бота: уведомление мастеру + напоминание клиенту</div>
+      </div>
+      <div class="metric">
+        <div class="metric-val">0</div>
+        <div class="metric-label">ручных шагов при записи клиента</div>
+      </div>
+    </div>
+    <p class="result-note">Проект начался с одного вопроса — как сделать запись удобной. В итоге вырос в полноценную экосистему: от визуальной идентичности до автоматизированного продукта.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-text">Rosalia LBD · История проекта</span>
+</footer>
+
+<script>
+// Intersection Observer for fade-in
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } });
+}, { threshold: 0.15 });
+document.querySelectorAll('.tl-item, .metric').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>

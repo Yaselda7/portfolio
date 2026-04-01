@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rosalia — Telegram Mini App</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400&family=Cormorant+Garamond:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:     #F7F8F5;
+  --bg2:    #EEF2ED;
+  --steel:  #2878B5;
+  --sage:   #5A7A4E;
+  --text:   #111816;
+  --text2:  rgba(17,24,22,0.72);
+  --border: rgba(40,120,181,0.15);
+}
+
+html, body {
+  height: 100%;
+  background: var(--bg);
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--text);
+}
+
+/* ── Header ── */
+.top-bar {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: 56px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2rem;
+  background: rgba(247,248,245,0.94);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  z-index: 10;
+}
+
+.back-btn {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  color: var(--steel);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.back-btn:hover { opacity: 0.7; }
+
+.top-bar-title {
+  font-family: 'Cinzel', serif;
+  font-weight: 500;
+  font-size: 0.88rem;
+  letter-spacing: 0.16em;
+  color: var(--steel);
+  text-transform: uppercase;
+}
+
+/* ── Page layout ── */
+.step-badge {
+  position: fixed; top: 56px; left: 0; right: 0; z-index: 9;
+  height: 28px;
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+  background: rgba(247,248,245,0.93);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(40,120,181,0.12);
+  font-family: system-ui, sans-serif;
+  font-size: 0.68rem; letter-spacing: 0.1em;
+}
+.step-dots { color: #CFA7A5; letter-spacing: 0.22em; font-size: 0.58rem; }
+.step-label { color: #6A5A58; font-weight: 500; }
+.step-story { color: #B88F8E; text-decoration: none; transition: opacity 0.2s; }
+.step-story:hover { opacity: 0.65; }
+.step-action {
+  display: inline-flex; align-items: center; gap: 0.3rem;
+  padding: 0 0.7rem; height: 20px; border-radius: 10px;
+  background: #2878B5; color: #fff;
+  font-size: 0.68rem; font-weight: 600; letter-spacing: 0.08em;
+  text-decoration: none; transition: background 0.2s;
+}
+.step-action:hover { background: #1a5a8a; }
+.page {
+  min-height: 100vh;
+  padding-top: 84px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1.5rem;
+  padding-bottom: 3rem;
+  background:
+    radial-gradient(ellipse at 20% 10%, rgba(90,122,78,0.08) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 90%, rgba(40,120,181,0.07) 0%, transparent 50%),
+    var(--bg);
+}
+
+/* ── Description ── */
+.desc {
+  max-width: 480px;
+  text-align: center;
+  padding: 2rem 1.5rem 0;
+}
+.desc-label {
+  font-size: 0.9rem;
+  color: var(--steel);
+  letter-spacing: 0.04em;
+  margin-bottom: 0.5rem;
+}
+.desc-title {
+  font-size: 1.8rem;
+  color: var(--text);
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+}
+.desc-sub {
+  font-size: 1.15rem;
+  color: var(--text2);
+  line-height: 1.5;
+}
+
+/* ── Phone mockup ── */
+.phone-wrap {
+  position: relative;
+  width: 375px;
+  flex-shrink: 0;
+}
+
+.phone-shell {
+  position: relative;
+  width: 375px;
+  height: 780px;
+  background: #1A1A1A;
+  border-radius: 50px;
+  padding: 14px;
+  box-shadow:
+    0 0 0 2px #333,
+    0 30px 80px rgba(0,0,0,0.35),
+    0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* Notch / Dynamic Island */
+.phone-notch {
+  position: absolute;
+  top: 14px; left: 50%;
+  transform: translateX(-50%);
+  width: 120px; height: 34px;
+  background: #1A1A1A;
+  border-radius: 0 0 22px 22px;
+  z-index: 2;
+}
+
+/* Screen */
+.phone-screen {
+  width: 100%; height: 100%;
+  border-radius: 38px;
+  overflow: hidden;
+  background: #F6F3F1;
+  position: relative;
+}
+
+.phone-screen iframe {
+  width: 100%; height: 100%;
+  border: none;
+  display: block;
+}
+
+/* Telegram header bar inside phone */
+.tg-bar {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 52px;
+  background: rgba(246,243,241,0.96);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(155,82,80,0.12);
+  display: flex; align-items: center;
+  padding: 0 1rem;
+  gap: 0.75rem;
+  z-index: 3;
+  pointer-events: none;
+}
+.tg-back {
+  font-size: 1.3rem;
+  color: #9B5250;
+}
+.tg-title-block { flex: 1; }
+.tg-title { font-size: 0.9rem; font-weight: 600; color: #1A1010; font-family: 'Nunito Sans', sans-serif; }
+.tg-sub { font-size: 0.72rem; color: #5A3E3C; font-family: 'Nunito Sans', sans-serif; }
+.tg-avatar {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #9B5250, #C4837F);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.75rem; color: #fff; font-weight: 600;
+}
+
+/* Side buttons on phone */
+.phone-btn-r {
+  position: absolute;
+  right: -3px; top: 120px;
+  width: 3px; height: 70px;
+  background: #2A2A2A;
+  border-radius: 0 3px 3px 0;
+}
+.phone-btn-l1 {
+  position: absolute;
+  left: -3px; top: 100px;
+  width: 3px; height: 36px;
+  background: #2A2A2A;
+  border-radius: 3px 0 0 3px;
+}
+.phone-btn-l2 {
+  position: absolute;
+  left: -3px; top: 155px;
+  width: 3px; height: 56px;
+  background: #2A2A2A;
+  border-radius: 3px 0 0 3px;
+}
+.phone-btn-l3 {
+  position: absolute;
+  left: -3px; top: 225px;
+  width: 3px; height: 56px;
+  background: #2A2A2A;
+  border-radius: 3px 0 0 3px;
+}
+
+/* ── Tags ── */
+.tech-tags {
+  display: flex; flex-wrap: wrap; gap: 0.5rem;
+  justify-content: center;
+  max-width: 400px;
+  padding: 0 1rem;
+}
+.tech-tag {
+  padding: 0.25rem 0.75rem;
+  border-radius: 50px;
+  border: 1px solid var(--border);
+  background: rgba(40,120,181,0.06);
+  font-size: 1rem;
+  color: var(--text2);
+}
+
+/* ── Mobile adaptation ── */
+@media (max-width: 440px) {
+  .phone-shell { width: 320px; height: 666px; border-radius: 42px; }
+  .phone-wrap { width: 320px; }
+  .phone-notch { width: 100px; height: 28px; }
+  .desc { padding: 1.5rem 1rem 0; }
+  .top-bar { padding: 0 1rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <a href="../index.html#projects" class="back-btn" id="backBtn">← <span id="backText">Назад</span></a>
+  <span style="display:inline-flex;align-items:center;gap:0.55rem;">
+    <img src="../reka-odna.png" style="height:36px;width:auto;" alt="">
+    <span style="display:inline-flex;align-items:baseline;gap:0.4em;">
+      <span style="font-family:'Cinzel',serif;font-weight:500;font-size:1.0rem;letter-spacing:0.12em;color:#2878B5;">Yaselda</span>
+      <span style="font-family:'Cinzel',serif;font-weight:500;font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:#2878B5;">Studio</span>
+    </span>
+  </span>
+  <span></span>
+</div>
+<div class="step-badge">
+  <span class="step-dots">● ● ● ● ○</span>
+  <span class="step-label">Шаг 4 · Автоматизация</span>
+  <a href="0-story.html" class="step-story">← История проекта</a>
+  <a href="https://t.me/rosalia_lbd_miniapp_bot/app" target="_blank" class="step-action">Открыть в Telegram →</a>
+</div>
+
+<div class="page">
+
+  <div class="desc">
+<h1 class="desc-title" id="demoTitle">Rosalia LBD — Telegram Mini App</h1>
+    <p class="desc-sub" id="demoSub">Миниприложение для записи к мастеру маникюра: каталог услуг, калькулятор цены и времени, онлайн-запись и Telegram-бот.</p>
+  </div>
+
+  <div class="phone-wrap">
+    <div class="phone-shell">
+      <!-- Side buttons -->
+      <div class="phone-btn-r"></div>
+      <div class="phone-btn-l1"></div>
+      <div class="phone-btn-l2"></div>
+      <div class="phone-btn-l3"></div>
+      <!-- Dynamic Island -->
+      <div class="phone-notch"></div>
+      <!-- Screen -->
+      <div class="phone-screen">
+        <!-- Fake Telegram header -->
+        <div class="tg-bar">
+          <div class="tg-back">‹</div>
+          <div class="tg-title-block">
+            <div class="tg-title">Rosalia LBD</div>
+            <div class="tg-sub">Mini App</div>
+          </div>
+          <div class="tg-avatar">R</div>
+        </div>
+        <iframe
+          src="4-miniapp/landing-app.html"
+          title="Rosalia Mini App"
+          scrolling="yes"
+          style="margin-top:52px; height:calc(100% - 52px);"
+          sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
+        ></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div class="tech-tags">
+    <span class="tech-tag">Telegram Mini App</span>
+    <span class="tech-tag">JavaScript</span>
+    <span class="tech-tag" id="tagCalc">Калькулятор услуг</span>
+    <span class="tech-tag" id="tagDb">База данных</span>
+    <span class="tech-tag" id="tagBot1">Бот 1 — уведомление мастеру</span>
+    <span class="tech-tag" id="tagBot2">Бот 2 — напоминание клиенту за 24 ч</span>
+  </div>
+
+</div>
+
+<script>
+const i18n = {
+  ru: {
+    back: 'Назад',
+    label: 'Демо',
+    title: 'Rosalia LBD — Telegram Mini App',
+    sub: 'Миниприложение для записи к мастеру маникюра: каталог услуг, калькулятор цены и времени, онлайн-запись. Telegram-бот с двумя функциями: мгновенно сообщает мастеру о новой записи и отправляет клиенту напоминание за 24 часа до приёма.',
+    tagCalc: 'Калькулятор услуг',
+    tagDb: 'База данных',
+    tagBot1: 'Бот 1 — уведомление мастеру',
+    tagBot2: 'Бот 2 — напоминание клиенту за 24 ч',
+  },
+  en: {
+    back: 'Back',
+    label: 'Demo',
+    title: 'Rosalia LBD — Telegram Mini App',
+    sub: 'A mini app for booking a nail technician: service catalogue, price & time calculator, online booking. Two Telegram bots: the first instantly notifies the master of a new booking, the second — with the client\'s consent — sends a reminder 24 hours before the appointment.',
+    tagCalc: 'Service calculator',
+    tagDb: 'Database',
+    tagBot1: 'Bot 1 — master notification',
+    tagBot2: 'Bot 2 — client reminder 24 h before',
+  },
+  es: {
+    back: 'Volver',
+    label: 'Demo',
+    title: 'Rosalia LBD — Telegram Mini App',
+    sub: 'Mini app para reservar con una manicurista: catálogo de servicios, calculadora de precio y tiempo, reserva online. Dos bots de Telegram: el primero notifica a la maestra al instante, el segundo — con el consentimiento del cliente — envía un recordatorio 24 horas antes de la cita.',
+    tagCalc: 'Calculadora de servicios',
+    tagDb: 'Base de datos',
+    tagBot1: 'Bot 1 — notificación a la maestra',
+    tagBot2: 'Bot 2 — recordatorio 24 h antes',
+  },
+  it: {
+    back: 'Indietro',
+    label: 'Demo',
+    title: 'Rosalia LBD — Telegram Mini App',
+    sub: 'Mini app per prenotare una manicure: catalogo servizi, calcolatore di prezzo e tempo, prenotazione online. Due bot Telegram: il primo notifica immediatamente la professionista di una nuova prenotazione, il secondo — con il consenso della cliente — invia un promemoria 24 ore prima dell\'appuntamento.',
+    tagCalc: 'Calcolatore servizi',
+    tagDb: 'Database',
+    tagBot1: 'Bot 1 — notifica alla professionista',
+    tagBot2: 'Bot 2 — promemoria 24 h prima',
+  }
+};
+
+const lang = new URLSearchParams(window.location.search).get('lang') || 'ru';
+const t = i18n[lang] || i18n.ru;
+
+document.getElementById('backText').textContent  = t.back;
+document.getElementById('demoTitle').textContent  = t.title;
+document.getElementById('demoSub').textContent    = t.sub;
+document.getElementById('tagCalc').textContent    = t.tagCalc;
+document.getElementById('tagDb').textContent      = t.tagDb;
+document.getElementById('tagBot1').textContent    = t.tagBot1;
+document.getElementById('tagBot2').textContent    = t.tagBot2;
+
+document.documentElement.lang = lang;
+</script>
+</body>
+</html>

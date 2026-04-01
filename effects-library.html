@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yaselda — Effects Library</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+
+  <style>
+    /* ══════════════════════════════════════
+       ПЕРЕМЕННЫЕ И СБРОС
+    ══════════════════════════════════════ */
+    :root {
+      --bg:     #FDFCF0;
+      --text:   #1A2421;
+      --water:  #A2B9BC;
+      --mist:   #E0F2F1;
+      --sage:   #5A7A4E;
+      --steel:  #3D6480;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ══════════════════════════════════════
+       НАВИГАЦИЯ ПО СЕКЦИЯМ
+    ══════════════════════════════════════ */
+    .page-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: rgba(253, 252, 240, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(162,185,188,0.25);
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 1rem 2rem;
+      z-index: 9999;
+      flex-wrap: wrap;
+    }
+
+    .page-nav a {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text);
+      text-decoration: none;
+      opacity: 0.6;
+      transition: opacity 0.3s;
+    }
+    .page-nav a:hover { opacity: 1; color: var(--sage); }
+
+    /* ══════════════════════════════════════
+       ОБЩИЕ СТИЛИ СЕКЦИЙ
+    ══════════════════════════════════════ */
+    .demo-section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 100px 40px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .section-label {
+      position: absolute;
+      top: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--water);
+      border: 1px solid rgba(162,185,188,0.4);
+      padding: 4px 14px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    .section-desc {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.72rem;
+      color: rgba(26,36,33,0.4);
+      letter-spacing: 0.05em;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    /* ══════════════════════════════════════
+       01. ДРЕЙФУЮЩИЕ БЛИКИ (Даль и Свет)
+    ══════════════════════════════════════ */
+    #blobs { background: var(--bg); }
+
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(50px);
+      opacity: 0.7;
+      pointer-events: none;
+    }
+    .blob-1 {
+      width: 40vw; height: 40vw;
+      background: radial-gradient(circle, #7aadb2, transparent);
+      top: -10%; left: -10%;
+      animation: drift 15s ease-in-out infinite alternate;
+    }
+    .blob-2 {
+      width: 28vw; height: 28vw;
+      background: radial-gradient(circle, #b2d8d4, transparent);
+      bottom: 10%; right: 5%;
+      animation: drift 20s ease-in-out infinite alternate-reverse;
+    }
+    .blob-3 {
+      width: 22vw; height: 22vw;
+      background: radial-gradient(circle, rgba(90,122,78,0.55), transparent);
+      top: 20%; right: 20%;
+      animation: drift 25s ease-in-out infinite alternate;
+      animation-delay: -8s;
+    }
+
+    @keyframes drift {
+      from { transform: translate(0, 0) scale(1); }
+      to   { transform: translate(80px, 60px) scale(1.08); }
+    }
+
+    .blob-demo-text {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+    .blob-demo-text h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(3rem, 8vw, 5rem);
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+    .blob-demo-text p {
+      font-size: 1rem;
+      opacity: 0.7;
+      letter-spacing: 0.05em;
+    }
+
+    /* ══════════════════════════════════════
+       02. РЯБЬ ПРИ ДВИЖЕНИИ МЫШИ (JS)
+    ══════════════════════════════════════ */
+    #ripple { background: var(--bg); }
+
+    .ripple-wrapper {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0; left: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      filter: url(#water-ripple);
+      will-change: filter;
+    }
+
+    .ripple-content {
+      text-align: center;
+      z-index: 2;
+      pointer-events: none;
+      padding: 20px;
+    }
+    .ripple-content h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      line-height: 0.95;
+      margin-bottom: 1.2rem;
+    }
+    .ripple-content h2 span {
+      display: block;
+      font-style: italic;
+      color: var(--water);
+      font-size: 0.65em;
+    }
+    .ripple-content p {
+      font-size: 1rem;
+      opacity: 0.75;
+      line-height: 1.6;
+    }
+
+    /* ══════════════════════════════════════
+       03. КНОПКИ
+    ══════════════════════════════════════ */
+    #buttons { background: var(--bg); gap: 3rem; }
+
+    .buttons-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+    }
+
+    .btn-label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    .btn-label span {
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--water);
+    }
+
+    /* Кнопка-капля */
+    .btn-liquid {
+      font-family: 'Inter', sans-serif;
+      padding: 1.1rem 2.8rem;
+      font-size: 0.95rem;
+      font-weight: 300;
+      letter-spacing: 0.05em;
+      background: var(--text);
+      color: var(--bg);
+      border: none;
+      cursor: pointer;
+      border-radius: 40% 60% 60% 40% / 60% 30% 70% 40%;
+      transition: all 0.6s ease;
+      box-shadow: 0 10px 20px rgba(26,36,33,0.12);
+    }
+    .btn-liquid:hover {
+      border-radius: 50%;
+      transform: scale(1.05);
+      background: var(--water);
+      box-shadow: 0 15px 30px rgba(162,185,188,0.4);
+    }
+
+    /* Кнопка контурная */
+    .btn-outline {
+      font-family: 'Inter', sans-serif;
+      padding: 1.1rem 2.8rem;
+      font-size: 0.95rem;
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      background: transparent;
+      color: var(--text);
+      border: 1px solid rgba(162,185,188,0.6);
+      cursor: pointer;
+      border-radius: 30px;
+      transition: all 0.4s ease;
+    }
+    .btn-outline:hover {
+      background: var(--mist);
+      border-color: var(--water);
+    }
+
+    /* Кнопка с бликом */
+    .btn-ripple {
+      font-family: 'Inter', sans-serif;
+      padding: 1.1rem 2.8rem;
+      font-size: 0.95rem;
+      font-weight: 300;
+      letter-spacing: 0.05em;
+      background: var(--sage);
+      color: var(--bg);
+      border: none;
+      cursor: pointer;
+      border-radius: 8px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s ease;
+    }
+    .btn-ripple::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .btn-ripple:hover::after { opacity: 1; }
+    .btn-ripple:hover { transform: translateY(-2px); box-shadow: 0 12px 24px rgba(90,122,78,0.3); }
+
+    /* ══════════════════════════════════════
+       04. GLASSMORPHISM КАРТОЧКИ
+    ══════════════════════════════════════ */
+    #glass { background: linear-gradient(135deg, #e8f4f8 0%, var(--bg) 50%, #e6f0ea 100%); }
+
+    .cards-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      z-index: 2;
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.45);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 20px;
+      padding: 2rem 2.5rem;
+      width: 260px;
+      box-shadow: 0 8px 32px rgba(162,185,188,0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .glass-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 48px rgba(162,185,188,0.25);
+    }
+    .glass-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+      color: var(--text);
+    }
+    .glass-card p {
+      font-size: 0.875rem;
+      line-height: 1.6;
+      opacity: 0.7;
+    }
+    .glass-card .card-tag {
+      display: inline-block;
+      margin-top: 1rem;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--water);
+      border-bottom: 1px solid var(--water);
+      padding-bottom: 1px;
+    }
+
+    /* ══════════════════════════════════════
+       05. ПЛАВАЮЩАЯ НАВИГАЦИЯ
+    ══════════════════════════════════════ */
+    #floating-nav-demo { background: var(--bg); }
+
+    .nav-demo-text {
+      text-align: center;
+      z-index: 2;
+    }
+    .nav-demo-text h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .nav-demo-text p {
+      font-size: 0.9rem;
+      opacity: 0.6;
+    }
+
+    .nav-floating-demo {
+      position: absolute;
+      bottom: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255, 255, 255, 0.55);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      padding: 0.9rem 2.5rem;
+      border-radius: 50px;
+      border: 1px solid rgba(162,185,188,0.3);
+      display: flex;
+      gap: 2.5rem;
+      z-index: 100;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(-8px); }
+    }
+
+    .nav-floating-demo a {
+      font-size: 0.8rem;
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text);
+      text-decoration: none;
+      opacity: 0.7;
+      transition: opacity 0.3s;
+    }
+    .nav-floating-demo a:hover { opacity: 1; }
+
+    /* ══════════════════════════════════════
+       06. HOVER-ССЫЛКИ (Водные блики)
+    ══════════════════════════════════════ */
+    #links-demo { background: var(--bg); }
+
+    .links-block {
+      max-width: 600px;
+      text-align: center;
+      z-index: 2;
+    }
+    .links-block h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: 2.8rem;
+      font-style: italic;
+      margin-bottom: 2rem;
+      line-height: 1.2;
+    }
+    .links-block p {
+      font-size: 1.05rem;
+      line-height: 1.9;
+      opacity: 0.85;
+    }
+
+    .water-link {
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px solid var(--water);
+      padding: 0 2px;
+      transition: all 0.4s ease;
+    }
+    .water-link:hover {
+      background: var(--mist);
+      border-bottom-color: var(--sage);
+      padding: 0 6px;
+      border-radius: 2px;
+    }
+
+    /* ══════════════════════════════════════
+       07. SVG РЯБЬ НА ТЕКСТЕ (статичная)
+    ══════════════════════════════════════ */
+    #svg-ripple { background: var(--bg); }
+
+    .ripple-text-demo {
+      z-index: 2;
+      text-align: center;
+    }
+
+    .ripple-on {
+      display: inline-block;
+      filter: url(#static-ripple);
+      transition: filter 0.5s ease;
+    }
+    .ripple-on:hover { filter: none; }
+
+    .ripple-text-demo h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(3rem, 10vw, 6rem);
+      line-height: 1;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .ripple-text-demo .hint {
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      color: var(--water);
+      margin-top: 1.5rem;
+    }
+
+    /* ══════════════════════════════════════
+       РАЗДЕЛИТЕЛЬ
+    ══════════════════════════════════════ */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(162,185,188,0.3), transparent);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SVG фильтры (невидимые) -->
+  <svg style="position:absolute;width:0;height:0;overflow:hidden;">
+    <!-- Рябь при движении мыши -->
+    <filter id="water-ripple">
+      <feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="3" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="0" id="disp-map"/>
+    </filter>
+    <!-- Статичная рябь на тексте -->
+    <filter id="static-ripple">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012 0.008" numOctaves="2" result="noise">
+        <animate attributeName="baseFrequency" dur="8s"
+          values="0.012 0.008; 0.018 0.014; 0.012 0.008" repeatCount="indefinite"/>
+      </feTurbulence>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="6"/>
+    </filter>
+  </svg>
+
+  <!-- НАВИГАЦИЯ ПО СТРАНИЦЕ -->
+  <nav class="page-nav">
+    <a href="#blobs">Блики</a>
+    <a href="#ripple">Рябь мыши</a>
+    <a href="#buttons">Кнопки</a>
+    <a href="#glass">Стекло</a>
+    <a href="#floating-nav-demo">Навигация</a>
+    <a href="#links-demo">Ссылки</a>
+    <a href="#svg-ripple">SVG рябь</a>
+  </nav>
+
+
+  <!-- ══ 01. ДРЕЙФУЮЩИЕ БЛИКИ ══ -->
+  <section class="demo-section" id="blobs">
+    <span class="section-label">01 — Дрейфующие блики</span>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="blob-demo-text">
+      <h2>Yaselda.<br><em style="color:var(--water);font-size:0.65em;">Поток ясного кода.</em></h2>
+      <p>Три пятна с разной скоростью дрейфа — создают глубину и движение воды</p>
+    </div>
+    <span class="section-desc">Чистый CSS · blur + radial-gradient + @keyframes drift</span>
+  </section>
+
+  <div class="divider"></div>
+
+
+  <!-- ══ 02. РЯБЬ ПРИ ДВИЖЕНИИ МЫШИ ══ -->
+  <section class="demo-section" id="ripple" style="padding:0;">
+    <span class="section-label" style="z-index:20;">02 — Рябь при движении мыши</span>
+    <div class="ripple-wrapper" id="ripple-wrapper">
+      <div class="ripple-content">
+        <h2>Yaselda<span>Digital Flow</span></h2>
+        <p>Двигай мышью по экрану — поверхность оживает.<br>Останови — вода успокаивается.</p>
+      </div>
+    </div>
+    <span class="section-desc" style="z-index:20;">SVG feTurbulence + feDisplacementMap · JS mousemove + Lerp</span>
+  </section>
+
+  <div class="divider"></div>
+
+
+  <!-- ══ 03. КНОПКИ ══ -->
+  <section class="demo-section" id="buttons">
+    <span class="section-label">03 — Кнопки</span>
+    <div class="buttons-row">
+      <div class="btn-label">
+        <button class="btn-liquid">Погрузиться</button>
+        <span>Капля — меняет форму</span>
+      </div>
+      <div class="btn-label">
+        <button class="btn-outline">Посмотреть</button>
+        <span>Контур — водный блик</span>
+      </div>
+      <div class="btn-label">
+        <button class="btn-ripple">Открыть поток</button>
+        <span>Свет — лесной акцент</span>
+      </div>
+    </div>
+    <span class="section-desc">Наведи на каждую кнопку · Чистый CSS</span>
+  </section>
+
+  <div class="divider"></div>
+
+
+  <!-- ══ 04. GLASSMORPHISM КАРТОЧКИ ══ -->
+  <section class="demo-section" id="glass">
+    <span class="section-label">04 — Стеклянные карточки</span>
+    <div class="cards-row">
+      <div class="glass-card">
+        <h3>Анализ систем</h3>
+        <p>Архитектура процессов, прозрачная как вода. Логика без лишнего шума.</p>
+        <span class="card-tag">Подробнее →</span>
+      </div>
+      <div class="glass-card">
+        <h3>Цифровые потоки</h3>
+        <p>Данные движутся по чистым каналам. Никаких засоров, только поток.</p>
+        <span class="card-tag">Посмотреть →</span>
+      </div>
+      <div class="glass-card">
+        <h3>Живые решения</h3>
+        <p>Системы, которые адаптируются, как река находит путь через лес.</p>
+        <span class="card-tag">Читать →</span>
+      </div>
+    </div>
+    <span class="section-desc">backdrop-filter: blur · Наведи для анимации подъёма</span>
+  </section>
+
+  <div class="divider"></div>
+
+
+  <!-- ══ 05. ПЛАВАЮЩАЯ НАВИГАЦИЯ ══ -->
+  <section class="demo-section" id="floating-nav-demo">
+    <span class="section-label">05 — Плавающая навигация</span>
+    <div class="nav-demo-text">
+      <h2>Навигация как пузырёк</h2>
+      <p>Плавно покачивается внизу экрана — стеклянный, лёгкий, как воздух под водой</p>
+    </div>
+    <nav class="nav-floating-demo">
+      <a href="#">Проекты</a>
+      <a href="#">О бренде</a>
+      <a href="#">Стек</a>
+      <a href="#">Контакт</a>
+    </nav>
+    <span class="section-desc">backdrop-filter · @keyframes float · Наведи на пункты</span>
+  </section>
+
+  <div class="divider"></div>
+
+
+  <!-- ══ 06. HOVER-ССЫЛКИ ══ -->
+  <section class="demo-section" id="links-demo">
+    <span class="section-label">06 — Водные ссылки</span>
+    <div class="links-block">
+      <h2>Ясный поток.<br>Живые решения.</h2>
+      <p>
+        В мире перегруженных интерфейсов я выбираю
+        <a href="#" class="water-link">ясность</a>.
+        Мой подход к работе подобен течению
+        <a href="#" class="water-link">лесной реки</a>:
+        чистая структура, прозрачные процессы и
+        <a href="#" class="water-link">решения</a>,
+        которые выдерживают проверку временем.
+      </p>
+    </div>
+    <span class="section-desc">Наведи на подчёркнутые слова · border-bottom + background hover</span>
+  </section>
+
+  <div class="divider"></div>
+
+
+  <!-- ══ 07. SVG РЯБЬ НА ТЕКСТЕ ══ -->
+  <section class="demo-section" id="svg-ripple">
+    <span class="section-label">07 — SVG рябь на тексте</span>
+    <div class="ripple-text-demo">
+      <div class="ripple-on">
+        <h2>Yaselda</h2>
+        <h2>Studio</h2>
+      </div>
+      <p class="hint">Наведи — рябь успокаивается<br>«В покое всё становится ясным»</p>
+    </div>
+    <span class="section-desc">SVG feTurbulence animate · Hover снимает фильтр</span>
+  </section>
+
+
+  <script>
+    /* Рябь при движении мыши (секция 02) */
+    const dispMap = document.getElementById('disp-map');
+    let targetScale = 0;
+    let currentScale = 0;
+
+    document.getElementById('ripple').addEventListener('mousemove', () => {
+      targetScale = 14;
+      clearTimeout(window._rippleTimer);
+      window._rippleTimer = setTimeout(() => { targetScale = 0; }, 150);
+    });
+
+    (function render() {
+      currentScale += (targetScale - currentScale) * 0.06;
+      dispMap.setAttribute('scale', currentScale.toFixed(2));
+      requestAnimationFrame(render);
+    })();
+  </script>
+
+</body>
+</html>

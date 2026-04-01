@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rosalia LBD — Фирменный стиль</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+
+/* ── YASELDA BAR ── */
+.yaselda-bar {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: 52px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 1.25rem;
+  background: rgba(247,248,245,0.95);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(40,120,181,0.13);
+  z-index: 999;
+}
+.yaselda-bar__back {
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  font-family: 'Cinzel', serif; font-weight: 500;
+  font-size: 0.85rem; letter-spacing: 0.06em;
+  color: #2878B5; text-decoration: none;
+  transition: opacity 0.2s;
+}
+.yaselda-bar__back:hover { opacity: 0.65; }
+.yaselda-bar__brand {
+  display: inline-flex; align-items: center; gap: 0.55rem;
+  position: absolute; left: 50%; transform: translateX(-50%);
+}
+.yaselda-bar__mark { height: 36px; width: auto; display: block; }
+.yaselda-bar__name { display: inline-flex; align-items: baseline; gap: 0.4em; }
+.yaselda-bar__name-y {
+  font-family: 'Cinzel', serif; font-weight: 500;
+  font-size: 1.0rem; letter-spacing: 0.12em; color: #2878B5;
+}
+.yaselda-bar__name-s {
+  font-family: 'Cinzel', serif; font-weight: 500;
+  font-size: 0.72rem; letter-spacing: 0.18em;
+  text-transform: uppercase; color: #2878B5;
+}
+.yaselda-bar__spacer { width: 60px; }
+.step-badge {
+  position: fixed; top: 52px; left: 0; right: 0; z-index: 998;
+  height: 28px;
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+  background: rgba(246,243,241,0.93);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(184,143,142,.18);
+  font-family: 'Raleway', system-ui, sans-serif;
+  font-size: 0.68rem; letter-spacing: 0.1em;
+}
+.step-dots { color: #CFA7A5; letter-spacing: 0.22em; font-size: 0.58rem; }
+.step-label { color: #6A5A58; font-weight: 500; }
+.step-story { color: #B88F8E; text-decoration: none; transition: opacity 0.2s; }
+.step-story:hover { opacity: 0.65; }
+
+/* ── БАЗА ── */
+:root {
+  --milk:   #F6F3F1;
+  --beige:  #E7DDD7;
+  --rose:   #CFA7A5;
+  --rose-d: #B88F8E;
+  --text:   #2E2E2E;
+  --text-m: #5A4A48;
+  --line:   rgba(184,143,142,.22);
+  --white:  #FFFFFF;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Raleway', system-ui, sans-serif;
+  font-weight: 300;
+  color: var(--text);
+  background: var(--milk);
+  padding-top: 80px;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── SVG РОЗА — анимированная ── */
+.rp { fill: none; stroke: var(--rose-d); stroke-linecap: round; stroke-linejoin: round; }
+.rp-s { stroke-width: 1.2; stroke-dasharray: 60;  stroke-dashoffset: 60;  animation: draw 1.0s 0.5s ease forwards; }
+.rp-l { stroke-width: 0.9; stroke-dasharray: 80;  stroke-dashoffset: 80;  animation: draw 1.0s 1.3s ease forwards; }
+.rp-o { stroke-width: 1.0; stroke-dasharray: 260; stroke-dashoffset: 260; animation: draw 1.8s 2.0s ease forwards; }
+.rp-m { stroke-width: 0.9; stroke-dasharray: 180; stroke-dashoffset: 180; animation: draw 1.4s 3.4s ease forwards; }
+.rp-c { stroke-width: 0.8; stroke-dasharray: 100; stroke-dashoffset: 100; animation: draw 1.0s 4.4s ease forwards; }
+@keyframes draw { to { stroke-dashoffset: 0; } }
+.rose-static .rp-s,
+.rose-static .rp-l,
+.rose-static .rp-o,
+.rose-static .rp-m,
+.rose-static .rp-c { stroke-dashoffset: 0; animation: none; }
+
+/* ══════════════════════════════════════
+   ЧАСТЬ 1 — БРЕНД
+══════════════════════════════════════ */
+
+/* ── HERO ── */
+#hero {
+  min-height: 100svh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center;
+  padding: 60px 24px;
+  background: var(--milk);
+  position: relative;
+}
+#hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 10%; right: 10%;
+  height: 1px;
+  background: var(--line);
+}
+.hero-rose { width: clamp(72px, 14vw, 120px); margin-bottom: clamp(40px, 7vw, 72px); }
+.hero-name {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 400; font-size: clamp(1.9rem, 5vw, 3.2rem);
+  letter-spacing: 0.18em; color: var(--text); line-height: 1;
+  opacity: 0; animation: fadeUp 1.2s 5.6s ease forwards;
+}
+.hero-rule {
+  width: 1px; height: 40px; background: var(--rose-d); margin: 28px auto;
+  opacity: 0; animation: fadeIn 0.8s 6.8s ease forwards;
+}
+.hero-tagline {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic; font-weight: 400;
+  font-size: clamp(1.1rem, 3vw, 2.0rem);
+  letter-spacing: 0.08em; color: var(--rose-d);
+  opacity: 0; animation: fadeUp 1.0s 7.0s ease forwards;
+}
+.scroll-hint {
+  position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+  font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--rose-d); opacity: 0; animation: fadeIn 1s 8.0s ease forwards;
+}
+.scroll-hint::after {
+  content: ''; display: block; width: 1px; height: 28px;
+  background: var(--rose-d); margin: 10px auto 0;
+  animation: pulse 2s 9s infinite;
+}
+@keyframes pulse { 0%,100% { opacity: 0.3; } 50% { opacity: 1; } }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* ── СЕКЦИИ ── */
+section { padding: clamp(64px, 12vw, 120px) clamp(24px, 8vw, 120px); }
+.section-label {
+  display: block; font-size: 0.72rem; font-weight: 500;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--rose-d); margin-bottom: 48px;
+}
+
+/* ── ПАЛИТРА ── */
+#palette { background: var(--milk); }
+.palette-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 2px; }
+.swatch { display: flex; flex-direction: column; }
+.swatch-color { height: clamp(80px, 14vw, 120px); border-radius: 2px 2px 0 0; }
+.swatch-info { padding: 14px 0 0; }
+.swatch-name { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em; color: var(--text); display: block; margin-bottom: 4px; }
+.swatch-hex  { font-size: 0.72rem; font-weight: 300; letter-spacing: 0.08em; color: var(--text-m); }
+
+/* ── ТИПОГРАФИКА ── */
+#typography { background: var(--milk); }
+.type-pair { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 80px); align-items: start; }
+.type-specimen {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 400; font-size: clamp(2.8rem, 6vw, 4.8rem);
+  line-height: 1.1; color: var(--text); margin-bottom: 20px;
+}
+.type-specimen.italic { font-style: italic; color: var(--rose-d); }
+.type-name { font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--rose-d); display: block; margin-bottom: 8px; }
+.type-desc { font-size: 0.88rem; font-weight: 300; color: var(--text-m); line-height: 1.7; }
+.type-body-demo {
+  font-family: 'Raleway', system-ui, sans-serif;
+  font-weight: 300; font-size: clamp(1rem, 1.8vw, 1.15rem);
+  line-height: 1.8; color: var(--text-m); margin-bottom: 20px;
+}
+
+/* ── ПРИНЦИПЫ ── */
+#principles { background: var(--beige); }
+.principles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: clamp(32px, 5vw, 64px); }
+.principle { display: flex; flex-direction: column; gap: 16px; }
+.principle-num { font-family: 'Playfair Display', Georgia, serif; font-weight: 400; font-size: 1.85rem; line-height: 1; color: var(--rose); }
+.principle-title { font-family: 'Playfair Display', Georgia, serif; font-weight: 400; font-size: 1.15rem; letter-spacing: 0.04em; color: var(--text); }
+.principle-text { font-size: 0.95rem; font-weight: 300; color: var(--text-m); line-height: 1.7; }
+.principle-rule { width: 28px; height: 1px; background: var(--rose-d); }
+
+/* ── СИМВОЛ ── */
+#rose-compare { background: var(--milk); }
+.rose-pair { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 80px); align-items: center; max-width: 560px; margin: 0 auto; }
+.rose-card { display: flex; flex-direction: column; align-items: center; gap: 24px; text-align: center; }
+.rose-card svg { width: clamp(60px, 12vw, 100px); }
+.rose-card-label { font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--rose-d); }
+.btn-revive {
+  margin-top: 4px; padding: 8px 22px;
+  border: 1px solid var(--rose-d); border-radius: 2px;
+  font-family: 'Raleway', system-ui, sans-serif;
+  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--rose-d); background: transparent; cursor: pointer;
+  transition: background 0.25s, color 0.25s;
+}
+.btn-revive:hover { background: var(--rose-d); color: var(--white); }
+
+/* ══════════════════════════════════════
+   РАЗДЕЛИТЕЛЬ
+══════════════════════════════════════ */
+.chapter-divider {
+  padding: clamp(48px, 8vw, 80px) clamp(24px, 8vw, 120px);
+  background: var(--beige);
+  display: flex; align-items: center; gap: clamp(24px, 4vw, 48px);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.chapter-divider-line { flex: 1; height: 1px; background: var(--line); }
+.chapter-divider-text {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic; font-weight: 400;
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+  letter-spacing: 0.06em; color: var(--text-m);
+  white-space: nowrap;
+}
+
+/* ══════════════════════════════════════
+   ЧАСТЬ 2 — ЛОГО-ПАК
+══════════════════════════════════════ */
+
+/* ── PAGE HEADER ── */
+.page-header {
+  padding: clamp(64px, 10vw, 100px) clamp(24px, 8vw, 80px) clamp(48px, 7vw, 72px);
+  text-align: center;
+  border-bottom: 1px solid var(--line);
+}
+.page-eyebrow { display: block; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; color: var(--rose-d); margin-bottom: 24px; }
+.page-title { font-family: 'Playfair Display', Georgia, serif; font-weight: 400; font-size: clamp(2.4rem, 5vw, 3.6rem); letter-spacing: 0.12em; line-height: 1; color: var(--text); margin-bottom: 16px; }
+.page-sub { font-size: clamp(0.88rem, 1.4vw, 1rem); font-weight: 300; color: var(--text-m); line-height: 1.7; max-width: 480px; margin: 0 auto; }
+
+/* ── LOGO SECTIONS ── */
+.logo-section { padding: clamp(52px, 8vw, 88px) 0; border-bottom: 1px solid var(--line); }
+.section-head { padding: 0 clamp(24px, 8vw, 80px); margin-bottom: clamp(28px, 5vw, 44px); }
+.section-title { font-family: 'Playfair Display', Georgia, serif; font-weight: 400; font-size: clamp(1.5rem, 3vw, 2.2rem); letter-spacing: 0.06em; color: var(--text); margin-bottom: 10px; }
+.section-desc { font-size: 0.88rem; font-weight: 300; color: var(--text-m); line-height: 1.7; max-width: 520px; }
+
+/* ── VARIANT GRID ── */
+.variant-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+.variant-card { display: flex; flex-direction: column; align-items: center; padding: clamp(40px, 7vw, 72px) clamp(20px, 4vw, 48px) clamp(28px, 4vw, 40px); }
+.variant-card.bg-milk  { background: #F6F3F1; }
+.variant-card.bg-beige { background: #E7DDD7; }
+.variant-card.bg-dark  { background: #2E2E2E; --rose-d: #CFA7A5; }
+.preview-wrap { flex: 1; display: flex; align-items: center; justify-content: center; min-height: clamp(80px, 14vw, 130px); }
+.preview-rose { width: clamp(48px, 8vw, 76px); }
+.preview-logo { display: flex; align-items: center; gap: clamp(8px, 1.5vw, 14px); }
+.preview-logo-mark { width: clamp(18px, 3vw, 28px); flex-shrink: 0; }
+.preview-logo-name { display: flex; flex-direction: column; gap: 3px; }
+.preview-logo-text {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 400; font-size: clamp(0.8rem, 1.4vw, 1.1rem);
+  letter-spacing: 0.1em; color: var(--text); white-space: nowrap;
+}
+.preview-logo-tagline {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300; font-size: clamp(0.42rem, 0.75vw, 0.58rem);
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--text-m); white-space: nowrap;
+}
+.bg-dark .preview-logo-text { color: #F6F3F1; }
+.bg-dark .preview-logo-tagline { color: rgba(246,243,241,0.55); }
+.card-bottom { margin-top: clamp(20px, 3.5vw, 32px); display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.bg-label { font-size: 0.75rem; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rose-d); }
+.bg-dark .bg-label { color: #CFA7A5; }
+
+/* Кнопки лого-пак */
+.btn-lp {
+  padding: 7px 18px; border: 1px solid var(--rose-d); border-radius: 2px;
+  font-family: 'Raleway', system-ui, sans-serif;
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--rose-d); background: transparent; cursor: pointer;
+  transition: background 0.25s, color 0.25s;
+}
+.btn-lp:hover { background: var(--rose-d); color: var(--white); }
+.bg-dark .btn-lp { border-color: #CFA7A5; color: #CFA7A5; }
+.bg-dark .btn-lp:hover { background: #CFA7A5; color: #2E2E2E; }
+.section-copy { padding: clamp(24px, 4vw, 40px) clamp(24px, 8vw, 80px) 0; display: flex; align-items: center; justify-content: center; gap: 16px; }
+.btn-copy-svg {
+  padding: 10px 28px; border: 1px solid var(--rose-d); border-radius: 2px;
+  font-family: 'Raleway', system-ui, sans-serif;
+  font-size: 0.74rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--rose-d); background: transparent; cursor: pointer;
+  transition: background 0.25s, color 0.25s;
+}
+.btn-copy-svg:hover { background: var(--rose-d); color: var(--white); }
+.copy-feedback { font-size: 0.74rem; font-weight: 300; letter-spacing: 0.1em; color: var(--rose-d); opacity: 0; transition: opacity 0.3s; }
+.copy-feedback.visible { opacity: 1; }
+
+/* ── ИНСТРУКЦИЯ ── */
+.instructions { padding: clamp(56px, 9vw, 96px) clamp(24px, 8vw, 80px); max-width: 720px; margin: 0 auto; }
+.instr-label { display: block; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; color: var(--rose-d); margin-bottom: 32px; }
+.instr-list { list-style: none; display: flex; flex-direction: column; gap: 24px; }
+.instr-list li { display: flex; gap: 20px; align-items: flex-start; }
+.instr-num { font-family: 'Playfair Display', Georgia, serif; font-weight: 400; font-size: 1.5rem; color: var(--rose); line-height: 1; flex-shrink: 0; margin-top: -1px; }
+.instr-text { font-size: 0.9rem; font-weight: 300; color: var(--text-m); line-height: 1.75; }
+.instr-text strong { font-weight: 500; color: var(--text); }
+.instr-code { font-family: 'Courier New', Courier, monospace; font-size: 0.82em; color: var(--rose-d); background: rgba(184,143,142,.1); padding: 1px 5px; border-radius: 2px; }
+
+/* ── FOOTER ── */
+footer {
+  padding: clamp(48px, 8vw, 80px) 24px;
+  text-align: center; background: var(--milk);
+  border-top: 1px solid var(--line);
+}
+.foot-rose { width: 32px; margin: 0 auto 20px; }
+.foot-name { font-family: 'Playfair Display', Georgia, serif; font-weight: 400; font-size: 1.1rem; letter-spacing: 0.18em; color: var(--text); margin-bottom: 8px; }
+.foot-tag  { font-size: 0.78rem; font-weight: 300; letter-spacing: 0.14em; color: var(--rose-d); }
+
+/* ── АДАПТИВ ── */
+@media (max-width: 680px) {
+  .type-pair { grid-template-columns: 1fr; }
+  .variant-grid { grid-template-columns: 1fr; }
+  .variant-card { flex-direction: row; align-items: center; gap: 24px; padding: 28px 24px; }
+  .preview-wrap { flex: 0 0 auto; min-height: auto; }
+  .preview-rose { width: 48px; }
+  .preview-logo-mark { width: 20px; }
+  .card-bottom { margin-top: 0; align-items: flex-start; flex: 1; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── YASELDA BAR ── -->
+<div class="yaselda-bar">
+  <a href="../index.html#projects" class="yaselda-bar__back" id="back-btn">← <span id="backText">Назад</span></a>
+  <div class="yaselda-bar__brand">
+    <img src="../reka-odna.png" class="yaselda-bar__mark" alt="Yaselda Studio">
+    <span class="yaselda-bar__name">
+      <span class="yaselda-bar__name-y">Yaselda</span>
+      <span class="yaselda-bar__name-s">Studio</span>
+    </span>
+  </div>
+  <div class="yaselda-bar__spacer"></div>
+</div>
+<div class="step-badge">
+  <span class="step-dots">● ● ● ○ ○</span>
+  <span class="step-label">Шаг 3 · Идентичность</span>
+  <a href="0-story.html" class="step-story">← История проекта</a>
+</div>
+
+<!-- ════════════════════════════════════
+     ЧАСТЬ 1 — БРЕНД
+════════════════════════════════════ -->
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <svg class="hero-rose" viewBox="0 0 44 58" fill="none" aria-hidden="true">
+    <path class="rp rp-s" d="M22 57 L22 34"/>
+    <path class="rp rp-l" d="M22 46 C15 41 12 33 15 27 C18 31 21 39 22 45"/>
+    <path class="rp rp-o" d="M22 33 C8 27 3 10 12 3 C16 0 20 6 21 16 C21.5 10 22 5 22 5 C22 5 22.5 10 23 16 C24 6 28 0 32 3 C41 10 36 27 22 33Z"/>
+    <path class="rp rp-m" d="M22 28 C14 23 11 12 16 6 C18 3 20 9 21 17 C21.5 11 22 7 22 7 C22 7 22.5 11 23 17 C24 9 26 3 28 6 C33 12 30 23 22 28Z"/>
+    <path class="rp rp-c" d="M22 22 C18 18 17 12 20 8 C21 6 21.5 10 22 15 C22.5 10 23 6 24 8 C27 12 26 18 22 22Z"/>
+  </svg>
+  <h1 class="hero-name">Rosalia LBD</h1>
+  <div class="hero-rule"></div>
+  <p class="hero-tagline">Архитектура натуральных ногтей</p>
+  <span class="scroll-hint">Фирменный стиль</span>
+</section>
+
+<!-- ── ЦВЕТОВАЯ ПАЛИТРА ── -->
+<section id="palette">
+  <span class="section-label">Цветовая палитра</span>
+  <div class="palette-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background:#F6F3F1; border:1px solid #E7DDD7;"></div>
+      <div class="swatch-info"><span class="swatch-name">Молочный</span><span class="swatch-hex">#F6F3F1 — основной фон</span></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#E7DDD7;"></div>
+      <div class="swatch-info"><span class="swatch-name">Тёплый беж</span><span class="swatch-hex">#E7DDD7 — вторичный фон</span></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#CFA7A5;"></div>
+      <div class="swatch-info"><span class="swatch-name">Пепельная роза</span><span class="swatch-hex">#CFA7A5 — акцент</span></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#B88F8E;"></div>
+      <div class="swatch-info"><span class="swatch-name">Приглушённый розовый</span><span class="swatch-hex">#B88F8E — линия, stroke</span></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#2E2E2E;"></div>
+      <div class="swatch-info"><span class="swatch-name">Графит</span><span class="swatch-hex">#2E2E2E — основной текст</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ТИПОГРАФИКА ── -->
+<section id="typography">
+  <span class="section-label">Типографика</span>
+  <div class="type-pair">
+    <div class="type-block">
+      <span class="type-name">Playfair Display</span>
+      <p class="type-specimen">Aa Bb<br>Rosalia</p>
+      <p class="type-specimen italic">изящество</p>
+      <p class="type-desc">Заголовки, логотип, акценты.<br>Serif с характером — изящный и сдержанный.</p>
+    </div>
+    <div class="type-block">
+      <span class="type-name">Raleway</span>
+      <p class="type-body-demo">Архитектура натуральных ногтей. Тонкое гелевое покрытие, которое выглядит как ваши идеальные ногти.</p>
+      <p class="type-desc">Основной текст, подписи, навигация.<br>Современный, лёгкий, хорошо читается на экране.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── ТРИ ПРИНЦИПА ── -->
+<section id="principles">
+  <span class="section-label">Три принципа бренда</span>
+  <div class="principles-grid">
+    <div class="principle">
+      <span class="principle-num">01</span>
+      <div class="principle-rule"></div>
+      <span class="principle-title">Натуральность</span>
+      <p class="principle-text">Маникюр должен выглядеть естественно — как ваши идеальные ногти, только лучше.</p>
+    </div>
+    <div class="principle">
+      <span class="principle-num">02</span>
+      <div class="principle-rule"></div>
+      <span class="principle-title">Тонкость</span>
+      <p class="principle-text">Правильная архитектура позволяет покрытию быть лёгким и прочным одновременно.</p>
+    </div>
+    <div class="principle">
+      <span class="principle-num">03</span>
+      <div class="principle-rule"></div>
+      <span class="principle-title">Безопасность</span>
+      <p class="principle-text">Полный цикл стерилизации инструментов. Инструменты вскрываются при вас.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── СИМВОЛ БРЕНДА ── -->
+<section id="rose-compare">
+  <span class="section-label">Символ бренда</span>
+  <div class="rose-pair">
+    <div class="rose-card">
+      <svg id="roseAnim" viewBox="0 0 44 58" fill="none" aria-hidden="true">
+        <path class="rp rp-s" d="M22 57 L22 34"/>
+        <path class="rp rp-l" d="M22 46 C15 41 12 33 15 27 C18 31 21 39 22 45"/>
+        <path class="rp rp-o" d="M22 33 C8 27 3 10 12 3 C16 0 20 6 21 16 C21.5 10 22 5 22 5 C22 5 22.5 10 23 16 C24 6 28 0 32 3 C41 10 36 27 22 33Z"/>
+        <path class="rp rp-m" d="M22 28 C14 23 11 12 16 6 C18 3 20 9 21 17 C21.5 11 22 7 22 7 C22 7 22.5 11 23 17 C24 9 26 3 28 6 C33 12 30 23 22 28Z"/>
+        <path class="rp rp-c" d="M22 22 C18 18 17 12 20 8 C21 6 21.5 10 22 15 C22.5 10 23 6 24 8 C27 12 26 18 22 22Z"/>
+      </svg>
+      <span class="rose-card-label">Анимированная</span>
+      <button class="btn-revive" onclick="reviveRose()">Повторить</button>
+    </div>
+    <div class="rose-card">
+      <svg class="rose-static" viewBox="0 0 44 58" fill="none" aria-hidden="true">
+        <path class="rp rp-s" d="M22 57 L22 34"/>
+        <path class="rp rp-l" d="M22 46 C15 41 12 33 15 27 C18 31 21 39 22 45"/>
+        <path class="rp rp-o" d="M22 33 C8 27 3 10 12 3 C16 0 20 6 21 16 C21.5 10 22 5 22 5 C22 5 22.5 10 23 16 C24 6 28 0 32 3 C41 10 36 27 22 33Z"/>
+        <path class="rp rp-m" d="M22 28 C14 23 11 12 16 6 C18 3 20 9 21 17 C21.5 11 22 7 22 7 C22 7 22.5 11 23 17 C24 9 26 3 28 6 C33 12 30 23 22 28Z"/>
+        <path class="rp rp-c" d="M22 22 C18 18 17 12 20 8 C21 6 21.5 10 22 15 C22.5 10 23 6 24 8 C27 12 26 18 22 22Z"/>
+      </svg>
+      <span class="rose-card-label">Статичная</span>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     РАЗДЕЛИТЕЛЬ
+════════════════════════════════════ -->
+<div class="chapter-divider">
+  <div class="chapter-divider-line"></div>
+  <span class="chapter-divider-text">Лого-пак</span>
+  <div class="chapter-divider-line"></div>
+</div>
+
+<!-- ════════════════════════════════════
+     ЧАСТЬ 2 — ЛОГО-ПАК
+════════════════════════════════════ -->
+
+<header class="page-header">
+  <span class="page-eyebrow">Фирменный стиль · Rosalia LBD</span>
+  <h2 class="page-title">Лого-пак</h2>
+  <p class="page-sub">Три варианта символа на всех фирменных фонах. Нажмите «Скопировать SVG» — и вставьте куда нужно.</p>
+</header>
+
+<!-- ── ВАРИАНТ 01: АНИМИРОВАННЫЙ СИМВОЛ ── -->
+<section class="logo-section">
+  <div class="section-head">
+    <span class="section-label">Вариант 01</span>
+    <h3 class="section-title">Анимированный символ</h3>
+    <p class="section-desc">Раскрывается при загрузке — точка, стебель, бутон. Для прелоадера, Telegram Mini App и приветственных экранов.</p>
+  </div>
+  <div class="variant-grid">
+    <div class="variant-card bg-milk">
+      <div class="preview-wrap">
+        <svg id="ra-milk" class="preview-rose" viewBox="0 0 44 58" fill="none" aria-hidden="true">
+          <path class="rp rp-s" d="M22 57 L22 34"/>
+          <path class="rp rp-l" d="M22 46 C15 41 12 33 15 27 C18 31 21 39 22 45"/>
+          <path class="rp rp-o" d="M22 33 C8 27 3 10 12 3 C16 0 20 6 21 16 C21.5 10 22 5 22 5 C22 5 22.5 10 23 16 C24 6 28 0 32 3 C41 10 36 27 22 33Z"/>
+          <path class="rp rp-m" d="M22 28 C14 23 11 12 16 6 C18 3 20 9 21 17 C21.5 11 22 7 22 7 C22 7 22.5 11 23 17 C24 9 26 3 28 6 C33 12 30 23 22 28Z"/>
+          <path class="rp rp-c" d="M22 22 C18 18 17 12 20 8 C21 6 21.5 10 22 15 C22.5 10 23 6 24 8 C27 12 26 18 22 22Z"/>
+        </svg>
+      </div>
+      <div class="card-bottom"><span class="bg-label">Молочный · #F6F3F1</span><button class="btn-lp" onclick="revive('ra-milk')">Повторить</button></div>
+    </div>
+    <div class="variant-card bg-beige">
+      <div class="preview-wrap">
+        <svg id="ra-beige" class="preview-rose" viewBox="0 0 44 58" fill="none" aria-hidden="true">
+          <path class="rp rp-s" d="M22 57 L22 34"/>
+          <path class="rp rp-l" d="M22 46 C15 41 12 33 15 27 C18 31 21 39 22 45"/>
+          <path class="rp rp-o" d="M22 33 C8 27 3 10 12 3 C16 0 20 6 21 16 C21.5 10 22 5 22 5 C22 5 22.5 10 23 16 C24 6 28 0 32 3 C41 10 36 27 22 33Z"/>
+          <path class="rp rp-m" d="M22 28 C14 23 11 12 16 6 C18 3 20 9 21 17 C21.5 11 22 7 22 7 C22 7 22.5 11 23 17 C24 9 26 3 28 6 C33 12 30 23 22 28Z"/>
+          <path class="rp rp-c" d="M22 22 C18 18 17 12 20 8 C21 6 21.5 10 22 15 C22.5 10 23 6 24 8 C27 12 26 18 22 22Z"/>
+        </svg>
+      </div>
+      <div class="card-bottom"><span class="bg-label">Тёплый беж · #E7DDD7</span><button class="btn-lp" onclick="revive('ra-beige')">Повторить</button></div>
+    </div>
+    <div class="variant-card bg-dark">
+      <div class="preview-wrap">
+        <svg id="ra-dark" class="preview-rose" viewBox="0 0 44 58" fill="none" aria-hidden="true">
+          <path class="rp rp-s" d="M22 57 L22 34"/>
+          <path class="rp rp-l" d="M22 46 C15 41 12 33 15 27 C18 31 21 39 22 45"/>
+          <path class="rp rp-o" d="M22 33 C8 27 3 10 12 3 C16 0 20 6 21 16 C21.5 10 22 5 22 5 C22 5 22.5 10 23 16 C24 6 28 0 32 3 C41 10 36 27 22 33Z"/>
+          <path class="rp rp-m" d="M22 28 C14 23 11 12 16 6 C18 3 20 9 21 17 C21.5 11 22 7 22 7 C22 7 22.5 11 23 17 C24 9 26 3 28 6 C33 12 30 23 22 28Z"/>
+          <path class="rp rp-c" d="M22 22 C18 18 17 12 20 8 C21 6 21.5 10 22 15 C22.5 10 23 6 24 8 C27 12 26 18 22 22Z"/>
+        </svg>
+      </div>
+      <div class="card-bottom"><span class="bg-label">Тёмный · #2E2E2E</span><button class="btn-lp" onclick="revive('ra-dark')">Повторить</button></div>
+    </div>
+  </div>
+  <div class="section-copy">
+    <button class="btn-copy-svg" onclick="copySvg('animated','cf-animated')">Скопировать SVG</button>
+    <span class="copy-feedback" id="cf-animated">Скопировано</span>
+  </div>
+</section>
+
+<!-- ── ВАРИАНТ 02: СТАТИЧНЫЙ СИМВОЛ ── -->
+<section class="logo-section">
+  <div class="section-head">
+    <span class="section-label">Вариант 02</span>
+    <h3 class="section-title">Статичный символ</h3>
+    <p class="section-desc">Полностью раскрытая роза без анимации. Для шапки сайта, визиток, Instagram-шаблонов и любых печатных носителей.</p>
+  </div>
+  <div class="variant-grid">
+    <div class="variant-card bg-milk">
+      <div class="preview-wrap"><svg class="preview-rose rose-static" viewBox="0 0 44 58" fill="none" aria-hidden="true"><path class="rp rp-s" d="M22 57 L22 34"/><path class="rp rp-l" d="M22 46 C15 41 12 33 15 27 C18 31 21 39 22 45"/><path class="rp rp-o" d="M22 33 C8 27 3 10 12 3 C16 0 20 6 21 16 C21.5 10 22 5 22 5 C22 5 22.5 10 23 16 C24 6 28 0 32 3 C41 10 36 27 22 33Z"/><path class="rp rp-m" d="M22 28 C14 23 11 12 16 6 C18 3 20 9 21 17 C21.5 11 22 7 22 7 C22 7 22.5 11 23 17 C24 9 26 3 28 6 C33 12 30 23 22 28Z"/><path class="rp rp-c" d="M22 22 C18 18 17 12 20 8 C21 6 21.5 10 22 15 C22.5 10 23 6 24 8 C27 12 26 18 22 22Z"/></svg></div>
+      <div class="card-bottom"><span class="bg-label">Молочный · #F6F3F1</span></div>
+    </div>
+    <div class="variant-card bg-beige">
+      <div class="preview-wrap"><svg class="preview-rose rose-static" viewBox="0 0 44 58" fill="none" aria-hidden="true"><path class="rp rp-s" d="M22 57 L22 34"/><path class="rp rp-l" d="M22 46 C15 41 12 33 15 27 C18 31 21 39 22 45"/><path class="rp rp-o" d="M22 33 C8 27 3 10 12 3 C16 0 20 6 21 16 C21.5 10 22 5 22 5 C22 5 22.5 10 23 16 C24 6 28 0 32 3 C41 10 36 27 22 33Z"/><path class="rp rp-m" d="M22 28 C14 23 11 12 16 6 C18 3 20 9 21 17 C21.5 11 22 7 22 7 C22 7 22.5 11 23 17 C24 9 26 3 28 6 C33 12 30 23 22 28Z"/><path class="rp rp-c" d="M22 22 C18 18 17 12 20 8 C21 6 21.5 10 22 15 C22.5 10 23 6 24 8 C27 12 26 18 22 22Z"/></svg></div>
+      <div class="card-bottom"><span class="bg-label">Тёплый беж · #E7DDD7</span></div>
+    </div>
+    <div class="variant-card bg-dark">
+      <div class="preview-wrap"><svg class="preview-rose rose-static" viewBox="0 0 44 58" fill="none" aria-hidden="true"><path class="rp rp-s" d="M22 57 L22 34"/><path class="rp rp-l" d="M22 46 C15 41 12 33 15 27 C18 31 21 39 22 45"/><path class="rp rp-o" d="M22 33 C8 27 3 10 12 3 C16 0 20 6 21 16 C21.5 10 22 5 22 5 C22 5 22.5 10 23 16 C24 6 28 0 32 3 C41 10 36 27 22 33Z"/><path class="rp rp-m" d="M22 28 C14 23 11 12 16 6 C18 3 20 9 21 17 C21.5 11 22 7 22 7 C22 7 22.5 11 23 17 C24 9 26 3 28 6 C33 12 30 23 22 28Z"/><path class="rp rp-c" d="M22 22 C18 18 17 12 20 8 C21 6 21.5 10 22 15 C22.5 10 23 6 24 8 C27 12 26 18 22 22Z"/></svg></div>
+      <div class="card-bottom"><span class="bg-label">Тёмный · #2E2E2E</span></div>
+    </div>
+  </div>
+  <div class="section-copy">
+    <button class="btn-copy-svg" onclick="copySvg('static','cf-static')">Скопировать SVG</button>
+    <span class="copy-feedback" id="cf-static">Скопировано</span>
+  </div>
+</section>
+
+<!-- ── ВАРИАНТ 03: ЛОГОТИП ЦЕЛИКОМ ── -->
+<section class="logo-section">
+  <div class="section-head">
+    <span class="section-label">Вариант 03</span>
+    <h3 class="section-title">Логотип целиком</h3>
+    <p class="section-desc">Символ и название рядом — как в шапке сайта. Для горизонтальных размещений: шапки, профили, документы, баннеры.</p>
+  </div>
+  <div class="variant-grid">
+    <div class="variant-card bg-milk">
+      <div class="preview-wrap"><div class="preview-logo"><svg class="preview-logo-mark rose-static" viewBox="0 0 44 58" fill="none" aria-hidden="true"><path class="rp rp-s" d="M22 57 L22 34"/><path class="rp rp-l" d="M22 46 C15 41 12 33 15 27 C18 31 21 39 22 45"/><path class="rp rp-o" d="M22 33 C8 27 3 10 12 3 C16 0 20 6 21 16 C21.5 10 22 5 22 5 C22 5 22.5 10 23 16 C24 6 28 0 32 3 C41 10 36 27 22 33Z"/><path class="rp rp-m" d="M22 28 C14 23 11 12 16 6 C18 3 20 9 21 17 C21.5 11 22 7 22 7 C22 7 22.5 11 23 17 C24 9 26 3 28 6 C33 12 30 23 22 28Z"/><path class="rp rp-c" d="M22 22 C18 18 17 12 20 8 C21 6 21.5 10 22 15 C22.5 10 23 6 24 8 C27 12 26 18 22 22Z"/></svg><div class="preview-logo-name"><span class="preview-logo-text">Rosalia LBD</span><span class="preview-logo-tagline">Архитектура натуральных ногтей</span></div></div></div>
+      <div class="card-bottom"><span class="bg-label">Молочный · #F6F3F1</span></div>
+    </div>
+    <div class="variant-card bg-beige">
+      <div class="preview-wrap"><div class="preview-logo"><svg class="preview-logo-mark rose-static" viewBox="0 0 44 58" fill="none" aria-hidden="true"><path class="rp rp-s" d="M22 57 L22 34"/><path class="rp rp-l" d="M22 46 C15 41 12 33 15 27 C18 31 21 39 22 45"/><path class="rp rp-o" d="M22 33 C8 27 3 10 12 3 C16 0 20 6 21 16 C21.5 10 22 5 22 5 C22 5 22.5 10 23 16 C24 6 28 0 32 3 C41 10 36 27 22 33Z"/><path class="rp rp-m" d="M22 28 C14 23 11 12 16 6 C18 3 20 9 21 17 C21.5 11 22 7 22 7 C22 7 22.5 11 23 17 C24 9 26 3 28 6 C33 12 30 23 22 28Z"/><path class="rp rp-c" d="M22 22 C18 18 17 12 20 8 C21 6 21.5 10 22 15 C22.5 10 23 6 24 8 C27 12 26 18 22 22Z"/></svg><div class="preview-logo-name"><span class="preview-logo-text">Rosalia LBD</span><span class="preview-logo-tagline">Архитектура натуральных ногтей</span></div></div></div>
+      <div class="card-bottom"><span class="bg-label">Тёплый беж · #E7DDD7</span></div>
+    </div>
+    <div class="variant-card bg-dark">
+      <div class="preview-wrap"><div class="preview-logo"><svg class="preview-logo-mark rose-static" viewBox="0 0 44 58" fill="none" aria-hidden="true"><path class="rp rp-s" d="M22 57 L22 34"/><path class="rp rp-l" d="M22 46 C15 41 12 33 15 27 C18 31 21 39 22 45"/><path class="rp rp-o" d="M22 33 C8 27 3 10 12 3 C16 0 20 6 21 16 C21.5 10 22 5 22 5 C22 5 22.5 10 23 16 C24 6 28 0 32 3 C41 10 36 27 22 33Z"/><path class="rp rp-m" d="M22 28 C14 23 11 12 16 6 C18 3 20 9 21 17 C21.5 11 22 7 22 7 C22 7 22.5 11 23 17 C24 9 26 3 28 6 C33 12 30 23 22 28Z"/><path class="rp rp-c" d="M22 22 C18 18 17 12 20 8 C21 6 21.5 10 22 15 C22.5 10 23 6 24 8 C27 12 26 18 22 22Z"/></svg><div class="preview-logo-name"><span class="preview-logo-text">Rosalia LBD</span><span class="preview-logo-tagline">Архитектура натуральных ногтей</span></div></div></div>
+      <div class="card-bottom"><span class="bg-label">Тёмный · #2E2E2E</span></div>
+    </div>
+  </div>
+  <div class="section-copy">
+    <button class="btn-copy-svg" onclick="copySvg('logo','cf-logo')">Скопировать SVG</button>
+    <span class="copy-feedback" id="cf-logo">Скопировано</span>
+  </div>
+</section>
+
+<!-- ── ИНСТРУКЦИЯ ── -->
+<section class="instructions">
+  <span class="instr-label">Как пользоваться файлом</span>
+  <ul class="instr-list">
+    <li>
+      <span class="instr-num">01</span>
+      <p class="instr-text"><strong>Нажмите «Скопировать SVG»</strong> под нужным вариантом — код символа окажется в буфере обмена. Вставьте его в любой HTML-файл, Figma или конструктор сайта.</p>
+    </li>
+    <li>
+      <span class="instr-num">02</span>
+      <p class="instr-text"><strong>Чтобы изменить размер</strong>, добавьте атрибут <span class="instr-code">width="60px"</span> к тегу <span class="instr-code">&lt;svg&gt;</span> — пропорции сохранятся автоматически.</p>
+    </li>
+    <li>
+      <span class="instr-num">03</span>
+      <p class="instr-text"><strong>На тёмном фоне</strong> используйте stroke <span class="instr-code">#CFA7A5</span> (пепельная роза), на светлом — <span class="instr-code">#B88F8E</span> (приглушённый розовый). Скопированный код уже содержит правильный цвет.</p>
+    </li>
+    <li>
+      <span class="instr-num">04</span>
+      <p class="instr-text"><strong>Анимация работает только в браузере.</strong> Для Figma, PDF и печатных материалов используйте статичную версию символа (Вариант 02).</p>
+    </li>
+  </ul>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <svg class="foot-rose rose-static" viewBox="0 0 44 58" fill="none" aria-hidden="true">
+    <path class="rp rp-s" d="M22 57 L22 34"/>
+    <path class="rp rp-l" d="M22 46 C15 41 12 33 15 27 C18 31 21 39 22 45"/>
+    <path class="rp rp-o" d="M22 33 C8 27 3 10 12 3 C16 0 20 6 21 16 C21.5 10 22 5 22 5 C22 5 22.5 10 23 16 C24 6 28 0 32 3 C41 10 36 27 22 33Z"/>
+    <path class="rp rp-m" d="M22 28 C14 23 11 12 16 6 C18 3 20 9 21 17 C21.5 11 22 7 22 7 C22 7 22.5 11 23 17 C24 9 26 3 28 6 C33 12 30 23 22 28Z"/>
+    <path class="rp rp-c" d="M22 22 C18 18 17 12 20 8 C21 6 21.5 10 22 15 C22.5 10 23 6 24 8 C27 12 26 18 22 22Z"/>
+  </svg>
+  <p class="foot-name">Rosalia LBD</p>
+  <p class="foot-tag">Фирменный стиль · Лого-пак</p>
+</footer>
+
+<script>
+/* Перезапуск анимации hero-розы */
+function reviveRose() {
+  const svg = document.getElementById('roseAnim');
+  const clone = svg.cloneNode(true);
+  clone.id = 'roseAnim';
+  svg.parentNode.replaceChild(clone, svg);
+}
+
+/* Перезапуск анимации в лого-паке */
+function revive(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const clone = el.cloneNode(true);
+  clone.id = el.id;
+  el.parentNode.replaceChild(clone, el);
+}
+
+/* SVG для копирования */
+const SVG = {
+  animated:
+`<svg viewBox="0 0 44 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .rp{fill:none;stroke:#B88F8E;stroke-linecap:round;stroke-linejoin:round}
+    .s{stroke-width:1.2;stroke-dasharray:60;stroke-dashoffset:60;animation:draw 1s .5s ease forwards}
+    .l{stroke-width:.9;stroke-dasharray:80;stroke-dashoffset:80;animation:draw 1s 1.3s ease forwards}
+    .o{stroke-width:1;stroke-dasharray:260;stroke-dashoffset:260;animation:draw 1.8s 2s ease forwards}
+    .m{stroke-width:.9;stroke-dasharray:180;stroke-dashoffset:180;animation:draw 1.4s 3.4s ease forwards}
+    .c{stroke-width:.8;stroke-dasharray:100;stroke-dashoffset:100;animation:draw 1s 4.4s ease forwards}
+    @keyframes draw{to{stroke-dashoffset:0}}
+  </style>
+  <path class="rp s" d="M22 57 L22 34"/>
+  <path class="rp l" d="M22 46 C15 41 12 33 15 27 C18 31 21 39 22 45"/>
+  <path class="rp o" d="M22 33 C8 27 3 10 12 3 C16 0 20 6 21 16 C21.5 10 22 5 22 5 C22 5 22.5 10 23 16 C24 6 28 0 32 3 C41 10 36 27 22 33Z"/>
+  <path class="rp m" d="M22 28 C14 23 11 12 16 6 C18 3 20 9 21 17 C21.5 11 22 7 22 7 C22 7 22.5 11 23 17 C24 9 26 3 28 6 C33 12 30 23 22 28Z"/>
+  <path class="rp c" d="M22 22 C18 18 17 12 20 8 C21 6 21.5 10 22 15 C22.5 10 23 6 24 8 C27 12 26 18 22 22Z"/>
+</svg>`,
+  static:
+`<svg viewBox="0 0 44 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path fill="none" stroke="#B88F8E" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" d="M22 57 L22 34"/>
+  <path fill="none" stroke="#B88F8E" stroke-width=".9" stroke-linecap="round" stroke-linejoin="round" d="M22 46 C15 41 12 33 15 27 C18 31 21 39 22 45"/>
+  <path fill="none" stroke="#B88F8E" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" d="M22 33 C8 27 3 10 12 3 C16 0 20 6 21 16 C21.5 10 22 5 22 5 C22 5 22.5 10 23 16 C24 6 28 0 32 3 C41 10 36 27 22 33Z"/>
+  <path fill="none" stroke="#B88F8E" stroke-width=".9" stroke-linecap="round" stroke-linejoin="round" d="M22 28 C14 23 11 12 16 6 C18 3 20 9 21 17 C21.5 11 22 7 22 7 C22 7 22.5 11 23 17 C24 9 26 3 28 6 C33 12 30 23 22 28Z"/>
+  <path fill="none" stroke="#B88F8E" stroke-width=".8" stroke-linecap="round" stroke-linejoin="round" d="M22 22 C18 18 17 12 20 8 C21 6 21.5 10 22 15 C22.5 10 23 6 24 8 C27 12 26 18 22 22Z"/>
+</svg>`,
+  logo:
+`<svg viewBox="0 0 215 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path fill="none" stroke="#B88F8E" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" d="M22 57 L22 34"/>
+  <path fill="none" stroke="#B88F8E" stroke-width=".9" stroke-linecap="round" stroke-linejoin="round" d="M22 46 C15 41 12 33 15 27 C18 31 21 39 22 45"/>
+  <path fill="none" stroke="#B88F8E" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" d="M22 33 C8 27 3 10 12 3 C16 0 20 6 21 16 C21.5 10 22 5 22 5 C22 5 22.5 10 23 16 C24 6 28 0 32 3 C41 10 36 27 22 33Z"/>
+  <path fill="none" stroke="#B88F8E" stroke-width=".9" stroke-linecap="round" stroke-linejoin="round" d="M22 28 C14 23 11 12 16 6 C18 3 20 9 21 17 C21.5 11 22 7 22 7 C22 7 22.5 11 23 17 C24 9 26 3 28 6 C33 12 30 23 22 28Z"/>
+  <path fill="none" stroke="#B88F8E" stroke-width=".8" stroke-linecap="round" stroke-linejoin="round" d="M22 22 C18 18 17 12 20 8 C21 6 21.5 10 22 15 C22.5 10 23 6 24 8 C27 12 26 18 22 22Z"/>
+  <text x="56" y="38" font-family="'Playfair Display', Georgia, serif" font-weight="400" font-size="20" letter-spacing="2" fill="#2E2E2E">Rosalia LBD</text>
+</svg>`
+};
+
+function copySvg(type, feedbackId) {
+  const svg = SVG[type];
+  if (!svg) return;
+  const show = () => {
+    const fb = document.getElementById(feedbackId);
+    if (!fb) return;
+    fb.classList.add('visible');
+    setTimeout(() => fb.classList.remove('visible'), 2200);
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(svg).then(show).catch(() => fallbackCopy(svg, show));
+  } else {
+    fallbackCopy(svg, show);
+  }
+}
+
+function fallbackCopy(text, callback) {
+  const ta = document.createElement('textarea');
+  ta.value = text; ta.style.cssText = 'position:fixed;opacity:0;pointer-events:none';
+  document.body.appendChild(ta); ta.select();
+  try { document.execCommand('copy'); callback(); } catch(e) {}
+  document.body.removeChild(ta);
+}
+
+/* Yaselda bar — локализация кнопки Назад */
+(function(){
+  var l = new URLSearchParams(location.search).get('lang') || localStorage.getItem('lang') || 'ru';
+  var t = {ru:'Назад', en:'Back', es:'Volver', it:'Indietro'};
+  document.getElementById('backText').textContent = t[l] || t.ru;
+})();
+</script>
+</body>
+</html>
