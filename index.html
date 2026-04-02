@@ -17,45 +17,51 @@
 <meta name="twitter:description" content="Websites, Apps & AI Agents for Europe & Latin America">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Inter:wght@300;400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 /* ─── RESET & BASE ─────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
   /* ── Backgrounds ── */
-  --bg:          #F7F8F5;   /* молочно-белое небо */
-  --bg2:         #EEF2ED;   /* бледный шалфей */
-  --bg3:         #EBF0F5;   /* стальная дымка, как вода на фото */
+  --bg:          #FDFCF0;   /* сливочный — вода под солнцем */
+  --bg2:         #F0EFE4;   /* чуть глубже */
+  --bg3:         #E8F4F5;   /* водяная дымка */
 
-  /* ── Accents (из фото) ── */
-  --steel:       #3D6480;   /* сталь-синий — вода, архитектура */
-  --steel-glow:  rgba(61,100,128,0.18);
-  --steel-soft:  rgba(61,100,128,0.08);
-  --sage:        #5A7A4E;   /* шалфей — трава */
-  --ochre:       #9B7A3A;   /* охра — осенняя листва */
+  /* ── Water palette ── */
+  --water:       #A2B9BC;   /* живая вода */
+  --water-light: #E0F2F1;   /* отблеск воды */
+  --forest:      #1A2421;   /* тёмный лес */
+  --cream:       #FDFCF0;   /* сливочное молоко */
+
+  /* ── Accents ── */
+  --steel:       #4A8FA8;   /* вода-синь */
+  --steel-glow:  rgba(162,185,188,0.22);
+  --steel-soft:  rgba(162,185,188,0.10);
+  --sage:        #6B9E8A;   /* морская трава */
+  --ochre:       #9B7A3A;   /* охра */
 
   /* ── Text ── */
-  --text:        #252830;   /* тёмный графит, не чёрный */
-  --text2:       rgba(37,40,48,0.56);
-  --text3:       rgba(37,40,48,0.34);
+  --text:        #1A2421;
+  --text2:       rgba(26,36,33,0.62);
+  --text3:       rgba(26,36,33,0.38);
 
   /* ── UI ── */
-  --border:      rgba(61,100,128,0.12);
-  --card-bg:     rgba(255,255,255,0.85);
+  --border:      rgba(162,185,188,0.22);
+  --card-bg:     rgba(255,255,255,0.88);
   --radius:      16px;
   --radius-sm:   10px;
 
   /* aliases used in JS */
-  --navy:        #5A7A4E;
-  --indigo:      #5A7A4E;
-  --indigo-glow: rgba(90,122,78,0.18);
-  --indigo-soft: rgba(90,122,78,0.08);
-  --green:       #5A7A4E;
+  --navy:        #4A8FA8;
+  --indigo:      #4A8FA8;
+  --indigo-glow: rgba(162,185,188,0.22);
+  --indigo-soft: rgba(162,185,188,0.10);
+  --green:       #4A8FA8;
   --orange:      #9B7A3A;
-  --violet:      #5A7A4E;
-  --violet-glow: rgba(90,122,78,0.18);
-  --violet-soft: rgba(90,122,78,0.08);
+  --violet:      #4A8FA8;
+  --violet-glow: rgba(162,185,188,0.22);
+  --violet-soft: rgba(162,185,188,0.10);
 }
 
 html { scroll-behavior: smooth; }
@@ -135,25 +141,49 @@ header.scrolled {
   border-bottom: 1px solid var(--border);
   box-shadow: 0 1px 20px rgba(27,42,74,0.07);
 }
-header:not(.scrolled) .logo { color: #fff; }
-header:not(.scrolled) .logo-cursor { color: rgba(255,255,255,0.75); }
-header:not(.scrolled) nav a { color: rgba(255,255,255,0.72); }
-header:not(.scrolled) nav a:hover { color: #fff; }
-header:not(.scrolled) nav a::after { background: #fff; }
-header:not(.scrolled) .lang-btn { color: rgba(255,255,255,0.58); }
-header:not(.scrolled) .lang-btn:hover { color: #fff; border-color: rgba(255,255,255,0.35); }
-header:not(.scrolled) .lang-btn.active { color: #fff; border-color: rgba(255,255,255,0.45); background: rgba(255,255,255,0.12); }
-header:not(.scrolled) .burger span { background: #fff; }
+header:not(.scrolled) .logo { color: var(--forest); }
+header:not(.scrolled) .logo-cursor { color: var(--water); }
+header:not(.scrolled) nav a { color: var(--text2); }
+header:not(.scrolled) nav a:hover { color: var(--forest); }
+header:not(.scrolled) nav a::after { background: var(--water); }
+header:not(.scrolled) .lang-btn { color: var(--text2); }
+header:not(.scrolled) .lang-btn:hover { color: var(--forest); border-color: var(--border); }
+header:not(.scrolled) .lang-btn.active { color: var(--steel); border-color: rgba(162,185,188,0.45); background: var(--steel-soft); }
+header:not(.scrolled) .burger span { background: var(--forest); }
 
 .logo {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 1rem;
-  color: var(--text);
-  display: flex; align-items: center; gap: 0.4rem;
+  display: flex; align-items: baseline; gap: 0.3rem;
+  text-decoration: none;
 }
-.logo-cursor {
-  color: var(--indigo);
-  animation: blink 1s step-end infinite;
+.logo-yaselda {
+  font-family: 'Alex Brush', cursive;
+  font-size: 1.7rem;
+  line-height: 1;
+  background: linear-gradient(90deg,
+    var(--forest) 0%,
+    var(--steel) 40%,
+    var(--water) 60%,
+    var(--forest) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: riverFill 4s linear infinite;
+}
+.logo-studio {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--water);
+  align-self: flex-end;
+  margin-bottom: 0.28rem;
+}
+@keyframes riverFill {
+  from { background-position: right center; }
+  to   { background-position: left center; }
 }
 @keyframes blink { 50% { opacity: 0; } }
 
@@ -193,9 +223,9 @@ nav a:hover::after { transform: scaleX(1); }
 }
 .lang-btn:hover { color: var(--text); border-color: var(--border); }
 .lang-btn.active {
-  color: var(--indigo);
-  border-color: rgba(90,122,78,0.38);
-  background: var(--indigo-soft);
+  color: var(--steel);
+  border-color: rgba(162,185,188,0.45);
+  background: var(--steel-soft);
 }
 
 .burger {
@@ -254,8 +284,8 @@ section { position: relative; padding: 6rem 2rem; }
   display: inline-block;
   width: 7px;
   height: 7px;
-  background: var(--sage);
-  opacity: 0.72;
+  background: var(--water);
+  opacity: 0.85;
   flex-shrink: 0;
 }
 
@@ -266,8 +296,8 @@ body { animation: page-in 0.5s ease both; }
 /* ─── CUSTOM SCROLLBAR ──────────────────────────────────────── */
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: rgba(90,122,78,0.35); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(90,122,78,0.65); }
+::-webkit-scrollbar-thumb { background: rgba(162,185,188,0.45); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(74,143,168,0.65); }
 
 /* scroll reveal */
 .reveal {
@@ -301,32 +331,45 @@ body { animation: page-in 0.5s ease both; }
 }
 .section-title em { transition-delay: 0.12s; }
 
-/* ─── HERO ─────────────────────────────────────────────────── */
-@keyframes hero-drift {
-  0%,100% { background-position: 20% 40%, 80% 70%, center; }
-  50%      { background-position: 28% 52%, 72% 42%, center; }
+/* ─── WATER BLOBS ──────────────────────────────────────────── */
+.water-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
 }
+.water-blob-1 {
+  width: 42vw; height: 42vw;
+  background: radial-gradient(circle, rgba(162,185,188,0.45) 0%, transparent 70%);
+  top: -12%; left: -8%;
+  animation: drift 18s ease-in-out infinite alternate;
+}
+.water-blob-2 {
+  width: 32vw; height: 32vw;
+  background: radial-gradient(circle, rgba(224,242,241,0.55) 0%, transparent 70%);
+  bottom: 5%; right: 8%;
+  animation: drift 24s ease-in-out infinite alternate-reverse;
+}
+.water-blob-3 {
+  width: 22vw; height: 22vw;
+  background: radial-gradient(circle, rgba(74,143,168,0.20) 0%, transparent 70%);
+  top: 40%; left: 55%;
+  animation: drift 30s ease-in-out infinite alternate;
+}
+@keyframes drift {
+  from { transform: translate(0, 0); }
+  to   { transform: translate(80px, 40px); }
+}
+
+/* ─── HERO ─────────────────────────────────────────────────── */
 #hero {
   min-height: 100vh;
   display: flex; align-items: center;
   padding-top: 80px;
-  background:
-    radial-gradient(ellipse 60% 50% at 20% 40%, rgba(255,255,255,0.08) 0%, transparent 100%),
-    radial-gradient(ellipse 50% 60% at 80% 70%, rgba(0,0,0,0.07) 0%, transparent 100%),
-    #5A7A4E;
-  background-size: 100% 100%, 100% 100%, auto;
-  animation: hero-drift 30s ease-in-out infinite;
-}
-#hero::after {
-  content: '';
-  position: absolute;
-  right: 0; top: 0; bottom: 0;
-  width: 38.2%;
-  background: linear-gradient(to left,
-    rgba(255,255,255,0.06) 0%,
-    transparent 100%);
-  pointer-events: none;
-  z-index: 0;
+  background: var(--cream);
+  position: relative;
+  overflow: hidden;
 }
 #hero .container {
   display: grid;
@@ -345,7 +388,7 @@ body { animation: page-in 0.5s ease both; }
   line-height: 0.95;
   letter-spacing: -0.04em;
   margin-bottom: 1.25rem;
-  background: linear-gradient(135deg, #ffffff 50%, rgba(255,255,255,0.82));
+  background: linear-gradient(135deg, var(--forest) 40%, var(--steel) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -359,21 +402,21 @@ body { animation: page-in 0.5s ease both; }
 .hero-typewriter-row {
   font-family: 'JetBrains Mono', monospace;
   font-size: clamp(1rem, 2.5vw, 1.35rem);
-  color: rgba(255,255,255,0.85);
+  color: var(--text2);
   margin-bottom: 1.5rem;
   display: flex; align-items: center; gap: 0.5rem;
   animation: name-in 1s 0.2s cubic-bezier(0.16,1,0.3,1) both;
 }
-.tw-prefix { color: rgba(255,255,255,0.65); }
-.tw-word { color: #fff; }
+.tw-prefix { color: var(--text3); }
+.tw-word { color: var(--steel); }
 .tw-cursor {
-  color: rgba(255,255,255,0.8);
+  color: var(--water);
   animation: blink 0.9s step-end infinite;
 }
 
 .hero-subtitle {
   font-size: clamp(1rem, 2vw, 1.15rem);
-  color: rgba(255,255,255,0.72);
+  color: var(--text2);
   line-height: 1.65;
   max-width: 560px;
   margin-bottom: 2rem;
@@ -388,11 +431,11 @@ body { animation: page-in 0.5s ease both; }
 .market-pill {
   padding: 0.3rem 0.75rem;
   border-radius: 50px;
-  border: 1px solid rgba(255,255,255,0.28);
-  background: rgba(255,255,255,0.14);
+  border: 1px solid rgba(162,185,188,0.38);
+  background: rgba(162,185,188,0.12);
   font-size: 0.82rem;
-  color: rgba(255,255,255,0.88);
-  backdrop-filter: blur(8px);
+  color: var(--text2);
+  backdrop-filter: blur(4px);
 }
 
 .hero-cta {
@@ -404,15 +447,15 @@ body { animation: page-in 0.5s ease both; }
 .hero-availability {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.78rem;
-  color: rgba(255,255,255,0.52);
+  color: var(--text3);
   animation: name-in 1s 0.65s cubic-bezier(0.16,1,0.3,1) both;
   display: flex; align-items: center; gap: 0.5rem;
 }
 .avail-dot {
   width: 7px; height: 7px;
   border-radius: 50%;
-  background: #C8EDBB;
-  box-shadow: 0 0 8px rgba(200,237,187,0.65);
+  background: var(--water);
+  box-shadow: 0 0 8px rgba(162,185,188,0.75);
   animation: pulse 2s ease-in-out infinite;
 }
 @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
@@ -424,9 +467,9 @@ body { animation: page-in 0.5s ease both; }
   width: clamp(160px,20vw,260px);
   aspect-ratio: 1 / 1.618;
   border-radius: 24px;
-  background: rgba(90,122,78,0.30);
-  border: 2px solid rgba(255,255,255,0.38);
-  box-shadow: 0 8px 40px rgba(0,0,0,0.22), 0 2px 8px rgba(0,0,0,0.12);
+  background: var(--water-light);
+  border: 2px solid rgba(162,185,188,0.45);
+  box-shadow: 0 8px 40px rgba(26,36,33,0.14), 0 2px 8px rgba(26,36,33,0.08);
   overflow: hidden;
   position: relative;
 }
@@ -440,7 +483,7 @@ body { animation: page-in 0.5s ease both; }
   content: '';
   position: absolute; inset: 0;
   border-radius: 22px;
-  border: 1px solid rgba(255,255,255,0.18);
+  border: 1px solid rgba(162,185,188,0.25);
   pointer-events: none;
 }
 
@@ -448,18 +491,18 @@ body { animation: page-in 0.5s ease both; }
 .btn-primary {
   display: inline-flex; align-items: center; gap: 0.5rem;
   padding: 0.75rem 1.75rem;
-  background: #fff;
-  color: #3D5C30;
+  background: var(--steel);
+  color: #fff;
   border-radius: var(--radius-sm);
   font-weight: 600;
   font-size: 0.95rem;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.20);
+  box-shadow: 0 4px 20px rgba(74,143,168,0.32);
   transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s;
 }
 .btn-primary:hover {
   transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 8px 30px rgba(0,0,0,0.25);
-  background: #f0f5ee;
+  box-shadow: 0 8px 30px rgba(74,143,168,0.45);
+  background: #3a7a94;
 }
 .btn-primary:active { transform: scale(0.97); }
 
@@ -467,16 +510,17 @@ body { animation: page-in 0.5s ease both; }
   display: inline-flex; align-items: center; gap: 0.5rem;
   padding: 0.75rem 1.75rem;
   background: transparent;
-  color: rgba(255,255,255,0.92);
-  border: 1.5px solid rgba(255,255,255,0.45);
+  color: var(--text2);
+  border: 1.5px solid rgba(162,185,188,0.55);
   border-radius: var(--radius-sm);
   font-weight: 600;
   font-size: 0.95rem;
   transition: background 0.2s, border-color 0.2s, transform 0.2s cubic-bezier(0.34,1.56,0.64,1);
 }
 .btn-secondary:hover {
-  background: rgba(255,255,255,0.12);
-  border-color: rgba(255,255,255,0.70);
+  background: rgba(162,185,188,0.14);
+  border-color: var(--water);
+  color: var(--forest);
   transform: translateY(-2px);
 }
 .btn-secondary:active { transform: scale(0.97); }
@@ -1373,7 +1417,8 @@ footer {
 <!-- ─── HEADER ─────────────────────────────── -->
 <header id="header">
   <a href="#hero" class="logo">
-    VP<span class="logo-cursor">_</span>
+    <span class="logo-yaselda">Yaselda</span>
+    <span class="logo-studio">Studio</span>
   </a>
 
   <nav>
@@ -1412,6 +1457,9 @@ footer {
 
 <!-- ─── HERO ───────────────────────────────── -->
 <section id="hero">
+  <div class="water-blob water-blob-1"></div>
+  <div class="water-blob water-blob-2"></div>
+  <div class="water-blob water-blob-3"></div>
   <div class="container">
     <div class="hero-content">
       <h1 class="hero-name"><span data-i18n="hero.name1">Виктория</span><br><span data-i18n="hero.name2">Пархотик</span></h1>
@@ -1742,7 +1790,10 @@ footer {
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
-      <div class="logo">VP<span class="logo-cursor">_</span></div>
+      <div class="logo">
+        <span class="logo-yaselda">Yaselda</span>
+        <span class="logo-studio">Studio</span>
+      </div>
       <p class="footer-motto" data-i18n="footer.motto">"Разный мир — разные решения"</p>
     </div>
     <div>
