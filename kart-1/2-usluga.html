@@ -1088,31 +1088,10 @@ function selectCancelDate(date) {
 // ================================================================
 // TIME SLOTS
 // ================================================================
-var slotsCache = {};
-
-async function loadTimeSlots(date) {
-  var wrap  = document.getElementById('timeslots-wrap');
-  var grid  = document.getElementById('ts-grid');
-  var label = document.getElementById('ts-label');
+function loadTimeSlots(date) {
+  var wrap = document.getElementById('timeslots-wrap');
   wrap.classList.remove('hidden');
-
-  var key = dateStr(date);
-  if (slotsCache[key]) {
-    S.bookedSlots = slotsCache[key];
-    renderTimeSlots();
-    return;
-  }
-
-  grid.innerHTML = '<p class="text-muted text-small">Загрузка слотов…</p>';
-
-  try {
-    S.bookedSlots = await sbGet('bookings',
-      'select=booking_time,total_duration&booking_date=eq.' + key);
-    slotsCache[key] = S.bookedSlots;
-  } catch(e) {
-    S.bookedSlots = [];
-  }
-
+  S.bookedSlots = [];
   renderTimeSlots();
 }
 
