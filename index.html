@@ -693,6 +693,53 @@ body { animation: page-in 0.5s ease both; }
 }
 .client-demo:hover { background: rgba(90,122,78,0.08); }
 
+.cl1-motto {
+  font-style: italic;
+  font-size: 0.92rem;
+  color: var(--steel);
+  margin: 0.85rem 0 0.9rem;
+}
+.cl1-comps {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.cl1-comps li {
+  display: grid;
+  grid-template-columns: 6.2rem 1fr;
+  font-size: 0.85rem;
+  gap: 0.4rem;
+  align-items: baseline;
+}
+.cl1-comp-num {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--text);
+  font-size: 0.78rem;
+  white-space: nowrap;
+}
+.cl1-comp-num::before {
+  content: '·';
+  color: var(--steel);
+  margin-right: 0.35rem;
+  font-style: normal;
+}
+.cl1-comp-name {
+  color: var(--text2);
+}
+.client-demo-story {
+  display: inline-block;
+  font-size: 0.82rem;
+  color: var(--sage);
+  border: 1.5px solid var(--sage);
+  padding: 0.35rem 0.9rem;
+  border-radius: 50px;
+  transition: background 0.2s;
+}
+.client-demo-story:hover { background: rgba(90,122,78,0.08); }
+
 .market-tag {
   display: inline-block;
   font-size: 0.72rem;
@@ -1457,16 +1504,19 @@ footer {
       <div class="client-card reveal reveal-delay-1">
         <div class="client-icon">🌱</div>
         <span class="market-tag" data-i18n="cl1.market">🇧🇾 РУ рынок</span>
-        <div class="client-title" data-i18n="cl1.title">Первый цифровой шаг</div>
-        <div class="client-who" data-i18n="cl1.who">Фрилансеры · Мастера · Малый бизнес</div>
-        <ul class="client-list">
-          <li data-i18n="cl1.li1">Лендинг или сайт-визитка</li>
-          <li data-i18n="cl1.li2">Цифровая визитка с аватаром</li>
-          <li data-i18n="cl1.li3">Форма записи + Telegram-бот</li>
+        <div class="client-title" data-i18n="cl1.title">Rosalia LBD</div>
+        <div class="client-who" data-i18n="cl1.who">Мастер маникюра · Минск</div>
+        <p class="cl1-motto" data-i18n="cl1.motto">От образа — к работающей системе</p>
+        <ul class="cl1-comps">
+          <li><span class="cl1-comp-num" data-i18n="cl1.sn1">Компонент 1</span><span class="cl1-comp-name" data-i18n="cl1.cn1">Образ</span></li>
+          <li><span class="cl1-comp-num" data-i18n="cl1.sn2">Компонент 2</span><span class="cl1-comp-name" data-i18n="cl1.cn2">Инструмент</span></li>
+          <li><span class="cl1-comp-num" data-i18n="cl1.sn3">Компонент 3</span><span class="cl1-comp-name" data-i18n="cl1.cn3">Идентичность</span></li>
+          <li><span class="cl1-comp-num" data-i18n="cl1.sn4">Компонент 4</span><span class="cl1-comp-name" data-i18n="cl1.cn4">Автоматизация</span></li>
+          <li><span class="cl1-comp-num" data-i18n="cl1.sn5">Компонент 5</span><span class="cl1-comp-name" data-i18n="cl1.cn5">Платформа</span></li>
         </ul>
-        <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1.1rem;">
-          <a href="kart-1/1-roza-zhivaya.html" target="_blank" class="client-demo" data-i18n="cl1.demo1">Живая Роза →</a>
-          <a href="kart-1/2-usluga.html" target="_blank" class="client-demo" data-i18n="cl1.demo2">Форма записи →</a>
+        <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1.2rem;">
+          <a href="kart-1/0-story.html" target="_blank" class="client-demo-story" data-i18n="cl1.story">История проекта →</a>
+          <a href="kart-1/5-roza-preview.html" target="_blank" class="client-demo" data-i18n="cl1.live">Превью сайта →</a>
         </div>
       </div>
       <div class="client-card reveal reveal-delay-2">
@@ -1730,9 +1780,14 @@ const i18n = {
     'about.langSub':'Research, texts and communication in your language',
     'about.marketSub':'Europe · Belarus & CIS · Latin America',
     'about.motto':'"Different world — different solutions"',
-    'cl1.title':'First Digital Step','cl1.who':'Freelancers · Masters · Small business',
-    'cl1.li1':'Landing page or website','cl1.li2':'Digital business card','cl1.li3':'Booking form + Telegram bot',
-    'cl1.market':'🇧🇾 RU market','cl1.demo1':'Live Rose →','cl1.demo2':'Booking Form →',
+    'cl1.title':'Rosalia LBD','cl1.who':'Nail technician · Minsk',
+    'cl1.motto':'From image — to a working system',
+    'cl1.sn1':'Component 1','cl1.cn1':'Image',
+    'cl1.sn2':'Component 2','cl1.cn2':'Tool',
+    'cl1.sn3':'Component 3','cl1.cn3':'Identity',
+    'cl1.sn4':'Component 4','cl1.cn4':'Automation',
+    'cl1.sn5':'Component 5','cl1.cn5':'Platform',
+    'cl1.market':'🇧🇾 RU market','cl1.story':'Project story →','cl1.live':'Site preview →',
     'cl2.title':'Digital System','cl2.who':'Companies with growth ambitions',
     'cl2.li1':'Website + process automation','cl2.li2':'AI agents and neuroagent systems','cl2.li3':'Human–machine integration',
     'cl2.market':'🌐 International',
@@ -1795,9 +1850,14 @@ const i18n = {
     'about.langSub':'Investigación, textos y comunicación en tu idioma',
     'about.marketSub':'Europa · Belarús & CEI · América Latina',
     'about.motto':'"Un mundo diferente — una solución diferente"',
-    'cl1.title':'Primer paso digital','cl1.who':'Freelancers · Maestros · Pequeño negocio',
-    'cl1.li1':'Landing page o sitio web','cl1.li2':'Tarjeta de visita digital','cl1.li3':'Formulario de reserva + bot de Telegram',
-    'cl1.market':'🇧🇾 Mercado RU','cl1.demo1':'Rosa Viva →','cl1.demo2':'Formulario de reserva →',
+    'cl1.title':'Rosalia LBD','cl1.who':'Manicurista · Minsk',
+    'cl1.motto':'De la imagen — a un sistema que funciona',
+    'cl1.sn1':'Componente 1','cl1.cn1':'Imagen',
+    'cl1.sn2':'Componente 2','cl1.cn2':'Herramienta',
+    'cl1.sn3':'Componente 3','cl1.cn3':'Identidad',
+    'cl1.sn4':'Componente 4','cl1.cn4':'Automatización',
+    'cl1.sn5':'Componente 5','cl1.cn5':'Plataforma',
+    'cl1.market':'🇧🇾 Mercado RU','cl1.story':'Historia del proyecto →','cl1.live':'Vista previa →',
     'cl2.title':'Sistema digital','cl2.who':'Empresas con ambición de crecimiento',
     'cl2.li1':'Sitio web + automatización de procesos','cl2.li2':'Agentes IA y sistemas de neuroagentes','cl2.li3':'Integración persona–máquina',
     'cl2.market':'🌐 Internacional',
@@ -1860,9 +1920,14 @@ const i18n = {
     'about.langSub':'Ricerche, testi e comunicazione nella tua lingua',
     'about.marketSub':'Europa · Belarus & CSI · America Latina',
     'about.motto':'"Un mondo diverso — una soluzione diversa"',
-    'cl1.title':'Primo passo digitale','cl1.who':'Freelancer · Professionisti · Piccole imprese',
-    'cl1.li1':'Landing page o sito web','cl1.li2':'Biglietto da visita digitale','cl1.li3':'Modulo di prenotazione + bot Telegram',
-    'cl1.market':'🇧🇾 Mercato RU','cl1.demo1':'Rosa Viva →','cl1.demo2':'Modulo prenotazione →',
+    'cl1.title':'Rosalia LBD','cl1.who':'Tecnica unghie · Minsk',
+    'cl1.motto':'Dall\'immagine — a un sistema funzionante',
+    'cl1.sn1':'Componente 1','cl1.cn1':'Immagine',
+    'cl1.sn2':'Componente 2','cl1.cn2':'Strumento',
+    'cl1.sn3':'Componente 3','cl1.cn3':'Identità',
+    'cl1.sn4':'Componente 4','cl1.cn4':'Automazione',
+    'cl1.sn5':'Componente 5','cl1.cn5':'Piattaforma',
+    'cl1.market':'🇧🇾 Mercato RU','cl1.story':'Storia del progetto →','cl1.live':'Anteprima sito →',
     'cl2.title':'Sistema digitale','cl2.who':'Aziende con ambizioni di crescita',
     'cl2.li1':'Sito web + automazione dei processi','cl2.li2':'Agenti IA e sistemi di neuroagenti','cl2.li3':'Integrazione persona–macchina',
     'cl2.market':'🌐 Internazionale',
@@ -1925,9 +1990,14 @@ const i18n = {
     'about.langSub':'Исследования, тексты и коммуникация на вашем языке',
     'about.marketSub':'Беларусь и СНГ · Европа · Латинская Америка',
     'about.motto':'"Разный мир — разные решения"',
-    'cl1.title':'Первый цифровой шаг','cl1.who':'Фрилансеры · Мастера · Малый бизнес',
-    'cl1.li1':'Лендинг или сайт-визитка','cl1.li2':'Цифровая визитка с аватаром','cl1.li3':'Форма записи + Telegram-бот',
-    'cl1.market':'🇧🇾 РУ рынок','cl1.demo1':'Живая Роза →','cl1.demo2':'Форма записи →',
+    'cl1.title':'Rosalia LBD','cl1.who':'Мастер маникюра · Минск',
+    'cl1.motto':'От образа — к работающей системе',
+    'cl1.sn1':'Компонент 1','cl1.cn1':'Образ',
+    'cl1.sn2':'Компонент 2','cl1.cn2':'Инструмент',
+    'cl1.sn3':'Компонент 3','cl1.cn3':'Идентичность',
+    'cl1.sn4':'Компонент 4','cl1.cn4':'Автоматизация',
+    'cl1.sn5':'Компонент 5','cl1.cn5':'Платформа',
+    'cl1.market':'🇧🇾 РУ рынок','cl1.story':'История проекта →','cl1.live':'Превью сайта →',
     'cl2.title':'Цифровая система','cl2.who':'Компании с амбициями роста',
     'cl2.li1':'Сайт + автоматизация процессов','cl2.li2':'ИИ-агенты и системы нейроагентов','cl2.li3':'Связки человек–машина',
     'cl2.market':'🌐 Международный',
