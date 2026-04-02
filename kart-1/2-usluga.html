@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rosalia Nail Studio — Запись на приём</title>
-  <meta name="description" content="Запись на маникюр онлайн. Rosalia Nail Studio — профессиональный маникюр и уход за ногтями. Пн–Пт, 10:00–18:00.">
+  <title>Rosalia LBD — Запись на приём</title>
+  <meta name="description" content="Запись на маникюр онлайн. Rosalia LBD — профессиональный маникюр и уход за ногтями. Пн–Пт, 10:00–18:00.">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Nunito+Sans:wght@300;400;600;700&display=swap');
 
@@ -598,7 +598,7 @@
 ============================================================ -->
 <header class="hero">
   <span class="hero__sparkle">✦</span>
-  <h1 class="hero__title">Rosalia Nail Studio</h1>
+  <h1 class="hero__title">Rosalia LBD</h1>
   <p class="hero__subtitle">Профессиональный маникюр и уход за ногтями.<br>Запишитесь онлайн — быстро и удобно.</p>
   <p class="hero__meta">📍 Пн–Пт, 10:00–18:00</p>
 </header>
@@ -1088,16 +1088,27 @@ function selectCancelDate(date) {
 // ================================================================
 // TIME SLOTS
 // ================================================================
+var slotsCache = {};
+
 async function loadTimeSlots(date) {
   var wrap  = document.getElementById('timeslots-wrap');
   var grid  = document.getElementById('ts-grid');
   var label = document.getElementById('ts-label');
   wrap.classList.remove('hidden');
+
+  var key = dateStr(date);
+  if (slotsCache[key]) {
+    S.bookedSlots = slotsCache[key];
+    renderTimeSlots();
+    return;
+  }
+
   grid.innerHTML = '<p class="text-muted text-small">Загрузка слотов…</p>';
 
   try {
     S.bookedSlots = await sbGet('bookings',
-      'select=booking_time,total_duration&booking_date=eq.' + dateStr(date));
+      'select=booking_time,total_duration&booking_date=eq.' + key);
+    slotsCache[key] = S.bookedSlots;
   } catch(e) {
     S.bookedSlots = [];
   }
