@@ -150,32 +150,36 @@ header:not(.scrolled) .burger span { background: var(--forest); }
 .logo {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.55rem;
   text-decoration: none;
 }
 .logo-text {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.05rem;
+  align-items: baseline;
+  gap: 0.55rem;
 }
 .logo-yaselda {
   font-family: 'Cinzel', serif;
-  font-weight: 400;
-  font-size: 1.1rem;
+  font-weight: 500;
+  font-size: 1.15rem;
   letter-spacing: 0.14em;
   color: var(--river);
   line-height: 1;
 }
 .logo-studio {
   font-family: 'Cinzel', serif;
-  font-weight: 400;
-  font-size: 0.55rem;
-  letter-spacing: 0.38em;
+  font-weight: 500;
+  font-size: 0.7rem;
+  letter-spacing: 0.32em;
   text-transform: uppercase;
   color: var(--river);
-  opacity: 0.8;
   line-height: 1;
+}
+/* Header emblem */
+.header-emblem {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
 }
 @keyframes blink { 50% { opacity: 0; } }
 
@@ -1299,12 +1303,6 @@ footer {
   color: var(--river);
   align-self: auto;
   margin-bottom: 0;
-}
-/* Header emblem */
-.header-emblem {
-  width: 32px;
-  height: 32px;
-  flex-shrink: 0;
 }
 .footer-tagline {
   font-family: 'Cinzel', serif;
