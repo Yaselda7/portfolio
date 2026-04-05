@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Victoria Parkhotik — Websites, Apps & AI Agents</title>
-<meta name="description" content="Digital products for European and Latin American businesses — in your language, with your market in mind.">
-<meta property="og:title" content="Victoria Parkhotik — Digital Builder">
+<title>Victoria Parkhotik вЂ” Websites, Apps & AI Agents</title>
+<meta name="description" content="Digital products for European and Latin American businesses вЂ” in your language, with your market in mind.">
+<meta property="og:title" content="Victoria Parkhotik вЂ” Digital Builder">
 <meta property="og:description" content="Websites, Apps & AI Agents for Europe & Latin America">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://portfolio-five-pearl-56.vercel.app/">
@@ -13,55 +13,64 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Victoria Parkhotik — Digital Builder">
+<meta name="twitter:title" content="Victoria Parkhotik вЂ” Digital Builder">
 <meta name="twitter:description" content="Websites, Apps & AI Agents for Europe & Latin America">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-/* ─── RESET & BASE ─────────────────────────────────────────── */
+/* в”Ђв”Ђв”Ђ RESET & BASE в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  /* ── Backgrounds ── */
-  --bg:          #FDFCF0;   /* сливочный — вода под солнцем */
-  --bg2:         #F0EFE4;   /* чуть глубже */
-  --bg3:         #E8F4F5;   /* водяная дымка */
+  /* в”Ђв”Ђ Backgrounds в”Ђв”Ђ */
+  --bg:          #FDFCF0;
+  --bg2:         #F0EFE4;
+  --bg3:         #E8F4F5;
 
-  /* ── Water palette ── */
-  --water:       #A2B9BC;   /* живая вода */
-  --water-light: #E0F2F1;   /* отблеск воды */
-  --forest:      #1A2421;   /* тёмный лес */
-  --cream:       #FDFCF0;   /* сливочное молоко */
+  /* в”Ђв”Ђ Water palette в”Ђв”Ђ */
+  --water:       #A2B9BC;
+  --water-light: #E0F2F1;
+  --forest:      #1A2421;
+  --cream:       #FDFCF0;
 
-  /* ── Accents ── */
-  --steel:       #4A8FA8;   /* вода-синь */
-  --steel-glow:  rgba(162,185,188,0.22);
-  --steel-soft:  rgba(162,185,188,0.10);
-  --sage:        #6B9E8A;   /* морская трава */
-  --ochre:       #9B7A3A;   /* охра */
+  /* в”Ђв”Ђ Accents в”Ђв”Ђ */
+  --river:       #2878B5;   /* СЂРµС‡РЅРѕР№ СЃРёРЅРёР№ */
+  --river-glow:  rgba(40,120,181,0.18);
+  --river-soft:  rgba(40,120,181,0.08);
+  --sage:        #5A7A4E;   /* С€Р°Р»С„РµР№ */
+  --ochre:       #9B7A3A;
 
-  /* ── Text ── */
+  /* в”Ђв”Ђ Text в”Ђв”Ђ */
   --text:        #1A2421;
   --text2:       rgba(26,36,33,0.62);
   --text3:       rgba(26,36,33,0.38);
 
-  /* ── UI ── */
-  --border:      rgba(162,185,188,0.22);
+  /* в”Ђв”Ђ UI в”Ђв”Ђ */
+  --border:      rgba(40,120,181,0.14);
   --card-bg:     rgba(255,255,255,0.88);
   --radius:      16px;
   --radius-sm:   10px;
 
-  /* aliases used in JS */
-  --navy:        #4A8FA8;
-  --indigo:      #4A8FA8;
-  --indigo-glow: rgba(162,185,188,0.22);
-  --indigo-soft: rgba(162,185,188,0.10);
-  --green:       #4A8FA8;
+  /* в”Ђв”Ђ Typography (golden ratio: Г—1.618) в”Ђв”Ђ */
+  --fs-1:  3.7rem;    /* РРјСЏ вЂ” СЃР°РјС‹Р№ РєСЂСѓРїРЅС‹Р№ */
+  --fs-2:  2.3rem;    /* РќР°Р·РІР°РЅРёСЏ СЂР°Р·РґРµР»РѕРІ */
+  --fs-3:  1.4rem;    /* Р—Р°РіРѕР»РѕРІРєРё РєР°СЂС‚РѕС‡РµРє, РїРµСЂРµС‡РёСЃР»РµРЅРёСЏ */
+  --fs-4:  0.875rem;  /* РЎР°РјС‹Р№ РјРµР»РєРёР№ вЂ” РїРѕРґРїРёСЃРё, motto */
+
+  /* aliases */
+  --steel:       #2878B5;
+  --steel-glow:  rgba(40,120,181,0.18);
+  --steel-soft:  rgba(40,120,181,0.08);
+  --navy:        #2878B5;
+  --indigo:      #2878B5;
+  --indigo-glow: rgba(40,120,181,0.18);
+  --indigo-soft: rgba(40,120,181,0.08);
+  --green:       #2878B5;
   --orange:      #9B7A3A;
-  --violet:      #4A8FA8;
-  --violet-glow: rgba(162,185,188,0.22);
-  --violet-soft: rgba(162,185,188,0.10);
+  --violet:      #2878B5;
+  --violet-glow: rgba(40,120,181,0.18);
+  --violet-soft: rgba(40,120,181,0.08);
 }
 
 html { scroll-behavior: smooth; }
@@ -81,7 +90,7 @@ img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
 button { font-family: inherit; cursor: pointer; border: none; }
 
-/* ─── CUSTOM CURSOR ────────────────────────────────────────── */
+/* в”Ђв”Ђв”Ђ CUSTOM CURSOR в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ */
 .cursor {
   position: fixed;
   width: 12px; height: 12px;
@@ -104,7 +113,7 @@ button { font-family: inherit; cursor: pointer; border: none; }
 }
 @media (hover: none) { .cursor, .cursor-ring { display: none; } }
 
-/* ─── SPOTLIGHT ────────────────────────────────────────────── */
+/* в”Ђв”Ђв”Ђ SPOTLIGHT в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ */
 .spotlight {
   position: fixed; inset: 0;
   background: radial-gradient(
@@ -116,7 +125,7 @@ button { font-family: inherit; cursor: pointer; border: none; }
 }
 @media (hover: none) { .spotlight { display: none; } }
 
-/* ─── GRID BG ──────────────────────────────────────────────── */
+/* в”Ђв”Ђв”Ђ GRID BG в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ */
 .grid-bg {
   background-image:
     linear-gradient(rgba(27,42,74,0.05) 1px, transparent 1px),
@@ -124,7 +133,7 @@ button { font-family: inherit; cursor: pointer; border: none; }
   background-size: 40px 40px;
 }
 
-/* ─── HEADER ───────────────────────────────────────────────── */
+/* в”Ђв”Ђв”Ђ HEADER в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ */
 header {
   position: fixed; top: 0; left: 0; right: 0;
   z-index: 100;
@@ -148,7 +157,7 @@ header:not(.scrolled) nav a:hover { color: var(--forest); }
 header:not(.scrolled) nav a::after { background: var(--water); }
 header:not(.scrolled) .lang-btn { color: var(--text2); }
 header:not(.scrolled) .lang-btn:hover { color: var(--forest); border-color: var(--border); }
-header:not(.scrolled) .lang-btn.active { color: var(--steel); border-color: rgba(162,185,188,0.45); background: var(--steel-soft); }
+header:not(.scrolled) .lang-btn.active { color: var(--steel); border-color: rgba(40,120,181,0.45); background: var(--steel-soft); }
 header:not(.scrolled) .burger span { background: var(--forest); }
 
 .logo {
@@ -157,15 +166,15 @@ header:not(.scrolled) .burger span { background: var(--forest); }
 }
 .logo-yaselda {
   font-family: 'Cinzel', serif;
-  font-weight: 500;
-  font-size: 1.1rem;
+  font-weight: 400;
+  font-size: var(--fs-3);
   letter-spacing: 0.12em;
   color: var(--steel);
 }
 .logo-studio {
   font-family: 'Cinzel', serif;
   font-weight: 400;
-  font-size: 0.65rem;
+  font-size: var(--fs-4);
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--water);
@@ -178,7 +187,7 @@ nav {
   display: flex; align-items: center; gap: 2rem;
 }
 nav a {
-  font-size: 1.05rem;
+  font-size: var(--fs-3);
   color: var(--text2);
   transition: color 0.2s;
   position: relative;
@@ -202,7 +211,7 @@ nav a:hover::after { transform: scaleX(1); }
   padding: 0.25rem 0.6rem;
   border-radius: 6px;
   font-family: 'Cormorant Garamond', serif;
-  font-size: 0.75rem;
+  font-size: var(--fs-4);
   background: transparent;
   color: var(--text2);
   border: 1px solid transparent;
@@ -211,7 +220,7 @@ nav a:hover::after { transform: scaleX(1); }
 .lang-btn:hover { color: var(--text); border-color: var(--border); }
 .lang-btn.active {
   color: var(--steel);
-  border-color: rgba(162,185,188,0.45);
+  border-color: rgba(40,120,181,0.45);
   background: var(--steel-soft);
 }
 
@@ -230,7 +239,7 @@ nav a:hover::after { transform: scaleX(1); }
   transition: all 0.3s;
 }
 
-/* ─── MOBILE NAV ───────────────────────────────────────────── */
+/* в”Ђв”Ђв”Ђ MOBILE NAV в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ */
 .mobile-nav {
   position: fixed; inset: 0;
   background: rgba(250,250,247,0.98);
@@ -244,21 +253,21 @@ nav a:hover::after { transform: scaleX(1); }
 }
 .mobile-nav.open { opacity: 1; pointer-events: all; }
 .mobile-nav a {
-  font-size: 1.75rem;
-  font-weight: 700;
+  font-size: var(--fs-2);
+  font-weight: 400;
   color: var(--text2);
   transition: color 0.2s;
 }
 .mobile-nav a:hover { color: var(--text); }
 .mobile-nav .lang-switcher { margin-top: 1rem; }
 
-/* ─── SECTION SHARED ───────────────────────────────────────── */
+/* в”Ђв”Ђв”Ђ SECTION SHARED в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ */
 section { position: relative; padding: 6rem 2rem; }
 .container { max-width: 1100px; margin: 0 auto; }
 
 .section-label {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 0.78rem;
+  font-size: var(--fs-4);
   color: var(--green);
   margin-bottom: 1rem;
   letter-spacing: 0.05em;
@@ -276,14 +285,14 @@ section { position: relative; padding: 6rem 2rem; }
   flex-shrink: 0;
 }
 
-/* ─── PAGE ENTRANCE ─────────────────────────────────────────── */
+/* в”Ђв”Ђв”Ђ PAGE ENTRANCE в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ */
 @keyframes page-in { from { opacity: 0; } to { opacity: 1; } }
 body { animation: page-in 0.5s ease both; }
 
-/* ─── CUSTOM SCROLLBAR ──────────────────────────────────────── */
+/* в”Ђв”Ђв”Ђ CUSTOM SCROLLBAR в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ */
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: rgba(162,185,188,0.45); border-radius: 3px; }
+::-webkit-scrollbar-thumb { background: rgba(40,120,181,0.45); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: rgba(74,143,168,0.65); }
 
 /* scroll reveal */
@@ -299,7 +308,7 @@ body { animation: page-in 0.5s ease both; }
 .reveal-delay-4 { transition-delay: 0.40s; }
 .reveal-delay-5 { transition-delay: 0.50s; }
 
-/* ─── CLIP-PATH TITLE REVEAL ────────────────────────────────── */
+/* в”Ђв”Ђв”Ђ CLIP-PATH TITLE REVEAL в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ */
 .section-title {
   overflow: hidden;
 }
@@ -318,7 +327,7 @@ body { animation: page-in 0.5s ease both; }
 }
 .section-title em { transition-delay: 0.12s; }
 
-/* ─── WATER BLOBS ──────────────────────────────────────────── */
+/* в”Ђв”Ђв”Ђ WATER BLOBS в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ */
 .water-blob {
   position: absolute;
   border-radius: 50%;
@@ -328,7 +337,7 @@ body { animation: page-in 0.5s ease both; }
 }
 .water-blob-1 {
   width: 42vw; height: 42vw;
-  background: radial-gradient(circle, rgba(162,185,188,0.45) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(40,120,181,0.45) 0%, transparent 70%);
   top: -12%; left: -8%;
   animation: drift 18s ease-in-out infinite alternate;
 }
@@ -349,7 +358,7 @@ body { animation: page-in 0.5s ease both; }
   to   { transform: translate(80px, 40px); }
 }
 
-/* ─── HERO ─────────────────────────────────────────────────── */
+/* в”Ђв”Ђв”Ђ HERO в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ */
 #hero {
   min-height: 100vh;
   display: flex; align-items: center;
@@ -371,10 +380,10 @@ body { animation: page-in 0.5s ease both; }
 
 .hero-name {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1.8rem, 4vw, 2.8rem);
-  font-weight: 300;
-  line-height: 1.2;
-  letter-spacing: 0.04em;
+  font-size: clamp(2.5rem, 5.5vw, var(--fs-1));
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: 0.03em;
   margin-bottom: 1.25rem;
   color: var(--forest);
   animation: name-in 1s cubic-bezier(0.16,1,0.3,1) both;
@@ -386,7 +395,7 @@ body { animation: page-in 0.5s ease both; }
 
 .hero-typewriter-row {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+  font-size: var(--fs-3);
   color: var(--text2);
   margin-bottom: 1.5rem;
   display: flex; align-items: center; gap: 0.5rem;
@@ -400,7 +409,7 @@ body { animation: page-in 0.5s ease both; }
 }
 
 .hero-subtitle {
-  font-size: clamp(1.15rem, 2vw, 1.35rem);
+  font-size: var(--fs-3);
   color: var(--text2);
   line-height: 1.65;
   max-width: 560px;
@@ -416,9 +425,9 @@ body { animation: page-in 0.5s ease both; }
 .market-pill {
   padding: 0.3rem 0.75rem;
   border-radius: 50px;
-  border: 1px solid rgba(162,185,188,0.38);
-  background: rgba(162,185,188,0.12);
-  font-size: 0.82rem;
+  border: 1px solid rgba(40,120,181,0.38);
+  background: rgba(40,120,181,0.12);
+  font-size: var(--fs-4);
   color: var(--text2);
   backdrop-filter: blur(4px);
 }
@@ -431,7 +440,7 @@ body { animation: page-in 0.5s ease both; }
 
 .hero-availability {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 0.78rem;
+  font-size: var(--fs-4);
   color: var(--text3);
   animation: name-in 1s 0.65s cubic-bezier(0.16,1,0.3,1) both;
   display: flex; align-items: center; gap: 0.5rem;
@@ -440,7 +449,7 @@ body { animation: page-in 0.5s ease both; }
   width: 7px; height: 7px;
   border-radius: 50%;
   background: var(--water);
-  box-shadow: 0 0 8px rgba(162,185,188,0.75);
+  box-shadow: 0 0 8px rgba(40,120,181,0.75);
   animation: pulse 2s ease-in-out infinite;
 }
 @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
@@ -453,7 +462,7 @@ body { animation: page-in 0.5s ease both; }
   aspect-ratio: 1 / 1.618;
   border-radius: 24px;
   background: var(--water-light);
-  border: 2px solid rgba(162,185,188,0.45);
+  border: 2px solid rgba(40,120,181,0.45);
   box-shadow: 0 8px 40px rgba(26,36,33,0.14), 0 2px 8px rgba(26,36,33,0.08);
   overflow: hidden;
   position: relative;
@@ -468,11 +477,11 @@ body { animation: page-in 0.5s ease both; }
   content: '';
   position: absolute; inset: 0;
   border-radius: 22px;
-  border: 1px solid rgba(162,185,188,0.25);
+  border: 1px solid rgba(40,120,181,0.25);
   pointer-events: none;
 }
 
-/* ─── BUTTONS ──────────────────────────────────────────────── */
+/* в”Ђв”Ђв”Ђ BUTTONS в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ */
 .btn-primary {
   display: inline-flex; align-items: center; gap: 0.5rem;
   padding: 0.75rem 1.75rem;
@@ -480,7 +489,7 @@ body { animation: page-in 0.5s ease both; }
   color: #fff;
   border-radius: var(--radius-sm);
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.1rem;
+  font-size: var(--fs-3);
   letter-spacing: 0.04em;
   box-shadow: 0 4px 20px rgba(90,122,78,0.28);
   transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s;
@@ -500,7 +509,7 @@ body { animation: page-in 0.5s ease both; }
   border: 1.5px solid rgba(90,122,78,0.45);
   border-radius: var(--radius-sm);
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.1rem;
+  font-size: var(--fs-3);
   letter-spacing: 0.04em;
   transition: background 0.2s, border-color 0.2s, transform 0.2s cubic-bezier(0.34,1.56,0.64,1);
 }
@@ -511,7 +520,7 @@ body { animation: page-in 0.5s ease both; }
 }
 .btn-secondary:active { transform: scale(0.97); }
 
-/* ─── TRUST BAR ────────────────────────────────────────────── */
+/* в”Ђв”Ђв”Ђ TRUST BAR в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ */
 #trust {
   padding: 1.25rem 0;
   border-top: 1px solid var(--border);
@@ -527,14 +536,14 @@ body { animation: page-in 0.5s ease both; }
 }
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 .trust-item {
-  font-size: 0.875rem;
+  font-size: var(--fs-4);
   color: var(--text2);
   display: flex; align-items: center; gap: 0.4rem;
   flex-shrink: 0;
 }
-.trust-item span { font-size: 1rem; }
+.trust-item span { font-size: var(--fs-3); }
 
-/* ─── ABOUT ────────────────────────────────────────────────── */
+/* в”Ђв”Ђв”Ђ ABOUT в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ */
 #about .about-grid {
   display: grid;
   grid-template-columns: 1fr 1.618fr;
@@ -586,14 +595,14 @@ body { animation: page-in 0.5s ease both; }
 }
 
 .section-title {
-  font-size: clamp(1.8rem, 4vw, 3rem);
-  font-weight: 800;
+  font-size: var(--fs-2);
+  font-weight: 400;
   line-height: 1.1;
   letter-spacing: -0.03em;
   margin-bottom: 1.25rem;
 }
 .section-title em {
-  font-style: italic;
+  font-style: normal;
   color: var(--violet);
 }
 
@@ -630,19 +639,19 @@ body { animation: page-in 0.5s ease both; }
 .bento-card.tools { grid-column: span 3; }
 .bento-card-label {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 0.7rem;
+  font-size: var(--fs-4);
   color: var(--green);
   margin-bottom: 0.5rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }
 .bento-card-title {
-  font-weight: 700;
-  font-size: 0.95rem;
+  font-weight: 400;
+  font-size: var(--fs-3);
   margin-bottom: 0.4rem;
 }
 .bento-card-sub {
-  font-size: 0.8rem;
+  font-size: var(--fs-4);
   color: var(--text2);
   line-height: 1.5;
 }
@@ -652,7 +661,7 @@ body { animation: page-in 0.5s ease both; }
 }
 .flag-tag {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 0.75rem;
+  font-size: var(--fs-4);
   padding: 0.2rem 0.6rem;
   border-radius: 6px;
   background: var(--steel-soft);
@@ -660,14 +669,14 @@ body { animation: page-in 0.5s ease both; }
   color: var(--steel);
 }
 .bento-motto {
-  font-size: clamp(0.85rem, 1.5vw, 1.1rem);
-  font-style: italic;
-  font-weight: 700;
+  font-size: var(--fs-3);
+  font-style: normal;
+  font-weight: 400;
   color: var(--text);
   line-height: 1.3;
 }
 
-/* ─── CLIENT CARDS ──────────────────────────────────────────── */
+/* в”Ђв”Ђв”Ђ CLIENT CARDS в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ */
 .clients-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -689,23 +698,23 @@ body { animation: page-in 0.5s ease both; }
   transform: translateY(-3px);
 }
 .client-icon { font-size: 2rem; margin-bottom: 0.75rem; }
-.client-title { font-weight: 700; font-size: 1.05rem; margin-bottom: 0.35rem; }
+.client-title { font-weight: 400; font-size: var(--fs-3); margin-bottom: 0.35rem; }
 .client-who {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 0.75rem;
+  font-size: var(--fs-4);
   color: var(--sage);
   margin-bottom: 1rem;
   opacity: 0.85;
 }
 .client-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.45rem; }
 .client-list li {
-  font-size: 0.88rem;
+  font-size: var(--fs-4);
   color: var(--text2);
   padding-left: 1.1rem;
   position: relative;
 }
 .client-list li::before {
-  content: '→';
+  content: 'в†’';
   position: absolute;
   left: 0;
   color: var(--sage);
@@ -714,7 +723,7 @@ body { animation: page-in 0.5s ease both; }
 .client-demo {
   display: inline-block;
   margin-top: 1.1rem;
-  font-size: 0.82rem;
+  font-size: var(--fs-4);
   color: var(--sage);
   border: 1px solid rgba(90,122,78,0.32);
   padding: 0.35rem 0.85rem;
@@ -724,8 +733,8 @@ body { animation: page-in 0.5s ease both; }
 .client-demo:hover { background: rgba(90,122,78,0.08); }
 
 .cl1-motto {
-  font-style: italic;
-  font-size: 0.92rem;
+  font-style: normal;
+  font-size: var(--fs-4);
   color: var(--steel);
   margin: 0.85rem 0 0.9rem;
 }
@@ -740,18 +749,18 @@ body { animation: page-in 0.5s ease both; }
 .cl1-comps li {
   display: grid;
   grid-template-columns: 6.2rem 1fr;
-  font-size: 0.85rem;
+  font-size: var(--fs-4);
   gap: 0.4rem;
   align-items: baseline;
 }
 .cl1-comp-num {
   font-family: 'Cormorant Garamond', serif;
   color: var(--text);
-  font-size: 0.78rem;
+  font-size: var(--fs-4);
   white-space: nowrap;
 }
 .cl1-comp-num::before {
-  content: '·';
+  content: 'В·';
   color: var(--steel);
   margin-right: 0.35rem;
   font-style: normal;
@@ -761,7 +770,7 @@ body { animation: page-in 0.5s ease both; }
 }
 .client-demo-story {
   display: inline-block;
-  font-size: 0.82rem;
+  font-size: var(--fs-4);
   color: var(--sage);
   border: 1.5px solid var(--sage);
   padding: 0.35rem 0.9rem;
@@ -786,7 +795,7 @@ body { animation: page-in 0.5s ease both; }
 
 .market-tag {
   display: inline-block;
-  font-size: 0.72rem;
+  font-size: var(--fs-4);
   font-family: 'Cormorant Garamond', serif;
   color: var(--text2);
   background: var(--bg2);
@@ -796,7 +805,7 @@ body { animation: page-in 0.5s ease both; }
   margin-bottom: 0.6rem;
 }
 
-/* ─── SERVICES ─────────────────────────────────────────────── */
+/* в”Ђв”Ђв”Ђ SERVICES в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ */
 #services { background: var(--bg2); }
 
 .services-grid {
@@ -840,13 +849,13 @@ body { animation: page-in 0.5s ease both; }
 
 .service-icon { font-size: 1.75rem; margin-bottom: 0.5rem; }
 .service-name {
-  font-weight: 700;
-  font-size: 1rem;
+  font-weight: 400;
+  font-size: var(--fs-3);
   margin-bottom: 0.3rem;
 }
-.service-desc { font-size: 0.82rem; color: var(--text2); line-height: 1.5; }
-.service-card.ai-card .service-name { font-size: 1.35rem; }
-.service-card.ai-card .service-desc { font-size: 0.9rem; }
+.service-desc { font-size: var(--fs-4); color: var(--text2); line-height: 1.5; }
+.service-card.ai-card .service-name { font-size: var(--fs-3); }
+.service-card.ai-card .service-desc { font-size: var(--fs-4); }
 
 .service-pulse {
   position: absolute; bottom: 1.5rem; right: 1.5rem;
@@ -862,12 +871,12 @@ body { animation: page-in 0.5s ease both; }
 .services-note {
   text-align: center;
   margin-top: 2rem;
-  font-size: 0.875rem;
+  font-size: var(--fs-4);
   color: var(--text3);
-  font-style: italic;
+  font-style: normal;
 }
 
-/* ─── PROJECTS ─────────────────────────────────────────────── */
+/* в”Ђв”Ђв”Ђ PROJECTS в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ */
 .projects-scroll {
   display: flex;
   gap: 1.5rem;
@@ -907,16 +916,16 @@ body { animation: page-in 0.5s ease both; }
 .project-body { padding: 1.5rem; }
 .project-cat {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 0.72rem;
+  font-size: var(--fs-4);
   color: var(--green);
   margin-bottom: 0.5rem;
   text-transform: uppercase;
 }
-.project-title { font-weight: 700; font-size: 1.1rem; margin-bottom: 0.75rem; }
+.project-title { font-weight: 400; font-size: var(--fs-3); margin-bottom: 0.75rem; }
 .project-row {
   display: flex; gap: 0.4rem;
   margin-bottom: 0.35rem;
-  font-size: 0.82rem;
+  font-size: var(--fs-4);
 }
 .project-row-label { color: var(--text3); flex-shrink: 0; }
 .project-row-val { color: var(--text2); }
@@ -926,7 +935,7 @@ body { animation: page-in 0.5s ease both; }
   margin-top: 1.25rem;
 }
 .project-link {
-  font-size: 0.82rem;
+  font-size: var(--fs-4);
   color: var(--indigo);
   border: 1px solid rgba(90,122,78,0.32);
   padding: 0.35rem 0.85rem;
@@ -946,10 +955,10 @@ body { animation: page-in 0.5s ease both; }
 .projects-coming p {
   color: var(--text2);
   margin-bottom: 1.5rem;
-  font-size: 1.05rem;
+  font-size: var(--fs-3);
 }
 
-/* ─── PROCESS ──────────────────────────────────────────────── */
+/* в”Ђв”Ђв”Ђ PROCESS в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ */
 #process { background: var(--bg2); }
 
 .process-timeline {
@@ -994,18 +1003,18 @@ body { animation: page-in 0.5s ease both; }
 
 .step-num {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 0.75rem;
+  font-size: var(--fs-4);
   color: var(--indigo);
   margin-bottom: 0.3rem;
 }
 .step-title {
-  font-weight: 700;
-  font-size: 1.05rem;
+  font-weight: 400;
+  font-size: var(--fs-3);
   margin-bottom: 0.35rem;
 }
-.step-desc { color: var(--text2); font-size: 0.9rem; line-height: 1.65; }
+.step-desc { color: var(--text2); font-size: var(--fs-4); line-height: 1.65; }
 
-/* ─── MARKETS ──────────────────────────────────────────────── */
+/* в”Ђв”Ђв”Ђ MARKETS в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ */
 .markets-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1025,9 +1034,9 @@ body { animation: page-in 0.5s ease both; }
   transform: translateY(-3px);
 }
 
-/* ── Market card themes ── */
+/* в”Ђв”Ђ Market card themes в”Ђв”Ђ */
 
-/* Belarus — мягкая вертикальная тональность, левый акцент */
+/* Belarus вЂ” РјСЏРіРєР°СЏ РІРµСЂС‚РёРєР°Р»СЊРЅР°СЏ С‚РѕРЅР°Р»СЊРЅРѕСЃС‚СЊ, Р»РµРІС‹Р№ Р°РєС†РµРЅС‚ */
 .market-card.mc-by {
   background:
     linear-gradient(160deg, rgba(90,122,78,0.07) 0%, rgba(90,122,78,0.02) 100%),
@@ -1035,7 +1044,7 @@ body { animation: page-in 0.5s ease both; }
   border-left: 3px solid rgba(90,122,78,0.45);
 }
 
-/* Europe — тонкие диагональные штрихи (как техническая бумага) */
+/* Europe вЂ” С‚РѕРЅРєРёРµ РґРёР°РіРѕРЅР°Р»СЊРЅС‹Рµ С€С‚СЂРёС…Рё (РєР°Рє С‚РµС…РЅРёС‡РµСЃРєР°СЏ Р±СѓРјР°РіР°) */
 .market-card.mc-eu {
   background:
     repeating-linear-gradient(
@@ -1047,7 +1056,7 @@ body { animation: page-in 0.5s ease both; }
   border-left: 3px solid rgba(90,122,78,0.60);
 }
 
-/* Latin America — тёплое радиальное свечение, нотка охры */
+/* Latin America вЂ” С‚С‘РїР»РѕРµ СЂР°РґРёР°Р»СЊРЅРѕРµ СЃРІРµС‡РµРЅРёРµ, РЅРѕС‚РєР° РѕС…СЂС‹ */
 .market-card.mc-latam {
   background:
     radial-gradient(ellipse at 25% 55%, rgba(155,122,58,0.09) 0%, transparent 60%),
@@ -1056,7 +1065,7 @@ body { animation: page-in 0.5s ease both; }
   border-left: 3px solid rgba(155,122,58,0.50);
 }
 
-/* International — горизонтальные линейки (официально, как документ) */
+/* International вЂ” РіРѕСЂРёР·РѕРЅС‚Р°Р»СЊРЅС‹Рµ Р»РёРЅРµР№РєРё (РѕС„РёС†РёР°Р»СЊРЅРѕ, РєР°Рє РґРѕРєСѓРјРµРЅС‚) */
 .market-card.mc-intl {
   background:
     repeating-linear-gradient(
@@ -1068,7 +1077,7 @@ body { animation: page-in 0.5s ease both; }
   border-left: 3px solid rgba(61,92,48,0.55);
 }
 
-/* Remote — широкий, горизонтальный градиент слева направо */
+/* Remote вЂ” С€РёСЂРѕРєРёР№, РіРѕСЂРёР·РѕРЅС‚Р°Р»СЊРЅС‹Р№ РіСЂР°РґРёРµРЅС‚ СЃР»РµРІР° РЅР°РїСЂР°РІРѕ */
 .market-card.mc-remote {
   background:
     linear-gradient(90deg,
@@ -1080,24 +1089,24 @@ body { animation: page-in 0.5s ease both; }
   border-left: none;
 }
 .market-card-title {
-  font-weight: 700;
-  font-size: 1.1rem;
+  font-weight: 400;
+  font-size: var(--fs-3);
   margin-bottom: 0.75rem;
   display: flex; align-items: center; gap: 0.5rem;
 }
-.market-flags { margin-bottom: 1rem; font-size: 1.3rem; letter-spacing: 0.15em; }
-.market-desc { color: var(--text2); font-size: 0.875rem; line-height: 1.7; }
+.market-flags { margin-bottom: 1rem; font-size: var(--fs-3); letter-spacing: 0.15em; }
+.market-desc { color: var(--text2); font-size: var(--fs-4); line-height: 1.7; }
 
 .markets-footer {
   text-align: center;
   margin-top: 2rem;
-  font-size: 0.875rem;
+  font-size: var(--fs-4);
   color: var(--text3);
   font-family: 'Cormorant Garamond', serif;
   letter-spacing: 0.03em;
 }
 
-/* ─── WHY ME ───────────────────────────────────────────────── */
+/* в”Ђв”Ђв”Ђ WHY ME в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ */
 #why { background: var(--bg2); }
 
 .why-grid {
@@ -1119,10 +1128,10 @@ body { animation: page-in 0.5s ease both; }
   transform: translateY(-4px);
 }
 .why-icon { font-size: 2rem; margin-bottom: 1rem; }
-.why-title { font-weight: 700; font-size: 1.05rem; margin-bottom: 0.65rem; }
-.why-text { color: var(--text2); font-size: 0.875rem; line-height: 1.7; }
+.why-title { font-weight: 400; font-size: var(--fs-3); margin-bottom: 0.65rem; }
+.why-text { color: var(--text2); font-size: var(--fs-4); line-height: 1.7; }
 
-/* ─── CONTACT ──────────────────────────────────────────────── */
+/* в”Ђв”Ђв”Ђ CONTACT в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ */
 #contact {
   background:
     radial-gradient(ellipse at 50% 0%, rgba(90,122,78,0.13) 0%, transparent 65%),
@@ -1140,7 +1149,7 @@ body { animation: page-in 0.5s ease both; }
 .contact-sub {
   color: var(--text2);
   margin-bottom: 2.5rem;
-  font-size: 0.975rem;
+  font-size: var(--fs-3);
 }
 
 .contact-form {
@@ -1151,7 +1160,7 @@ body { animation: page-in 0.5s ease both; }
 }
 .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
 .form-label {
-  font-size: 0.95rem;
+  font-size: var(--fs-3);
   color: var(--text2);
   font-family: 'Cormorant Garamond', serif;
 }
@@ -1163,7 +1172,7 @@ body { animation: page-in 0.5s ease both; }
   padding: 0.75rem 1rem;
   color: var(--text);
   font-family: 'Cormorant Garamond', serif;
-  font-size: 0.95rem;
+  font-size: var(--fs-3);
   transition: border-color 0.2s, box-shadow 0.2s;
   outline: none;
   -webkit-appearance: none;
@@ -1189,7 +1198,7 @@ body { animation: page-in 0.5s ease both; }
 }
 .channel-option-label {
   min-width: 90px;
-  font-size: 0.9rem;
+  font-size: var(--fs-4);
   color: var(--text2);
   cursor: pointer;
 }
@@ -1208,8 +1217,8 @@ body { animation: page-in 0.5s ease both; }
 .form-submit {
   width: 100%;
   padding: 0.875rem;
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: var(--fs-3);
+  font-weight: 400;
   margin-top: 0.5rem;
 }
 
@@ -1229,7 +1238,7 @@ body { animation: page-in 0.5s ease both; }
   display: flex; align-items: center; gap: 1rem;
   margin: 1.75rem 0;
   color: var(--text3);
-  font-size: 0.8rem;
+  font-size: var(--fs-4);
 }
 .contact-divider::before, .contact-divider::after {
   content: '';
@@ -1247,7 +1256,7 @@ body { animation: page-in 0.5s ease both; }
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   background: var(--card-bg);
-  font-size: 0.875rem;
+  font-size: var(--fs-4);
   color: var(--text2);
   transition: border-color 0.2s, color 0.2s, transform 0.2s;
 }
@@ -1256,9 +1265,9 @@ body { animation: page-in 0.5s ease both; }
   color: var(--sage);
   transform: translateY(-2px);
 }
-.contact-link-icon { font-size: 1.1rem; }
+.contact-link-icon { font-size: var(--fs-3); }
 
-/* ─── FOOTER ───────────────────────────────────────────────── */
+/* в”Ђв”Ђв”Ђ FOOTER в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ */
 footer {
   border-top: 1px solid var(--border);
   padding: 3rem 2rem;
@@ -1271,16 +1280,16 @@ footer {
   grid-template-columns: 1.5fr 1fr 1fr;
   gap: 3rem;
 }
-.footer-brand .logo { margin-bottom: 0.75rem; font-size: 1.1rem; }
+.footer-brand .logo { margin-bottom: 0.75rem; font-size: var(--fs-3); }
 .footer-motto {
   color: var(--text2);
-  font-size: 0.875rem;
-  font-style: italic;
+  font-size: var(--fs-4);
+  font-style: normal;
   line-height: 1.5;
 }
 .footer-col-title {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 0.72rem;
+  font-size: var(--fs-4);
   color: var(--text3);
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -1288,7 +1297,7 @@ footer {
 }
 .footer-links { display: flex; flex-direction: column; gap: 0.6rem; }
 .footer-links a {
-  font-size: 0.875rem;
+  font-size: var(--fs-4);
   color: var(--text2);
   transition: color 0.2s;
 }
@@ -1304,10 +1313,10 @@ footer {
   flex-wrap: wrap;
   gap: 0.75rem;
 }
-.footer-copy { font-size: 0.8rem; color: var(--text3); }
+.footer-copy { font-size: var(--fs-4); color: var(--text3); }
 .footer-lang { display: flex; gap: 0.5rem; }
 
-/* ─── RESPONSIVE ───────────────────────────────────────────── */
+/* в”Ђв”Ђв”Ђ RESPONSIVE в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ */
 @media (max-width: 1024px) {
   .services-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: auto; }
   .service-card.ai-card { grid-column: span 2; }
@@ -1345,7 +1354,7 @@ footer {
   .hero-name { font-size: clamp(2.4rem, 12vw, 3.5rem); }
 }
 
-/* ─── BACK TO TOP ───────────────────────────────────────────── */
+/* в”Ђв”Ђв”Ђ BACK TO TOP в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ */
 .back-to-top {
   position: fixed;
   bottom: 2rem; right: 2rem;
@@ -1353,7 +1362,7 @@ footer {
   border-radius: 50%;
   background: var(--sage);
   color: #fff;
-  font-size: 1.1rem;
+  font-size: var(--fs-3);
   line-height: 1;
   display: flex; align-items: center; justify-content: center;
   box-shadow: 0 4px 18px rgba(90,122,78,0.35);
@@ -1366,7 +1375,7 @@ footer {
 .back-to-top.visible { opacity: 1; pointer-events: all; transform: translateY(0); }
 .back-to-top:hover { background: #3D5C30; transform: translateY(-3px); }
 
-/* ─── FORM SUCCESS ANIMATION ────────────────────────────────── */
+/* в”Ђв”Ђв”Ђ FORM SUCCESS ANIMATION в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ */
 @keyframes success-in {
   from { opacity: 0; transform: scale(0.90) translateY(16px); }
   to   { opacity: 1; transform: none; }
@@ -1385,7 +1394,7 @@ footer {
   display: block;
 }
 
-/* ─── MOBILE FIX: Remote card full-width ────────────────────── */
+/* в”Ђв”Ђв”Ђ MOBILE FIX: Remote card full-width в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ */
 @media (max-width: 768px) {
   .mc-remote { grid-column: span 1 !important; }
 }
@@ -1400,7 +1409,7 @@ footer {
 <!-- Spotlight -->
 <div class="spotlight" id="spotlight"></div>
 
-<!-- ─── HEADER ─────────────────────────────── -->
+<!-- в”Ђв”Ђв”Ђ HEADER в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ -->
 <header id="header">
   <a href="#hero" class="logo">
     <span class="logo-yaselda">Yaselda</span>
@@ -1408,15 +1417,15 @@ footer {
   </a>
 
   <nav>
-    <a href="#about"   data-i18n="nav.about">Обо мне</a>
-    <a href="#process" data-i18n="nav.process">Процесс</a>
-    <a href="#why"     data-i18n="nav.why">Почему я</a>
-    <a href="#contact" data-i18n="nav.contact">Контакты</a>
+    <a href="#about"   data-i18n="nav.about">РћР±Рѕ РјРЅРµ</a>
+    <a href="#process" data-i18n="nav.process">РџСЂРѕС†РµСЃСЃ</a>
+    <a href="#why"     data-i18n="nav.why">РџРѕС‡РµРјСѓ СЏ</a>
+    <a href="#contact" data-i18n="nav.contact">РљРѕРЅС‚Р°РєС‚С‹</a>
   </nav>
 
   <div style="display:flex;align-items:center;gap:1rem;">
     <div class="lang-switcher" id="langSwitcher">
-      <button class="lang-btn active" data-lang="ru">РУ</button>
+      <button class="lang-btn active" data-lang="ru">Р РЈ</button>
       <button class="lang-btn" data-lang="en">EN</button>
       <button class="lang-btn" data-lang="es">ES</button>
       <button class="lang-btn" data-lang="it">IT</button>
@@ -1429,51 +1438,51 @@ footer {
 
 <!-- Mobile Nav -->
 <div class="mobile-nav" id="mobileNav">
-  <a href="#about"   data-i18n="nav.about"    onclick="closeMobile()">Обо мне</a>
-  <a href="#process" data-i18n="nav.process"  onclick="closeMobile()">Процесс</a>
-  <a href="#why"     data-i18n="nav.why"      onclick="closeMobile()">Почему я</a>
-  <a href="#contact" data-i18n="nav.contact"  onclick="closeMobile()">Контакты</a>
+  <a href="#about"   data-i18n="nav.about"    onclick="closeMobile()">РћР±Рѕ РјРЅРµ</a>
+  <a href="#process" data-i18n="nav.process"  onclick="closeMobile()">РџСЂРѕС†РµСЃСЃ</a>
+  <a href="#why"     data-i18n="nav.why"      onclick="closeMobile()">РџРѕС‡РµРјСѓ СЏ</a>
+  <a href="#contact" data-i18n="nav.contact"  onclick="closeMobile()">РљРѕРЅС‚Р°РєС‚С‹</a>
   <div class="lang-switcher">
-    <button class="lang-btn active" data-lang="ru">РУ</button>
+    <button class="lang-btn active" data-lang="ru">Р РЈ</button>
     <button class="lang-btn" data-lang="en">EN</button>
     <button class="lang-btn" data-lang="es">ES</button>
     <button class="lang-btn" data-lang="it">IT</button>
   </div>
 </div>
 
-<!-- ─── HERO ───────────────────────────────── -->
+<!-- в”Ђв”Ђв”Ђ HERO в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ -->
 <section id="hero">
   <div class="water-blob water-blob-1"></div>
   <div class="water-blob water-blob-2"></div>
   <div class="water-blob water-blob-3"></div>
   <div class="container">
     <div class="hero-content">
-      <h1 class="hero-name"><span data-i18n="hero.name1">Виктория</span><br><span data-i18n="hero.name2">Пархотик</span></h1>
+      <h1 class="hero-name"><span data-i18n="hero.name1">Р’РёРєС‚РѕСЂРёСЏ</span><br><span data-i18n="hero.name2">РџР°СЂС…РѕС‚РёРє</span></h1>
 
       <div class="hero-typewriter-row">
-        <span class="tw-prefix" data-i18n="hero.prefix">Я создаю</span>
-        <span class="tw-word" id="twWord">сайты</span><span class="tw-cursor">_</span>
+        <span class="tw-prefix" data-i18n="hero.prefix">РЇ СЃРѕР·РґР°СЋ</span>
+        <span class="tw-word" id="twWord">СЃР°Р№С‚С‹</span><span class="tw-cursor">_</span>
       </div>
 
       <p class="hero-subtitle" data-i18n="hero.subtitle">
-        Цифровые продукты для бизнеса в Беларуси, странах СНГ, Европе и Латинской Америке — на вашем языке, с пониманием вашего рынка.
+        Р¦РёС„СЂРѕРІС‹Рµ РїСЂРѕРґСѓРєС‚С‹ РґР»СЏ Р±РёР·РЅРµСЃР° РІ Р‘РµР»Р°СЂСѓСЃРё, СЃС‚СЂР°РЅР°С… РЎРќР“, Р•РІСЂРѕРїРµ Рё Р›Р°С‚РёРЅСЃРєРѕР№ РђРјРµСЂРёРєРµ вЂ” РЅР° РІР°С€РµРј СЏР·С‹РєРµ, СЃ РїРѕРЅРёРјР°РЅРёРµРј РІР°С€РµРіРѕ СЂС‹РЅРєР°.
       </p>
 
       <div class="hero-markets">
-        <span class="market-pill" data-i18n="pill.by">🇧🇾 Беларусь · СНГ</span>
-        <span class="market-pill" data-i18n="pill.uk">🇬🇧 UK · 🇮🇪 Ирландия</span>
-        <span class="market-pill" data-i18n="pill.eu">🇮🇹 Италия · 🇪🇸 Испания · 🇫🇷 Франция</span>
-        <span class="market-pill" data-i18n="pill.latam">🌎 Латинская Америка</span>
+        <span class="market-pill" data-i18n="pill.by">рџ‡§рџ‡ѕ Р‘РµР»Р°СЂСѓСЃСЊ В· РЎРќР“</span>
+        <span class="market-pill" data-i18n="pill.uk">рџ‡¬рџ‡§ UK В· рџ‡®рџ‡Є РСЂР»Р°РЅРґРёСЏ</span>
+        <span class="market-pill" data-i18n="pill.eu">рџ‡®рџ‡№ РС‚Р°Р»РёСЏ В· рџ‡Єрџ‡ё РСЃРїР°РЅРёСЏ В· рџ‡«рџ‡· Р¤СЂР°РЅС†РёСЏ</span>
+        <span class="market-pill" data-i18n="pill.latam">рџЊЋ Р›Р°С‚РёРЅСЃРєР°СЏ РђРјРµСЂРёРєР°</span>
       </div>
 
       <div class="hero-cta">
-        <a href="#contact" class="btn-primary" data-i18n="hero.cta1">Обсудить проект</a>
-        <a href="#about" class="btn-secondary" data-i18n="hero.cta2">Смотреть работы</a>
+        <a href="#contact" class="btn-primary" data-i18n="hero.cta1">РћР±СЃСѓРґРёС‚СЊ РїСЂРѕРµРєС‚</a>
+        <a href="#about" class="btn-secondary" data-i18n="hero.cta2">РЎРјРѕС‚СЂРµС‚СЊ СЂР°Р±РѕС‚С‹</a>
       </div>
 
       <div class="hero-availability">
         <span class="avail-dot"></span>
-        <span data-i18n="hero.avail">Открыта для 2 новых проектов</span>
+        <span data-i18n="hero.avail">РћС‚РєСЂС‹С‚Р° РґР»СЏ 2 РЅРѕРІС‹С… РїСЂРѕРµРєС‚РѕРІ</span>
       </div>
     </div>
 
@@ -1485,56 +1494,56 @@ footer {
   </div>
 </section>
 
-<!-- ─── TRUST BAR ──────────────────────────── -->
+<!-- в”Ђв”Ђв”Ђ TRUST BAR в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ -->
 <section id="trust">
   <div class="trust-track">
-    <span class="trust-item"><span>🌍</span> <span data-i18n="trust.geo">Европа и Латинская Америка</span></span>
-    <span class="trust-item"><span>🗣</span> EN · ES · IT · FR</span>
-    <span class="trust-item"><span>⚡</span> <span data-i18n="trust.response">Ответ в течение 24ч</span></span>
-    <span class="trust-item"><span>💬</span> Telegram &amp; WhatsApp</span>
-    <span class="trust-item"><span>🤖</span> <span data-i18n="trust.ai">ИИ-агенты и автоматизации</span></span>
-    <span class="trust-item"><span>🌍</span> <span data-i18n="trust.geo">Европа и Латинская Америка</span></span>
-    <span class="trust-item"><span>🗣</span> EN · ES · IT · FR</span>
-    <span class="trust-item"><span>⚡</span> <span data-i18n="trust.response">Ответ в течение 24ч</span></span>
-    <span class="trust-item"><span>💬</span> Telegram &amp; WhatsApp</span>
-    <span class="trust-item"><span>🤖</span> <span data-i18n="trust.ai">ИИ-агенты и автоматизации</span></span>
+    <span class="trust-item"><span>рџЊЌ</span> <span data-i18n="trust.geo">Р•РІСЂРѕРїР° Рё Р›Р°С‚РёРЅСЃРєР°СЏ РђРјРµСЂРёРєР°</span></span>
+    <span class="trust-item"><span>рџ—Ј</span> EN В· ES В· IT В· FR</span>
+    <span class="trust-item"><span>вљЎ</span> <span data-i18n="trust.response">РћС‚РІРµС‚ РІ С‚РµС‡РµРЅРёРµ 24С‡</span></span>
+    <span class="trust-item"><span>рџ’¬</span> Telegram &amp; WhatsApp</span>
+    <span class="trust-item"><span>рџ¤–</span> <span data-i18n="trust.ai">РР-Р°РіРµРЅС‚С‹ Рё Р°РІС‚РѕРјР°С‚РёР·Р°С†РёРё</span></span>
+    <span class="trust-item"><span>рџЊЌ</span> <span data-i18n="trust.geo">Р•РІСЂРѕРїР° Рё Р›Р°С‚РёРЅСЃРєР°СЏ РђРјРµСЂРёРєР°</span></span>
+    <span class="trust-item"><span>рџ—Ј</span> EN В· ES В· IT В· FR</span>
+    <span class="trust-item"><span>вљЎ</span> <span data-i18n="trust.response">РћС‚РІРµС‚ РІ С‚РµС‡РµРЅРёРµ 24С‡</span></span>
+    <span class="trust-item"><span>рџ’¬</span> Telegram &amp; WhatsApp</span>
+    <span class="trust-item"><span>рџ¤–</span> <span data-i18n="trust.ai">РР-Р°РіРµРЅС‚С‹ Рё Р°РІС‚РѕРјР°С‚РёР·Р°С†РёРё</span></span>
   </div>
 </section>
 
-<!-- ─── ABOUT ──────────────────────────────── -->
+<!-- в”Ђв”Ђв”Ђ ABOUT в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ -->
 <section id="about">
   <div class="container">
-    <div class="section-label" data-i18n="about.label">// 01. обо мне</div>
+    <div class="section-label" data-i18n="about.label">// 01. РѕР±Рѕ РјРЅРµ</div>
     <div class="about-grid reveal">
       <div class="about-photo">
         <img src="foto-portfolio-2.JPG" alt="Victoria Parkhotik">
       </div>
       <div class="about-text-col">
         <h2 class="section-title">
-          <span data-i18n="about.title1">Разный мир —</span><br>
-          <em><span data-i18n="about.title2">разный подход.</span></em>
+          <span data-i18n="about.title1">Р Р°Р·РЅС‹Р№ РјРёСЂ вЂ”</span><br>
+          <em><span data-i18n="about.title2">СЂР°Р·РЅС‹Р№ РїРѕРґС…РѕРґ.</span></em>
         </h2>
         <div class="about-text">
-          <p data-i18n="about.p1">Я создаю сайты, приложения и ИИ-инструменты для бизнеса — от простой страницы до систем нейроагентов.</p>
-          <p data-i18n="about.p2">Мой подход — от задачи к системе: вижу потенциал даже маленького проекта и выстраиваю решение с нужными связками между инструментами и людьми. Для меня важно, чтобы результат был полезным и эстетичным — цифровой инструмент, с которым приятно взаимодействовать, работает лучше.</p>
-          <p data-i18n="about.p3">Многолетний опыт в международных коммуникациях научил меня точно считывать задачу в любом контексте. Работаю с клиентами из Беларуси, Европы и Латинской Америки — и понимаю, что «хороший результат» значит разное в Минске, Милане и Гаване.</p>
+          <p data-i18n="about.p1">РЇ СЃРѕР·РґР°СЋ СЃР°Р№С‚С‹, РїСЂРёР»РѕР¶РµРЅРёСЏ Рё РР-РёРЅСЃС‚СЂСѓРјРµРЅС‚С‹ РґР»СЏ Р±РёР·РЅРµСЃР° вЂ” РѕС‚ РїСЂРѕСЃС‚РѕР№ СЃС‚СЂР°РЅРёС†С‹ РґРѕ СЃРёСЃС‚РµРј РЅРµР№СЂРѕР°РіРµРЅС‚РѕРІ.</p>
+          <p data-i18n="about.p2">РњРѕР№ РїРѕРґС…РѕРґ вЂ” РѕС‚ Р·Р°РґР°С‡Рё Рє СЃРёСЃС‚РµРјРµ: РІРёР¶Сѓ РїРѕС‚РµРЅС†РёР°Р» РґР°Р¶Рµ РјР°Р»РµРЅСЊРєРѕРіРѕ РїСЂРѕРµРєС‚Р° Рё РІС‹СЃС‚СЂР°РёРІР°СЋ СЂРµС€РµРЅРёРµ СЃ РЅСѓР¶РЅС‹РјРё СЃРІСЏР·РєР°РјРё РјРµР¶РґСѓ РёРЅСЃС‚СЂСѓРјРµРЅС‚Р°РјРё Рё Р»СЋРґСЊРјРё. Р”Р»СЏ РјРµРЅСЏ РІР°Р¶РЅРѕ, С‡С‚РѕР±С‹ СЂРµР·СѓР»СЊС‚Р°С‚ Р±С‹Р» РїРѕР»РµР·РЅС‹Рј Рё СЌСЃС‚РµС‚РёС‡РЅС‹Рј вЂ” С†РёС„СЂРѕРІРѕР№ РёРЅСЃС‚СЂСѓРјРµРЅС‚, СЃ РєРѕС‚РѕСЂС‹Рј РїСЂРёСЏС‚РЅРѕ РІР·Р°РёРјРѕРґРµР№СЃС‚РІРѕРІР°С‚СЊ, СЂР°Р±РѕС‚Р°РµС‚ Р»СѓС‡С€Рµ.</p>
+          <p data-i18n="about.p3">РњРЅРѕРіРѕР»РµС‚РЅРёР№ РѕРїС‹С‚ РІ РјРµР¶РґСѓРЅР°СЂРѕРґРЅС‹С… РєРѕРјРјСѓРЅРёРєР°С†РёСЏС… РЅР°СѓС‡РёР» РјРµРЅСЏ С‚РѕС‡РЅРѕ СЃС‡РёС‚С‹РІР°С‚СЊ Р·Р°РґР°С‡Сѓ РІ Р»СЋР±РѕРј РєРѕРЅС‚РµРєСЃС‚Рµ. Р Р°Р±РѕС‚Р°СЋ СЃ РєР»РёРµРЅС‚Р°РјРё РёР· Р‘РµР»Р°СЂСѓСЃРё, Р•РІСЂРѕРїС‹ Рё Р›Р°С‚РёРЅСЃРєРѕР№ РђРјРµСЂРёРєРё вЂ” Рё РїРѕРЅРёРјР°СЋ, С‡С‚Рѕ В«С…РѕСЂРѕС€РёР№ СЂРµР·СѓР»СЊС‚Р°С‚В» Р·РЅР°С‡РёС‚ СЂР°Р·РЅРѕРµ РІ РњРёРЅСЃРєРµ, РњРёР»Р°РЅРµ Рё Р“Р°РІР°РЅРµ.</p>
         </div>
       </div>
     </div>
 
     <div class="bento-grid reveal reveal-delay-2">
       <div class="bento-card wide">
-        <div class="bento-card-label" data-i18n="bento.languages">языки</div>
-        <div class="bento-card-title">🇧🇾 BY · 🇷🇺 RU · 🇪🇸 ES · 🇮🇹 IT · 🇬🇧 EN · 🇫🇷 FR</div>
-        <div class="bento-card-sub" data-i18n="about.langSub">Исследования, тексты и коммуникация на вашем языке</div>
+        <div class="bento-card-label" data-i18n="bento.languages">СЏР·С‹РєРё</div>
+        <div class="bento-card-title">рџ‡§рџ‡ѕ BY В· рџ‡·рџ‡є RU В· рџ‡Єрџ‡ё ES В· рџ‡®рџ‡№ IT В· рџ‡¬рџ‡§ EN В· рџ‡«рџ‡· FR</div>
+        <div class="bento-card-sub" data-i18n="about.langSub">РСЃСЃР»РµРґРѕРІР°РЅРёСЏ, С‚РµРєСЃС‚С‹ Рё РєРѕРјРјСѓРЅРёРєР°С†РёСЏ РЅР° РІР°С€РµРј СЏР·С‹РєРµ</div>
       </div>
       <div class="bento-card wide">
-        <div class="bento-card-label" data-i18n="bento.markets">рынки</div>
-        <div class="bento-flags">🇧🇾 🇬🇧 🇮🇪 🇮🇹 🇪🇸 🇫🇷 🇲🇽 🇦🇷 🇨🇴</div>
-        <div class="bento-card-sub" data-i18n="about.marketSub">Беларусь и СНГ · Европа · Латинская Америка</div>
+        <div class="bento-card-label" data-i18n="bento.markets">СЂС‹РЅРєРё</div>
+        <div class="bento-flags">рџ‡§рџ‡ѕ рџ‡¬рџ‡§ рџ‡®рџ‡Є рџ‡®рџ‡№ рџ‡Єрџ‡ё рџ‡«рџ‡· рџ‡Ірџ‡Ѕ рџ‡¦рџ‡· рџ‡Ёрџ‡ґ</div>
+        <div class="bento-card-sub" data-i18n="about.marketSub">Р‘РµР»Р°СЂСѓСЃСЊ Рё РЎРќР“ В· Р•РІСЂРѕРїР° В· Р›Р°С‚РёРЅСЃРєР°СЏ РђРјРµСЂРёРєР°</div>
       </div>
       <div class="bento-card tools">
-        <div class="bento-card-label" data-i18n="bento.tools">инструменты</div>
+        <div class="bento-card-label" data-i18n="bento.tools">РёРЅСЃС‚СЂСѓРјРµРЅС‚С‹</div>
         <div class="bento-flags" style="font-size:0.8rem;">
           <div class="flag-tag">Claude Code</div>
           <div class="flag-tag">Google AI Studio</div>
@@ -1544,46 +1553,46 @@ footer {
         </div>
       </div>
       <div class="bento-card" style="background:linear-gradient(135deg,rgba(61,100,128,0.08),rgba(90,122,78,0.05));">
-        <div class="bento-motto" data-i18n="about.motto">"Разный мир — разные решения"</div>
+        <div class="bento-motto" data-i18n="about.motto">"Р Р°Р·РЅС‹Р№ РјРёСЂ вЂ” СЂР°Р·РЅС‹Рµ СЂРµС€РµРЅРёСЏ"</div>
       </div>
     </div>
 
     <div class="clients-grid" id="projects">
       <div class="client-card reveal reveal-delay-1">
-        <div class="client-icon">🌱</div>
-        <span class="market-tag" data-i18n="cl1.market">🇧🇾 РУ рынок</span>
+        <div class="client-icon">рџЊ±</div>
+        <span class="market-tag" data-i18n="cl1.market">рџ‡§рџ‡ѕ Р РЈ СЂС‹РЅРѕРє</span>
         <div class="client-title" data-i18n="cl1.title">Rosalia LBD</div>
-        <div class="client-who" data-i18n="cl1.who">Мастер маникюра · Минск</div>
-        <p class="cl1-motto" data-i18n="cl1.motto">От образа — к работающей системе</p>
-        <a href="kart-1/0-story.html" target="_blank" class="client-demo-story" style="display:inline-block;margin-bottom:0.9rem;" data-i18n="cl1.story">Система проекта</a>
+        <div class="client-who" data-i18n="cl1.who">РњР°СЃС‚РµСЂ РјР°РЅРёРєСЋСЂР° В· РњРёРЅСЃРє</div>
+        <p class="cl1-motto" data-i18n="cl1.motto">РћС‚ РѕР±СЂР°Р·Р° вЂ” Рє СЂР°Р±РѕС‚Р°СЋС‰РµР№ СЃРёСЃС‚РµРјРµ</p>
+        <a href="kart-1/0-story.html" target="_blank" class="client-demo-story" style="display:inline-block;margin-bottom:0.9rem;" data-i18n="cl1.story">РЎРёСЃС‚РµРјР° РїСЂРѕРµРєС‚Р°</a>
         <ul class="cl1-comps">
-          <li><a href="kart-1/1-roza-zhivaya.html" target="_blank" class="cl1-comp-link"><span class="cl1-comp-num" data-i18n="cl1.sn1">Компонент 1</span><span class="cl1-comp-name" data-i18n="cl1.cn1">Образ</span></a></li>
-          <li><a href="kart-1/2-usluga.html" target="_blank" class="cl1-comp-link"><span class="cl1-comp-num" data-i18n="cl1.sn2">Компонент 2</span><span class="cl1-comp-name" data-i18n="cl1.cn2">Инструмент</span></a></li>
-          <li><a href="kart-1/3-rosalia-brand.html" target="_blank" class="cl1-comp-link"><span class="cl1-comp-num" data-i18n="cl1.sn3">Компонент 3</span><span class="cl1-comp-name" data-i18n="cl1.cn3">Идентичность</span></a></li>
-          <li><a href="kart-1/4-miniapp-preview.html" target="_blank" class="cl1-comp-link"><span class="cl1-comp-num" data-i18n="cl1.sn4">Компонент 4</span><span class="cl1-comp-name" data-i18n="cl1.cn4">Автоматизация</span></a></li>
-          <li><a href="kart-1/5-roza-preview.html" target="_blank" class="cl1-comp-link"><span class="cl1-comp-num" data-i18n="cl1.sn5">Компонент 5</span><span class="cl1-comp-name" data-i18n="cl1.cn5">Платформа</span></a></li>
+          <li><a href="kart-1/1-roza-zhivaya.html" target="_blank" class="cl1-comp-link"><span class="cl1-comp-num" data-i18n="cl1.sn1">РљРѕРјРїРѕРЅРµРЅС‚ 1</span><span class="cl1-comp-name" data-i18n="cl1.cn1">РћР±СЂР°Р·</span></a></li>
+          <li><a href="kart-1/2-usluga.html" target="_blank" class="cl1-comp-link"><span class="cl1-comp-num" data-i18n="cl1.sn2">РљРѕРјРїРѕРЅРµРЅС‚ 2</span><span class="cl1-comp-name" data-i18n="cl1.cn2">РРЅСЃС‚СЂСѓРјРµРЅС‚</span></a></li>
+          <li><a href="kart-1/3-rosalia-brand.html" target="_blank" class="cl1-comp-link"><span class="cl1-comp-num" data-i18n="cl1.sn3">РљРѕРјРїРѕРЅРµРЅС‚ 3</span><span class="cl1-comp-name" data-i18n="cl1.cn3">РРґРµРЅС‚РёС‡РЅРѕСЃС‚СЊ</span></a></li>
+          <li><a href="kart-1/4-miniapp-preview.html" target="_blank" class="cl1-comp-link"><span class="cl1-comp-num" data-i18n="cl1.sn4">РљРѕРјРїРѕРЅРµРЅС‚ 4</span><span class="cl1-comp-name" data-i18n="cl1.cn4">РђРІС‚РѕРјР°С‚РёР·Р°С†РёСЏ</span></a></li>
+          <li><a href="kart-1/5-roza-preview.html" target="_blank" class="cl1-comp-link"><span class="cl1-comp-num" data-i18n="cl1.sn5">РљРѕРјРїРѕРЅРµРЅС‚ 5</span><span class="cl1-comp-name" data-i18n="cl1.cn5">РџР»Р°С‚С„РѕСЂРјР°</span></a></li>
         </ul>
       </div>
       <div class="client-card reveal reveal-delay-2">
-        <div class="client-icon">⚙️</div>
-        <span class="market-tag" data-i18n="cl2.market">🌐 Международный</span>
-        <div class="client-title" data-i18n="cl2.title">Цифровая система</div>
-        <div class="client-who" data-i18n="cl2.who">Компании с амбициями роста</div>
+        <div class="client-icon">вљ™пёЏ</div>
+        <span class="market-tag" data-i18n="cl2.market">рџЊђ РњРµР¶РґСѓРЅР°СЂРѕРґРЅС‹Р№</span>
+        <div class="client-title" data-i18n="cl2.title">Р¦РёС„СЂРѕРІР°СЏ СЃРёСЃС‚РµРјР°</div>
+        <div class="client-who" data-i18n="cl2.who">РљРѕРјРїР°РЅРёРё СЃ Р°РјР±РёС†РёСЏРјРё СЂРѕСЃС‚Р°</div>
         <ul class="client-list">
-          <li data-i18n="cl2.li1">Сайт + автоматизация процессов</li>
-          <li data-i18n="cl2.li2">ИИ-агенты и системы нейроагентов</li>
-          <li data-i18n="cl2.li3">Связки человек–машина</li>
+          <li data-i18n="cl2.li1">РЎР°Р№С‚ + Р°РІС‚РѕРјР°С‚РёР·Р°С†РёСЏ РїСЂРѕС†РµСЃСЃРѕРІ</li>
+          <li data-i18n="cl2.li2">РР-Р°РіРµРЅС‚С‹ Рё СЃРёСЃС‚РµРјС‹ РЅРµР№СЂРѕР°РіРµРЅС‚РѕРІ</li>
+          <li data-i18n="cl2.li3">РЎРІСЏР·РєРё С‡РµР»РѕРІРµРєвЂ“РјР°С€РёРЅР°</li>
         </ul>
       </div>
       <div class="client-card reveal reveal-delay-3">
-        <div class="client-icon">🌍</div>
-        <span class="market-tag" data-i18n="cl3.market">🌍 Международный</span>
-        <div class="client-title" data-i18n="cl3.title">Международный уровень</div>
-        <div class="client-who" data-i18n="cl3.who">Иностранные клиенты · НКО · Организации</div>
+        <div class="client-icon">рџЊЌ</div>
+        <span class="market-tag" data-i18n="cl3.market">рџЊЌ РњРµР¶РґСѓРЅР°СЂРѕРґРЅС‹Р№</span>
+        <div class="client-title" data-i18n="cl3.title">РњРµР¶РґСѓРЅР°СЂРѕРґРЅС‹Р№ СѓСЂРѕРІРµРЅСЊ</div>
+        <div class="client-who" data-i18n="cl3.who">РРЅРѕСЃС‚СЂР°РЅРЅС‹Рµ РєР»РёРµРЅС‚С‹ В· РќРљРћ В· РћСЂРіР°РЅРёР·Р°С†РёРё</div>
         <ul class="client-list">
-          <li data-i18n="cl3.li1">Полный цифровой стек</li>
-          <li data-i18n="cl3.li2">Межкультурный контекст</li>
-          <li data-i18n="cl3.li3">Коммуникация на 6 языках</li>
+          <li data-i18n="cl3.li1">РџРѕР»РЅС‹Р№ С†РёС„СЂРѕРІРѕР№ СЃС‚РµРє</li>
+          <li data-i18n="cl3.li2">РњРµР¶РєСѓР»СЊС‚СѓСЂРЅС‹Р№ РєРѕРЅС‚РµРєСЃС‚</li>
+          <li data-i18n="cl3.li3">РљРѕРјРјСѓРЅРёРєР°С†РёСЏ РЅР° 6 СЏР·С‹РєР°С…</li>
         </ul>
       </div>
     </div>
@@ -1593,128 +1602,128 @@ footer {
 
 
 
-<!-- ─── PROCESS ────────────────────────────── -->
+<!-- в”Ђв”Ђв”Ђ PROCESS в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ -->
 <section id="process">
   <div class="container">
     <div class="reveal">
-      <div class="section-label" data-i18n="process.label">// 02. процесс</div>
-      <h2 class="section-title" data-i18n="process.title">Как мы будем работать</h2>
+      <div class="section-label" data-i18n="process.label">// 02. РїСЂРѕС†РµСЃСЃ</div>
+      <h2 class="section-title" data-i18n="process.title">РљР°Рє РјС‹ Р±СѓРґРµРј СЂР°Р±РѕС‚Р°С‚СЊ</h2>
     </div>
 
     <div class="process-timeline">
       <div class="process-step reveal reveal-delay-1">
         <div class="step-dot"></div>
         <div class="step-num">01_</div>
-        <div class="step-title" data-i18n="step1.title">Знакомство</div>
-        <div class="step-desc" data-i18n="step1.desc">Вы рассказываете о задаче, контексте и целях. Я задаю нужные вопросы, чтобы точно понять, что вам нужно.</div>
+        <div class="step-title" data-i18n="step1.title">Р—РЅР°РєРѕРјСЃС‚РІРѕ</div>
+        <div class="step-desc" data-i18n="step1.desc">Р’С‹ СЂР°СЃСЃРєР°Р·С‹РІР°РµС‚Рµ Рѕ Р·Р°РґР°С‡Рµ, РєРѕРЅС‚РµРєСЃС‚Рµ Рё С†РµР»СЏС…. РЇ Р·Р°РґР°СЋ РЅСѓР¶РЅС‹Рµ РІРѕРїСЂРѕСЃС‹, С‡С‚РѕР±С‹ С‚РѕС‡РЅРѕ РїРѕРЅСЏС‚СЊ, С‡С‚Рѕ РІР°Рј РЅСѓР¶РЅРѕ.</div>
       </div>
       <div class="process-step reveal reveal-delay-2">
         <div class="step-dot"></div>
         <div class="step-num">02_</div>
-        <div class="step-title" data-i18n="step2.title">Предложение</div>
-        <div class="step-desc" data-i18n="step2.desc">Отправляю бриф + подход + сроки. Никаких сюрпризов.</div>
+        <div class="step-title" data-i18n="step2.title">РџСЂРµРґР»РѕР¶РµРЅРёРµ</div>
+        <div class="step-desc" data-i18n="step2.desc">РћС‚РїСЂР°РІР»СЏСЋ Р±СЂРёС„ + РїРѕРґС…РѕРґ + СЃСЂРѕРєРё. РќРёРєР°РєРёС… СЃСЋСЂРїСЂРёР·РѕРІ.</div>
       </div>
       <div class="process-step reveal reveal-delay-3">
         <div class="step-dot"></div>
         <div class="step-num">03_</div>
-        <div class="step-title" data-i18n="step3.title">Разработка</div>
-        <div class="step-desc" data-i18n="step3.desc">Делаю с регулярными обновлениями. Вы всегда знаете, где мы находимся.</div>
+        <div class="step-title" data-i18n="step3.title">Р Р°Р·СЂР°Р±РѕС‚РєР°</div>
+        <div class="step-desc" data-i18n="step3.desc">Р”РµР»Р°СЋ СЃ СЂРµРіСѓР»СЏСЂРЅС‹РјРё РѕР±РЅРѕРІР»РµРЅРёСЏРјРё. Р’С‹ РІСЃРµРіРґР° Р·РЅР°РµС‚Рµ, РіРґРµ РјС‹ РЅР°С…РѕРґРёРјСЃСЏ.</div>
       </div>
       <div class="process-step reveal reveal-delay-4">
         <div class="step-dot"></div>
         <div class="step-num">04_</div>
-        <div class="step-title" data-i18n="step4.title">Проверка</div>
-        <div class="step-desc" data-i18n="step4.desc">Вы проверяете, вносите правки — я довожу до идеала.</div>
+        <div class="step-title" data-i18n="step4.title">РџСЂРѕРІРµСЂРєР°</div>
+        <div class="step-desc" data-i18n="step4.desc">Р’С‹ РїСЂРѕРІРµСЂСЏРµС‚Рµ, РІРЅРѕСЃРёС‚Рµ РїСЂР°РІРєРё вЂ” СЏ РґРѕРІРѕР¶Сѓ РґРѕ РёРґРµР°Р»Р°.</div>
       </div>
       <div class="process-step reveal">
         <div class="step-dot"></div>
         <div class="step-num">05_</div>
-        <div class="step-title" data-i18n="step5.title">Запуск и поддержка</div>
-        <div class="step-desc" data-i18n="step5.desc">Запускаем. Остаюсь на связи после запуска для вопросов и правок.</div>
+        <div class="step-title" data-i18n="step5.title">Р—Р°РїСѓСЃРє Рё РїРѕРґРґРµСЂР¶РєР°</div>
+        <div class="step-desc" data-i18n="step5.desc">Р—Р°РїСѓСЃРєР°РµРј. РћСЃС‚Р°СЋСЃСЊ РЅР° СЃРІСЏР·Рё РїРѕСЃР»Рµ Р·Р°РїСѓСЃРєР° РґР»СЏ РІРѕРїСЂРѕСЃРѕРІ Рё РїСЂР°РІРѕРє.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ─── MARKETS ────────────────────────────── -->
+<!-- в”Ђв”Ђв”Ђ MARKETS в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ -->
 <section id="markets">
   <div class="container">
     <div class="reveal">
-      <div class="section-label" data-i18n="markets.label">// 03. рынки</div>
-      <h2 class="section-title" data-i18n="markets.title">Рынки</h2>
+      <div class="section-label" data-i18n="markets.label">// 03. СЂС‹РЅРєРё</div>
+      <h2 class="section-title" data-i18n="markets.title">Р С‹РЅРєРё</h2>
     </div>
 
     <div class="markets-grid">
       <div class="market-card mc-by reveal reveal-delay-1">
-        <div class="market-card-title">🇧🇾 <span data-i18n="markets.by">Беларусь и СНГ</span></div>
-        <div class="market-flags">🇧🇾 🇷🇺 🇰🇿</div>
-        <div class="market-desc" data-i18n="markets.byDesc">Беларусь, Россия, Казахстан и страны СНГ — компании любого размера, фрилансеры, предприниматели, в том числе бизнес, ориентированный на экспорт.</div>
+        <div class="market-card-title">рџ‡§рџ‡ѕ <span data-i18n="markets.by">Р‘РµР»Р°СЂСѓСЃСЊ Рё РЎРќР“</span></div>
+        <div class="market-flags">рџ‡§рџ‡ѕ рџ‡·рџ‡є рџ‡°рџ‡ї</div>
+        <div class="market-desc" data-i18n="markets.byDesc">Р‘РµР»Р°СЂСѓСЃСЊ, Р РѕСЃСЃРёСЏ, РљР°Р·Р°С…СЃС‚Р°РЅ Рё СЃС‚СЂР°РЅС‹ РЎРќР“ вЂ” РєРѕРјРїР°РЅРёРё Р»СЋР±РѕРіРѕ СЂР°Р·РјРµСЂР°, С„СЂРёР»Р°РЅСЃРµСЂС‹, РїСЂРµРґРїСЂРёРЅРёРјР°С‚РµР»Рё, РІ С‚РѕРј С‡РёСЃР»Рµ Р±РёР·РЅРµСЃ, РѕСЂРёРµРЅС‚РёСЂРѕРІР°РЅРЅС‹Р№ РЅР° СЌРєСЃРїРѕСЂС‚.</div>
       </div>
       <div class="market-card mc-eu reveal reveal-delay-2">
-        <div class="market-card-title">🇪🇺 <span data-i18n="markets.eu">Европа</span></div>
-        <div class="market-flags">🇪🇸 🇮🇹 🇵🇹 🇻🇦 🇬🇧 🇮🇪 🇫🇷 🇲🇹</div>
-        <div class="market-desc" data-i18n="markets.euDesc">Испания, Италия, Португалия, Ватикан, Великобритания, Ирландия, Франция, Мальта — структурированная коммуникация, чёткие результаты, профессионализм с первого дня.</div>
+        <div class="market-card-title">рџ‡Єрџ‡є <span data-i18n="markets.eu">Р•РІСЂРѕРїР°</span></div>
+        <div class="market-flags">рџ‡Єрџ‡ё рџ‡®рџ‡№ рџ‡µрџ‡№ рџ‡»рџ‡¦ рџ‡¬рџ‡§ рџ‡®рџ‡Є рџ‡«рџ‡· рџ‡Ірџ‡№</div>
+        <div class="market-desc" data-i18n="markets.euDesc">РСЃРїР°РЅРёСЏ, РС‚Р°Р»РёСЏ, РџРѕСЂС‚СѓРіР°Р»РёСЏ, Р’Р°С‚РёРєР°РЅ, Р’РµР»РёРєРѕР±СЂРёС‚Р°РЅРёСЏ, РСЂР»Р°РЅРґРёСЏ, Р¤СЂР°РЅС†РёСЏ, РњР°Р»СЊС‚Р° вЂ” СЃС‚СЂСѓРєС‚СѓСЂРёСЂРѕРІР°РЅРЅР°СЏ РєРѕРјРјСѓРЅРёРєР°С†РёСЏ, С‡С‘С‚РєРёРµ СЂРµР·СѓР»СЊС‚Р°С‚С‹, РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»РёР·Рј СЃ РїРµСЂРІРѕРіРѕ РґРЅСЏ.</div>
       </div>
       <div class="market-card mc-latam reveal reveal-delay-3">
-        <div class="market-card-title">🌎 <span data-i18n="markets.latam">Латинская Америка</span></div>
-        <div class="market-flags">🇨🇺 🇻🇪 🇲🇽 🇧🇴 🇦🇷</div>
-        <div class="market-desc" data-i18n="markets.latamDesc">Куба, Венесуэла, Мексика, Боливия, Аргентина — тепло, доверие, гибкость и быстрый ответ через WhatsApp.</div>
+        <div class="market-card-title">рџЊЋ <span data-i18n="markets.latam">Р›Р°С‚РёРЅСЃРєР°СЏ РђРјРµСЂРёРєР°</span></div>
+        <div class="market-flags">рџ‡Ёрџ‡є рџ‡»рџ‡Є рџ‡Ірџ‡Ѕ рџ‡§рџ‡ґ рџ‡¦рџ‡·</div>
+        <div class="market-desc" data-i18n="markets.latamDesc">РљСѓР±Р°, Р’РµРЅРµСЃСѓСЌР»Р°, РњРµРєСЃРёРєР°, Р‘РѕР»РёРІРёСЏ, РђСЂРіРµРЅС‚РёРЅР° вЂ” С‚РµРїР»Рѕ, РґРѕРІРµСЂРёРµ, РіРёР±РєРѕСЃС‚СЊ Рё Р±С‹СЃС‚СЂС‹Р№ РѕС‚РІРµС‚ С‡РµСЂРµР· WhatsApp.</div>
       </div>
       <div class="market-card mc-intl reveal reveal-delay-4">
-        <div class="market-card-title">🏛️ <span data-i18n="markets.intl">Международные организации</span></div>
-        <div class="market-desc" data-i18n="markets.intlDesc">ООН, ФАО, МОМ, ЮНЕСКО, СЕЛАК, АЛБА, ОАГ, ЛАИ, МЕРКОСУР и др. — поддержка проектов, исследования, цифровые инструменты для межправительственных структур.</div>
+        <div class="market-card-title">рџЏ›пёЏ <span data-i18n="markets.intl">РњРµР¶РґСѓРЅР°СЂРѕРґРЅС‹Рµ РѕСЂРіР°РЅРёР·Р°С†РёРё</span></div>
+        <div class="market-desc" data-i18n="markets.intlDesc">РћРћРќ, Р¤РђРћ, РњРћРњ, Р®РќР•РЎРљРћ, РЎР•Р›РђРљ, РђР›Р‘Рђ, РћРђР“, Р›РђР, РњР•Р РљРћРЎРЈР  Рё РґСЂ. вЂ” РїРѕРґРґРµСЂР¶РєР° РїСЂРѕРµРєС‚РѕРІ, РёСЃСЃР»РµРґРѕРІР°РЅРёСЏ, С†РёС„СЂРѕРІС‹Рµ РёРЅСЃС‚СЂСѓРјРµРЅС‚С‹ РґР»СЏ РјРµР¶РїСЂР°РІРёС‚РµР»СЊСЃС‚РІРµРЅРЅС‹С… СЃС‚СЂСѓРєС‚СѓСЂ.</div>
       </div>
       <div class="market-card mc-remote reveal reveal-delay-5" style="grid-column:span 2;">
-        <div class="market-card-title">🌐 <span data-i18n="markets.remote">Удалённо</span></div>
-        <div class="market-desc" data-i18n="markets.remoteDesc">Удалённая работа · Любой часовой пояс · Ответ в течение 24 часов · Telegram и WhatsApp</div>
+        <div class="market-card-title">рџЊђ <span data-i18n="markets.remote">РЈРґР°Р»С‘РЅРЅРѕ</span></div>
+        <div class="market-desc" data-i18n="markets.remoteDesc">РЈРґР°Р»С‘РЅРЅР°СЏ СЂР°Р±РѕС‚Р° В· Р›СЋР±РѕР№ С‡Р°СЃРѕРІРѕР№ РїРѕСЏСЃ В· РћС‚РІРµС‚ РІ С‚РµС‡РµРЅРёРµ 24 С‡Р°СЃРѕРІ В· Telegram Рё WhatsApp</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ─── WHY ME ──────────────────────────────── -->
+<!-- в”Ђв”Ђв”Ђ WHY ME в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ -->
 <section id="why">
   <div class="container">
     <div class="reveal">
-      <div class="section-label" data-i18n="why.label">// 04. почему я</div>
-      <h2 class="section-title" data-i18n="why.title">Почему я</h2>
+      <div class="section-label" data-i18n="why.label">// 04. РїРѕС‡РµРјСѓ СЏ</div>
+      <h2 class="section-title" data-i18n="why.title">РџРѕС‡РµРјСѓ СЏ</h2>
     </div>
 
     <div class="why-grid">
       <div class="why-card reveal reveal-delay-1">
-        <div class="why-icon">🎯</div>
-        <div class="why-title" data-i18n="why1.title">От задачи к системе</div>
-        <div class="why-text" data-i18n="why1.text">Вхожу в каждый проект глубоко — вижу потенциал и выстраиваю решение с нужными связками между инструментами и людьми. Без шаблонов, без конвейера. Результат должен быть полезным, эстетичным и работающим на перспективу.</div>
+        <div class="why-icon">рџЋЇ</div>
+        <div class="why-title" data-i18n="why1.title">РћС‚ Р·Р°РґР°С‡Рё Рє СЃРёСЃС‚РµРјРµ</div>
+        <div class="why-text" data-i18n="why1.text">Р’С…РѕР¶Сѓ РІ РєР°Р¶РґС‹Р№ РїСЂРѕРµРєС‚ РіР»СѓР±РѕРєРѕ вЂ” РІРёР¶Сѓ РїРѕС‚РµРЅС†РёР°Р» Рё РІС‹СЃС‚СЂР°РёРІР°СЋ СЂРµС€РµРЅРёРµ СЃ РЅСѓР¶РЅС‹РјРё СЃРІСЏР·РєР°РјРё РјРµР¶РґСѓ РёРЅСЃС‚СЂСѓРјРµРЅС‚Р°РјРё Рё Р»СЋРґСЊРјРё. Р‘РµР· С€Р°Р±Р»РѕРЅРѕРІ, Р±РµР· РєРѕРЅРІРµР№РµСЂР°. Р РµР·СѓР»СЊС‚Р°С‚ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РїРѕР»РµР·РЅС‹Рј, СЌСЃС‚РµС‚РёС‡РЅС‹Рј Рё СЂР°Р±РѕС‚Р°СЋС‰РёРј РЅР° РїРµСЂСЃРїРµРєС‚РёРІСѓ.</div>
       </div>
       <div class="why-card reveal reveal-delay-2">
-        <div class="why-icon">🗺️</div>
-        <div class="why-title" data-i18n="why2.title">Культурный контекст</div>
-        <div class="why-text" data-i18n="why2.text">Я не просто перевожу ваш бриф — я понимаю контекст за ним. Ваш рынок, вашу культуру, ожидания вашего клиента.</div>
+        <div class="why-icon">рџ—єпёЏ</div>
+        <div class="why-title" data-i18n="why2.title">РљСѓР»СЊС‚СѓСЂРЅС‹Р№ РєРѕРЅС‚РµРєСЃС‚</div>
+        <div class="why-text" data-i18n="why2.text">РЇ РЅРµ РїСЂРѕСЃС‚Рѕ РїРµСЂРµРІРѕР¶Сѓ РІР°С€ Р±СЂРёС„ вЂ” СЏ РїРѕРЅРёРјР°СЋ РєРѕРЅС‚РµРєСЃС‚ Р·Р° РЅРёРј. Р’Р°С€ СЂС‹РЅРѕРє, РІР°С€Сѓ РєСѓР»СЊС‚СѓСЂСѓ, РѕР¶РёРґР°РЅРёСЏ РІР°С€РµРіРѕ РєР»РёРµРЅС‚Р°.</div>
       </div>
       <div class="why-card reveal reveal-delay-3">
-        <div class="why-icon">⚡</div>
-        <div class="why-title" data-i18n="why3.title">Всегда на связи</div>
-        <div class="why-text" data-i18n="why3.text">Удалённая работа в любом часовом поясе. Telegram, WhatsApp, email — как вам удобнее. Ответ не заставит ждать.</div>
+        <div class="why-icon">вљЎ</div>
+        <div class="why-title" data-i18n="why3.title">Р’СЃРµРіРґР° РЅР° СЃРІСЏР·Рё</div>
+        <div class="why-text" data-i18n="why3.text">РЈРґР°Р»С‘РЅРЅР°СЏ СЂР°Р±РѕС‚Р° РІ Р»СЋР±РѕРј С‡Р°СЃРѕРІРѕРј РїРѕСЏСЃРµ. Telegram, WhatsApp, email вЂ” РєР°Рє РІР°Рј СѓРґРѕР±РЅРµРµ. РћС‚РІРµС‚ РЅРµ Р·Р°СЃС‚Р°РІРёС‚ Р¶РґР°С‚СЊ.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ─── CONTACT ─────────────────────────────── -->
+<!-- в”Ђв”Ђв”Ђ CONTACT в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ -->
 <section id="contact">
   <div class="container">
-    <div class="section-label" data-i18n="contact.label">// 05. контакты</div>
+    <div class="section-label" data-i18n="contact.label">// 05. РєРѕРЅС‚Р°РєС‚С‹</div>
     <div class="contact-inner reveal">
-      <h2 class="section-title" data-i18n="contact.title">Начнём</h2>
-      <p class="contact-sub" data-i18n="contact.sub">Расскажите о проекте — отвечу быстро.</p>
+      <h2 class="section-title" data-i18n="contact.title">РќР°С‡РЅС‘Рј</h2>
+      <p class="contact-sub" data-i18n="contact.sub">Р Р°СЃСЃРєР°Р¶РёС‚Рµ Рѕ РїСЂРѕРµРєС‚Рµ вЂ” РѕС‚РІРµС‡Сѓ Р±С‹СЃС‚СЂРѕ.</p>
 
       <form class="contact-form" id="contactForm" action="https://formspree.io/f/mvzwzawz" method="POST">
         <div class="form-group">
-          <label class="form-label" data-i18n="form.name">имя</label>
-          <input class="form-input" type="text" id="fname" name="name" required placeholder="Анна" autocomplete="name">
+          <label class="form-label" data-i18n="form.name">РёРјСЏ</label>
+          <input class="form-input" type="text" id="fname" name="name" required placeholder="РђРЅРЅР°" autocomplete="name">
         </div>
         <div class="form-group">
-          <label class="form-label" data-i18n="form.channel">желаемый способ связи</label>
+          <label class="form-label" data-i18n="form.channel">Р¶РµР»Р°РµРјС‹Р№ СЃРїРѕСЃРѕР± СЃРІСЏР·Рё</label>
           <div class="channel-options">
             <label class="channel-option">
               <input type="checkbox" name="channel" value="email" id="ch-email">
@@ -1739,40 +1748,40 @@ footer {
           </div>
         </div>
         <div class="form-group">
-          <label class="form-label" data-i18n="form.task">ваша задача</label>
-          <textarea class="form-textarea" id="ftask" name="message" required placeholder="Мне нужен лендинг для бизнеса..."></textarea>
+          <label class="form-label" data-i18n="form.task">РІР°С€Р° Р·Р°РґР°С‡Р°</label>
+          <textarea class="form-textarea" id="ftask" name="message" required placeholder="РњРЅРµ РЅСѓР¶РµРЅ Р»РµРЅРґРёРЅРі РґР»СЏ Р±РёР·РЅРµСЃР°..."></textarea>
         </div>
         <button type="submit" class="btn-primary form-submit" id="formBtn">
-          <span data-i18n="form.send">Отправить сообщение →</span>
+          <span data-i18n="form.send">РћС‚РїСЂР°РІРёС‚СЊ СЃРѕРѕР±С‰РµРЅРёРµ в†’</span>
         </button>
       </form>
 
       <div class="form-success" id="formSuccess">
-        <div class="form-success-icon">🎉</div>
-        <p data-i18n="form.success">Сообщение получено! Уже смотрю — скоро свяжусь.</p>
+        <div class="form-success-icon">рџЋ‰</div>
+        <p data-i18n="form.success">РЎРѕРѕР±С‰РµРЅРёРµ РїРѕР»СѓС‡РµРЅРѕ! РЈР¶Рµ СЃРјРѕС‚СЂСЋ вЂ” СЃРєРѕСЂРѕ СЃРІСЏР¶СѓСЃСЊ.</p>
       </div>
 
-      <div class="contact-divider" data-i18n="contact.or">или напишите напрямую</div>
+      <div class="contact-divider" data-i18n="contact.or">РёР»Рё РЅР°РїРёС€РёС‚Рµ РЅР°РїСЂСЏРјСѓСЋ</div>
 
       <div class="contact-direct">
         <a href="https://t.me/Yaselda" class="contact-link" target="_blank">
-          <span class="contact-link-icon">✈️</span> Telegram
+          <span class="contact-link-icon">вњ€пёЏ</span> Telegram
         </a>
         <a href="https://wa.me/375257088624" class="contact-link" target="_blank">
-          <span class="contact-link-icon">💬</span> WhatsApp
+          <span class="contact-link-icon">рџ’¬</span> WhatsApp
         </a>
         <a href="viber://chat?number=%2B375257088624" class="contact-link">
-          <span class="contact-link-icon">📲</span> Viber
+          <span class="contact-link-icon">рџ“І</span> Viber
         </a>
         <a href="mailto:yaselda7@gmail.com" class="contact-link">
-          <span class="contact-link-icon">📧</span> Email
+          <span class="contact-link-icon">рџ“§</span> Email
         </a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ─── FOOTER ──────────────────────────────── -->
+<!-- в”Ђв”Ђв”Ђ FOOTER в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ -->
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
@@ -1780,19 +1789,19 @@ footer {
         <span class="logo-yaselda">Yaselda</span>
         <span class="logo-studio">Studio</span>
       </div>
-      <p class="footer-motto" data-i18n="footer.motto">"Разный мир — разные решения"</p>
+      <p class="footer-motto" data-i18n="footer.motto">"Р Р°Р·РЅС‹Р№ РјРёСЂ вЂ” СЂР°Р·РЅС‹Рµ СЂРµС€РµРЅРёСЏ"</p>
     </div>
     <div>
-      <div class="footer-col-title" data-i18n="footer.nav">навигация</div>
+      <div class="footer-col-title" data-i18n="footer.nav">РЅР°РІРёРіР°С†РёСЏ</div>
       <div class="footer-links">
-        <a href="#about"   data-i18n="nav.about">Обо мне</a>
-        <a href="#process" data-i18n="nav.process">Процесс</a>
-        <a href="#why"     data-i18n="nav.why">Почему я</a>
-        <a href="#contact" data-i18n="nav.contact">Контакты</a>
+        <a href="#about"   data-i18n="nav.about">РћР±Рѕ РјРЅРµ</a>
+        <a href="#process" data-i18n="nav.process">РџСЂРѕС†РµСЃСЃ</a>
+        <a href="#why"     data-i18n="nav.why">РџРѕС‡РµРјСѓ СЏ</a>
+        <a href="#contact" data-i18n="nav.contact">РљРѕРЅС‚Р°РєС‚С‹</a>
       </div>
     </div>
     <div>
-      <div class="footer-col-title" data-i18n="footer.contacts">контакты</div>
+      <div class="footer-col-title" data-i18n="footer.contacts">РєРѕРЅС‚Р°РєС‚С‹</div>
       <div class="footer-links">
         <a href="https://t.me/Yaselda" target="_blank">Telegram</a>
         <a href="https://wa.me/375257088624" target="_blank">WhatsApp</a>
@@ -1802,9 +1811,9 @@ footer {
     </div>
   </div>
   <div class="footer-bottom">
-    <span class="footer-copy" data-i18n="footer.copy">© 2026 Victoria Parkhotik · Сделано с душой, не по шаблону.</span>
+    <span class="footer-copy" data-i18n="footer.copy">В© 2026 Victoria Parkhotik В· РЎРґРµР»Р°РЅРѕ СЃ РґСѓС€РѕР№, РЅРµ РїРѕ С€Р°Р±Р»РѕРЅСѓ.</span>
     <div class="footer-lang lang-switcher">
-      <button class="lang-btn active" data-lang="ru">РУ</button>
+      <button class="lang-btn active" data-lang="ru">Р РЈ</button>
       <button class="lang-btn" data-lang="en">EN</button>
       <button class="lang-btn" data-lang="es">ES</button>
       <button class="lang-btn" data-lang="it">IT</button>
@@ -1813,51 +1822,51 @@ footer {
 </footer>
 
 <script>
-// ─── i18n DATA ──────────────────────────────────────────────
+// в”Ђв”Ђв”Ђ i18n DATA в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ
 const i18n = {
   en: {
     'nav.about':'About','nav.process':'Process','nav.why':'Why me','nav.contact':'Contact',
     'hero.name1':'Victoria','hero.name2':'Parkhotik',
-    'hero.prefix':'I build','hero.subtitle':'Digital products for businesses in Europe, CIS and Latin America — in your language, with your market in mind.',
+    'hero.prefix':'I build','hero.subtitle':'Digital products for businesses in Europe, CIS and Latin America вЂ” in your language, with your market in mind.',
     'hero.cta1':'Let\'s build it','hero.cta2':'View my work','hero.avail':'Available for 2 new projects',
     'trust.response':'Response within 24h','trust.ai':'AI Agents & Automations',
-    'about.title1':'A different world —','about.title2':'a different approach.',
-    'about.p1':'I create websites, apps and AI tools for business — from a simple page to neuroagent systems.',
-    'about.p2':'My approach: from task to system. I see the potential in even a small project and build a solution with the right connections between tools and people. What matters to me is that the result is both useful and beautiful — a digital tool that\'s pleasant to use simply works better.',
-    'about.p3':'Years of experience in international communications taught me to read a task accurately in any context. I work with clients from Belarus, Europe and Latin America — and I know that "a great result" means something different in Minsk, Milan and Havana.',
+    'about.title1':'A different world вЂ”','about.title2':'a different approach.',
+    'about.p1':'I create websites, apps and AI tools for business вЂ” from a simple page to neuroagent systems.',
+    'about.p2':'My approach: from task to system. I see the potential in even a small project and build a solution with the right connections between tools and people. What matters to me is that the result is both useful and beautiful вЂ” a digital tool that\'s pleasant to use simply works better.',
+    'about.p3':'Years of experience in international communications taught me to read a task accurately in any context. I work with clients from Belarus, Europe and Latin America вЂ” and I know that "a great result" means something different in Minsk, Milan and Havana.',
     'about.langSub':'Research, texts and communication in your language',
-    'about.marketSub':'Europe · Belarus & CIS · Latin America',
-    'about.motto':'"Different world — different solutions"',
-    'cl1.title':'Rosalia LBD','cl1.who':'Nail technician · Minsk',
-    'cl1.motto':'From image — to a working system',
+    'about.marketSub':'Europe В· Belarus & CIS В· Latin America',
+    'about.motto':'"Different world вЂ” different solutions"',
+    'cl1.title':'Rosalia LBD','cl1.who':'Nail technician В· Minsk',
+    'cl1.motto':'From image вЂ” to a working system',
     'cl1.sn1':'Component 1','cl1.cn1':'Image',
     'cl1.sn2':'Component 2','cl1.cn2':'Tool',
     'cl1.sn3':'Component 3','cl1.cn3':'Identity',
     'cl1.sn4':'Component 4','cl1.cn4':'Automation',
     'cl1.sn5':'Component 5','cl1.cn5':'Platform',
-    'cl1.market':'🇧🇾 RU market','cl1.story':'Project system','cl1.live':'Site preview →',
+    'cl1.market':'рџ‡§рџ‡ѕ RU market','cl1.story':'Project system','cl1.live':'Site preview в†’',
     'cl2.title':'Digital System','cl2.who':'Companies with growth ambitions',
-    'cl2.li1':'Website + process automation','cl2.li2':'AI agents and neuroagent systems','cl2.li3':'Human–machine integration',
-    'cl2.market':'🌐 International',
-    'cl3.title':'International Level','cl3.who':'Foreign clients · NGOs · Organisations',
+    'cl2.li1':'Website + process automation','cl2.li2':'AI agents and neuroagent systems','cl2.li3':'HumanвЂ“machine integration',
+    'cl2.market':'рџЊђ International',
+    'cl3.title':'International Level','cl3.who':'Foreign clients В· NGOs В· Organisations',
     'cl3.li1':'Full digital stack','cl3.li2':'Cross-cultural context','cl3.li3':'Communication in 6 languages',
-    'cl3.market':'🌍 International',
+    'cl3.market':'рџЊЌ International',
     'services.title':'What I build',
     'srv.web':'Websites','srv.webDesc':'Landing pages, corporate sites, multi-page projects',
     'srv.app':'Web Applications','srv.appDesc':'MVPs, web apps, digital tools for your team',
-    'srv.ai':'AI Agents','srv.aiDesc':'Autonomous agents, multi-agent systems, workflow automation — bots that work while you sleep',
+    'srv.ai':'AI Agents','srv.aiDesc':'Autonomous agents, multi-agent systems, workflow automation вЂ” bots that work while you sleep',
     'srv.sys':'System Solutions','srv.sysDesc':'End-to-end digital architecture for business processes',
     'srv.tools':'Interactive Tools','srv.toolsDesc':'Telegram & WhatsApp bots, quizzes, calculators',
     'srv.parse':'Parsers & Automations','srv.parseDesc':'Data collection scripts, processing, API integrations',
     'srv.analytics':'Analytics & Research','srv.analyticsDesc':'Market research for Europe & LATAM, client scoring',
-    'services.note':'No consulting, articles, or workshops at this stage — only hands-on delivery.',
-    'projects.title':'Selected Work','projects.sub':'Early-stage projects — real tasks, real solutions, real results.',
-    'projects.coming':'Projects are on their way. Meanwhile — let\'s build yours.','projects.cta':'Start a project',
+    'services.note':'No consulting, articles, or workshops at this stage вЂ” only hands-on delivery.',
+    'projects.title':'Selected Work','projects.sub':'Early-stage projects вЂ” real tasks, real solutions, real results.',
+    'projects.coming':'Projects are on their way. Meanwhile вЂ” let\'s build yours.','projects.cta':'Start a project',
     'vizitka.cat':'Digital Business Card','vizitka.title':'Business Card with Avatar',
     'vizitka.task':'Create a personal digital business card with photo and contact links',
     'vizitka.solution':'Single-page HTML card with avatar, name, role, and quick-access buttons',
     'vizitka.result':'Ready-to-share link that opens on any device in under 1 second',
-    'proj.task':'Task:','proj.solution':'Solution:','proj.result':'Result:','proj.demo':'View demo →',
+    'proj.task':'Task:','proj.solution':'Solution:','proj.result':'Result:','proj.demo':'View demo в†’',
     'process.title':'How we\'ll work together',
     'step1.title':'Discovery','step1.desc':'You share your task, context, and goals. I ask the right questions to understand exactly what you need.',
     'step2.title':'Proposal','step2.desc':'I send a brief + approach + timeline. No surprises, no scope creep.',
@@ -1865,239 +1874,239 @@ const i18n = {
     'step4.title':'Review','step4.desc':'You check, suggest changes, I refine until it\'s exactly right.',
     'step5.title':'Launch & Support','step5.desc':'We go live. I stay available for questions and fixes after launch.',
     'markets.title':'Where I work',
-    'markets.by':'Belarus & CIS','markets.byDesc':'Belarus, Russia, Kazakhstan and CIS countries — companies of any size, freelancers, entrepreneurs, including businesses oriented toward export.',
-    'markets.eu':'Europe','markets.euDesc':'Spain, Italy, Portugal, Vatican, UK, Ireland, France, Malta — structured communication, clear deliverables, professionalism from day one.',
-    'markets.latam':'Latin America','markets.latamDesc':'Cuba, Venezuela, Mexico, Bolivia, Argentina — warmth, trust, flexibility, and fast response via WhatsApp.',
-    'markets.intl':'International Organisations','markets.intlDesc':'UN, FAO, IOM, UNESCO, CELAC, ALBA, OAS, ALADI, MERCOSUR and others — project support, research, digital tools for intergovernmental structures.',
-    'markets.remote':'Remote','markets.remoteDesc':'Remote work · Any time zone · Response within 24 hours · Telegram & WhatsApp available',
+    'markets.by':'Belarus & CIS','markets.byDesc':'Belarus, Russia, Kazakhstan and CIS countries вЂ” companies of any size, freelancers, entrepreneurs, including businesses oriented toward export.',
+    'markets.eu':'Europe','markets.euDesc':'Spain, Italy, Portugal, Vatican, UK, Ireland, France, Malta вЂ” structured communication, clear deliverables, professionalism from day one.',
+    'markets.latam':'Latin America','markets.latamDesc':'Cuba, Venezuela, Mexico, Bolivia, Argentina вЂ” warmth, trust, flexibility, and fast response via WhatsApp.',
+    'markets.intl':'International Organisations','markets.intlDesc':'UN, FAO, IOM, UNESCO, CELAC, ALBA, OAS, ALADI, MERCOSUR and others вЂ” project support, research, digital tools for intergovernmental structures.',
+    'markets.remote':'Remote','markets.remoteDesc':'Remote work В· Any time zone В· Response within 24 hours В· Telegram & WhatsApp available',
     'why.title':'Why work with me',
-    'why1.title':'From Task to System','why1.text':'I go deep into every project — see its potential and build a solution with the right connections between tools and people. No templates, no assembly line. The result should be useful, beautiful, and built to grow.',
-    'why2.title':'Cultural Context','why2.text':'I don\'t just translate your brief — I understand the context behind it. Your market, your culture, your client\'s expectations.',
-    'why3.title':'Always Reachable','why3.text':'Remote work across time zones. Telegram, WhatsApp, email — whatever works for you. You won\'t wait days for a reply.',
-    'contact.title':'Let\'s start','contact.sub':'Tell me about your project — I\'ll reply quickly.',
+    'why1.title':'From Task to System','why1.text':'I go deep into every project вЂ” see its potential and build a solution with the right connections between tools and people. No templates, no assembly line. The result should be useful, beautiful, and built to grow.',
+    'why2.title':'Cultural Context','why2.text':'I don\'t just translate your brief вЂ” I understand the context behind it. Your market, your culture, your client\'s expectations.',
+    'why3.title':'Always Reachable','why3.text':'Remote work across time zones. Telegram, WhatsApp, email вЂ” whatever works for you. You won\'t wait days for a reply.',
+    'contact.title':'Let\'s start','contact.sub':'Tell me about your project вЂ” I\'ll reply quickly.',
     'contact.or':'or reach me directly',
     'form.name':'name','form.task':'your task','form.channel':'preferred contact method',
-    'form.send':'Send message →','form.success':'Message received! On it — will be in touch soon.',
-    'footer.motto':'"Different world — different solutions"','footer.nav':'navigation','footer.contacts':'contacts',
+    'form.send':'Send message в†’','form.success':'Message received! On it вЂ” will be in touch soon.',
+    'footer.motto':'"Different world вЂ” different solutions"','footer.nav':'navigation','footer.contacts':'contacts',
     'about.label':'// 01. about','bento.languages':'languages','bento.markets':'markets','bento.tools':'tools',
-    'form.error':'Error — please try again','form.offline':'No connection',
-    'pill.by':'🇧🇾 Belarus · CIS','pill.uk':'🇬🇧 UK · 🇮🇪 Ireland','pill.eu':'🇮🇹 Italy · 🇪🇸 Spain · 🇫🇷 France','pill.latam':'🌎 Latin America',
+    'form.error':'Error вЂ” please try again','form.offline':'No connection',
+    'pill.by':'рџ‡§рџ‡ѕ Belarus В· CIS','pill.uk':'рџ‡¬рџ‡§ UK В· рџ‡®рџ‡Є Ireland','pill.eu':'рџ‡®рџ‡№ Italy В· рџ‡Єрџ‡ё Spain В· рџ‡«рџ‡· France','pill.latam':'рџЊЋ Latin America',
     'process.label':'// 02. process','markets.label':'// 03. markets','why.label':'// 04. why me','contact.label':'// 05. contact',
-    'trust.geo':'Europe & Latin America','footer.copy':'© 2026 Victoria Parkhotik · Built with intention, not a template.'
+    'trust.geo':'Europe & Latin America','footer.copy':'В© 2026 Victoria Parkhotik В· Built with intention, not a template.'
   },
   es: {
-    'nav.about':'Sobre mí','nav.process':'Proceso','nav.why':'Por qué yo','nav.contact':'Contacto',
+    'nav.about':'Sobre mГ­','nav.process':'Proceso','nav.why':'Por quГ© yo','nav.contact':'Contacto',
     'hero.name1':'Victoria','hero.name2':'Parkhotik',
-    'hero.prefix':'Construyo','hero.subtitle':'Productos digitales para empresas de Europa, CEI y América Latina — en tu idioma, con tu mercado en mente.',
+    'hero.prefix':'Construyo','hero.subtitle':'Productos digitales para empresas de Europa, CEI y AmГ©rica Latina вЂ” en tu idioma, con tu mercado en mente.',
     'hero.cta1':'Hablemos','hero.cta2':'Ver proyectos','hero.avail':'Disponible para 2 nuevos proyectos',
     'trust.response':'Respuesta en 24h','trust.ai':'Agentes IA y Automatizaciones',
-    'about.title1':'Un mundo diferente —','about.title2':'un enfoque diferente.',
-    'about.p1':'Creo sitios web, aplicaciones y herramientas de IA para empresas — desde una página sencilla hasta sistemas de neuroagentes.',
-    'about.p2':'Mi enfoque: de la tarea al sistema. Veo el potencial incluso en un proyecto pequeño y construyo una solución con las conexiones adecuadas entre herramientas y personas. Para mí es importante que el resultado sea útil y estético — una herramienta digital con la que sea agradable interactuar simplemente funciona mejor.',
-    'about.p3':'Años de experiencia en comunicaciones internacionales me enseñaron a leer con precisión la tarea en cualquier contexto. Trabajo con clientes de Belarús, Europa y América Latina — y entiendo que "un buen resultado" significa algo diferente en Minsk, Milán y La Habana.',
-    'about.langSub':'Investigación, textos y comunicación en tu idioma',
-    'about.marketSub':'Europa · Belarús & CEI · América Latina',
-    'about.motto':'"Un mundo diferente — una solución diferente"',
-    'cl1.title':'Rosalia LBD','cl1.who':'Manicurista · Minsk',
-    'cl1.motto':'De la imagen — a un sistema que funciona',
+    'about.title1':'Un mundo diferente вЂ”','about.title2':'un enfoque diferente.',
+    'about.p1':'Creo sitios web, aplicaciones y herramientas de IA para empresas вЂ” desde una pГЎgina sencilla hasta sistemas de neuroagentes.',
+    'about.p2':'Mi enfoque: de la tarea al sistema. Veo el potencial incluso en un proyecto pequeГ±o y construyo una soluciГіn con las conexiones adecuadas entre herramientas y personas. Para mГ­ es importante que el resultado sea Гєtil y estГ©tico вЂ” una herramienta digital con la que sea agradable interactuar simplemente funciona mejor.',
+    'about.p3':'AГ±os de experiencia en comunicaciones internacionales me enseГ±aron a leer con precisiГіn la tarea en cualquier contexto. Trabajo con clientes de BelarГєs, Europa y AmГ©rica Latina вЂ” y entiendo que "un buen resultado" significa algo diferente en Minsk, MilГЎn y La Habana.',
+    'about.langSub':'InvestigaciГіn, textos y comunicaciГіn en tu idioma',
+    'about.marketSub':'Europa В· BelarГєs & CEI В· AmГ©rica Latina',
+    'about.motto':'"Un mundo diferente вЂ” una soluciГіn diferente"',
+    'cl1.title':'Rosalia LBD','cl1.who':'Manicurista В· Minsk',
+    'cl1.motto':'De la imagen вЂ” a un sistema que funciona',
     'cl1.sn1':'Componente 1','cl1.cn1':'Imagen',
     'cl1.sn2':'Componente 2','cl1.cn2':'Herramienta',
     'cl1.sn3':'Componente 3','cl1.cn3':'Identidad',
-    'cl1.sn4':'Componente 4','cl1.cn4':'Automatización',
+    'cl1.sn4':'Componente 4','cl1.cn4':'AutomatizaciГіn',
     'cl1.sn5':'Componente 5','cl1.cn5':'Plataforma',
-    'cl1.market':'🇧🇾 Mercado RU','cl1.story':'Sistema del proyecto','cl1.live':'Vista previa →',
-    'cl2.title':'Sistema digital','cl2.who':'Empresas con ambición de crecimiento',
-    'cl2.li1':'Sitio web + automatización de procesos','cl2.li2':'Agentes IA y sistemas de neuroagentes','cl2.li3':'Integración persona–máquina',
-    'cl2.market':'🌐 Internacional',
-    'cl3.title':'Nivel internacional','cl3.who':'Clientes extranjeros · ONGs · Organizaciones',
-    'cl3.li1':'Stack digital completo','cl3.li2':'Contexto intercultural','cl3.li3':'Comunicación en 6 idiomas',
-    'cl3.market':'🌍 Internacional',
-    'services.title':'Qué construyo',
-    'srv.web':'Sitios web','srv.webDesc':'Landing pages, sitios corporativos, proyectos multipágina',
+    'cl1.market':'рџ‡§рџ‡ѕ Mercado RU','cl1.story':'Sistema del proyecto','cl1.live':'Vista previa в†’',
+    'cl2.title':'Sistema digital','cl2.who':'Empresas con ambiciГіn de crecimiento',
+    'cl2.li1':'Sitio web + automatizaciГіn de procesos','cl2.li2':'Agentes IA y sistemas de neuroagentes','cl2.li3':'IntegraciГіn personaвЂ“mГЎquina',
+    'cl2.market':'рџЊђ Internacional',
+    'cl3.title':'Nivel internacional','cl3.who':'Clientes extranjeros В· ONGs В· Organizaciones',
+    'cl3.li1':'Stack digital completo','cl3.li2':'Contexto intercultural','cl3.li3':'ComunicaciГіn en 6 idiomas',
+    'cl3.market':'рџЊЌ Internacional',
+    'services.title':'QuГ© construyo',
+    'srv.web':'Sitios web','srv.webDesc':'Landing pages, sitios corporativos, proyectos multipГЎgina',
     'srv.app':'Aplicaciones web','srv.appDesc':'MVPs, apps, herramientas digitales para tu equipo',
-    'srv.ai':'Agentes de IA','srv.aiDesc':'Agentes autónomos, sistemas multiagente, automatización — bots que trabajan mientras duermes',
+    'srv.ai':'Agentes de IA','srv.aiDesc':'Agentes autГіnomos, sistemas multiagente, automatizaciГіn вЂ” bots que trabajan mientras duermes',
     'srv.sys':'Soluciones de sistema','srv.sysDesc':'Arquitectura digital de extremo a extremo para procesos de negocio',
     'srv.tools':'Herramientas interactivas','srv.toolsDesc':'Bots de Telegram y WhatsApp, quizzes, calculadoras',
-    'srv.parse':'Parsers y automatizaciones','srv.parseDesc':'Scripts de recopilación de datos, procesamiento, integraciones API',
-    'srv.analytics':'Análisis e investigación','srv.analyticsDesc':'Investigación de mercados para Europa y LATAM, scoring de clientes',
-    'services.note':'Sin consultoría ni cursos por ahora — solo ejecución real.',
-    'projects.title':'Proyectos seleccionados','projects.sub':'Proyectos en etapa inicial — tareas reales, soluciones reales.',
-    'projects.coming':'Los proyectos están en camino. Mientras tanto — construyamos el tuyo.','projects.cta':'Empezar proyecto',
+    'srv.parse':'Parsers y automatizaciones','srv.parseDesc':'Scripts de recopilaciГіn de datos, procesamiento, integraciones API',
+    'srv.analytics':'AnГЎlisis e investigaciГіn','srv.analyticsDesc':'InvestigaciГіn de mercados para Europa y LATAM, scoring de clientes',
+    'services.note':'Sin consultorГ­a ni cursos por ahora вЂ” solo ejecuciГіn real.',
+    'projects.title':'Proyectos seleccionados','projects.sub':'Proyectos en etapa inicial вЂ” tareas reales, soluciones reales.',
+    'projects.coming':'Los proyectos estГЎn en camino. Mientras tanto вЂ” construyamos el tuyo.','projects.cta':'Empezar proyecto',
     'vizitka.cat':'Tarjeta de visita digital','vizitka.title':'Tarjeta con avatar',
     'vizitka.task':'Crear una tarjeta de visita digital personal con foto y enlaces de contacto',
-    'vizitka.solution':'Página HTML con avatar, nombre, rol y botones de acceso rápido',
+    'vizitka.solution':'PГЎgina HTML con avatar, nombre, rol y botones de acceso rГЎpido',
     'vizitka.result':'Enlace listo para compartir que se abre en cualquier dispositivo en menos de 1 segundo',
-    'proj.task':'Tarea:','proj.solution':'Solución:','proj.result':'Resultado:','proj.demo':'Ver demo →',
-    'process.title':'Cómo trabajamos juntos',
-    'step1.title':'Descubrimiento','step1.desc':'Compartes tu tarea, contexto y objetivos. Yo hago las preguntas correctas para entender exactamente qué necesitas.',
-    'step2.title':'Propuesta','step2.desc':'Envío un brief + enfoque + cronograma. Sin sorpresas.',
-    'step3.title':'Desarrollo','step3.desc':'Construyo con actualizaciones regulares. Siempre sabes dónde estamos.',
-    'step4.title':'Revisión','step4.desc':'Revisas, sugieres cambios, refino hasta que esté perfecto.',
+    'proj.task':'Tarea:','proj.solution':'SoluciГіn:','proj.result':'Resultado:','proj.demo':'Ver demo в†’',
+    'process.title':'CГіmo trabajamos juntos',
+    'step1.title':'Descubrimiento','step1.desc':'Compartes tu tarea, contexto y objetivos. Yo hago las preguntas correctas para entender exactamente quГ© necesitas.',
+    'step2.title':'Propuesta','step2.desc':'EnvГ­o un brief + enfoque + cronograma. Sin sorpresas.',
+    'step3.title':'Desarrollo','step3.desc':'Construyo con actualizaciones regulares. Siempre sabes dГіnde estamos.',
+    'step4.title':'RevisiГіn','step4.desc':'Revisas, sugieres cambios, refino hasta que estГ© perfecto.',
     'step5.title':'Lanzamiento y soporte','step5.desc':'Publicamos. Sigo disponible para preguntas tras el lanzamiento.',
-    'markets.title':'Dónde trabajo',
-    'markets.by':'Belarús & CEI','markets.byDesc':'Belarús, Rusia, Kazajstán y países de la CEI — empresas de cualquier tamaño, freelancers, emprendedores, incluyendo negocios orientados a la exportación.',
-    'markets.eu':'Europa','markets.euDesc':'España, Italia, Portugal, Vaticano, UK, Irlanda, Francia, Malta — comunicación estructurada, entregables claros, profesionalismo desde el día uno.',
-    'markets.latam':'América Latina','markets.latamDesc':'Cuba, Venezuela, México, Bolivia, Argentina — calidez, confianza, flexibilidad y respuesta rápida por WhatsApp.',
-    'markets.intl':'Organizaciones Internacionales','markets.intlDesc':'ONU, FAO, OIM, UNESCO, CELAC, ALBA, OEA, ALADI, MERCOSUR y otros — apoyo a proyectos, investigación, herramientas digitales para estructuras intergubernamentales.',
-    'markets.remote':'Remoto','markets.remoteDesc':'Trabajo remoto · Cualquier zona horaria · Respuesta en 24 horas · Telegram y WhatsApp disponibles',
-    'why.title':'Por qué trabajar conmigo',
-    'why1.title':'De la tarea al sistema','why1.text':'Me sumerjo en cada proyecto a fondo — veo el potencial y construyo una solución con las conexiones adecuadas entre herramientas y personas. Sin plantillas, sin cadena de montaje. El resultado debe ser útil, estético y pensado para crecer.',
-    'why2.title':'Contexto cultural','why2.text':'No solo traduzco tu brief — entiendo el contexto detrás. Tu mercado, tu cultura, las expectativas de tu cliente.',
-    'why3.title':'Siempre disponible','why3.text':'Trabajo en remoto en cualquier zona horaria. Telegram, WhatsApp, email — lo que te vaya mejor.',
-    'contact.title':'Empecemos','contact.sub':'Cuéntame tu proyecto — te respondo pronto.',
-    'contact.or':'o contáctame directamente',
-    'form.name':'nombre','form.task':'tu tarea','form.channel':'método de contacto preferido',
-    'form.send':'Enviar mensaje →','form.success':'¡Mensaje recibido! Ya lo veo — me pongo en contacto pronto.',
-    'footer.motto':'"Un mundo diferente — una solución diferente"','footer.nav':'navegación','footer.contacts':'contactos',
-    'about.label':'// 01. sobre mí','bento.languages':'idiomas','bento.markets':'mercados','bento.tools':'herramientas',
-    'form.error':'Error — inténtalo de nuevo','form.offline':'Sin conexión',
-    'pill.by':'🇧🇾 Belarús · CEI','pill.uk':'🇬🇧 UK · 🇮🇪 Irlanda','pill.eu':'🇮🇹 Italia · 🇪🇸 España · 🇫🇷 Francia','pill.latam':'🌎 América Latina',
-    'process.label':'// 02. proceso','markets.label':'// 03. mercados','why.label':'// 04. por qué yo','contact.label':'// 05. contacto',
-    'trust.geo':'Europa y América Latina','footer.copy':'© 2026 Victoria Parkhotik · Hecho con intención, no con plantillas.'
+    'markets.title':'DГіnde trabajo',
+    'markets.by':'BelarГєs & CEI','markets.byDesc':'BelarГєs, Rusia, KazajstГЎn y paГ­ses de la CEI вЂ” empresas de cualquier tamaГ±o, freelancers, emprendedores, incluyendo negocios orientados a la exportaciГіn.',
+    'markets.eu':'Europa','markets.euDesc':'EspaГ±a, Italia, Portugal, Vaticano, UK, Irlanda, Francia, Malta вЂ” comunicaciГіn estructurada, entregables claros, profesionalismo desde el dГ­a uno.',
+    'markets.latam':'AmГ©rica Latina','markets.latamDesc':'Cuba, Venezuela, MГ©xico, Bolivia, Argentina вЂ” calidez, confianza, flexibilidad y respuesta rГЎpida por WhatsApp.',
+    'markets.intl':'Organizaciones Internacionales','markets.intlDesc':'ONU, FAO, OIM, UNESCO, CELAC, ALBA, OEA, ALADI, MERCOSUR y otros вЂ” apoyo a proyectos, investigaciГіn, herramientas digitales para estructuras intergubernamentales.',
+    'markets.remote':'Remoto','markets.remoteDesc':'Trabajo remoto В· Cualquier zona horaria В· Respuesta en 24 horas В· Telegram y WhatsApp disponibles',
+    'why.title':'Por quГ© trabajar conmigo',
+    'why1.title':'De la tarea al sistema','why1.text':'Me sumerjo en cada proyecto a fondo вЂ” veo el potencial y construyo una soluciГіn con las conexiones adecuadas entre herramientas y personas. Sin plantillas, sin cadena de montaje. El resultado debe ser Гєtil, estГ©tico y pensado para crecer.',
+    'why2.title':'Contexto cultural','why2.text':'No solo traduzco tu brief вЂ” entiendo el contexto detrГЎs. Tu mercado, tu cultura, las expectativas de tu cliente.',
+    'why3.title':'Siempre disponible','why3.text':'Trabajo en remoto en cualquier zona horaria. Telegram, WhatsApp, email вЂ” lo que te vaya mejor.',
+    'contact.title':'Empecemos','contact.sub':'CuГ©ntame tu proyecto вЂ” te respondo pronto.',
+    'contact.or':'o contГЎctame directamente',
+    'form.name':'nombre','form.task':'tu tarea','form.channel':'mГ©todo de contacto preferido',
+    'form.send':'Enviar mensaje в†’','form.success':'ВЎMensaje recibido! Ya lo veo вЂ” me pongo en contacto pronto.',
+    'footer.motto':'"Un mundo diferente вЂ” una soluciГіn diferente"','footer.nav':'navegaciГіn','footer.contacts':'contactos',
+    'about.label':'// 01. sobre mГ­','bento.languages':'idiomas','bento.markets':'mercados','bento.tools':'herramientas',
+    'form.error':'Error вЂ” intГ©ntalo de nuevo','form.offline':'Sin conexiГіn',
+    'pill.by':'рџ‡§рџ‡ѕ BelarГєs В· CEI','pill.uk':'рџ‡¬рџ‡§ UK В· рџ‡®рџ‡Є Irlanda','pill.eu':'рџ‡®рџ‡№ Italia В· рџ‡Єрџ‡ё EspaГ±a В· рџ‡«рџ‡· Francia','pill.latam':'рџЊЋ AmГ©rica Latina',
+    'process.label':'// 02. proceso','markets.label':'// 03. mercados','why.label':'// 04. por quГ© yo','contact.label':'// 05. contacto',
+    'trust.geo':'Europa y AmГ©rica Latina','footer.copy':'В© 2026 Victoria Parkhotik В· Hecho con intenciГіn, no con plantillas.'
   },
   it: {
-    'nav.about':'Chi sono','nav.process':'Processo','nav.why':'Perché io','nav.contact':'Contatti',
+    'nav.about':'Chi sono','nav.process':'Processo','nav.why':'PerchГ© io','nav.contact':'Contatti',
     'hero.name1':'Victoria','hero.name2':'Parkhotik',
-    'hero.prefix':'Costruisco','hero.subtitle':'Prodotti digitali per aziende in Europa, CSI e America Latina — nella tua lingua, con la tua realtà di mercato.',
+    'hero.prefix':'Costruisco','hero.subtitle':'Prodotti digitali per aziende in Europa, CSI e America Latina вЂ” nella tua lingua, con la tua realtГ  di mercato.',
     'hero.cta1':'Parliamo','hero.cta2':'Vedi i progetti','hero.avail':'Disponibile per 2 nuovi progetti',
     'trust.response':'Risposta entro 24h','trust.ai':'Agenti IA e Automazioni',
-    'about.title1':'Un mondo diverso —','about.title2':'un approccio diverso.',
-    'about.p1':'Creo siti web, applicazioni e strumenti IA per le aziende — da una semplice pagina a sistemi di neuroagenti.',
-    'about.p2':'Il mio approccio: dal compito al sistema. Vedo il potenziale anche in un piccolo progetto e costruisco una soluzione con i giusti collegamenti tra strumenti e persone. Per me è importante che il risultato sia utile ed estetico — uno strumento digitale con cui è piacevole interagire semplicemente funziona meglio.',
-    'about.p3':'Anni di esperienza nelle comunicazioni internazionali mi hanno insegnato a leggere con precisione il compito in qualsiasi contesto. Lavoro con clienti dalla Bielorussia, dall\'Europa e dall\'America Latina — e capisco che "un buon risultato" significa cose diverse a Minsk, Milano e L\'Avana.',
+    'about.title1':'Un mondo diverso вЂ”','about.title2':'un approccio diverso.',
+    'about.p1':'Creo siti web, applicazioni e strumenti IA per le aziende вЂ” da una semplice pagina a sistemi di neuroagenti.',
+    'about.p2':'Il mio approccio: dal compito al sistema. Vedo il potenziale anche in un piccolo progetto e costruisco una soluzione con i giusti collegamenti tra strumenti e persone. Per me ГЁ importante che il risultato sia utile ed estetico вЂ” uno strumento digitale con cui ГЁ piacevole interagire semplicemente funziona meglio.',
+    'about.p3':'Anni di esperienza nelle comunicazioni internazionali mi hanno insegnato a leggere con precisione il compito in qualsiasi contesto. Lavoro con clienti dalla Bielorussia, dall\'Europa e dall\'America Latina вЂ” e capisco che "un buon risultato" significa cose diverse a Minsk, Milano e L\'Avana.',
     'about.langSub':'Ricerche, testi e comunicazione nella tua lingua',
-    'about.marketSub':'Europa · Belarus & CSI · America Latina',
-    'about.motto':'"Un mondo diverso — una soluzione diversa"',
-    'cl1.title':'Rosalia LBD','cl1.who':'Tecnica unghie · Minsk',
-    'cl1.motto':'Dall\'immagine — a un sistema funzionante',
+    'about.marketSub':'Europa В· Belarus & CSI В· America Latina',
+    'about.motto':'"Un mondo diverso вЂ” una soluzione diversa"',
+    'cl1.title':'Rosalia LBD','cl1.who':'Tecnica unghie В· Minsk',
+    'cl1.motto':'Dall\'immagine вЂ” a un sistema funzionante',
     'cl1.sn1':'Componente 1','cl1.cn1':'Immagine',
     'cl1.sn2':'Componente 2','cl1.cn2':'Strumento',
-    'cl1.sn3':'Componente 3','cl1.cn3':'Identità',
+    'cl1.sn3':'Componente 3','cl1.cn3':'IdentitГ ',
     'cl1.sn4':'Componente 4','cl1.cn4':'Automazione',
     'cl1.sn5':'Componente 5','cl1.cn5':'Piattaforma',
-    'cl1.market':'🇧🇾 Mercato RU','cl1.story':'Sistema del progetto','cl1.live':'Anteprima sito →',
+    'cl1.market':'рџ‡§рџ‡ѕ Mercato RU','cl1.story':'Sistema del progetto','cl1.live':'Anteprima sito в†’',
     'cl2.title':'Sistema digitale','cl2.who':'Aziende con ambizioni di crescita',
-    'cl2.li1':'Sito web + automazione dei processi','cl2.li2':'Agenti IA e sistemi di neuroagenti','cl2.li3':'Integrazione persona–macchina',
-    'cl2.market':'🌐 Internazionale',
-    'cl3.title':'Livello internazionale','cl3.who':'Clienti esteri · ONG · Organizzazioni',
+    'cl2.li1':'Sito web + automazione dei processi','cl2.li2':'Agenti IA e sistemi di neuroagenti','cl2.li3':'Integrazione personaвЂ“macchina',
+    'cl2.market':'рџЊђ Internazionale',
+    'cl3.title':'Livello internazionale','cl3.who':'Clienti esteri В· ONG В· Organizzazioni',
     'cl3.li1':'Stack digitale completo','cl3.li2':'Contesto interculturale','cl3.li3':'Comunicazione in 6 lingue',
-    'cl3.market':'🌍 Internazionale',
+    'cl3.market':'рџЊЌ Internazionale',
     'services.title':'Cosa costruisco',
     'srv.web':'Siti web','srv.webDesc':'Landing page, siti aziendali, progetti multipagina',
     'srv.app':'Applicazioni web','srv.appDesc':'MVP, web app, strumenti digitali per il tuo team',
-    'srv.ai':'Agenti IA','srv.aiDesc':'Agenti autonomi, sistemi multi-agente, automazione — bot che lavorano mentre dormi',
+    'srv.ai':'Agenti IA','srv.aiDesc':'Agenti autonomi, sistemi multi-agente, automazione вЂ” bot che lavorano mentre dormi',
     'srv.sys':'Soluzioni di sistema','srv.sysDesc':'Architettura digitale end-to-end per processi aziendali',
     'srv.tools':'Strumenti interattivi','srv.toolsDesc':'Bot Telegram e WhatsApp, quiz, calcolatrici',
     'srv.parse':'Parser e automazioni','srv.parseDesc':'Script di raccolta dati, elaborazione, integrazioni API',
     'srv.analytics':'Analytics e ricerca','srv.analyticsDesc':'Ricerche di mercato per Europa e LATAM, scoring clienti',
-    'services.note':'Nessuna consulenza o corso per ora — solo esecuzione concreta.',
-    'projects.title':'Progetti selezionati','projects.sub':'Progetti iniziali — compiti reali, soluzioni reali.',
-    'projects.coming':'I progetti sono in arrivo. Nel frattempo — costruiamo il tuo.','projects.cta':'Inizia un progetto',
+    'services.note':'Nessuna consulenza o corso per ora вЂ” solo esecuzione concreta.',
+    'projects.title':'Progetti selezionati','projects.sub':'Progetti iniziali вЂ” compiti reali, soluzioni reali.',
+    'projects.coming':'I progetti sono in arrivo. Nel frattempo вЂ” costruiamo il tuo.','projects.cta':'Inizia un progetto',
     'vizitka.cat':'Biglietto da visita digitale','vizitka.title':'Biglietto con avatar',
     'vizitka.task':'Creare un biglietto da visita digitale personale con foto e link ai contatti',
     'vizitka.solution':'Pagina HTML con avatar, nome, ruolo e pulsanti di accesso rapido',
     'vizitka.result':'Link pronto da condividere che si apre su qualsiasi dispositivo in meno di 1 secondo',
-    'proj.task':'Obiettivo:','proj.solution':'Soluzione:','proj.result':'Risultato:','proj.demo':'Vedi demo →',
+    'proj.task':'Obiettivo:','proj.solution':'Soluzione:','proj.result':'Risultato:','proj.demo':'Vedi demo в†’',
     'process.title':'Come lavoriamo insieme',
     'step1.title':'Analisi','step1.desc':'Condividi il tuo obiettivo, contesto e traguardi. Faccio le domande giuste per capire esattamente cosa ti serve.',
     'step2.title':'Proposta','step2.desc':'Invio un brief + approccio + tempi. Nessuna sorpresa.',
     'step3.title':'Sviluppo','step3.desc':'Creo con aggiornamenti regolari. Sai sempre dove siamo.',
-    'step4.title':'Revisione','step4.desc':'Controlli, suggerisci modifiche, perfeziono finché non è perfetto.',
+    'step4.title':'Revisione','step4.desc':'Controlli, suggerisci modifiche, perfeziono finchГ© non ГЁ perfetto.',
     'step5.title':'Lancio e supporto','step5.desc':'Pubblichiamo. Resto disponibile per domande dopo il lancio.',
     'markets.title':'Dove lavoro',
-    'markets.by':'Belarus & CSI','markets.byDesc':'Belarus, Russia, Kazakhstan e paesi CSI — aziende di qualsiasi dimensione, freelancer, imprenditori, incluse aziende orientate all\'export.',
-    'markets.eu':'Europa','markets.euDesc':'Spagna, Italia, Portogallo, Vaticano, UK, Irlanda, Francia, Malta — comunicazione strutturata, deliverable chiari, professionalità fin dal primo giorno.',
-    'markets.latam':'America Latina','markets.latamDesc':'Cuba, Venezuela, Messico, Bolivia, Argentina — calore, fiducia, flessibilità e risposta rapida via WhatsApp.',
-    'markets.intl':'Organizzazioni Internazionali','markets.intlDesc':'ONU, FAO, OIM, UNESCO, CELAC, ALBA, OSA, ALADI, MERCOSUR e altri — supporto a progetti, ricerca, strumenti digitali per strutture intergovernative.',
-    'markets.remote':'Da remoto','markets.remoteDesc':'Lavoro da remoto · Qualsiasi fuso orario · Risposta entro 24 ore · Telegram e WhatsApp disponibili',
-    'why.title':'Perché lavorare con me',
-    'why1.title':'Dal compito al sistema','why1.text':'Entro in profondità in ogni progetto — vedo il potenziale e costruisco una soluzione con i giusti collegamenti tra strumenti e persone. Nessun template, nessuna catena di montaggio. Il risultato deve essere utile, estetico e pronto a crescere.',
-    'why2.title':'Contesto culturale','why2.text':'Non traduco solo il tuo brief — comprendo il contesto. Il tuo mercato, la tua cultura, le aspettative del tuo cliente.',
-    'why3.title':'Sempre disponibile','why3.text':'Lavoro da remoto in qualsiasi fuso orario. Telegram, WhatsApp, email — come preferisci.',
-    'contact.title':'Iniziamo','contact.sub':'Raccontami del tuo progetto — ti rispondo presto.',
+    'markets.by':'Belarus & CSI','markets.byDesc':'Belarus, Russia, Kazakhstan e paesi CSI вЂ” aziende di qualsiasi dimensione, freelancer, imprenditori, incluse aziende orientate all\'export.',
+    'markets.eu':'Europa','markets.euDesc':'Spagna, Italia, Portogallo, Vaticano, UK, Irlanda, Francia, Malta вЂ” comunicazione strutturata, deliverable chiari, professionalitГ  fin dal primo giorno.',
+    'markets.latam':'America Latina','markets.latamDesc':'Cuba, Venezuela, Messico, Bolivia, Argentina вЂ” calore, fiducia, flessibilitГ  e risposta rapida via WhatsApp.',
+    'markets.intl':'Organizzazioni Internazionali','markets.intlDesc':'ONU, FAO, OIM, UNESCO, CELAC, ALBA, OSA, ALADI, MERCOSUR e altri вЂ” supporto a progetti, ricerca, strumenti digitali per strutture intergovernative.',
+    'markets.remote':'Da remoto','markets.remoteDesc':'Lavoro da remoto В· Qualsiasi fuso orario В· Risposta entro 24 ore В· Telegram e WhatsApp disponibili',
+    'why.title':'PerchГ© lavorare con me',
+    'why1.title':'Dal compito al sistema','why1.text':'Entro in profonditГ  in ogni progetto вЂ” vedo il potenziale e costruisco una soluzione con i giusti collegamenti tra strumenti e persone. Nessun template, nessuna catena di montaggio. Il risultato deve essere utile, estetico e pronto a crescere.',
+    'why2.title':'Contesto culturale','why2.text':'Non traduco solo il tuo brief вЂ” comprendo il contesto. Il tuo mercato, la tua cultura, le aspettative del tuo cliente.',
+    'why3.title':'Sempre disponibile','why3.text':'Lavoro da remoto in qualsiasi fuso orario. Telegram, WhatsApp, email вЂ” come preferisci.',
+    'contact.title':'Iniziamo','contact.sub':'Raccontami del tuo progetto вЂ” ti rispondo presto.',
     'contact.or':'o contattami direttamente',
     'form.name':'nome','form.task':'la tua esigenza','form.channel':'metodo di contatto preferito',
-    'form.send':'Invia messaggio →','form.success':'Messaggio ricevuto! Ci sono — ti scrivo presto.',
-    'footer.motto':'"Un mondo diverso — una soluzione diversa"','footer.nav':'navigazione','footer.contacts':'contatti',
+    'form.send':'Invia messaggio в†’','form.success':'Messaggio ricevuto! Ci sono вЂ” ti scrivo presto.',
+    'footer.motto':'"Un mondo diverso вЂ” una soluzione diversa"','footer.nav':'navigazione','footer.contacts':'contatti',
     'about.label':'// 01. chi sono','bento.languages':'lingue','bento.markets':'mercati','bento.tools':'strumenti',
-    'form.error':'Errore — riprova','form.offline':'Nessuna connessione',
-    'pill.by':'🇧🇾 Belarus · CSI','pill.uk':'🇬🇧 UK · 🇮🇪 Irlanda','pill.eu':'🇮🇹 Italia · 🇪🇸 Spagna · 🇫🇷 Francia','pill.latam':'🌎 America Latina',
-    'process.label':'// 02. processo','markets.label':'// 03. mercati','why.label':'// 04. perché io','contact.label':'// 05. contatti',
-    'trust.geo':'Europa e America Latina','footer.copy':'© 2026 Victoria Parkhotik · Fatto con intenzione, non con template.'
+    'form.error':'Errore вЂ” riprova','form.offline':'Nessuna connessione',
+    'pill.by':'рџ‡§рџ‡ѕ Belarus В· CSI','pill.uk':'рџ‡¬рџ‡§ UK В· рџ‡®рџ‡Є Irlanda','pill.eu':'рџ‡®рџ‡№ Italia В· рџ‡Єрџ‡ё Spagna В· рџ‡«рџ‡· Francia','pill.latam':'рџЊЋ America Latina',
+    'process.label':'// 02. processo','markets.label':'// 03. mercati','why.label':'// 04. perchГ© io','contact.label':'// 05. contatti',
+    'trust.geo':'Europa e America Latina','footer.copy':'В© 2026 Victoria Parkhotik В· Fatto con intenzione, non con template.'
   },
   ru: {
-    'nav.about':'Обо мне','nav.process':'Процесс','nav.why':'Почему я','nav.contact':'Контакты',
-    'hero.name1':'Виктория','hero.name2':'Пархотик',
-    'hero.prefix':'Я создаю','hero.subtitle':'Цифровые продукты для бизнеса в Беларуси, странах СНГ, Европе и Латинской Америке — на вашем языке, с пониманием вашего рынка.',
-    'hero.cta1':'Обсудить проект','hero.cta2':'Смотреть работы','hero.avail':'Открыта для 2 новых проектов',
-    'trust.response':'Ответ в течение 24ч','trust.ai':'ИИ-агенты и автоматизации',
-    'about.title1':'Разный мир —','about.title2':'разный подход.',
-    'about.p1':'Я создаю сайты, приложения и ИИ-инструменты для бизнеса — от простой страницы до систем нейроагентов.',
-    'about.p2':'Мой подход — от задачи к системе: вижу потенциал даже маленького проекта и выстраиваю решение с нужными связками между инструментами и людьми. Для меня важно, чтобы результат был полезным и эстетичным — цифровой инструмент, с которым приятно взаимодействовать, работает лучше.',
-    'about.p3':'Многолетний опыт в международных коммуникациях научил меня точно считывать задачу в любом контексте. Работаю с клиентами из Беларуси, Европы и Латинской Америки — и понимаю, что «хороший результат» значит разное в Минске, Милане и Гаване.',
-    'about.langSub':'Исследования, тексты и коммуникация на вашем языке',
-    'about.marketSub':'Беларусь и СНГ · Европа · Латинская Америка',
-    'about.motto':'"Разный мир — разные решения"',
-    'cl1.title':'Rosalia LBD','cl1.who':'Мастер маникюра · Минск',
-    'cl1.motto':'От образа — к работающей системе',
-    'cl1.sn1':'Компонент 1','cl1.cn1':'Образ',
-    'cl1.sn2':'Компонент 2','cl1.cn2':'Инструмент',
-    'cl1.sn3':'Компонент 3','cl1.cn3':'Идентичность',
-    'cl1.sn4':'Компонент 4','cl1.cn4':'Автоматизация',
-    'cl1.sn5':'Компонент 5','cl1.cn5':'Платформа',
-    'cl1.market':'🇧🇾 РУ рынок','cl1.story':'Система проекта','cl1.live':'Превью сайта →',
-    'cl2.title':'Цифровая система','cl2.who':'Компании с амбициями роста',
-    'cl2.li1':'Сайт + автоматизация процессов','cl2.li2':'ИИ-агенты и системы нейроагентов','cl2.li3':'Связки человек–машина',
-    'cl2.market':'🌐 Международный',
-    'cl3.title':'Международный уровень','cl3.who':'Иностранные клиенты · НКО · Организации',
-    'cl3.li1':'Полный цифровой стек','cl3.li2':'Межкультурный контекст','cl3.li3':'Коммуникация на 6 языках',
-    'cl3.market':'🌍 Международный',
-    'services.title':'Что я делаю',
-    'srv.web':'Сайты','srv.webDesc':'Лендинги, корпоративные сайты, многостраничные проекты',
-    'srv.app':'Веб-приложения','srv.appDesc':'MVP, веб-приложения, цифровые инструменты для вашей команды',
-    'srv.ai':'ИИ-агенты','srv.aiDesc':'Автономные агенты, мультиагентные системы, автоматизация — боты, работающие пока вы спите',
-    'srv.sys':'Системные решения','srv.sysDesc':'Сквозная цифровая архитектура для бизнес-процессов',
-    'srv.tools':'Интерактивные инструменты','srv.toolsDesc':'Telegram и WhatsApp боты, квизы, калькуляторы',
-    'srv.parse':'Парсеры и автоматизации','srv.parseDesc':'Скрипты сбора данных, обработка, интеграции API',
-    'srv.analytics':'Аналитика и исследования','srv.analyticsDesc':'Исследование рынков Европы и Латинской Америки, проверка клиентов',
-    'services.note':'Консультации и курсы пока не веду — только практическая реализация.',
-    'projects.title':'Избранные работы','projects.sub':'Проекты на старте — реальные задачи, реальные решения.',
-    'projects.coming':'Проекты скоро появятся. А пока — давайте создадим ваш.','projects.cta':'Начать проект',
-    'vizitka.cat':'Цифровая визитка','vizitka.title':'Визитка с аватаром',
-    'vizitka.task':'Создать персональную цифровую визитку с фото и ссылками на контакты',
-    'vizitka.solution':'Одностраничный HTML с аватаром, именем, должностью и кнопками быстрого доступа',
-    'vizitka.result':'Ссылка для отправки, открывается на любом устройстве быстрее 1 секунды',
-    'proj.task':'Задача:','proj.solution':'Решение:','proj.result':'Результат:','proj.demo':'Смотреть пример →',
-    'process.title':'Как мы будем работать',
-    'step1.title':'Знакомство','step1.desc':'Вы рассказываете о задаче, контексте и целях. Я задаю нужные вопросы, чтобы точно понять, что вам нужно.',
-    'step2.title':'Предложение','step2.desc':'Отправляю бриф + подход + сроки. Никаких сюрпризов.',
-    'step3.title':'Разработка','step3.desc':'Делаю с регулярными обновлениями. Вы всегда знаете, где мы находимся.',
-    'step4.title':'Проверка','step4.desc':'Вы проверяете, вносите правки — я довожу до идеала.',
-    'step5.title':'Запуск и поддержка','step5.desc':'Запускаем. Остаюсь на связи после запуска для вопросов и правок.',
-    'markets.title':'Рынки',
-    'markets.by':'Беларусь и СНГ','markets.byDesc':'Беларусь, Россия, Казахстан и страны СНГ — компании любого размера, фрилансеры, предприниматели, в том числе бизнес, ориентированный на экспорт.',
-    'markets.eu':'Европа','markets.euDesc':'Испания, Италия, Португалия, Ватикан, Великобритания, Ирландия, Франция, Мальта — структурированная коммуникация, чёткие результаты, профессионализм с первого дня.',
-    'markets.latam':'Латинская Америка','markets.latamDesc':'Куба, Венесуэла, Мексика, Боливия, Аргентина — тепло, доверие, гибкость и быстрый ответ через WhatsApp.',
-    'markets.intl':'Международные организации','markets.intlDesc':'ООН, ФАО, МОМ, ЮНЕСКО, СЕЛАК, АЛБА, ОАГ, ЛАИ, МЕРКОСУР и др. — поддержка проектов, исследования, цифровые инструменты для межправительственных структур.',
-    'markets.remote':'Удалённо','markets.remoteDesc':'Удалённая работа · Любой часовой пояс · Ответ в течение 24 часов · Telegram и WhatsApp',
-    'why.title':'Почему я',
-    'why1.title':'От задачи к системе','why1.text':'Вхожу в каждый проект глубоко — вижу потенциал и выстраиваю решение с нужными связками между инструментами и людьми. Без шаблонов, без конвейера. Результат должен быть полезным, эстетичным и работающим на перспективу.',
-    'why2.title':'Культурный контекст','why2.text':'Я не просто перевожу ваш бриф — я понимаю контекст за ним. Ваш рынок, вашу культуру, ожидания вашего клиента.',
-    'why3.title':'Всегда на связи','why3.text':'Удалённая работа в любом часовом поясе. Telegram, WhatsApp, email — как вам удобнее. Ответ не заставит ждать.',
-    'contact.title':'Начнём','contact.sub':'Расскажите о проекте — отвечу быстро.',
-    'contact.or':'или напишите напрямую',
-    'form.name':'имя','form.task':'ваша задача','form.channel':'желаемый способ связи',
-    'form.send':'Отправить сообщение →','form.success':'Сообщение получено! Уже смотрю — скоро свяжусь.',
-    'footer.motto':'"Разный мир — разные решения"','footer.nav':'навигация','footer.contacts':'контакты',
-    'about.label':'// 01. обо мне','bento.languages':'языки','bento.markets':'рынки','bento.tools':'инструменты',
-    'form.error':'Ошибка — попробуйте ещё раз','form.offline':'Нет соединения',
-    'pill.by':'🇧🇾 Беларусь · СНГ','pill.uk':'🇬🇧 UK · 🇮🇪 Ирландия','pill.eu':'🇮🇹 Италия · 🇪🇸 Испания · 🇫🇷 Франция','pill.latam':'🌎 Латинская Америка',
-    'process.label':'// 02. процесс','markets.label':'// 03. рынки','why.label':'// 04. почему я','contact.label':'// 05. контакты',
-    'trust.geo':'Европа и Латинская Америка','footer.copy':'© 2026 Victoria Parkhotik · Сделано с душой, не по шаблону.'
+    'nav.about':'РћР±Рѕ РјРЅРµ','nav.process':'РџСЂРѕС†РµСЃСЃ','nav.why':'РџРѕС‡РµРјСѓ СЏ','nav.contact':'РљРѕРЅС‚Р°РєС‚С‹',
+    'hero.name1':'Р’РёРєС‚РѕСЂРёСЏ','hero.name2':'РџР°СЂС…РѕС‚РёРє',
+    'hero.prefix':'РЇ СЃРѕР·РґР°СЋ','hero.subtitle':'Р¦РёС„СЂРѕРІС‹Рµ РїСЂРѕРґСѓРєС‚С‹ РґР»СЏ Р±РёР·РЅРµСЃР° РІ Р‘РµР»Р°СЂСѓСЃРё, СЃС‚СЂР°РЅР°С… РЎРќР“, Р•РІСЂРѕРїРµ Рё Р›Р°С‚РёРЅСЃРєРѕР№ РђРјРµСЂРёРєРµ вЂ” РЅР° РІР°С€РµРј СЏР·С‹РєРµ, СЃ РїРѕРЅРёРјР°РЅРёРµРј РІР°С€РµРіРѕ СЂС‹РЅРєР°.',
+    'hero.cta1':'РћР±СЃСѓРґРёС‚СЊ РїСЂРѕРµРєС‚','hero.cta2':'РЎРјРѕС‚СЂРµС‚СЊ СЂР°Р±РѕС‚С‹','hero.avail':'РћС‚РєСЂС‹С‚Р° РґР»СЏ 2 РЅРѕРІС‹С… РїСЂРѕРµРєС‚РѕРІ',
+    'trust.response':'РћС‚РІРµС‚ РІ С‚РµС‡РµРЅРёРµ 24С‡','trust.ai':'РР-Р°РіРµРЅС‚С‹ Рё Р°РІС‚РѕРјР°С‚РёР·Р°С†РёРё',
+    'about.title1':'Р Р°Р·РЅС‹Р№ РјРёСЂ вЂ”','about.title2':'СЂР°Р·РЅС‹Р№ РїРѕРґС…РѕРґ.',
+    'about.p1':'РЇ СЃРѕР·РґР°СЋ СЃР°Р№С‚С‹, РїСЂРёР»РѕР¶РµРЅРёСЏ Рё РР-РёРЅСЃС‚СЂСѓРјРµРЅС‚С‹ РґР»СЏ Р±РёР·РЅРµСЃР° вЂ” РѕС‚ РїСЂРѕСЃС‚РѕР№ СЃС‚СЂР°РЅРёС†С‹ РґРѕ СЃРёСЃС‚РµРј РЅРµР№СЂРѕР°РіРµРЅС‚РѕРІ.',
+    'about.p2':'РњРѕР№ РїРѕРґС…РѕРґ вЂ” РѕС‚ Р·Р°РґР°С‡Рё Рє СЃРёСЃС‚РµРјРµ: РІРёР¶Сѓ РїРѕС‚РµРЅС†РёР°Р» РґР°Р¶Рµ РјР°Р»РµРЅСЊРєРѕРіРѕ РїСЂРѕРµРєС‚Р° Рё РІС‹СЃС‚СЂР°РёРІР°СЋ СЂРµС€РµРЅРёРµ СЃ РЅСѓР¶РЅС‹РјРё СЃРІСЏР·РєР°РјРё РјРµР¶РґСѓ РёРЅСЃС‚СЂСѓРјРµРЅС‚Р°РјРё Рё Р»СЋРґСЊРјРё. Р”Р»СЏ РјРµРЅСЏ РІР°Р¶РЅРѕ, С‡С‚РѕР±С‹ СЂРµР·СѓР»СЊС‚Р°С‚ Р±С‹Р» РїРѕР»РµР·РЅС‹Рј Рё СЌСЃС‚РµС‚РёС‡РЅС‹Рј вЂ” С†РёС„СЂРѕРІРѕР№ РёРЅСЃС‚СЂСѓРјРµРЅС‚, СЃ РєРѕС‚РѕСЂС‹Рј РїСЂРёСЏС‚РЅРѕ РІР·Р°РёРјРѕРґРµР№СЃС‚РІРѕРІР°С‚СЊ, СЂР°Р±РѕС‚Р°РµС‚ Р»СѓС‡С€Рµ.',
+    'about.p3':'РњРЅРѕРіРѕР»РµС‚РЅРёР№ РѕРїС‹С‚ РІ РјРµР¶РґСѓРЅР°СЂРѕРґРЅС‹С… РєРѕРјРјСѓРЅРёРєР°С†РёСЏС… РЅР°СѓС‡РёР» РјРµРЅСЏ С‚РѕС‡РЅРѕ СЃС‡РёС‚С‹РІР°С‚СЊ Р·Р°РґР°С‡Сѓ РІ Р»СЋР±РѕРј РєРѕРЅС‚РµРєСЃС‚Рµ. Р Р°Р±РѕС‚Р°СЋ СЃ РєР»РёРµРЅС‚Р°РјРё РёР· Р‘РµР»Р°СЂСѓСЃРё, Р•РІСЂРѕРїС‹ Рё Р›Р°С‚РёРЅСЃРєРѕР№ РђРјРµСЂРёРєРё вЂ” Рё РїРѕРЅРёРјР°СЋ, С‡С‚Рѕ В«С…РѕСЂРѕС€РёР№ СЂРµР·СѓР»СЊС‚Р°С‚В» Р·РЅР°С‡РёС‚ СЂР°Р·РЅРѕРµ РІ РњРёРЅСЃРєРµ, РњРёР»Р°РЅРµ Рё Р“Р°РІР°РЅРµ.',
+    'about.langSub':'РСЃСЃР»РµРґРѕРІР°РЅРёСЏ, С‚РµРєСЃС‚С‹ Рё РєРѕРјРјСѓРЅРёРєР°С†РёСЏ РЅР° РІР°С€РµРј СЏР·С‹РєРµ',
+    'about.marketSub':'Р‘РµР»Р°СЂСѓСЃСЊ Рё РЎРќР“ В· Р•РІСЂРѕРїР° В· Р›Р°С‚РёРЅСЃРєР°СЏ РђРјРµСЂРёРєР°',
+    'about.motto':'"Р Р°Р·РЅС‹Р№ РјРёСЂ вЂ” СЂР°Р·РЅС‹Рµ СЂРµС€РµРЅРёСЏ"',
+    'cl1.title':'Rosalia LBD','cl1.who':'РњР°СЃС‚РµСЂ РјР°РЅРёРєСЋСЂР° В· РњРёРЅСЃРє',
+    'cl1.motto':'РћС‚ РѕР±СЂР°Р·Р° вЂ” Рє СЂР°Р±РѕС‚Р°СЋС‰РµР№ СЃРёСЃС‚РµРјРµ',
+    'cl1.sn1':'РљРѕРјРїРѕРЅРµРЅС‚ 1','cl1.cn1':'РћР±СЂР°Р·',
+    'cl1.sn2':'РљРѕРјРїРѕРЅРµРЅС‚ 2','cl1.cn2':'РРЅСЃС‚СЂСѓРјРµРЅС‚',
+    'cl1.sn3':'РљРѕРјРїРѕРЅРµРЅС‚ 3','cl1.cn3':'РРґРµРЅС‚РёС‡РЅРѕСЃС‚СЊ',
+    'cl1.sn4':'РљРѕРјРїРѕРЅРµРЅС‚ 4','cl1.cn4':'РђРІС‚РѕРјР°С‚РёР·Р°С†РёСЏ',
+    'cl1.sn5':'РљРѕРјРїРѕРЅРµРЅС‚ 5','cl1.cn5':'РџР»Р°С‚С„РѕСЂРјР°',
+    'cl1.market':'рџ‡§рџ‡ѕ Р РЈ СЂС‹РЅРѕРє','cl1.story':'РЎРёСЃС‚РµРјР° РїСЂРѕРµРєС‚Р°','cl1.live':'РџСЂРµРІСЊСЋ СЃР°Р№С‚Р° в†’',
+    'cl2.title':'Р¦РёС„СЂРѕРІР°СЏ СЃРёСЃС‚РµРјР°','cl2.who':'РљРѕРјРїР°РЅРёРё СЃ Р°РјР±РёС†РёСЏРјРё СЂРѕСЃС‚Р°',
+    'cl2.li1':'РЎР°Р№С‚ + Р°РІС‚РѕРјР°С‚РёР·Р°С†РёСЏ РїСЂРѕС†РµСЃСЃРѕРІ','cl2.li2':'РР-Р°РіРµРЅС‚С‹ Рё СЃРёСЃС‚РµРјС‹ РЅРµР№СЂРѕР°РіРµРЅС‚РѕРІ','cl2.li3':'РЎРІСЏР·РєРё С‡РµР»РѕРІРµРєвЂ“РјР°С€РёРЅР°',
+    'cl2.market':'рџЊђ РњРµР¶РґСѓРЅР°СЂРѕРґРЅС‹Р№',
+    'cl3.title':'РњРµР¶РґСѓРЅР°СЂРѕРґРЅС‹Р№ СѓСЂРѕРІРµРЅСЊ','cl3.who':'РРЅРѕСЃС‚СЂР°РЅРЅС‹Рµ РєР»РёРµРЅС‚С‹ В· РќРљРћ В· РћСЂРіР°РЅРёР·Р°С†РёРё',
+    'cl3.li1':'РџРѕР»РЅС‹Р№ С†РёС„СЂРѕРІРѕР№ СЃС‚РµРє','cl3.li2':'РњРµР¶РєСѓР»СЊС‚СѓСЂРЅС‹Р№ РєРѕРЅС‚РµРєСЃС‚','cl3.li3':'РљРѕРјРјСѓРЅРёРєР°С†РёСЏ РЅР° 6 СЏР·С‹РєР°С…',
+    'cl3.market':'рџЊЌ РњРµР¶РґСѓРЅР°СЂРѕРґРЅС‹Р№',
+    'services.title':'Р§С‚Рѕ СЏ РґРµР»Р°СЋ',
+    'srv.web':'РЎР°Р№С‚С‹','srv.webDesc':'Р›РµРЅРґРёРЅРіРё, РєРѕСЂРїРѕСЂР°С‚РёРІРЅС‹Рµ СЃР°Р№С‚С‹, РјРЅРѕРіРѕСЃС‚СЂР°РЅРёС‡РЅС‹Рµ РїСЂРѕРµРєС‚С‹',
+    'srv.app':'Р’РµР±-РїСЂРёР»РѕР¶РµРЅРёСЏ','srv.appDesc':'MVP, РІРµР±-РїСЂРёР»РѕР¶РµРЅРёСЏ, С†РёС„СЂРѕРІС‹Рµ РёРЅСЃС‚СЂСѓРјРµРЅС‚С‹ РґР»СЏ РІР°С€РµР№ РєРѕРјР°РЅРґС‹',
+    'srv.ai':'РР-Р°РіРµРЅС‚С‹','srv.aiDesc':'РђРІС‚РѕРЅРѕРјРЅС‹Рµ Р°РіРµРЅС‚С‹, РјСѓР»СЊС‚РёР°РіРµРЅС‚РЅС‹Рµ СЃРёСЃС‚РµРјС‹, Р°РІС‚РѕРјР°С‚РёР·Р°С†РёСЏ вЂ” Р±РѕС‚С‹, СЂР°Р±РѕС‚Р°СЋС‰РёРµ РїРѕРєР° РІС‹ СЃРїРёС‚Рµ',
+    'srv.sys':'РЎРёСЃС‚РµРјРЅС‹Рµ СЂРµС€РµРЅРёСЏ','srv.sysDesc':'РЎРєРІРѕР·РЅР°СЏ С†РёС„СЂРѕРІР°СЏ Р°СЂС…РёС‚РµРєС‚СѓСЂР° РґР»СЏ Р±РёР·РЅРµСЃ-РїСЂРѕС†РµСЃСЃРѕРІ',
+    'srv.tools':'РРЅС‚РµСЂР°РєС‚РёРІРЅС‹Рµ РёРЅСЃС‚СЂСѓРјРµРЅС‚С‹','srv.toolsDesc':'Telegram Рё WhatsApp Р±РѕС‚С‹, РєРІРёР·С‹, РєР°Р»СЊРєСѓР»СЏС‚РѕСЂС‹',
+    'srv.parse':'РџР°СЂСЃРµСЂС‹ Рё Р°РІС‚РѕРјР°С‚РёР·Р°С†РёРё','srv.parseDesc':'РЎРєСЂРёРїС‚С‹ СЃР±РѕСЂР° РґР°РЅРЅС‹С…, РѕР±СЂР°Р±РѕС‚РєР°, РёРЅС‚РµРіСЂР°С†РёРё API',
+    'srv.analytics':'РђРЅР°Р»РёС‚РёРєР° Рё РёСЃСЃР»РµРґРѕРІР°РЅРёСЏ','srv.analyticsDesc':'РСЃСЃР»РµРґРѕРІР°РЅРёРµ СЂС‹РЅРєРѕРІ Р•РІСЂРѕРїС‹ Рё Р›Р°С‚РёРЅСЃРєРѕР№ РђРјРµСЂРёРєРё, РїСЂРѕРІРµСЂРєР° РєР»РёРµРЅС‚РѕРІ',
+    'services.note':'РљРѕРЅСЃСѓР»СЊС‚Р°С†РёРё Рё РєСѓСЂСЃС‹ РїРѕРєР° РЅРµ РІРµРґСѓ вЂ” С‚РѕР»СЊРєРѕ РїСЂР°РєС‚РёС‡РµСЃРєР°СЏ СЂРµР°Р»РёР·Р°С†РёСЏ.',
+    'projects.title':'РР·Р±СЂР°РЅРЅС‹Рµ СЂР°Р±РѕС‚С‹','projects.sub':'РџСЂРѕРµРєС‚С‹ РЅР° СЃС‚Р°СЂС‚Рµ вЂ” СЂРµР°Р»СЊРЅС‹Рµ Р·Р°РґР°С‡Рё, СЂРµР°Р»СЊРЅС‹Рµ СЂРµС€РµРЅРёСЏ.',
+    'projects.coming':'РџСЂРѕРµРєС‚С‹ СЃРєРѕСЂРѕ РїРѕСЏРІСЏС‚СЃСЏ. Рђ РїРѕРєР° вЂ” РґР°РІР°Р№С‚Рµ СЃРѕР·РґР°РґРёРј РІР°С€.','projects.cta':'РќР°С‡Р°С‚СЊ РїСЂРѕРµРєС‚',
+    'vizitka.cat':'Р¦РёС„СЂРѕРІР°СЏ РІРёР·РёС‚РєР°','vizitka.title':'Р’РёР·РёС‚РєР° СЃ Р°РІР°С‚Р°СЂРѕРј',
+    'vizitka.task':'РЎРѕР·РґР°С‚СЊ РїРµСЂСЃРѕРЅР°Р»СЊРЅСѓСЋ С†РёС„СЂРѕРІСѓСЋ РІРёР·РёС‚РєСѓ СЃ С„РѕС‚Рѕ Рё СЃСЃС‹Р»РєР°РјРё РЅР° РєРѕРЅС‚Р°РєС‚С‹',
+    'vizitka.solution':'РћРґРЅРѕСЃС‚СЂР°РЅРёС‡РЅС‹Р№ HTML СЃ Р°РІР°С‚Р°СЂРѕРј, РёРјРµРЅРµРј, РґРѕР»Р¶РЅРѕСЃС‚СЊСЋ Рё РєРЅРѕРїРєР°РјРё Р±С‹СЃС‚СЂРѕРіРѕ РґРѕСЃС‚СѓРїР°',
+    'vizitka.result':'РЎСЃС‹Р»РєР° РґР»СЏ РѕС‚РїСЂР°РІРєРё, РѕС‚РєСЂС‹РІР°РµС‚СЃСЏ РЅР° Р»СЋР±РѕРј СѓСЃС‚СЂРѕР№СЃС‚РІРµ Р±С‹СЃС‚СЂРµРµ 1 СЃРµРєСѓРЅРґС‹',
+    'proj.task':'Р—Р°РґР°С‡Р°:','proj.solution':'Р РµС€РµРЅРёРµ:','proj.result':'Р РµР·СѓР»СЊС‚Р°С‚:','proj.demo':'РЎРјРѕС‚СЂРµС‚СЊ РїСЂРёРјРµСЂ в†’',
+    'process.title':'РљР°Рє РјС‹ Р±СѓРґРµРј СЂР°Р±РѕС‚Р°С‚СЊ',
+    'step1.title':'Р—РЅР°РєРѕРјСЃС‚РІРѕ','step1.desc':'Р’С‹ СЂР°СЃСЃРєР°Р·С‹РІР°РµС‚Рµ Рѕ Р·Р°РґР°С‡Рµ, РєРѕРЅС‚РµРєСЃС‚Рµ Рё С†РµР»СЏС…. РЇ Р·Р°РґР°СЋ РЅСѓР¶РЅС‹Рµ РІРѕРїСЂРѕСЃС‹, С‡С‚РѕР±С‹ С‚РѕС‡РЅРѕ РїРѕРЅСЏС‚СЊ, С‡С‚Рѕ РІР°Рј РЅСѓР¶РЅРѕ.',
+    'step2.title':'РџСЂРµРґР»РѕР¶РµРЅРёРµ','step2.desc':'РћС‚РїСЂР°РІР»СЏСЋ Р±СЂРёС„ + РїРѕРґС…РѕРґ + СЃСЂРѕРєРё. РќРёРєР°РєРёС… СЃСЋСЂРїСЂРёР·РѕРІ.',
+    'step3.title':'Р Р°Р·СЂР°Р±РѕС‚РєР°','step3.desc':'Р”РµР»Р°СЋ СЃ СЂРµРіСѓР»СЏСЂРЅС‹РјРё РѕР±РЅРѕРІР»РµРЅРёСЏРјРё. Р’С‹ РІСЃРµРіРґР° Р·РЅР°РµС‚Рµ, РіРґРµ РјС‹ РЅР°С…РѕРґРёРјСЃСЏ.',
+    'step4.title':'РџСЂРѕРІРµСЂРєР°','step4.desc':'Р’С‹ РїСЂРѕРІРµСЂСЏРµС‚Рµ, РІРЅРѕСЃРёС‚Рµ РїСЂР°РІРєРё вЂ” СЏ РґРѕРІРѕР¶Сѓ РґРѕ РёРґРµР°Р»Р°.',
+    'step5.title':'Р—Р°РїСѓСЃРє Рё РїРѕРґРґРµСЂР¶РєР°','step5.desc':'Р—Р°РїСѓСЃРєР°РµРј. РћСЃС‚Р°СЋСЃСЊ РЅР° СЃРІСЏР·Рё РїРѕСЃР»Рµ Р·Р°РїСѓСЃРєР° РґР»СЏ РІРѕРїСЂРѕСЃРѕРІ Рё РїСЂР°РІРѕРє.',
+    'markets.title':'Р С‹РЅРєРё',
+    'markets.by':'Р‘РµР»Р°СЂСѓСЃСЊ Рё РЎРќР“','markets.byDesc':'Р‘РµР»Р°СЂСѓСЃСЊ, Р РѕСЃСЃРёСЏ, РљР°Р·Р°С…СЃС‚Р°РЅ Рё СЃС‚СЂР°РЅС‹ РЎРќР“ вЂ” РєРѕРјРїР°РЅРёРё Р»СЋР±РѕРіРѕ СЂР°Р·РјРµСЂР°, С„СЂРёР»Р°РЅСЃРµСЂС‹, РїСЂРµРґРїСЂРёРЅРёРјР°С‚РµР»Рё, РІ С‚РѕРј С‡РёСЃР»Рµ Р±РёР·РЅРµСЃ, РѕСЂРёРµРЅС‚РёСЂРѕРІР°РЅРЅС‹Р№ РЅР° СЌРєСЃРїРѕСЂС‚.',
+    'markets.eu':'Р•РІСЂРѕРїР°','markets.euDesc':'РСЃРїР°РЅРёСЏ, РС‚Р°Р»РёСЏ, РџРѕСЂС‚СѓРіР°Р»РёСЏ, Р’Р°С‚РёРєР°РЅ, Р’РµР»РёРєРѕР±СЂРёС‚Р°РЅРёСЏ, РСЂР»Р°РЅРґРёСЏ, Р¤СЂР°РЅС†РёСЏ, РњР°Р»СЊС‚Р° вЂ” СЃС‚СЂСѓРєС‚СѓСЂРёСЂРѕРІР°РЅРЅР°СЏ РєРѕРјРјСѓРЅРёРєР°С†РёСЏ, С‡С‘С‚РєРёРµ СЂРµР·СѓР»СЊС‚Р°С‚С‹, РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»РёР·Рј СЃ РїРµСЂРІРѕРіРѕ РґРЅСЏ.',
+    'markets.latam':'Р›Р°С‚РёРЅСЃРєР°СЏ РђРјРµСЂРёРєР°','markets.latamDesc':'РљСѓР±Р°, Р’РµРЅРµСЃСѓСЌР»Р°, РњРµРєСЃРёРєР°, Р‘РѕР»РёРІРёСЏ, РђСЂРіРµРЅС‚РёРЅР° вЂ” С‚РµРїР»Рѕ, РґРѕРІРµСЂРёРµ, РіРёР±РєРѕСЃС‚СЊ Рё Р±С‹СЃС‚СЂС‹Р№ РѕС‚РІРµС‚ С‡РµСЂРµР· WhatsApp.',
+    'markets.intl':'РњРµР¶РґСѓРЅР°СЂРѕРґРЅС‹Рµ РѕСЂРіР°РЅРёР·Р°С†РёРё','markets.intlDesc':'РћРћРќ, Р¤РђРћ, РњРћРњ, Р®РќР•РЎРљРћ, РЎР•Р›РђРљ, РђР›Р‘Рђ, РћРђР“, Р›РђР, РњР•Р РљРћРЎРЈР  Рё РґСЂ. вЂ” РїРѕРґРґРµСЂР¶РєР° РїСЂРѕРµРєС‚РѕРІ, РёСЃСЃР»РµРґРѕРІР°РЅРёСЏ, С†РёС„СЂРѕРІС‹Рµ РёРЅСЃС‚СЂСѓРјРµРЅС‚С‹ РґР»СЏ РјРµР¶РїСЂР°РІРёС‚РµР»СЊСЃС‚РІРµРЅРЅС‹С… СЃС‚СЂСѓРєС‚СѓСЂ.',
+    'markets.remote':'РЈРґР°Р»С‘РЅРЅРѕ','markets.remoteDesc':'РЈРґР°Р»С‘РЅРЅР°СЏ СЂР°Р±РѕС‚Р° В· Р›СЋР±РѕР№ С‡Р°СЃРѕРІРѕР№ РїРѕСЏСЃ В· РћС‚РІРµС‚ РІ С‚РµС‡РµРЅРёРµ 24 С‡Р°СЃРѕРІ В· Telegram Рё WhatsApp',
+    'why.title':'РџРѕС‡РµРјСѓ СЏ',
+    'why1.title':'РћС‚ Р·Р°РґР°С‡Рё Рє СЃРёСЃС‚РµРјРµ','why1.text':'Р’С…РѕР¶Сѓ РІ РєР°Р¶РґС‹Р№ РїСЂРѕРµРєС‚ РіР»СѓР±РѕРєРѕ вЂ” РІРёР¶Сѓ РїРѕС‚РµРЅС†РёР°Р» Рё РІС‹СЃС‚СЂР°РёРІР°СЋ СЂРµС€РµРЅРёРµ СЃ РЅСѓР¶РЅС‹РјРё СЃРІСЏР·РєР°РјРё РјРµР¶РґСѓ РёРЅСЃС‚СЂСѓРјРµРЅС‚Р°РјРё Рё Р»СЋРґСЊРјРё. Р‘РµР· С€Р°Р±Р»РѕРЅРѕРІ, Р±РµР· РєРѕРЅРІРµР№РµСЂР°. Р РµР·СѓР»СЊС‚Р°С‚ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РїРѕР»РµР·РЅС‹Рј, СЌСЃС‚РµС‚РёС‡РЅС‹Рј Рё СЂР°Р±РѕС‚Р°СЋС‰РёРј РЅР° РїРµСЂСЃРїРµРєС‚РёРІСѓ.',
+    'why2.title':'РљСѓР»СЊС‚СѓСЂРЅС‹Р№ РєРѕРЅС‚РµРєСЃС‚','why2.text':'РЇ РЅРµ РїСЂРѕСЃС‚Рѕ РїРµСЂРµРІРѕР¶Сѓ РІР°С€ Р±СЂРёС„ вЂ” СЏ РїРѕРЅРёРјР°СЋ РєРѕРЅС‚РµРєСЃС‚ Р·Р° РЅРёРј. Р’Р°С€ СЂС‹РЅРѕРє, РІР°С€Сѓ РєСѓР»СЊС‚СѓСЂСѓ, РѕР¶РёРґР°РЅРёСЏ РІР°С€РµРіРѕ РєР»РёРµРЅС‚Р°.',
+    'why3.title':'Р’СЃРµРіРґР° РЅР° СЃРІСЏР·Рё','why3.text':'РЈРґР°Р»С‘РЅРЅР°СЏ СЂР°Р±РѕС‚Р° РІ Р»СЋР±РѕРј С‡Р°СЃРѕРІРѕРј РїРѕСЏСЃРµ. Telegram, WhatsApp, email вЂ” РєР°Рє РІР°Рј СѓРґРѕР±РЅРµРµ. РћС‚РІРµС‚ РЅРµ Р·Р°СЃС‚Р°РІРёС‚ Р¶РґР°С‚СЊ.',
+    'contact.title':'РќР°С‡РЅС‘Рј','contact.sub':'Р Р°СЃСЃРєР°Р¶РёС‚Рµ Рѕ РїСЂРѕРµРєС‚Рµ вЂ” РѕС‚РІРµС‡Сѓ Р±С‹СЃС‚СЂРѕ.',
+    'contact.or':'РёР»Рё РЅР°РїРёС€РёС‚Рµ РЅР°РїСЂСЏРјСѓСЋ',
+    'form.name':'РёРјСЏ','form.task':'РІР°С€Р° Р·Р°РґР°С‡Р°','form.channel':'Р¶РµР»Р°РµРјС‹Р№ СЃРїРѕСЃРѕР± СЃРІСЏР·Рё',
+    'form.send':'РћС‚РїСЂР°РІРёС‚СЊ СЃРѕРѕР±С‰РµРЅРёРµ в†’','form.success':'РЎРѕРѕР±С‰РµРЅРёРµ РїРѕР»СѓС‡РµРЅРѕ! РЈР¶Рµ СЃРјРѕС‚СЂСЋ вЂ” СЃРєРѕСЂРѕ СЃРІСЏР¶СѓСЃСЊ.',
+    'footer.motto':'"Р Р°Р·РЅС‹Р№ РјРёСЂ вЂ” СЂР°Р·РЅС‹Рµ СЂРµС€РµРЅРёСЏ"','footer.nav':'РЅР°РІРёРіР°С†РёСЏ','footer.contacts':'РєРѕРЅС‚Р°РєС‚С‹',
+    'about.label':'// 01. РѕР±Рѕ РјРЅРµ','bento.languages':'СЏР·С‹РєРё','bento.markets':'СЂС‹РЅРєРё','bento.tools':'РёРЅСЃС‚СЂСѓРјРµРЅС‚С‹',
+    'form.error':'РћС€РёР±РєР° вЂ” РїРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰С‘ СЂР°Р·','form.offline':'РќРµС‚ СЃРѕРµРґРёРЅРµРЅРёСЏ',
+    'pill.by':'рџ‡§рџ‡ѕ Р‘РµР»Р°СЂСѓСЃСЊ В· РЎРќР“','pill.uk':'рџ‡¬рџ‡§ UK В· рџ‡®рџ‡Є РСЂР»Р°РЅРґРёСЏ','pill.eu':'рџ‡®рџ‡№ РС‚Р°Р»РёСЏ В· рџ‡Єрџ‡ё РСЃРїР°РЅРёСЏ В· рџ‡«рџ‡· Р¤СЂР°РЅС†РёСЏ','pill.latam':'рџЊЋ Р›Р°С‚РёРЅСЃРєР°СЏ РђРјРµСЂРёРєР°',
+    'process.label':'// 02. РїСЂРѕС†РµСЃСЃ','markets.label':'// 03. СЂС‹РЅРєРё','why.label':'// 04. РїРѕС‡РµРјСѓ СЏ','contact.label':'// 05. РєРѕРЅС‚Р°РєС‚С‹',
+    'trust.geo':'Р•РІСЂРѕРїР° Рё Р›Р°С‚РёРЅСЃРєР°СЏ РђРјРµСЂРёРєР°','footer.copy':'В© 2026 Victoria Parkhotik В· РЎРґРµР»Р°РЅРѕ СЃ РґСѓС€РѕР№, РЅРµ РїРѕ С€Р°Р±Р»РѕРЅСѓ.'
   }
 };
 
-// ─── LANGUAGE ENGINE ────────────────────────────────────────
+// в”Ђв”Ђв”Ђ LANGUAGE ENGINE в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ
 let currentLang = localStorage.getItem('lang') || 'ru';
 
 function applyLang(lang) {
@@ -2115,7 +2124,7 @@ function applyLang(lang) {
 
   // Update typewriter words and restart animation
   twWords = {
-    ru: ['сайты', 'приложения', 'ИИ-агенты', 'автоматизации'],
+    ru: ['СЃР°Р№С‚С‹', 'РїСЂРёР»РѕР¶РµРЅРёСЏ', 'РР-Р°РіРµРЅС‚С‹', 'Р°РІС‚РѕРјР°С‚РёР·Р°С†РёРё'],
     en: ['websites', 'web apps', 'AI agents', 'automations'],
     es: ['sitios web', 'aplicaciones', 'agentes IA', 'automatizaciones'],
     it: ['siti web', 'applicazioni', 'agenti IA', 'automazioni']
@@ -2126,9 +2135,9 @@ function applyLang(lang) {
 
   // Update form placeholders
   const ph = {
-    ru: { name:'Анна', contact:'@username или email@domain.com', task:'Мне нужен лендинг для бизнеса...' },
+    ru: { name:'РђРЅРЅР°', contact:'@username РёР»Рё email@domain.com', task:'РњРЅРµ РЅСѓР¶РµРЅ Р»РµРЅРґРёРЅРі РґР»СЏ Р±РёР·РЅРµСЃР°...' },
     en: { name:'Victoria', contact:'@username or email@domain.com', task:'I need a landing page for my business...' },
-    es: { name:'María', contact:'@username o email@domain.com', task:'Necesito una landing page para mi negocio...' },
+    es: { name:'MarГ­a', contact:'@username o email@domain.com', task:'Necesito una landing page para mi negocio...' },
     it: { name:'Maria', contact:'@username o email@domain.com', task:'Ho bisogno di una landing page per il mio business...' }
   }[lang];
   if (ph) {
@@ -2142,8 +2151,8 @@ document.querySelectorAll('.lang-btn').forEach(btn => {
   btn.addEventListener('click', () => applyLang(btn.dataset.lang));
 });
 
-// ─── TYPEWRITER ─────────────────────────────────────────────
-let twWords = ['сайты', 'приложения', 'ИИ-агенты', 'автоматизации'];
+// в”Ђв”Ђв”Ђ TYPEWRITER в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ
+let twWords = ['СЃР°Р№С‚С‹', 'РїСЂРёР»РѕР¶РµРЅРёСЏ', 'РР-Р°РіРµРЅС‚С‹', 'Р°РІС‚РѕРјР°С‚РёР·Р°С†РёРё'];
 let twIdx = 0, twChar = 0, twDeleting = false, twTimeout = null;
 const twEl = document.getElementById('twWord');
 
@@ -2160,7 +2169,7 @@ function typewrite() {
 }
 twTimeout = setTimeout(typewrite, 1000);
 
-// ─── CURSOR ─────────────────────────────────────────────────
+// в”Ђв”Ђв”Ђ CURSOR в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ
 const cursor = document.getElementById('cursor');
 const cursorRing = document.getElementById('cursorRing');
 const spotlight = document.getElementById('spotlight');
@@ -2196,7 +2205,7 @@ document.querySelectorAll('a,button,.service-card,.bento-card,.why-card,.market-
   });
 });
 
-// ─── HEADER SCROLL + PARALLAX ───────────────────────────────
+// в”Ђв”Ђв”Ђ HEADER SCROLL + PARALLAX в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ
 const header = document.getElementById('header');
 const heroVisual = document.querySelector('.hero-visual');
 window.addEventListener('scroll', () => {
@@ -2207,7 +2216,7 @@ window.addEventListener('scroll', () => {
   }
 }, { passive: true });
 
-// ─── MOBILE MENU ────────────────────────────────────────────
+// в”Ђв”Ђв”Ђ MOBILE MENU в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ
 const burger = document.getElementById('burger');
 const mobileNav = document.getElementById('mobileNav');
 
@@ -2221,15 +2230,15 @@ function closeMobile() {
   document.body.style.overflow = '';
 }
 
-// ─── SCROLL REVEAL ──────────────────────────────────────────
+// в”Ђв”Ђв”Ђ SCROLL REVEAL в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ
 const revealEls = document.querySelectorAll('.reveal');
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
 }, { threshold: 0.12 });
 revealEls.forEach(el => observer.observe(el));
 
-// ─── CONTACT FORM ────────────────────────────────────────────
-// ─── CHANNEL CHECKBOX TOGGLE ─────────────────────────────────
+// в”Ђв”Ђв”Ђ CONTACT FORM в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ
+// в”Ђв”Ђв”Ђ CHANNEL CHECKBOX TOGGLE в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ
 document.querySelectorAll('input[name="channel"]').forEach(cb => {
   cb.addEventListener('change', () => {
     const input = document.getElementById('fcontact-' + cb.value);
@@ -2249,7 +2258,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
   }).join(' | ');
   const data = {
     name:    document.getElementById('fname').value,
-    contact: channels || '—',
+    contact: channels || 'вЂ”',
     message: document.getElementById('ftask').value
   };
 
@@ -2265,7 +2274,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
       document.querySelector('.contact-divider').style.marginTop = '1.75rem';
     } else {
       btn.disabled = false;
-      btn.querySelector('span').textContent = i18n[currentLang]['form.error'] || 'Error — try again';
+      btn.querySelector('span').textContent = i18n[currentLang]['form.error'] || 'Error вЂ” try again';
     }
   } catch {
     btn.disabled = false;
@@ -2273,7 +2282,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
   }
 });
 
-// ─── BACK TO TOP ─────────────────────────────────────────────
+// в”Ђв”Ђв”Ђ BACK TO TOP в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ
 const backToTopBtn = document.getElementById('backToTop');
 window.addEventListener('scroll', () => {
   backToTopBtn.classList.toggle('visible', window.scrollY > 400);
@@ -2282,9 +2291,13 @@ backToTopBtn.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-// ─── INIT ────────────────────────────────────────────────────
+// в”Ђв”Ђв”Ђ INIT в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ
 applyLang(currentLang);
 </script>
-<button class="back-to-top" id="backToTop" aria-label="Наверх">↑</button>
+<button class="back-to-top" id="backToTop" aria-label="РќР°РІРµСЂС…">в†‘</button>
 </body>
 </html>
+
+
+
+
