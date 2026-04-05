@@ -1267,9 +1267,36 @@ footer {
   grid-template-columns: 1.5fr 1fr 1fr;
   gap: 3rem;
 }
-.footer-brand .logo { margin-bottom: 0.75rem; font-size: var(--fs-3); }
+.footer-brand .logo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.1rem;
+  margin-bottom: 0.85rem;
+}
+.footer-brand .logo-yaselda {
+  font-size: 2rem;
+  letter-spacing: 0.1em;
+  color: var(--river);
+}
+.footer-brand .logo-studio {
+  font-size: 0.78rem;
+  letter-spacing: 0.35em;
+  color: var(--river);
+  align-self: auto;
+  margin-bottom: 0;
+}
+.footer-tagline {
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--river);
+  margin-bottom: 0.75rem;
+  opacity: 0.8;
+}
 .footer-motto {
-  color: var(--text2);
+  color: var(--text3);
   font-size: var(--fs-4);
   font-style: normal;
   line-height: 1.8;
@@ -1789,6 +1816,7 @@ footer {
         <span class="logo-yaselda">Yaselda</span>
         <span class="logo-studio">Studio</span>
       </div>
+      <p class="footer-tagline">Clear flow. Living solutions.</p>
       <p class="footer-motto" data-i18n="footer.motto">"Разный мир — разные решения"</p>
     </div>
     <div>
