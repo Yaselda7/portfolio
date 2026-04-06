@@ -161,18 +161,18 @@ header:not(.scrolled) .burger span { background: var(--forest); }
 }
 .logo-yaselda {
   font-family: 'Cinzel', serif;
-  font-weight: 400;
+  font-weight: 600;
   font-size: 1.15rem;
-  letter-spacing: 0.14em;
-  color: var(--river);
+  letter-spacing: 0.12em;
+  color: var(--steel);
   line-height: 1;
 }
 .logo-studio {
   font-family: 'Cinzel', serif;
-  font-weight: 400;
+  font-weight: 600;
   font-size: 0.7rem;
   letter-spacing: 0.32em;
-  color: var(--river);
+  color: var(--steel);
   line-height: 1;
 }
 /* Header emblem */
@@ -1091,11 +1091,24 @@ body { animation: page-in 0.5s ease both; }
   border-top: 2px solid rgba(90,122,78,0.28);
   border-left: none;
 }
+.market-card { position: relative; overflow: hidden; }
+.market-card::after {
+  content: attr(data-mark);
+  position: absolute;
+  right: 1.2rem; bottom: 0.6rem;
+  font-family: 'Cinzel', serif;
+  font-size: 3.8rem;
+  font-weight: 400;
+  color: var(--steel);
+  opacity: 0.07;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
 .market-card-title {
   font-weight: 400;
   font-size: var(--fs-3);
   margin-bottom: 0.75rem;
-  display: flex; align-items: center; gap: 0.5rem;
 }
 .market-flags { margin-bottom: 1rem; font-size: var(--fs-3); letter-spacing: 0.15em; }
 .market-desc { color: var(--text2); font-size: var(--fs-4); line-height: 1.3; }
@@ -1123,14 +1136,41 @@ body { animation: page-in 0.5s ease both; }
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 2rem 1.75rem;
+  padding-top: 2.25rem;
+  position: relative;
+  overflow: hidden;
   transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
 }
+.why-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+.why-card::after {
+  content: attr(data-num);
+  position: absolute;
+  top: 1.1rem; right: 1.5rem;
+  font-family: 'Cinzel', serif;
+  font-size: 3.8rem;
+  font-weight: 400;
+  line-height: 1;
+  opacity: 0.07;
+  pointer-events: none;
+  user-select: none;
+}
+.why-card:nth-child(1)::before { background: var(--steel); }
+.why-card:nth-child(2)::before { background: var(--sage); }
+.why-card:nth-child(3)::before { background: var(--ochre); }
+.why-card:nth-child(1)::after { content: '01'; color: var(--steel); }
+.why-card:nth-child(2)::after { content: '02'; color: var(--sage); }
+.why-card:nth-child(3)::after { content: '03'; color: var(--ochre); }
 .why-card:hover {
   border-color: rgba(90,122,78,0.38);
   box-shadow: 0 8px 30px rgba(90,122,78,0.12);
   transform: translateY(-4px);
 }
-.why-icon { font-size: var(--fs-2); margin-bottom: 1rem; }
 .why-title { font-weight: 400; font-size: var(--fs-3); margin-bottom: 0.65rem; }
 .why-text { color: var(--text2); font-size: var(--fs-4); line-height: 1.3; }
 
@@ -1152,7 +1192,7 @@ body { animation: page-in 0.5s ease both; }
 .contact-sub {
   color: var(--text2);
   margin-bottom: 2.5rem;
-  font-size: var(--fs-4);
+  font-size: var(--fs-3);
 }
 
 .contact-form {
@@ -1239,9 +1279,10 @@ body { animation: page-in 0.5s ease both; }
 
 .contact-divider {
   display: flex; align-items: center; gap: 1rem;
-  margin: 1.75rem 0;
-  color: var(--text3);
+  margin: 2rem 0;
+  color: var(--text2);
   font-size: var(--fs-4);
+  line-height: 1.4;
 }
 .contact-divider::before, .contact-divider::after {
   content: '';
@@ -1280,57 +1321,73 @@ footer {
   max-width: 1100px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 3rem;
+  align-items: start;
 }
-.footer-brand .logo {
+.footer-logo-block {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 0.15rem;
-  margin-bottom: 0.9rem;
+  align-items: center;
+  gap: 0.75rem;
 }
-.footer-emblem {
-  width: 64px;
-  height: 64px;
-  margin-bottom: 0.6rem;
+.footer-logo-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.footer-mark {
+  height: 62px;
+  width: auto;
 }
 .footer-brand .logo-yaselda {
-  font-size: 1.75rem;
-  letter-spacing: 0.08em;
-  color: var(--river);
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  font-size: 1.6rem;
+  letter-spacing: 0.06em;
+  color: var(--steel);
+  line-height: 1;
+  margin-left: -0.04em;
 }
 .footer-brand .logo-studio {
-  font-size: 0.72rem;
-  letter-spacing: 0.65em;
-  color: var(--river);
-  align-self: auto;
-  margin-bottom: 0;
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+  color: var(--steel);
+  line-height: 1;
+  margin-top: 16px;
 }
 .footer-tagline {
   font-family: 'Cinzel', serif;
-  font-size: 0.72rem;
-  letter-spacing: 0.18em;
-  color: var(--river);
-  margin-bottom: 0.75rem;
-  opacity: 0.85;
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  color: var(--steel);
+  margin-top: 10px;
+  line-height: 1;
 }
 .footer-motto {
-  color: var(--text3);
-  font-size: var(--fs-4);
+  color: var(--steel);
+  font-size: var(--fs-3);
   font-style: normal;
+  text-align: center;
+  max-width: 1100px;
+  margin: 1.5rem auto 0;
   line-height: 1.3;
 }
 .footer-col-title {
-  font-family: 'Cinzel', serif;
-  letter-spacing: 0.18em;
-  font-size: var(--fs-4);
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: var(--fs-3);
   color: var(--text3);
   letter-spacing: 0.08em;
   margin-bottom: 1rem;
 }
 .footer-links { display: flex; flex-direction: column; gap: 0.6rem; }
 .footer-links a {
+  font-family: 'Cormorant Garamond', serif;
   font-size: var(--fs-4);
   color: var(--text2);
   transition: color 0.2s;
@@ -1347,7 +1404,7 @@ footer {
   flex-wrap: wrap;
   gap: 0.75rem;
 }
-.footer-copy { font-size: var(--fs-4); color: var(--text3); }
+.footer-copy { font-family: 'Cormorant Garamond', serif; font-size: var(--fs-4); color: var(--text3); }
 .footer-lang { display: flex; gap: 0.5rem; }
 
 /* ─── RESPONSIVE ───────────────────────────────────────────── */
@@ -1704,24 +1761,24 @@ footer {
     </div>
 
     <div class="markets-grid">
-      <div class="market-card mc-by reveal reveal-delay-1">
+      <div class="market-card mc-by reveal reveal-delay-1" data-mark="BY">
         <div class="market-card-title"><span data-i18n="markets.by">Беларусь и СНГ</span></div>
         <div class="market-desc" data-i18n="markets.byDesc">Беларусь, Россия, Казахстан и страны СНГ — компании любого размера, фрилансеры, предприниматели, в том числе бизнес, ориентированный на экспорт.</div>
       </div>
-      <div class="market-card mc-eu reveal reveal-delay-2">
+      <div class="market-card mc-eu reveal reveal-delay-2" data-mark="EU">
         <div class="market-card-title"><span data-i18n="markets.eu">Европа</span></div>
         <div class="market-desc" data-i18n="markets.euDesc">Испания, Италия, Португалия, Ватикан, Великобритания, Ирландия, Франция, Мальта — структурированная коммуникация, чёткие результаты, профессионализм с первого дня.</div>
       </div>
-      <div class="market-card mc-latam reveal reveal-delay-3">
-        <div class="market-card-title">🌎 <span data-i18n="markets.latam">Латинская Америка</span></div>
+      <div class="market-card mc-latam reveal reveal-delay-3" data-mark="LA">
+        <div class="market-card-title"><span data-i18n="markets.latam">Латинская Америка</span></div>
         <div class="market-desc" data-i18n="markets.latamDesc">Куба, Венесуэла, Мексика, Боливия, Аргентина — тепло, доверие, гибкость и быстрый ответ через WhatsApp.</div>
       </div>
-      <div class="market-card mc-intl reveal reveal-delay-4">
-        <div class="market-card-title">🏛️ <span data-i18n="markets.intl">Международные организации</span></div>
+      <div class="market-card mc-intl reveal reveal-delay-4" data-mark="INT">
+        <div class="market-card-title"><span data-i18n="markets.intl">Международные организации</span></div>
         <div class="market-desc" data-i18n="markets.intlDesc">ООН, ФАО, МОМ, ЮНЕСКО, СЕЛАК, АЛБА, ОАГ, ЛАИ, МЕРКОСУР и др. — поддержка проектов, исследования, цифровые инструменты для межправительственных структур.</div>
       </div>
-      <div class="market-card mc-remote reveal reveal-delay-5" style="grid-column:span 2;">
-        <div class="market-card-title">🌐 <span data-i18n="markets.remote">Удалённо</span></div>
+      <div class="market-card mc-remote reveal reveal-delay-5" style="grid-column:span 2;" data-mark="↗">
+        <div class="market-card-title"><span data-i18n="markets.remote">Удалённо</span></div>
         <div class="market-desc" data-i18n="markets.remoteDesc">Удалённая работа · Любой часовой пояс · Ответ в течение 24 часов · Telegram и WhatsApp</div>
       </div>
     </div>
@@ -1738,17 +1795,14 @@ footer {
 
     <div class="why-grid">
       <div class="why-card reveal reveal-delay-1">
-        <div class="why-icon">🎯</div>
         <div class="why-title" data-i18n="why1.title">От задачи к системе</div>
         <div class="why-text" data-i18n="why1.text">Вхожу в каждый проект глубоко — вижу потенциал и выстраиваю решение с нужными связками между инструментами и людьми. Без шаблонов, без конвейера. Результат должен быть полезным, эстетичным и работающим на перспективу.</div>
       </div>
       <div class="why-card reveal reveal-delay-2">
-        <div class="why-icon">🗺️</div>
         <div class="why-title" data-i18n="why2.title">Культурный контекст</div>
         <div class="why-text" data-i18n="why2.text">Я не просто перевожу ваш бриф — я понимаю контекст за ним. Ваш рынок, вашу культуру, ожидания вашего клиента.</div>
       </div>
       <div class="why-card reveal reveal-delay-3">
-        <div class="why-icon">⚡</div>
         <div class="why-title" data-i18n="why3.title">Всегда на связи</div>
         <div class="why-text" data-i18n="why3.text">Удалённая работа в любом часовом поясе. Telegram, WhatsApp, email — как вам удобнее. Ответ не заставит ждать.</div>
       </div>
@@ -1766,11 +1820,11 @@ footer {
 
       <form class="contact-form" id="contactForm" action="https://formspree.io/f/mvzwzawz" method="POST">
         <div class="form-group">
-          <label class="form-label" data-i18n="form.name">имя</label>
+          <label class="form-label" data-i18n="form.name">Имя</label>
           <input class="form-input" type="text" id="fname" name="name" required placeholder="Анна" autocomplete="name">
         </div>
         <div class="form-group">
-          <label class="form-label" data-i18n="form.channel">желаемый способ связи</label>
+          <label class="form-label" data-i18n="form.channel">Желаемый способ связи</label>
           <div class="channel-options">
             <label class="channel-option">
               <input type="checkbox" name="channel" value="email" id="ch-email">
@@ -1795,7 +1849,7 @@ footer {
           </div>
         </div>
         <div class="form-group">
-          <label class="form-label" data-i18n="form.task">ваша задача</label>
+          <label class="form-label" data-i18n="form.task">Ваша задача</label>
           <textarea class="form-textarea" id="ftask" name="message" required placeholder="Мне нужен лендинг для бизнеса..."></textarea>
         </div>
         <button type="submit" class="btn-primary form-submit" id="formBtn">
@@ -1832,16 +1886,17 @@ footer {
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
-      <img src="reka-odna.png" alt="Yaselda Studio" class="footer-emblem">
-      <div class="logo">
-        <span class="logo-yaselda">Yaselda</span>
-        <span class="logo-studio">Studio</span>
+      <div class="footer-logo-block">
+        <img src="reka-odna.png" class="footer-mark" alt="">
+        <div class="footer-logo-text">
+          <span class="logo-yaselda">Yaselda</span>
+          <span class="logo-studio">Studio</span>
+          <span class="footer-tagline">Clear flow. Living solutions.</span>
+        </div>
       </div>
-      <p class="footer-tagline">Clear flow. Living solutions.</p>
-      <p class="footer-motto" data-i18n="footer.motto">"Разный мир — разные решения"</p>
     </div>
     <div>
-      <div class="footer-col-title" data-i18n="footer.nav">навигация</div>
+      <div class="footer-col-title" data-i18n="footer.nav">Навигация</div>
       <div class="footer-links">
         <a href="#about"   data-i18n="nav.about">Обо мне</a>
         <a href="#process" data-i18n="nav.process">Процесс</a>
@@ -1850,7 +1905,7 @@ footer {
       </div>
     </div>
     <div>
-      <div class="footer-col-title" data-i18n="footer.contacts">контакты</div>
+      <div class="footer-col-title" data-i18n="footer.contacts">Контакты</div>
       <div class="footer-links">
         <a href="https://t.me/Yaselda" target="_blank">Telegram</a>
         <a href="https://wa.me/375257088624" target="_blank">WhatsApp</a>
@@ -1859,6 +1914,7 @@ footer {
       </div>
     </div>
   </div>
+  <p class="footer-motto" data-i18n="footer.motto">"Разный мир — разные решения"</p>
   <div class="footer-bottom">
     <span class="footer-copy" data-i18n="footer.copy">© 2026 Victoria Parkhotik · Сделано с душой, не по шаблону.</span>
     <div class="footer-lang lang-switcher">
@@ -1934,9 +1990,9 @@ const i18n = {
     'why3.title':'Always Reachable','why3.text':'Remote work across time zones. Telegram, WhatsApp, email — whatever works for you. You won\'t wait days for a reply.',
     'contact.title':'Let\'s start','contact.sub':'Tell me about your project — I\'ll reply quickly.',
     'contact.or':'or reach me directly',
-    'form.name':'name','form.task':'your task','form.channel':'preferred contact method',
+    'form.name':'Name','form.task':'Your task','form.channel':'Preferred contact method',
     'form.send':'Send message →','form.success':'Message received! On it — will be in touch soon.',
-    'footer.motto':'"Different world — different solutions"','footer.nav':'navigation','footer.contacts':'contacts',
+    'footer.motto':'"Different world — different solutions"','footer.nav':'Navigation','footer.contacts':'Contacts',
     'about.label':'01. About','bento.languages':'Languages','bento.markets':'Markets','bento.tools':'Tools',
     'form.error':'Error — please try again','form.offline':'No connection',
     'pill.by':'Belarus · CIS','pill.uk':'UK · Ireland','pill.eu':'Italy · Spain · France','pill.latam':'Latin America',
@@ -2004,9 +2060,9 @@ const i18n = {
     'why3.title':'Siempre disponible','why3.text':'Trabajo en remoto en cualquier zona horaria. Telegram, WhatsApp, email — lo que te vaya mejor.',
     'contact.title':'Empecemos','contact.sub':'Cuéntame tu proyecto — te respondo pronto.',
     'contact.or':'o contáctame directamente',
-    'form.name':'nombre','form.task':'tu tarea','form.channel':'método de contacto preferido',
+    'form.name':'Nombre','form.task':'Tu tarea','form.channel':'Método de contacto preferido',
     'form.send':'Enviar mensaje →','form.success':'¡Mensaje recibido! Ya lo veo — me pongo en contacto pronto.',
-    'footer.motto':'"Un mundo diferente — una solución diferente"','footer.nav':'navegación','footer.contacts':'contactos',
+    'footer.motto':'"Un mundo diferente — una solución diferente"','footer.nav':'Navegación','footer.contacts':'Contactos',
     'about.label':'01. Sobre mí','bento.languages':'Idiomas','bento.markets':'Mercados','bento.tools':'Herramientas',
     'form.error':'Error — inténtalo de nuevo','form.offline':'Sin conexión',
     'pill.by':'Belarús · CEI','pill.uk':'UK · Irlanda','pill.eu':'Italia · España · Francia','pill.latam':'América Latina',
@@ -2074,9 +2130,9 @@ const i18n = {
     'why3.title':'Sempre disponibile','why3.text':'Lavoro da remoto in qualsiasi fuso orario. Telegram, WhatsApp, email — come preferisci.',
     'contact.title':'Iniziamo','contact.sub':'Raccontami del tuo progetto — ti rispondo presto.',
     'contact.or':'o contattami direttamente',
-    'form.name':'nome','form.task':'la tua esigenza','form.channel':'metodo di contatto preferito',
+    'form.name':'Nome','form.task':'La tua esigenza','form.channel':'Metodo di contatto preferito',
     'form.send':'Invia messaggio →','form.success':'Messaggio ricevuto! Ci sono — ti scrivo presto.',
-    'footer.motto':'"Un mondo diverso — una soluzione diversa"','footer.nav':'navigazione','footer.contacts':'contatti',
+    'footer.motto':'"Un mondo diverso — una soluzione diversa"','footer.nav':'Navigazione','footer.contacts':'Contatti',
     'about.label':'01. Chi sono','bento.languages':'Lingue','bento.markets':'Mercati','bento.tools':'Strumenti',
     'form.error':'Errore — riprova','form.offline':'Nessuna connessione',
     'pill.by':'Belarus · CSI','pill.uk':'UK · Irlanda','pill.eu':'Italia · Spagna · Francia','pill.latam':'America Latina',
@@ -2144,9 +2200,9 @@ const i18n = {
     'why3.title':'Всегда на связи','why3.text':'Удалённая работа в любом часовом поясе. Telegram, WhatsApp, email — как вам удобнее. Ответ не заставит ждать.',
     'contact.title':'Начнём','contact.sub':'Расскажите о проекте — отвечу быстро.',
     'contact.or':'или напишите напрямую',
-    'form.name':'имя','form.task':'ваша задача','form.channel':'желаемый способ связи',
+    'form.name':'Имя','form.task':'Ваша задача','form.channel':'Желаемый способ связи',
     'form.send':'Отправить сообщение →','form.success':'Сообщение получено! Уже смотрю — скоро свяжусь.',
-    'footer.motto':'"Разный мир — разные решения"','footer.nav':'навигация','footer.contacts':'контакты',
+    'footer.motto':'"Разный мир — разные решения"','footer.nav':'Навигация','footer.contacts':'Контакты',
     'about.label':'01. Обо мне','bento.languages':'Языки','bento.markets':'Рынки','bento.tools':'Инструменты',
     'form.error':'Ошибка — попробуйте ещё раз','form.offline':'Нет соединения',
     'pill.by':'Беларусь · СНГ','pill.uk':'UK · Ирландия','pill.eu':'Италия · Испания · Франция','pill.latam':'Латинская Америка',
