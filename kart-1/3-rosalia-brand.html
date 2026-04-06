@@ -22,8 +22,8 @@
 }
 .yaselda-bar__back {
   display: inline-flex; align-items: center; gap: 0.35rem;
-  font-family: 'Cinzel', serif; font-weight: 500;
-  font-size: 0.85rem; letter-spacing: 0.06em;
+  font-family: 'Cormorant Garamond', serif; font-weight: 400;
+  font-size: 1.1rem; letter-spacing: 0.04em;
   color: #2878B5; text-decoration: none;
   transition: opacity 0.2s;
 }
@@ -709,7 +709,9 @@ function fallbackCopy(text, callback) {
 
 /* Yaselda bar — локализация кнопки Назад */
 (function(){
-  var l = new URLSearchParams(location.search).get('lang') || localStorage.getItem('lang') || 'ru';
+  var fromUrl = new URLSearchParams(location.search).get('lang');
+  if (fromUrl) localStorage.setItem('lang', fromUrl);
+  var l = fromUrl || localStorage.getItem('lang') || 'ru';
   var t = {ru:'Назад', en:'Back', es:'Volver', it:'Indietro'};
   document.getElementById('backText').textContent = t[l] || t.ru;
 })();
