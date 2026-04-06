@@ -36,16 +36,16 @@
   --sage:        #5A7A4E;
   --ochre:       #9B7A3A;
   --text:        #1A2421;
-  --text2:       rgba(26,36,33,0.62);
-  --text3:       rgba(26,36,33,0.38);
+  --text2:       rgba(26,36,33,0.88);
+  --text3:       rgba(26,36,33,0.72);
   --border:      rgba(40,120,181,0.14);
   --card-bg:     rgba(255,255,255,0.88);
   --radius:      16px;
   --radius-sm:   10px;
   --fs-1:  3.9rem;
   --fs-2:  2.4rem;
-  --fs-3:  1.4rem;
-  --fs-4:  1.1rem;
+  --fs-3:  1.6rem;
+  --fs-4:  1.4rem;
   --steel:       #2878B5;
   --steel-glow:  rgba(40,120,181,0.18);
   --steel-soft:  rgba(40,120,181,0.08);
@@ -66,7 +66,7 @@ body {
   font-family: 'Cormorant Garamond', serif;
   background: var(--bg);
   color: var(--text);
-  line-height: 1.8;
+  line-height: 1.3;
   overflow-x: hidden;
   cursor: none;
 }
@@ -76,6 +76,7 @@ body {
 img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
 button { font-family: inherit; cursor: pointer; border: none; }
+em { font-style: normal; }
 
 /* ─── CUSTOM CURSOR ────────────────────────────────────────── */
 .cursor {
@@ -160,7 +161,7 @@ header:not(.scrolled) .burger span { background: var(--forest); }
 }
 .logo-yaselda {
   font-family: 'Cinzel', serif;
-  font-weight: 500;
+  font-weight: 400;
   font-size: 1.15rem;
   letter-spacing: 0.14em;
   color: var(--river);
@@ -168,10 +169,9 @@ header:not(.scrolled) .burger span { background: var(--forest); }
 }
 .logo-studio {
   font-family: 'Cinzel', serif;
-  font-weight: 500;
+  font-weight: 400;
   font-size: 0.7rem;
   letter-spacing: 0.32em;
-  text-transform: uppercase;
   color: var(--river);
   line-height: 1;
 }
@@ -187,7 +187,7 @@ nav {
   display: flex; align-items: center; gap: 2rem;
 }
 nav a {
-  font-size: var(--fs-3);
+  font-size: var(--fs-4);
   color: var(--text2);
   transition: color 0.2s;
   position: relative;
@@ -280,8 +280,8 @@ section { position: relative; padding: 6rem 2rem; }
   display: inline-block;
   width: 7px;
   height: 7px;
-  background: var(--water);
-  opacity: 0.85;
+  border-radius: 50%;
+  background: var(--steel);
   flex-shrink: 0;
 }
 
@@ -380,7 +380,7 @@ body { animation: page-in 0.5s ease both; }
 
 .hero-name {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2.8rem, 6vw, var(--fs-1));
+  font-size: var(--fs-1);
   font-weight: 400;
   line-height: 1.2;
   letter-spacing: 0.04em;
@@ -409,9 +409,9 @@ body { animation: page-in 0.5s ease both; }
 }
 
 .hero-subtitle {
-  font-size: var(--fs-3);
+  font-size: var(--fs-4);
   color: var(--text2);
-  line-height: 1.65;
+  line-height: 1.3;
   max-width: 560px;
   margin-bottom: 2rem;
   animation: name-in 1s 0.35s cubic-bezier(0.16,1,0.3,1) both;
@@ -489,7 +489,7 @@ body { animation: page-in 0.5s ease both; }
   color: #fff;
   border-radius: var(--radius-sm);
   font-family: 'Cormorant Garamond', serif;
-  font-size: var(--fs-3);
+  font-size: var(--fs-4);
   letter-spacing: 0.04em;
   box-shadow: 0 4px 20px rgba(90,122,78,0.28);
   transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s;
@@ -509,7 +509,7 @@ body { animation: page-in 0.5s ease both; }
   border: 1.5px solid rgba(90,122,78,0.45);
   border-radius: var(--radius-sm);
   font-family: 'Cormorant Garamond', serif;
-  font-size: var(--fs-3);
+  font-size: var(--fs-4);
   letter-spacing: 0.04em;
   transition: background 0.2s, border-color 0.2s, transform 0.2s cubic-bezier(0.34,1.56,0.64,1);
 }
@@ -541,7 +541,13 @@ body { animation: page-in 0.5s ease both; }
   display: flex; align-items: center; gap: 0.4rem;
   flex-shrink: 0;
 }
-.trust-item span { font-size: var(--fs-3); }
+.trust-dot {
+  display: inline-block;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--steel);
+  flex-shrink: 0;
+}
 
 /* ─── ABOUT ────────────────────────────────────────────────── */
 #about .about-grid {
@@ -608,7 +614,8 @@ body { animation: page-in 0.5s ease both; }
 
 .about-text {
   color: var(--text2);
-  line-height: 1.8;
+  font-size: var(--fs-4);
+  line-height: 1.3;
   margin-bottom: 2rem;
 }
 .about-text p + p { margin-top: 1rem; }
@@ -642,10 +649,10 @@ body { animation: page-in 0.5s ease both; }
   font-size: var(--fs-4);
   color: var(--green);
   margin-bottom: 0.5rem;
-  text-transform: uppercase;
   letter-spacing: 0.06em;
 }
 .bento-card-title {
+  font-family: 'Cormorant Garamond', serif;
   font-weight: 400;
   font-size: var(--fs-3);
   margin-bottom: 0.4rem;
@@ -653,7 +660,7 @@ body { animation: page-in 0.5s ease both; }
 .bento-card-sub {
   font-size: var(--fs-4);
   color: var(--text2);
-  line-height: 1.8;
+  line-height: 1.3;
 }
 .bento-flags {
   display: flex; flex-wrap: wrap; gap: 0.4rem;
@@ -669,7 +676,7 @@ body { animation: page-in 0.5s ease both; }
   color: var(--steel);
 }
 .bento-motto {
-  font-size: clamp(0.85rem, 1.5vw, 1.1rem);
+  font-size: var(--fs-4);
   font-style: normal;
   font-weight: 400;
   color: var(--text);
@@ -697,7 +704,7 @@ body { animation: page-in 0.5s ease both; }
   border-color: rgba(90,122,78,0.28);
   transform: translateY(-3px);
 }
-.client-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+.client-icon { font-size: var(--fs-2); margin-bottom: 0.75rem; }
 .client-title { font-weight: 400; font-size: var(--fs-3); margin-bottom: 0.35rem; }
 .client-who {
   font-family: 'Cormorant Garamond', serif;
@@ -853,7 +860,7 @@ body { animation: page-in 0.5s ease both; }
   font-size: var(--fs-3);
   margin-bottom: 0.3rem;
 }
-.service-desc { font-size: var(--fs-4); color: var(--text2); line-height: 1.8; }
+.service-desc { font-size: var(--fs-4); color: var(--text2); line-height: 1.3; }
 .service-card.ai-card .service-name { font-size: var(--fs-3); }
 .service-card.ai-card .service-desc { font-size: var(--fs-4); }
 
@@ -909,7 +916,7 @@ body { animation: page-in 0.5s ease both; }
   height: 200px;
   background: linear-gradient(135deg, rgba(90,122,78,0.10), rgba(42,96,64,0.07));
   display: flex; align-items: center; justify-content: center;
-  font-size: 3.5rem;
+  font-size: var(--fs-1);
   border-bottom: 1px solid var(--border);
 }
 
@@ -919,7 +926,6 @@ body { animation: page-in 0.5s ease both; }
   font-size: var(--fs-4);
   color: var(--green);
   margin-bottom: 0.5rem;
-  text-transform: uppercase;
 }
 .project-title { font-weight: 400; font-size: var(--fs-3); margin-bottom: 0.75rem; }
 .project-row {
@@ -1012,7 +1018,7 @@ body { animation: page-in 0.5s ease both; }
   font-size: var(--fs-3);
   margin-bottom: 0.35rem;
 }
-.step-desc { color: var(--text2); font-size: var(--fs-4); line-height: 1.8; }
+.step-desc { color: var(--text2); font-size: var(--fs-4); line-height: 1.3; }
 
 /* ─── MARKETS ──────────────────────────────────────────────── */
 .markets-grid {
@@ -1095,7 +1101,7 @@ body { animation: page-in 0.5s ease both; }
   display: flex; align-items: center; gap: 0.5rem;
 }
 .market-flags { margin-bottom: 1rem; font-size: var(--fs-3); letter-spacing: 0.15em; }
-.market-desc { color: var(--text2); font-size: var(--fs-4); line-height: 1.8; }
+.market-desc { color: var(--text2); font-size: var(--fs-4); line-height: 1.3; }
 
 .markets-footer {
   text-align: center;
@@ -1127,9 +1133,9 @@ body { animation: page-in 0.5s ease both; }
   box-shadow: 0 8px 30px rgba(90,122,78,0.12);
   transform: translateY(-4px);
 }
-.why-icon { font-size: 2rem; margin-bottom: 1rem; }
+.why-icon { font-size: var(--fs-2); margin-bottom: 1rem; }
 .why-title { font-weight: 400; font-size: var(--fs-3); margin-bottom: 0.65rem; }
-.why-text { color: var(--text2); font-size: var(--fs-4); line-height: 1.8; }
+.why-text { color: var(--text2); font-size: var(--fs-4); line-height: 1.3; }
 
 /* ─── CONTACT ──────────────────────────────────────────────── */
 #contact {
@@ -1149,7 +1155,7 @@ body { animation: page-in 0.5s ease both; }
 .contact-sub {
   color: var(--text2);
   margin-bottom: 2.5rem;
-  font-size: var(--fs-3);
+  font-size: var(--fs-4);
 }
 
 .contact-form {
@@ -1160,7 +1166,7 @@ body { animation: page-in 0.5s ease both; }
 }
 .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
 .form-label {
-  font-size: var(--fs-3);
+  font-size: var(--fs-4);
   color: var(--text2);
   font-family: 'Cormorant Garamond', serif;
 }
@@ -1172,7 +1178,7 @@ body { animation: page-in 0.5s ease both; }
   padding: 0.75rem 1rem;
   color: var(--text);
   font-family: 'Cormorant Garamond', serif;
-  font-size: var(--fs-3);
+  font-size: var(--fs-4);
   transition: border-color 0.2s, box-shadow 0.2s;
   outline: none;
   -webkit-appearance: none;
@@ -1217,7 +1223,7 @@ body { animation: page-in 0.5s ease both; }
 .form-submit {
   width: 100%;
   padding: 0.875rem;
-  font-size: var(--fs-3);
+  font-size: var(--fs-4);
   font-weight: 400;
   margin-top: 0.5rem;
 }
@@ -1231,7 +1237,7 @@ body { animation: page-in 0.5s ease both; }
   border-radius: var(--radius);
 }
 .form-success.show { display: block; }
-.form-success-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+.form-success-icon { font-size: var(--fs-1); margin-bottom: 0.75rem; }
 .form-success p { color: var(--text2); }
 
 .contact-divider {
@@ -1265,7 +1271,7 @@ body { animation: page-in 0.5s ease both; }
   color: var(--sage);
   transform: translateY(-2px);
 }
-.contact-link-icon { font-size: var(--fs-3); }
+.contact-link-icon { font-size: var(--fs-4); }
 
 /* ─── FOOTER ───────────────────────────────────────────────── */
 footer {
@@ -1308,7 +1314,6 @@ footer {
   font-family: 'Cinzel', serif;
   font-size: 0.72rem;
   letter-spacing: 0.18em;
-  text-transform: uppercase;
   color: var(--river);
   margin-bottom: 0.75rem;
   opacity: 0.85;
@@ -1317,14 +1322,13 @@ footer {
   color: var(--text3);
   font-size: var(--fs-4);
   font-style: normal;
-  line-height: 1.8;
+  line-height: 1.3;
 }
 .footer-col-title {
   font-family: 'Cinzel', serif;
   letter-spacing: 0.18em;
   font-size: var(--fs-4);
   color: var(--text3);
-  text-transform: uppercase;
   letter-spacing: 0.08em;
   margin-bottom: 1rem;
 }
@@ -1396,7 +1400,7 @@ footer {
   .bento-grid { grid-template-columns: 1fr; }
   .bento-card.wide { grid-column: span 1; }
   .bento-card.tools { grid-column: span 1; }
-  .hero-name { font-size: clamp(2.4rem, 12vw, 3.5rem); }
+  .hero-name { font-size: var(--fs-1); }
 }
 
 /* ─── BACK TO TOP ───────────────────────────────────────────── */
@@ -1407,7 +1411,7 @@ footer {
   border-radius: 50%;
   background: var(--sage);
   color: #fff;
-  font-size: var(--fs-3);
+  font-size: var(--fs-4);
   line-height: 1;
   display: flex; align-items: center; justify-content: center;
   box-shadow: 0 4px 18px rgba(90,122,78,0.35);
@@ -1517,10 +1521,10 @@ footer {
       </p>
 
       <div class="hero-markets">
-        <span class="market-pill" data-i18n="pill.by">🇧🇾 Беларусь · СНГ</span>
-        <span class="market-pill" data-i18n="pill.uk">🇬🇧 UK · 🇮🇪 Ирландия</span>
-        <span class="market-pill" data-i18n="pill.eu">🇮🇹 Италия · 🇪🇸 Испания · 🇫🇷 Франция</span>
-        <span class="market-pill" data-i18n="pill.latam">🌎 Латинская Америка</span>
+        <span class="market-pill" data-i18n="pill.by">Беларусь · СНГ</span>
+        <span class="market-pill" data-i18n="pill.uk">UK · Ирландия</span>
+        <span class="market-pill" data-i18n="pill.eu">Италия · Испания · Франция</span>
+        <span class="market-pill" data-i18n="pill.latam">Латинская Америка</span>
       </div>
 
       <div class="hero-cta">
@@ -1545,23 +1549,23 @@ footer {
 <!-- ─── TRUST BAR ──────────────────────────── -->
 <section id="trust">
   <div class="trust-track">
-    <span class="trust-item"><span>🌍</span> <span data-i18n="trust.geo">Европа и Латинская Америка</span></span>
-    <span class="trust-item"><span>🗣</span> EN · ES · IT · FR</span>
-    <span class="trust-item"><span>⚡</span> <span data-i18n="trust.response">Ответ в течение 24ч</span></span>
-    <span class="trust-item"><span>💬</span> Telegram &amp; WhatsApp</span>
-    <span class="trust-item"><span>🤖</span> <span data-i18n="trust.ai">ИИ-агенты и автоматизации</span></span>
-    <span class="trust-item"><span>🌍</span> <span data-i18n="trust.geo">Европа и Латинская Америка</span></span>
-    <span class="trust-item"><span>🗣</span> EN · ES · IT · FR</span>
-    <span class="trust-item"><span>⚡</span> <span data-i18n="trust.response">Ответ в течение 24ч</span></span>
-    <span class="trust-item"><span>💬</span> Telegram &amp; WhatsApp</span>
-    <span class="trust-item"><span>🤖</span> <span data-i18n="trust.ai">ИИ-агенты и автоматизации</span></span>
+    <span class="trust-item"><span class="trust-dot"></span> <span data-i18n="trust.geo">Европа и Латинская Америка</span></span>
+    <span class="trust-item"><span class="trust-dot"></span> EN · ES · IT · FR</span>
+    <span class="trust-item"><span class="trust-dot"></span> <span data-i18n="trust.response">Ответ в течение 24ч</span></span>
+    <span class="trust-item"><span class="trust-dot"></span> Telegram &amp; WhatsApp</span>
+    <span class="trust-item"><span class="trust-dot"></span> <span data-i18n="trust.ai">ИИ-агенты и автоматизации</span></span>
+    <span class="trust-item"><span class="trust-dot"></span> <span data-i18n="trust.geo">Европа и Латинская Америка</span></span>
+    <span class="trust-item"><span class="trust-dot"></span> EN · ES · IT · FR</span>
+    <span class="trust-item"><span class="trust-dot"></span> <span data-i18n="trust.response">Ответ в течение 24ч</span></span>
+    <span class="trust-item"><span class="trust-dot"></span> Telegram &amp; WhatsApp</span>
+    <span class="trust-item"><span class="trust-dot"></span> <span data-i18n="trust.ai">ИИ-агенты и автоматизации</span></span>
   </div>
 </section>
 
 <!-- ─── ABOUT ──────────────────────────────── -->
 <section id="about">
   <div class="container">
-    <div class="section-label" data-i18n="about.label">// 01. обо мне</div>
+    <div class="section-label" data-i18n="about.label">01. Обо мне</div>
     <div class="about-grid reveal">
       <div class="about-photo">
         <img src="foto-portfolio-2.JPG" alt="Victoria Parkhotik">
@@ -1581,18 +1585,17 @@ footer {
 
     <div class="bento-grid reveal reveal-delay-2">
       <div class="bento-card wide">
-        <div class="bento-card-label" data-i18n="bento.languages">языки</div>
-        <div class="bento-card-title">🇧🇾 BY · 🇷🇺 RU · 🇪🇸 ES · 🇮🇹 IT · 🇬🇧 EN · 🇫🇷 FR</div>
+        <div class="bento-card-label" data-i18n="bento.languages">Языки</div>
+        <div class="bento-card-title">BY · RU · ES · IT · EN · FR</div>
         <div class="bento-card-sub" data-i18n="about.langSub">Исследования, тексты и коммуникация на вашем языке</div>
       </div>
       <div class="bento-card wide">
-        <div class="bento-card-label" data-i18n="bento.markets">рынки</div>
-        <div class="bento-flags">🇧🇾 🇬🇧 🇮🇪 🇮🇹 🇪🇸 🇫🇷 🇲🇽 🇦🇷 🇨🇴</div>
+        <div class="bento-card-label" data-i18n="bento.markets">Рынки</div>
         <div class="bento-card-sub" data-i18n="about.marketSub">Беларусь и СНГ · Европа · Латинская Америка</div>
       </div>
       <div class="bento-card tools">
-        <div class="bento-card-label" data-i18n="bento.tools">инструменты</div>
-        <div class="bento-flags" style="font-size:0.8rem;">
+        <div class="bento-card-label" data-i18n="bento.tools">Инструменты</div>
+        <div class="bento-flags" style="font-size:var(--fs-4);">
           <div class="flag-tag">Claude Code</div>
           <div class="flag-tag">Google AI Studio</div>
           <div class="flag-tag">Lovable</div>
@@ -1608,7 +1611,7 @@ footer {
     <div class="clients-grid" id="projects">
       <div class="client-card reveal reveal-delay-1">
         <div class="client-icon">🌱</div>
-        <span class="market-tag" data-i18n="cl1.market">🇧🇾 РУ рынок</span>
+        <span class="market-tag" data-i18n="cl1.market">РУ рынок</span>
         <div class="client-title" data-i18n="cl1.title">Rosalia LBD</div>
         <div class="client-who" data-i18n="cl1.who">Мастер маникюра · Минск</div>
         <p class="cl1-motto" data-i18n="cl1.motto">От образа — к работающей системе</p>
@@ -1654,7 +1657,7 @@ footer {
 <section id="process">
   <div class="container">
     <div class="reveal">
-      <div class="section-label" data-i18n="process.label">// 02. процесс</div>
+      <div class="section-label" data-i18n="process.label">02. Процесс</div>
       <h2 class="section-title" data-i18n="process.title">Как мы будем работать</h2>
     </div>
 
@@ -1697,24 +1700,21 @@ footer {
 <section id="markets">
   <div class="container">
     <div class="reveal">
-      <div class="section-label" data-i18n="markets.label">// 03. рынки</div>
+      <div class="section-label" data-i18n="markets.label">03. Рынки</div>
       <h2 class="section-title" data-i18n="markets.title">Рынки</h2>
     </div>
 
     <div class="markets-grid">
       <div class="market-card mc-by reveal reveal-delay-1">
-        <div class="market-card-title">🇧🇾 <span data-i18n="markets.by">Беларусь и СНГ</span></div>
-        <div class="market-flags">🇧🇾 🇷🇺 🇰🇿</div>
+        <div class="market-card-title"><span data-i18n="markets.by">Беларусь и СНГ</span></div>
         <div class="market-desc" data-i18n="markets.byDesc">Беларусь, Россия, Казахстан и страны СНГ — компании любого размера, фрилансеры, предприниматели, в том числе бизнес, ориентированный на экспорт.</div>
       </div>
       <div class="market-card mc-eu reveal reveal-delay-2">
-        <div class="market-card-title">🇪🇺 <span data-i18n="markets.eu">Европа</span></div>
-        <div class="market-flags">🇪🇸 🇮🇹 🇵🇹 🇻🇦 🇬🇧 🇮🇪 🇫🇷 🇲🇹</div>
+        <div class="market-card-title"><span data-i18n="markets.eu">Европа</span></div>
         <div class="market-desc" data-i18n="markets.euDesc">Испания, Италия, Португалия, Ватикан, Великобритания, Ирландия, Франция, Мальта — структурированная коммуникация, чёткие результаты, профессионализм с первого дня.</div>
       </div>
       <div class="market-card mc-latam reveal reveal-delay-3">
         <div class="market-card-title">🌎 <span data-i18n="markets.latam">Латинская Америка</span></div>
-        <div class="market-flags">🇨🇺 🇻🇪 🇲🇽 🇧🇴 🇦🇷</div>
         <div class="market-desc" data-i18n="markets.latamDesc">Куба, Венесуэла, Мексика, Боливия, Аргентина — тепло, доверие, гибкость и быстрый ответ через WhatsApp.</div>
       </div>
       <div class="market-card mc-intl reveal reveal-delay-4">
@@ -1733,7 +1733,7 @@ footer {
 <section id="why">
   <div class="container">
     <div class="reveal">
-      <div class="section-label" data-i18n="why.label">// 04. почему я</div>
+      <div class="section-label" data-i18n="why.label">04. Почему я</div>
       <h2 class="section-title" data-i18n="why.title">Почему я</h2>
     </div>
 
@@ -1760,7 +1760,7 @@ footer {
 <!-- ─── CONTACT ─────────────────────────────── -->
 <section id="contact">
   <div class="container">
-    <div class="section-label" data-i18n="contact.label">// 05. контакты</div>
+    <div class="section-label" data-i18n="contact.label">05. Контакты</div>
     <div class="contact-inner reveal">
       <h2 class="section-title" data-i18n="contact.title">Начнём</h2>
       <p class="contact-sub" data-i18n="contact.sub">Расскажите о проекте — отвечу быстро.</p>
@@ -1894,7 +1894,7 @@ const i18n = {
     'cl1.sn3':'Component 3','cl1.cn3':'Identity',
     'cl1.sn4':'Component 4','cl1.cn4':'Automation',
     'cl1.sn5':'Component 5','cl1.cn5':'Platform',
-    'cl1.market':'🇧🇾 RU market','cl1.story':'Project system','cl1.live':'Site preview →',
+    'cl1.market':'RU market','cl1.story':'Project system','cl1.live':'Site preview →',
     'cl2.title':'Digital System','cl2.who':'Companies with growth ambitions',
     'cl2.li1':'Website + process automation','cl2.li2':'AI agents and neuroagent systems','cl2.li3':'Human–machine integration',
     'cl2.market':'🌐 International',
@@ -1938,10 +1938,10 @@ const i18n = {
     'form.name':'name','form.task':'your task','form.channel':'preferred contact method',
     'form.send':'Send message →','form.success':'Message received! On it — will be in touch soon.',
     'footer.motto':'"Different world — different solutions"','footer.nav':'navigation','footer.contacts':'contacts',
-    'about.label':'// 01. about','bento.languages':'languages','bento.markets':'markets','bento.tools':'tools',
+    'about.label':'01. About','bento.languages':'Languages','bento.markets':'Markets','bento.tools':'Tools',
     'form.error':'Error — please try again','form.offline':'No connection',
-    'pill.by':'🇧🇾 Belarus · CIS','pill.uk':'🇬🇧 UK · 🇮🇪 Ireland','pill.eu':'🇮🇹 Italy · 🇪🇸 Spain · 🇫🇷 France','pill.latam':'🌎 Latin America',
-    'process.label':'// 02. process','markets.label':'// 03. markets','why.label':'// 04. why me','contact.label':'// 05. contact',
+    'pill.by':'Belarus · CIS','pill.uk':'UK · Ireland','pill.eu':'Italy · Spain · France','pill.latam':'Latin America',
+    'process.label':'02. Process','markets.label':'03. Markets','why.label':'04. Why me','contact.label':'05. Contact',
     'trust.geo':'Europe & Latin America','footer.copy':'© 2026 Victoria Parkhotik · Built with intention, not a template.'
   },
   es: {
@@ -1964,7 +1964,7 @@ const i18n = {
     'cl1.sn3':'Componente 3','cl1.cn3':'Identidad',
     'cl1.sn4':'Componente 4','cl1.cn4':'Automatización',
     'cl1.sn5':'Componente 5','cl1.cn5':'Plataforma',
-    'cl1.market':'🇧🇾 Mercado RU','cl1.story':'Sistema del proyecto','cl1.live':'Vista previa →',
+    'cl1.market':'Mercado RU','cl1.story':'Sistema del proyecto','cl1.live':'Vista previa →',
     'cl2.title':'Sistema digital','cl2.who':'Empresas con ambición de crecimiento',
     'cl2.li1':'Sitio web + automatización de procesos','cl2.li2':'Agentes IA y sistemas de neuroagentes','cl2.li3':'Integración persona–máquina',
     'cl2.market':'🌐 Internacional',
@@ -2008,10 +2008,10 @@ const i18n = {
     'form.name':'nombre','form.task':'tu tarea','form.channel':'método de contacto preferido',
     'form.send':'Enviar mensaje →','form.success':'¡Mensaje recibido! Ya lo veo — me pongo en contacto pronto.',
     'footer.motto':'"Un mundo diferente — una solución diferente"','footer.nav':'navegación','footer.contacts':'contactos',
-    'about.label':'// 01. sobre mí','bento.languages':'idiomas','bento.markets':'mercados','bento.tools':'herramientas',
+    'about.label':'01. Sobre mí','bento.languages':'Idiomas','bento.markets':'Mercados','bento.tools':'Herramientas',
     'form.error':'Error — inténtalo de nuevo','form.offline':'Sin conexión',
-    'pill.by':'🇧🇾 Belarús · CEI','pill.uk':'🇬🇧 UK · 🇮🇪 Irlanda','pill.eu':'🇮🇹 Italia · 🇪🇸 España · 🇫🇷 Francia','pill.latam':'🌎 América Latina',
-    'process.label':'// 02. proceso','markets.label':'// 03. mercados','why.label':'// 04. por qué yo','contact.label':'// 05. contacto',
+    'pill.by':'Belarús · CEI','pill.uk':'UK · Irlanda','pill.eu':'Italia · España · Francia','pill.latam':'América Latina',
+    'process.label':'02. Proceso','markets.label':'03. Mercados','why.label':'04. Por qué yo','contact.label':'05. Contacto',
     'trust.geo':'Europa y América Latina','footer.copy':'© 2026 Victoria Parkhotik · Hecho con intención, no con plantillas.'
   },
   it: {
@@ -2034,7 +2034,7 @@ const i18n = {
     'cl1.sn3':'Componente 3','cl1.cn3':'Identità',
     'cl1.sn4':'Componente 4','cl1.cn4':'Automazione',
     'cl1.sn5':'Componente 5','cl1.cn5':'Piattaforma',
-    'cl1.market':'🇧🇾 Mercato RU','cl1.story':'Sistema del progetto','cl1.live':'Anteprima sito →',
+    'cl1.market':'Mercato RU','cl1.story':'Sistema del progetto','cl1.live':'Anteprima sito →',
     'cl2.title':'Sistema digitale','cl2.who':'Aziende con ambizioni di crescita',
     'cl2.li1':'Sito web + automazione dei processi','cl2.li2':'Agenti IA e sistemi di neuroagenti','cl2.li3':'Integrazione persona–macchina',
     'cl2.market':'🌐 Internazionale',
@@ -2078,10 +2078,10 @@ const i18n = {
     'form.name':'nome','form.task':'la tua esigenza','form.channel':'metodo di contatto preferito',
     'form.send':'Invia messaggio →','form.success':'Messaggio ricevuto! Ci sono — ti scrivo presto.',
     'footer.motto':'"Un mondo diverso — una soluzione diversa"','footer.nav':'navigazione','footer.contacts':'contatti',
-    'about.label':'// 01. chi sono','bento.languages':'lingue','bento.markets':'mercati','bento.tools':'strumenti',
+    'about.label':'01. Chi sono','bento.languages':'Lingue','bento.markets':'Mercati','bento.tools':'Strumenti',
     'form.error':'Errore — riprova','form.offline':'Nessuna connessione',
-    'pill.by':'🇧🇾 Belarus · CSI','pill.uk':'🇬🇧 UK · 🇮🇪 Irlanda','pill.eu':'🇮🇹 Italia · 🇪🇸 Spagna · 🇫🇷 Francia','pill.latam':'🌎 America Latina',
-    'process.label':'// 02. processo','markets.label':'// 03. mercati','why.label':'// 04. perché io','contact.label':'// 05. contatti',
+    'pill.by':'Belarus · CSI','pill.uk':'UK · Irlanda','pill.eu':'Italia · Spagna · Francia','pill.latam':'America Latina',
+    'process.label':'02. Processo','markets.label':'03. Mercati','why.label':'04. Perché io','contact.label':'05. Contatti',
     'trust.geo':'Europa e America Latina','footer.copy':'© 2026 Victoria Parkhotik · Fatto con intenzione, non con template.'
   },
   ru: {
@@ -2104,7 +2104,7 @@ const i18n = {
     'cl1.sn3':'Компонент 3','cl1.cn3':'Идентичность',
     'cl1.sn4':'Компонент 4','cl1.cn4':'Автоматизация',
     'cl1.sn5':'Компонент 5','cl1.cn5':'Платформа',
-    'cl1.market':'🇧🇾 РУ рынок','cl1.story':'Система проекта','cl1.live':'Превью сайта →',
+    'cl1.market':'РУ рынок','cl1.story':'Система проекта','cl1.live':'Превью сайта →',
     'cl2.title':'Цифровая система','cl2.who':'Компании с амбициями роста',
     'cl2.li1':'Сайт + автоматизация процессов','cl2.li2':'ИИ-агенты и системы нейроагентов','cl2.li3':'Связки человек–машина',
     'cl2.market':'🌐 Международный',
@@ -2148,10 +2148,10 @@ const i18n = {
     'form.name':'имя','form.task':'ваша задача','form.channel':'желаемый способ связи',
     'form.send':'Отправить сообщение →','form.success':'Сообщение получено! Уже смотрю — скоро свяжусь.',
     'footer.motto':'"Разный мир — разные решения"','footer.nav':'навигация','footer.contacts':'контакты',
-    'about.label':'// 01. обо мне','bento.languages':'языки','bento.markets':'рынки','bento.tools':'инструменты',
+    'about.label':'01. Обо мне','bento.languages':'Языки','bento.markets':'Рынки','bento.tools':'Инструменты',
     'form.error':'Ошибка — попробуйте ещё раз','form.offline':'Нет соединения',
-    'pill.by':'🇧🇾 Беларусь · СНГ','pill.uk':'🇬🇧 UK · 🇮🇪 Ирландия','pill.eu':'🇮🇹 Италия · 🇪🇸 Испания · 🇫🇷 Франция','pill.latam':'🌎 Латинская Америка',
-    'process.label':'// 02. процесс','markets.label':'// 03. рынки','why.label':'// 04. почему я','contact.label':'// 05. контакты',
+    'pill.by':'Беларусь · СНГ','pill.uk':'UK · Ирландия','pill.eu':'Италия · Испания · Франция','pill.latam':'Латинская Америка',
+    'process.label':'02. Процесс','markets.label':'03. Рынки','why.label':'04. Почему я','contact.label':'05. Контакты',
     'trust.geo':'Европа и Латинская Америка','footer.copy':'© 2026 Victoria Parkhotik · Сделано с душой, не по шаблону.'
   }
 };
@@ -2174,7 +2174,7 @@ function applyLang(lang) {
 
   // Update typewriter words and restart animation
   twWords = {
-    ru: ['сайты', 'приложения', 'ИИ-агенты', 'автоматизации'],
+    ru: ['сайты', 'приложения', 'ИИ-агентов', 'автоматизации'],
     en: ['websites', 'web apps', 'AI agents', 'automations'],
     es: ['sitios web', 'aplicaciones', 'agentes IA', 'automatizaciones'],
     it: ['siti web', 'applicazioni', 'agenti IA', 'automazioni']
@@ -2202,7 +2202,7 @@ document.querySelectorAll('.lang-btn').forEach(btn => {
 });
 
 // ─── TYPEWRITER ─────────────────────────────────────────────
-let twWords = ['сайты', 'приложения', 'ИИ-агенты', 'автоматизации'];
+let twWords = ['сайты', 'приложения', 'ИИ-агентов', 'автоматизации'];
 let twIdx = 0, twChar = 0, twDeleting = false, twTimeout = null;
 const twEl = document.getElementById('twWord');
 
