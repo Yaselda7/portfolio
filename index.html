@@ -746,6 +746,12 @@ body { animation: page-in 0.5s ease both; }
   color: var(--steel);
   margin: 0.85rem 0 0.9rem;
 }
+.cl3-tagline {
+  font-size: var(--fs-4);
+  color: var(--text3);
+  margin: 0.5rem 0 0.9rem;
+  line-height: 1.6;
+}
 .cl1-comps {
   list-style: none;
   padding: 0;
@@ -1448,6 +1454,7 @@ footer {
   nav { display: none; }
   .burger { display: flex; }
   header { padding: 0 1.25rem; }
+  #langSwitcher { display: none; }
 }
 
 @media (max-width: 480px) {
@@ -1682,12 +1689,17 @@ footer {
         </ul>
       </div>
       <div class="client-card reveal reveal-delay-3">
-        <div class="client-title">🌍 <span data-i18n="cl3.title">Международный уровень</span></div>
+        <div class="client-title">🌐 <span data-i18n="cl3.title">Международный уровень</span></div>
+        <div class="client-who" data-i18n="cl3.who">Международные организации, система ООН, глобальные программы</div>
+        <p class="cl3-tagline" data-i18n="cl3.tagline">16 лет дипломатической службы + цифровые инструменты нового поколения</p>
         <ul class="client-list">
           <li data-i18n="cl3.li1">Полный цифровой стек</li>
-          <li data-i18n="cl3.li2">Межкультурный контекст</li>
-          <li data-i18n="cl3.li3">Коммуникация на 6 языках</li>
+          <li data-i18n="cl3.li2">Межкультурный контекст — постинги в Италии, Венесуэле, на Кубе</li>
+          <li data-i18n="cl3.li3">Коммуникация на 6 языках: EN, IT, ES, FR, RU, BY</li>
+          <li data-i18n="cl3.li4">ИИ-агенты и аналитические платформы для программного мониторинга</li>
+          <li data-i18n="cl3.li5">Аналитика и подготовка материалов на уровне высшего руководства</li>
         </ul>
+        <a href="#contact" class="client-demo-story" data-i18n="cl3.cta">→ Проекты для международных организаций</a>
       </div>
     </div>
 
@@ -1950,9 +1962,14 @@ const i18n = {
     'cl2.title':'Digital System','cl2.who':'Companies with growth ambitions',
     'cl2.li1':'Website + process automation','cl2.li2':'AI agents and neuroagent systems','cl2.li3':'Human–machine integration',
     'cl2.market':'🌐 International',
-    'cl3.title':'International Level','cl3.who':'Foreign clients · NGOs · Organisations',
-    'cl3.li1':'Full digital stack','cl3.li2':'Cross-cultural context','cl3.li3':'Communication in 6 languages',
-    'cl3.market':'🌍 International',
+    'cl3.title':'International Level','cl3.who':'International organizations, UN system, global programmes',
+    'cl3.tagline':'16 years of diplomatic service + next-generation digital tools',
+    'cl3.li1':'Full digital stack','cl3.li2':'Cross-cultural context — postings in Italy, Venezuela, Cuba',
+    'cl3.li3':'Communication in 6 languages: EN, IT, ES, FR, RU, BY',
+    'cl3.li4':'AI agents and analytical platforms for programme monitoring',
+    'cl3.li5':'Analytics and briefings at senior management level',
+    'cl3.cta':'→ Projects for international organizations',
+    'cl3.market':'🌐 International',
     'services.title':'What I build',
     'srv.web':'Websites','srv.webDesc':'Landing pages, corporate sites, multi-page projects',
     'srv.app':'Web Applications','srv.appDesc':'MVPs, web apps, digital tools for your team',
@@ -2020,9 +2037,14 @@ const i18n = {
     'cl2.title':'Sistema digital','cl2.who':'Empresas con ambición de crecimiento',
     'cl2.li1':'Sitio web + automatización de procesos','cl2.li2':'Agentes IA y sistemas de neuroagentes','cl2.li3':'Integración persona–máquina',
     'cl2.market':'🌐 Internacional',
-    'cl3.title':'Nivel internacional','cl3.who':'Clientes extranjeros · ONGs · Organizaciones',
-    'cl3.li1':'Stack digital completo','cl3.li2':'Contexto intercultural','cl3.li3':'Comunicación en 6 idiomas',
-    'cl3.market':'🌍 Internacional',
+    'cl3.title':'Nivel internacional','cl3.who':'Organizaciones internacionales, sistema ONU, programas globales',
+    'cl3.tagline':'16 años de servicio diplomático + herramientas digitales de nueva generación',
+    'cl3.li1':'Stack digital completo','cl3.li2':'Contexto intercultural — destinos en Italia, Venezuela, Cuba',
+    'cl3.li3':'Comunicación en 6 idiomas: EN, IT, ES, FR, RU, BY',
+    'cl3.li4':'Agentes IA y plataformas analíticas para monitoreo de programas',
+    'cl3.li5':'Análisis y materiales de presentación a nivel directivo superior',
+    'cl3.cta':'→ Proyectos para organizaciones internacionales',
+    'cl3.market':'🌐 Internacional',
     'services.title':'Qué construyo',
     'srv.web':'Sitios web','srv.webDesc':'Landing pages, sitios corporativos, proyectos multipágina',
     'srv.app':'Aplicaciones web','srv.appDesc':'MVPs, apps, herramientas digitales para tu equipo',
@@ -2090,9 +2112,14 @@ const i18n = {
     'cl2.title':'Sistema digitale','cl2.who':'Aziende con ambizioni di crescita',
     'cl2.li1':'Sito web + automazione dei processi','cl2.li2':'Agenti IA e sistemi di neuroagenti','cl2.li3':'Integrazione persona–macchina',
     'cl2.market':'🌐 Internazionale',
-    'cl3.title':'Livello internazionale','cl3.who':'Clienti esteri · ONG · Organizzazioni',
-    'cl3.li1':'Stack digitale completo','cl3.li2':'Contesto interculturale','cl3.li3':'Comunicazione in 6 lingue',
-    'cl3.market':'🌍 Internazionale',
+    'cl3.title':'Livello internazionale','cl3.who':'Organizzazioni internazionali, sistema ONU, programmi globali',
+    'cl3.tagline':'16 anni di servizio diplomatico + strumenti digitali di nuova generazione',
+    'cl3.li1':'Stack digitale completo','cl3.li2':'Contesto interculturale — incarichi in Italia, Venezuela, Cuba',
+    'cl3.li3':'Comunicazione in 6 lingue: EN, IT, ES, FR, RU, BY',
+    'cl3.li4':'Agenti IA e piattaforme analitiche per il monitoraggio dei programmi',
+    'cl3.li5':'Analisi e preparazione di materiali a livello dirigenziale superiore',
+    'cl3.cta':'→ Progetti per organizzazioni internazionali',
+    'cl3.market':'🌐 Internazionale',
     'services.title':'Cosa costruisco',
     'srv.web':'Siti web','srv.webDesc':'Landing page, siti aziendali, progetti multipagina',
     'srv.app':'Applicazioni web','srv.appDesc':'MVP, web app, strumenti digitali per il tuo team',
@@ -2160,9 +2187,14 @@ const i18n = {
     'cl2.title':'Цифровая система','cl2.who':'Компании с амбициями роста',
     'cl2.li1':'Сайт + автоматизация процессов','cl2.li2':'ИИ-агенты и системы нейроагентов','cl2.li3':'Связки человек–машина',
     'cl2.market':'🌐 Международный',
-    'cl3.title':'Международный уровень','cl3.who':'Иностранные клиенты · НКО · Организации',
-    'cl3.li1':'Полный цифровой стек','cl3.li2':'Межкультурный контекст','cl3.li3':'Коммуникация на 6 языках',
-    'cl3.market':'🌍 Международный',
+    'cl3.title':'Международный уровень','cl3.who':'Международные организации, система ООН, глобальные программы',
+    'cl3.tagline':'16 лет дипломатической службы + цифровые инструменты нового поколения',
+    'cl3.li1':'Полный цифровой стек','cl3.li2':'Межкультурный контекст — постинги в Италии, Венесуэле, на Кубе',
+    'cl3.li3':'Коммуникация на 6 языках: EN, IT, ES, FR, RU, BY',
+    'cl3.li4':'ИИ-агенты и аналитические платформы для программного мониторинга',
+    'cl3.li5':'Аналитика и подготовка материалов на уровне высшего руководства',
+    'cl3.cta':'→ Проекты для международных организаций',
+    'cl3.market':'🌐 Международный',
     'services.title':'Что я делаю',
     'srv.web':'Сайты','srv.webDesc':'Лендинги, корпоративные сайты, многостраничные проекты',
     'srv.app':'Веб-приложения','srv.appDesc':'MVP, веб-приложения, цифровые инструменты для вашей команды',
