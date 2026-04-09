@@ -1,3 +1,5 @@
 za-project/
 *.md
 CLAUDE.md
+
+.vercel

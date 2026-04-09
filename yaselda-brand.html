@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yaselda Studio — Brand Pack</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:      #F7F8F5;
+  --bg2:     #EEF2ED;
+  --bg3:     #EBF0F5;
+  --steel:   #2878B5;
+  --sage:    #5A7A4E;
+  --ochre:   #9B7A3A;
+  --text:    #111816;
+  --text2:   rgba(17,24,22,0.72);
+  --text3:   rgba(17,24,22,0.45);
+  --border:  rgba(40,120,181,0.14);
+  --dark:    #1A2020;
+  --gold:    #C9A050;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Cormorant Garamond', serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+/* ── Layout ── */
+.page { max-width: 1000px; margin: 0 auto; padding: 0 2rem 6rem; }
+
+/* ── Top bar ── */
+.top-bar {
+  border-bottom: 1px solid var(--border);
+  padding: 1.25rem 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 5rem;
+  position: sticky; top: 0;
+  background: rgba(247,248,245,0.96);
+  backdrop-filter: blur(16px);
+  z-index: 10;
+}
+.top-bar-brand {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+}
+.top-bar-brand img { height: 32px; }
+.top-bar-brand span {
+  font-family: 'Cinzel', serif; font-weight: 500;
+  font-size: 0.88rem; letter-spacing: 0.14em; color: var(--steel);
+}
+.top-bar-label {
+  font-family: 'Cinzel', serif; font-size: 0.72rem;
+  letter-spacing: 0.18em; color: var(--text3); text-transform: uppercase;
+}
+
+/* ── Section ── */
+.section { margin-bottom: 5rem; }
+.section-label {
+  font-family: 'Cinzel', serif; font-weight: 400;
+  font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--steel); margin-bottom: 0.5rem;
+  display: flex; align-items: center; gap: 0.6rem;
+}
+.section-label::before {
+  content: ''; display: inline-block;
+  width: 5px; height: 5px; background: var(--steel); opacity: 0.6;
+}
+.section-title {
+  font-family: 'Cormorant Garamond', serif; font-weight: 400;
+  font-size: 1.9rem; color: var(--text);
+  margin-bottom: 2rem; line-height: 1.2;
+}
+.section-divider {
+  height: 1px; background: var(--border); margin-bottom: 2rem;
+}
+
+/* ── Logo showcase cards ── */
+.logo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+.logo-card {
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 1.5rem;
+  min-height: 180px;
+}
+.logo-card-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.85rem; color: var(--text3);
+  letter-spacing: 0.04em;
+}
+
+/* Light */
+.logo-card--light {
+  background: #FDFCF0;
+  border: 1px solid var(--border);
+}
+/* Mist */
+.logo-card--mist {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+}
+/* Blue */
+.logo-card--blue {
+  background: var(--steel);
+}
+/* Dark */
+.logo-card--dark {
+  background: var(--dark);
+}
+/* Sage */
+.logo-card--sage {
+  background: var(--sage);
+}
+
+/* ── Logo components ── */
+.logo-block {
+  position: relative;
+  display: inline-block;
+  padding-right: 90px;
+}
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.logo-block img.mark {
+  position: absolute;
+  height: 66px;
+  width: auto;
+  /* left и top задаются через JS */
+}
+
+.logo-wordmark {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 3px;
+}
+.logo-yaselda {
+  font-family: 'Cinzel', serif; font-weight: 600;
+  font-size: 1.6rem; letter-spacing: 0.06em;
+  color: #2878B5; line-height: 1;
+  margin-left: -0.04em;
+}
+.logo-studio {
+  font-family: 'Cinzel', serif; font-weight: 600;
+  font-size: 0.85rem; letter-spacing: 0.18em;
+  text-transform: uppercase; color: #2878B5; line-height: 1;
+  margin-top: 16px;
+}
+.logo-tagline {
+  font-family: 'Cinzel', serif; font-weight: 600;
+  font-size: 0.78rem; letter-spacing: 0.06em;
+  color: #2878B5; margin-top: 10px;
+}
+
+/* Inverted colours */
+.inv .logo-yaselda, .inv .logo-studio, .inv .logo-tagline { color: #ffffff; }
+/* Gold on dark */
+.gold .logo-yaselda, .gold .logo-studio, .gold .logo-tagline { color: #C9A050; }
+.gold img.mark { filter: none; }
+
+/* Nav-size: уменьшенный вариант */
+.logo-nav-size .logo-yaselda { font-size: 1.0rem; letter-spacing: 0.12em; }
+.logo-nav-size .logo-studio  { font-size: 0.62rem; letter-spacing: 0.22em; }
+
+/* Mark only sizes */
+
+/* ── Marks grid ── */
+.marks-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.25rem;
+  align-items: end;
+}
+.mark-card {
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: flex-end;
+  gap: 1rem;
+  min-height: 140px;
+}
+.mark-card-label {
+  font-size: 0.8rem; color: var(--text3); text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+}
+.mark-card--light { background: #FDFCF0; border: 1px solid var(--border); }
+.mark-card--mist  { background: var(--bg3); border: 1px solid var(--border); }
+.mark-card--blue  { background: var(--steel); }
+.mark-card--dark  { background: var(--dark); }
+.mark-card--sage  { background: var(--sage); }
+
+/* ── Palette ── */
+.palette-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1rem;
+}
+.color-card { border-radius: 12px; overflow: hidden; }
+.color-swatch { height: 80px; }
+.color-info { padding: 0.75rem; background: #fff; border: 1px solid var(--border); border-top: none; border-radius: 0 0 12px 12px; }
+.color-name { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.1em; color: var(--text2); margin-bottom: 2px; }
+.color-hex  { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--text); }
+.color-role { font-size: 0.75rem; color: var(--text3); margin-top: 2px; line-height: 1.3; }
+
+/* ── Typography ── */
+.type-row {
+  padding: 1.75rem 0;
+  border-bottom: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 2rem;
+  align-items: baseline;
+}
+.type-meta { font-size: 0.85rem; color: var(--text3); line-height: 1.6; }
+.type-meta strong { display: block; color: var(--text2); font-weight: 400; margin-bottom: 0.2rem; }
+
+/* ── Tagline ── */
+.tagline-block {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;
+}
+.tagline-card {
+  background: #FDFCF0;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2.5rem;
+  display: flex; flex-direction: column; gap: 0.5rem;
+}
+.tagline-lang {
+  font-family: 'Cinzel', serif; font-size: 0.65rem;
+  letter-spacing: 0.18em; color: var(--steel); text-transform: uppercase;
+}
+.tagline-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem; color: var(--text); line-height: 1.3; font-style: italic;
+}
+
+/* ── Rules ── */
+.rules-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;
+}
+.rule-card {
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  background: var(--bg2);
+}
+.rule-sign {
+  font-size: 1.1rem; margin-bottom: 0.5rem;
+}
+.rule-text { font-size: 1rem; color: var(--text2); line-height: 1.4; }
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .logo-grid    { grid-template-columns: 1fr; }
+  .palette-grid { grid-template-columns: repeat(3, 1fr); }
+  .marks-grid   { grid-template-columns: repeat(3, 1fr); }
+  .tagline-block, .rules-grid { grid-template-columns: 1fr; }
+  .type-row { grid-template-columns: 1fr; gap: 0.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- Top bar -->
+<div class="top-bar">
+  <div class="top-bar-brand">
+    <img src="reka-odna.png" alt="Yaselda Studio">
+    <span>Yaselda Studio</span>
+  </div>
+  <span class="top-bar-label">Brand Pack · 2026</span>
+</div>
+
+<div class="page">
+
+<!-- ═══════════════════════════════════════════════════
+     01. ЛОГОТИП — ОСНОВНОЙ
+════════════════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-label">01. Логотип</div>
+  <h2 class="section-title">Основной логотип</h2>
+
+  <div class="logo-grid">
+
+    <!-- Светлый фон -->
+    <div class="logo-card logo-card--light">
+      <div class="logo-block">
+        <div class="logo-text">
+          <span class="logo-yaselda">Yaselda</span>
+          <span class="logo-studio">Studio</span>
+          <span class="logo-tagline">Clear flow. Living sol<span class="u-anchor">u</span>tions.</span>
+        </div>
+        <img src="reka-odna.png" class="mark" height="78" alt="">
+      </div>
+      <span class="logo-card-label">Светлый фон</span>
+    </div>
+
+    <!-- Туман -->
+    <div class="logo-card logo-card--mist">
+      <div class="logo-block">
+        <div class="logo-text">
+          <span class="logo-yaselda">Yaselda</span>
+          <span class="logo-studio">Studio</span>
+          <span class="logo-tagline">Clear flow. Living sol<span class="u-anchor">u</span>tions.</span>
+        </div>
+        <img src="reka-odna.png" class="mark" height="78" alt="">
+      </div>
+      <span class="logo-card-label">Серо-зелёный фон</span>
+    </div>
+
+    <!-- Синий фон -->
+    <div class="logo-card logo-card--blue">
+      <div class="logo-block inv">
+        <div class="logo-text">
+          <span class="logo-yaselda">Yaselda</span>
+          <span class="logo-studio">Studio</span>
+          <span class="logo-tagline">Clear flow. Living sol<span class="u-anchor">u</span>tions.</span>
+        </div>
+        <img src="reka-odna.png" class="mark" height="78" alt="">
+      </div>
+      <span class="logo-card-label" style="color:rgba(255,255,255,0.55);">Речной синий</span>
+    </div>
+
+    <!-- Тёмный фон -->
+    <div class="logo-card logo-card--dark">
+      <div class="logo-block gold">
+        <div class="logo-text">
+          <span class="logo-yaselda">Yaselda</span>
+          <span class="logo-studio">Studio</span>
+          <span class="logo-tagline">Clear flow. Living sol<span class="u-anchor">u</span>tions.</span>
+        </div>
+        <img src="reka-odna.png" class="mark" height="78" alt="">
+      </div>
+      <span class="logo-card-label" style="color:rgba(255,255,255,0.45);">Тёмный фон · золото</span>
+    </div>
+
+    <!-- Шалфей -->
+    <div class="logo-card logo-card--sage">
+      <div class="logo-block inv">
+        <div class="logo-text">
+          <span class="logo-yaselda">Yaselda</span>
+          <span class="logo-studio">Studio</span>
+          <span class="logo-tagline">Clear flow. Living sol<span class="u-anchor">u</span>tions.</span>
+        </div>
+        <img src="reka-odna.png" class="mark" height="78" alt="">
+      </div>
+      <span class="logo-card-label" style="color:rgba(255,255,255,0.55);">Шалфейный</span>
+    </div>
+
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     02. ГОРИЗОНТАЛЬНЫЙ
+════════════════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-label">02. Горизонтальный</div>
+  <h2 class="section-title">Для шапки и навигации</h2>
+
+  <div class="logo-grid">
+
+    <!-- Без слогана -->
+    <div class="logo-card logo-card--light">
+      <div class="logo-block">
+        <div class="logo-text">
+          <span class="logo-yaselda">Yaselda</span>
+          <span class="logo-studio">Studio</span>
+          <span class="logo-tagline" style="visibility:hidden;">Clear flow. Living sol<span class="u-anchor">u</span>tions.</span>
+        </div>
+        <img src="reka-odna.png" class="mark" height="80" alt="">
+      </div>
+      <span class="logo-card-label">Без слогана</span>
+    </div>
+
+    <!-- Стандартный тёмный -->
+    <div class="logo-card logo-card--dark">
+      <div class="logo-block gold">
+        <div class="logo-text">
+          <span class="logo-yaselda">Yaselda</span>
+          <span class="logo-studio">Studio</span>
+          <span class="logo-tagline" style="visibility:hidden;">Clear flow. Living sol<span class="u-anchor">u</span>tions.</span>
+        </div>
+        <img src="reka-odna.png" class="mark" height="80" alt="">
+      </div>
+      <span class="logo-card-label" style="color:rgba(255,255,255,0.45);">Без слогана · тёмный</span>
+    </div>
+
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     03. ЗНАК — КРУЖКИ
+════════════════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-label">03. Знак</div>
+  <h2 class="section-title">Кружки отдельно</h2>
+  <div class="section-divider"></div>
+
+  <div class="marks-grid">
+    <div class="mark-card mark-card--light" style="min-height:200px;">
+      <img src="reka-odna.png" class="mark-only" height="100" alt="">
+      <div class="mark-card-label">#FDFCF0 · Кремовый</div>
+    </div>
+    <div class="mark-card mark-card--mist" style="min-height:200px;">
+      <img src="reka-odna.png" class="mark-only" height="100" alt="">
+      <div class="mark-card-label">#EBF0F5 · Дымка</div>
+    </div>
+    <div class="mark-card mark-card--blue" style="min-height:200px;">
+      <img src="reka-odna.png" height="100" alt="">
+      <div class="mark-card-label" style="color:rgba(255,255,255,0.6);">#2878B5 · Синий</div>
+    </div>
+    <div class="mark-card mark-card--dark" style="min-height:200px;">
+      <img src="reka-odna.png" height="100" alt="">
+      <div class="mark-card-label" style="color:rgba(255,255,255,0.5);">#1A2020 · Тёмный</div>
+    </div>
+    <div class="mark-card mark-card--sage" style="min-height:200px;">
+      <img src="reka-odna.png" height="100" alt="">
+      <div class="mark-card-label" style="color:rgba(255,255,255,0.6);">#5A7A4E · Шалфей</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     04. ЦВЕТА
+════════════════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-label">04. Цвета</div>
+  <h2 class="section-title">Палитра бренда</h2>
+
+  <div class="palette-grid">
+    <div class="color-card">
+      <div class="color-swatch" style="background:#2878B5;"></div>
+      <div class="color-info">
+        <div class="color-name">--steel</div>
+        <div class="color-hex">#2878B5</div>
+        <div class="color-role">Речной синий · главный акцент</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#5A7A4E;"></div>
+      <div class="color-info">
+        <div class="color-name">--sage</div>
+        <div class="color-hex">#5A7A4E</div>
+        <div class="color-role">Шалфей · природа, лес</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#9B7A3A;"></div>
+      <div class="color-info">
+        <div class="color-name">--ochre</div>
+        <div class="color-hex">#9B7A3A</div>
+        <div class="color-role">Охра · осенняя листва</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#F7F8F5;border:1px solid rgba(0,0,0,0.06);"></div>
+      <div class="color-info">
+        <div class="color-name">--bg</div>
+        <div class="color-hex">#F7F8F5</div>
+        <div class="color-role">Молочное небо · фон</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#EEF2ED;"></div>
+      <div class="color-info">
+        <div class="color-name">--bg2</div>
+        <div class="color-hex">#EEF2ED</div>
+        <div class="color-role">Бледный шалфей · секции</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#111816;"></div>
+      <div class="color-info" style="background:#1a1a1a;border-color:#333;">
+        <div class="color-name" style="color:rgba(255,255,255,0.45);">--text</div>
+        <div class="color-hex" style="color:#fff;">#111816</div>
+        <div class="color-role" style="color:rgba(255,255,255,0.4);">Хвойный · текст</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     05. ТИПОГРАФИКА
+════════════════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-label">05. Типографика</div>
+  <h2 class="section-title">Шрифты</h2>
+
+  <div class="type-row">
+    <div class="type-meta">
+      <strong>Cinzel 400–600</strong>
+      Логотип · метки · шапка<br>
+      Google Fonts
+    </div>
+    <div style="font-family:'Cinzel',serif;font-size:2.4rem;font-weight:400;color:var(--steel);letter-spacing:0.08em;line-height:1.2;">
+      Yaselda Studio
+    </div>
+  </div>
+
+  <div class="type-row">
+    <div class="type-meta">
+      <strong>Cormorant Garamond 400</strong>
+      Весь текст · заголовки · UI<br>
+      Google Fonts
+    </div>
+    <div style="font-family:'Cormorant Garamond',serif;font-size:2.2rem;color:var(--text);line-height:1.2;">
+      Разный мир — разные решения
+    </div>
+  </div>
+
+  <div class="type-row">
+    <div class="type-meta">
+      <strong>Cormorant Garamond italic</strong>
+      Акценты · цитаты · девиз
+    </div>
+    <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:2rem;color:var(--text2);line-height:1.2;">
+      Clear flow. Living sol<span class="u-anchor">u</span>tions.
+    </div>
+  </div>
+
+  <div class="type-row" style="border:none;">
+    <div class="type-meta">
+      <strong>Шкала φ^(1/3) ≈ 1.28</strong>
+      hero · title · mid · body
+    </div>
+    <div style="display:flex;flex-direction:column;gap:0.5rem;">
+      <span style="font-family:'Cormorant Garamond',serif;font-size:3.2rem;color:var(--text);line-height:1;">Виктория</span>
+      <span style="font-family:'Cormorant Garamond',serif;font-size:2.2rem;color:var(--text);line-height:1;">Заголовок секции</span>
+      <span style="font-family:'Cormorant Garamond',serif;font-size:1.72rem;color:var(--text2);line-height:1;">Подзаголовок</span>
+      <span style="font-family:'Cormorant Garamond',serif;font-size:1.35rem;color:var(--text2);line-height:1.3;">Основной текст страницы — читабельный, спокойный, с достаточным воздухом.</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     06. СЛОГАН
+════════════════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-label">06. Слоган</div>
+  <h2 class="section-title">Tagline</h2>
+
+  <div class="tagline-block">
+    <div class="tagline-card">
+      <span class="tagline-lang">English</span>
+      <span class="tagline-text">Clear flow.<br>Living solutions.</span>
+    </div>
+    <div class="tagline-card">
+      <span class="tagline-lang">Русский</span>
+      <span class="tagline-text">Ясный поток.<br>Живые решения.</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     07. ПРАВИЛА
+════════════════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-label">07. Правила</div>
+  <h2 class="section-title">Что нельзя делать</h2>
+
+  <div class="rules-grid">
+    <div class="rule-card">
+      <div class="rule-sign" style="color:#c0392b;">✕</div>
+      <div class="rule-text">Не менять цвет логотипа на другие, кроме разрешённых версий</div>
+    </div>
+    <div class="rule-card">
+      <div class="rule-sign" style="color:#c0392b;">✕</div>
+      <div class="rule-text">Studio не увеличивать выше 0.9rem — становится грубым</div>
+    </div>
+    <div class="rule-card">
+      <div class="rule-sign" style="color:#c0392b;">✕</div>
+      <div class="rule-text">Не использовать логотип на пёстром фоне без охранной зоны</div>
+    </div>
+    <div class="rule-card">
+      <div class="rule-sign" style="color:#c0392b;">✕</div>
+      <div class="rule-text">Не искажать пропорции знака и не обрезать кружок</div>
+    </div>
+    <div class="rule-card">
+      <div class="rule-sign" style="color:#c0392b;">✕</div>
+      <div class="rule-text">Не использовать бирюзовый #00868A — заменён на #2878B5</div>
+    </div>
+    <div class="rule-card">
+      <div class="rule-sign" style="color:#c0392b;">✕</div>
+      <div class="rule-text">Не применять bold и caps в тексте — только через типографическую шкалу</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /page -->
+
+<script>
+function positionMarks() {
+  document.querySelectorAll('.logo-block').forEach(function(block) {
+    const anchor = block.querySelector('.u-anchor');
+    const mark   = block.querySelector('img.mark');
+    const yaselda = block.querySelector('.logo-yaselda');
+    if (!anchor || !mark || !yaselda) return;
+
+    const aRect = anchor.getBoundingClientRect();
+    const bRect = block.getBoundingClientRect();
+    const yRect = yaselda.getBoundingClientRect();
+
+    // центр знака над буквой u + сдвиг вправо
+    const uCenterX = aRect.left + aRect.width / 2 - bRect.left;
+    mark.style.left = (uCenterX - mark.offsetWidth / 2 + 12) + 'px';
+
+    // верх знака выше верха Yaselda
+    mark.style.top = (yRect.top - bRect.top - 8) + 'px';
+  });
+}
+
+document.fonts.ready.then(positionMarks);
+window.addEventListener('resize', positionMarks);
+</script>
+</body>
+</html>
