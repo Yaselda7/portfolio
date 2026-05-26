@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ИИ-система B2B продаж — LUXVISAGE</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #E8F6F7;
+  --text: #0A1A18;
+  --water: #22B5BE;
+  --water-deep: #0789A0;
+  --mist: #B8EDF2;
+  --sage: #1F7A3A;
+  --steel: #0A5485;
+  --border: rgba(34,181,190,0.32);
+  --glass: rgba(255,255,255,0.80);
+  --radius: 14px;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  padding-bottom: 80px;
+}
+
+/* ---- HEADER ---- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(232,246,247,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 32px;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--steel);
+  letter-spacing: 0.02em;
+}
+
+.header-badge {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #fff;
+  background: var(--water-deep);
+  border: none;
+  padding: 5px 14px;
+  border-radius: 20px;
+  letter-spacing: 0.03em;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.back-link {
+  font-size: 0.8rem;
+  color: var(--water-deep);
+  text-decoration: none;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+.back-link:hover { opacity: 1; }
+
+/* ---- MAIN LAYOUT ---- */
+.main {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 40px 24px 0;
+}
+
+/* ---- COMPANY INTRO ---- */
+.company-intro {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 24px 28px;
+  background: var(--glass);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 32px;
+}
+
+.company-logo {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--water-deep), var(--steel));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.company-info h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+
+.company-info p {
+  font-size: 0.92rem;
+  color: var(--water-deep);
+  line-height: 1.55;
+}
+
+/* ---- AGENT STEPS ---- */
+.pipeline {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.agent-step {
+  background: var(--glass);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: box-shadow 0.3s;
+}
+
+.agent-step.active {
+  box-shadow: 0 4px 28px rgba(7,137,160,0.22);
+  border-color: rgba(7,137,160,0.55);
+}
+
+.step-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px 24px;
+  cursor: default;
+}
+
+.step-icon {
+  font-size: 1.4rem;
+  width: 40px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.step-title {
+  flex: 1;
+}
+
+.step-title h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin-bottom: 3px;
+}
+
+.step-title p {
+  font-size: 0.86rem;
+  color: var(--water-deep);
+}
+
+.step-status {
+  font-size: 0.8rem;
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-weight: 400;
+  flex-shrink: 0;
+}
+
+.status-waiting {
+  color: #7a9ea0;
+  background: rgba(34,181,190,0.06);
+  border: 1px solid rgba(34,181,190,0.18);
+}
+
+.status-working {
+  color: var(--water-deep);
+  background: rgba(7,137,160,0.12);
+  border: 1px solid rgba(7,137,160,0.4);
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.status-done {
+  color: var(--sage);
+  background: rgba(31,122,58,0.1);
+  border: 1px solid rgba(31,122,58,0.3);
+}
+
+.step-body {
+  padding: 0 24px 24px;
+  display: none;
+  animation: fadeSlide 0.5s ease;
+}
+
+.step-body.visible { display: block; }
+
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---- DIRECTOR CARD ---- */
+.director-card {
+  background: linear-gradient(135deg, rgba(10,84,133,0.09), rgba(34,181,190,0.09));
+  border: 1px solid rgba(10,84,133,0.22);
+  border-radius: var(--radius);
+  padding: 28px;
+  margin-bottom: 32px;
+}
+
+.director-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.director-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.director-text h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--steel);
+  margin-bottom: 6px;
+}
+
+.director-text p {
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--text);
+  opacity: 0.82;
+}
+
+.task-params {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.task-param {
+  font-size: 0.82rem;
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.85);
+  border: 1px solid var(--border);
+  color: var(--steel);
+}
+
+.task-param span { font-weight: 500; }
+
+.btn-run {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 32px;
+  background: var(--steel);
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.25s;
+  letter-spacing: 0.02em;
+}
+
+.btn-run:hover {
+  background: var(--water-deep);
+  transform: translateY(-1px);
+  box-shadow: 0 5px 20px rgba(7,137,160,0.4);
+}
+
+.btn-run:disabled {
+  opacity: 0.5;
+  cursor: default;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ---- TABLES ---- */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  margin-top: 4px;
+}
+
+.data-table th {
+  text-align: left;
+  font-weight: 500;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--water-deep);
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.data-table td {
+  padding: 11px 12px;
+  border-bottom: 1px solid rgba(34,181,190,0.12);
+  vertical-align: top;
+  line-height: 1.5;
+}
+
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tr:hover td { background: rgba(34,181,190,0.06); }
+
+.threat-high { color: #c0392b; }
+.threat-mid { color: #e67e22; }
+.threat-low { color: var(--sage); }
+
+/* ---- LEADS ---- */
+.leads-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+@media (max-width: 600px) { .leads-grid { grid-template-columns: 1fr; } }
+
+.lead-card {
+  background: rgba(255,255,255,0.6);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  transition: box-shadow 0.2s;
+}
+
+.lead-card:hover { box-shadow: 0 3px 16px rgba(7,137,160,0.2); }
+
+.lead-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  gap: 8px;
+}
+
+.lead-company {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.12rem;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.lead-score {
+  font-size: 0.76rem;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 10px;
+  background: rgba(31,122,58,0.12);
+  color: var(--sage);
+  border: 1px solid rgba(31,122,58,0.28);
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.lead-row {
+  font-size: 0.84rem;
+  color: var(--text);
+  opacity: 0.78;
+  margin-bottom: 3px;
+  line-height: 1.45;
+}
+
+.lead-row strong {
+  font-weight: 500;
+  opacity: 1;
+  color: var(--steel);
+}
+
+.lead-interest {
+  font-size: 0.82rem;
+  color: var(--water-deep);
+  margin-top: 9px;
+  padding-top: 9px;
+  border-top: 1px solid var(--border);
+  line-height: 1.5;
+  font-style: italic;
+}
+
+.lead-status {
+  font-size: 0.76rem;
+  color: var(--sage);
+  margin-top: 7px;
+  font-weight: 500;
+}
+
+/* ---- ANALYSIS CONCLUSION ---- */
+.conclusion-box {
+  margin-top: 16px;
+  padding: 14px 18px;
+  background: rgba(10,84,133,0.07);
+  border-left: 4px solid var(--water-deep);
+  border-radius: 0 8px 8px 0;
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: var(--steel);
+}
+
+.conclusion-box strong {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 5px;
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--water-deep);
+}
+
+/* ---- КП SECTION ---- */
+.kp-selector {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.kp-selector label {
+  font-size: 0.9rem;
+  color: var(--steel);
+  font-weight: 400;
+}
+
+.kp-select {
+  flex: 1;
+  min-width: 220px;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: rgba(255,255,255,0.9);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.88rem;
+  color: var(--text);
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+.kp-select:focus { border-color: var(--water-deep); }
+
+.btn-gen {
+  padding: 10px 24px;
+  background: var(--water-deep);
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: all 0.22s;
+  white-space: nowrap;
+}
+.btn-gen:hover { background: var(--steel); transform: translateY(-1px); }
+.btn-gen:disabled { opacity: 0.4; cursor: default; transform: none; }
+
+.kp-output {
+  background: rgba(255,255,255,0.85);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 22px 24px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.88rem;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  min-height: 80px;
+  color: var(--text);
+  display: none;
+  position: relative;
+}
+
+.kp-output.visible { display: block; }
+
+.kp-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+  display: none;
+}
+
+.kp-actions.visible { display: flex; }
+
+.btn-copy, .btn-restart {
+  padding: 9px 20px;
+  border-radius: 20px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.84rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 1px solid var(--border);
+}
+
+.btn-copy {
+  background: rgba(255,255,255,0.9);
+  color: var(--steel);
+}
+.btn-copy:hover { border-color: var(--water-deep); color: var(--water-deep); }
+
+.btn-restart {
+  background: transparent;
+  color: var(--water-deep);
+}
+.btn-restart:hover { background: rgba(34,181,190,0.1); }
+
+/* ---- CONNECTOR LINES ---- */
+.connector {
+  display: flex;
+  justify-content: center;
+  height: 20px;
+  align-items: center;
+}
+
+.connector::before {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 100%;
+  background: var(--border);
+}
+
+/* ---- FOOTER ---- */
+.demo-footer {
+  text-align: center;
+  margin-top: 60px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  font-size: 0.82rem;
+  color: var(--water-deep);
+  opacity: 0.65;
+}
+
+/* ---- BLOBS ---- */
+.bg-blobs {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.28;
+  animation: drift 18s ease-in-out infinite;
+}
+
+.blob-1 {
+  width: 520px; height: 520px;
+  background: var(--water);
+  top: -100px; left: -100px;
+  animation-delay: 0s;
+}
+
+.blob-2 {
+  width: 420px; height: 420px;
+  background: var(--mist);
+  top: 40%; right: -80px;
+  animation-delay: -7s;
+}
+
+.blob-3 {
+  width: 380px; height: 380px;
+  background: rgba(31,122,58,0.55);
+  bottom: -80px; left: 30%;
+  animation-delay: -13s;
+}
+
+@keyframes drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -20px) scale(1.04); }
+  66% { transform: translate(-20px, 30px) scale(0.97); }
+}
+</style>
+</head>
+<body>
+
+<div class="bg-blobs">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+</div>
+
+<header class="site-header">
+  <span class="header-title">ИИ-система B2B продаж</span>
+  <div class="header-right">
+    <span class="header-badge">Демо · Yaselda Studio</span>
+    <a class="back-link" href="../index.html">← Главная</a>
+  </div>
+</header>
+
+<main class="main">
+
+  <!-- Company intro -->
+  <div class="company-intro">
+    <div class="company-logo">💄</div>
+    <div class="company-info">
+      <h2>ООО «ЛЮКС-ВИЗАЖ»</h2>
+      <p>Декоративная косметика · 500+ позиций · Засловль, Беларусь<br>
+      Экспортирует в 13 стран · Рейтинг в BY: 4.9/5.0</p>
+    </div>
+  </div>
+
+  <!-- Director -->
+  <div class="director-card">
+    <div class="director-top">
+      <div class="director-icon">🧭</div>
+      <div class="director-text">
+        <h2>Директор — оркестратор</h2>
+        <p>Анализирую задачу и распределяю работу между специализированными агентами. Каждый агент получает свой участок: рынок, лиды, логистика, коммерческое предложение.</p>
+      </div>
+    </div>
+    <div class="task-params">
+      <div class="task-param">Компания: <span>LUXVISAGE</span></div>
+      <div class="task-param">Задача: <span>поиск оптовых клиентов</span></div>
+      <div class="task-param">Рынок: <span>Россия</span></div>
+      <div class="task-param">Агентов: <span>4</span></div>
+    </div>
+    <button class="btn-run" id="btnRun" onclick="startPipeline()">
+      Запустить систему →
+    </button>
+  </div>
+
+  <!-- Pipeline -->
+  <div class="pipeline">
+
+    <!-- STEP 1: Market Analysis -->
+    <div class="connector"></div>
+    <div class="agent-step" id="step1">
+      <div class="step-header">
+        <div class="step-icon">📊</div>
+        <div class="step-title">
+          <h3>Аналитик рынка</h3>
+          <p>Конкуренты · цены · сильные и слабые стороны · рекомендации</p>
+        </div>
+        <div class="step-status status-waiting" id="status1">ожидание</div>
+      </div>
+      <div class="step-body" id="body1">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Бренд</th>
+              <th>Происхождение</th>
+              <th>Цена vs LV</th>
+              <th>Сильные стороны</th>
+              <th>Слабые стороны</th>
+              <th>Угроза</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Relouis</strong></td>
+              <td>BY</td>
+              <td>−10%</td>
+              <td>600+ SKU, известность в РФ, широкая дистрибуция</td>
+              <td>Устаревший дизайн упаковки, нет трендовых коллекций</td>
+              <td class="threat-high">Высокая</td>
+            </tr>
+            <tr>
+              <td><strong>BelorDesign</strong></td>
+              <td>BY</td>
+              <td>≈0%</td>
+              <td>Специализация на глазах (подводки, тени-хайлайтеры)</td>
+              <td>Узкий ассортимент, нестабильное качество туши</td>
+              <td class="threat-mid">Средняя</td>
+            </tr>
+            <tr>
+              <td><strong>Vivienne Sabo</strong></td>
+              <td>FR/RU</td>
+              <td>+25%</td>
+              <td>Французский имидж, premium-позиционирование</td>
+              <td>Высокая цена для масс-маркета, слабее в губных продуктах</td>
+              <td class="threat-low">Низкая</td>
+            </tr>
+            <tr>
+              <td><strong>L'atuage</strong></td>
+              <td>BY</td>
+              <td>−5%</td>
+              <td>Молодой быстрорастущий бренд, ~300 позиций</td>
+              <td>Меньшая узнаваемость, нет собственной производственной базы</td>
+              <td class="threat-mid">Средняя</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="conclusion-box">
+          <strong>Вывод аналитика</strong>
+          LUXVISAGE выигрывает у Relouis по дизайну и трендовости при сопоставимой цене. Главная ниша: сети дрогери (Магнит Косметик, Улыбка Радуги) и маркетплейсы (Wildberries, Ozon). Рекомендуемый акцент для переговоров: коллекция Trendy + профессиональные кисти — уникальное предложение, которого нет у прямых конкурентов.
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 2: Lead Finder -->
+    <div class="connector"></div>
+    <div class="agent-step" id="step2">
+      <div class="step-header">
+        <div class="step-icon">🔍</div>
+        <div class="step-title">
+          <h3>Разведчик лидов</h3>
+          <p>Поиск потенциальных клиентов · проверка по открытым реестрам</p>
+        </div>
+        <div class="step-status status-waiting" id="status2">ожидание</div>
+      </div>
+      <div class="step-body" id="body2">
+        <div class="leads-grid">
+
+          <div class="lead-card">
+            <div class="lead-header">
+              <div class="lead-company">ООО «МегаКосмо»</div>
+              <div class="lead-score">95 / 100</div>
+            </div>
+            <div class="lead-row">📍 Санкт-Петербург</div>
+            <div class="lead-row"><strong>Дмитрий Коваль</strong>, менеджер по закупкам</div>
+            <div class="lead-row">koval@megakosmo.ru · +7 812 321-45-67</div>
+            <div class="lead-row">Интернет-ритейл (Wildberries, Ozon)</div>
+            <div class="lead-row">Объём: ~5 млн RUB/кв.</div>
+            <div class="lead-interest">Активно расширяют BY-ассортимент, ищут поставщика декоративки</div>
+            <div class="lead-status">✅ Проверен · реестр надёжных поставщиков</div>
+          </div>
+
+          <div class="lead-card">
+            <div class="lead-header">
+              <div class="lead-company">ООО «КрасотаДК»</div>
+              <div class="lead-score">88 / 100</div>
+            </div>
+            <div class="lead-row">📍 Москва</div>
+            <div class="lead-row"><strong>Ирина Соколова</strong>, директор по закупкам</div>
+            <div class="lead-row">sokolova@krasota-dk.ru · +7 495 765-32-10</div>
+            <div class="lead-row">Оптовый дистрибьютор</div>
+            <div class="lead-row">Объём: ~3 млн RUB/кв.</div>
+            <div class="lead-interest">Работают с Relouis, ищут альтернативу с более современной упаковкой</div>
+            <div class="lead-status">✅ Проверен · без арбитражных дел</div>
+          </div>
+
+          <div class="lead-card">
+            <div class="lead-header">
+              <div class="lead-company">ООО «Бьюти-Логистик»</div>
+              <div class="lead-score">82 / 100</div>
+            </div>
+            <div class="lead-row">📍 Новосибирск</div>
+            <div class="lead-row"><strong>Олег Петренко</strong>, коммерческий директор</div>
+            <div class="lead-row">petrenko@beauty-logistic.ru · +7 383 210-98-76</div>
+            <div class="lead-row">Дистрибьютор (Сибирь + ДФО, 200+ точек)</div>
+            <div class="lead-row">Объём: ~2 млн RUB/кв.</div>
+            <div class="lead-interest">Охват Сибири и ДФО, целенаправленно ищут BY-бренды для роста</div>
+            <div class="lead-status">✅ Проверен · стабильная финансовая активность</div>
+          </div>
+
+          <div class="lead-card">
+            <div class="lead-header">
+              <div class="lead-company">ООО «Фармация Плюс»</div>
+              <div class="lead-score">79 / 100</div>
+            </div>
+            <div class="lead-row">📍 Краснодар</div>
+            <div class="lead-row"><strong>Наталья Ермакова</strong>, категорийный менеджер</div>
+            <div class="lead-row">ermakova@farmacia-plus.ru · +7 861 432-56-78</div>
+            <div class="lead-row">Аптечная сеть (45 точек)</div>
+            <div class="lead-row">Объём: ~1.2 млн RUB/кв.</div>
+            <div class="lead-interest">Расширяют декоративный раздел, приоритет — натуральный состав</div>
+            <div class="lead-status">✅ Проверен · ОГРН действующий</div>
+          </div>
+
+          <div class="lead-card">
+            <div class="lead-header">
+              <div class="lead-company">ИП Тарасов · «Косметик-Профи»</div>
+              <div class="lead-score">74 / 100</div>
+            </div>
+            <div class="lead-row">📍 Екатеринбург</div>
+            <div class="lead-row"><strong>Алексей Тарасов</strong>, владелец</div>
+            <div class="lead-row">tarasov@kosmetik-profi.ru · +7 343 567-89-01</div>
+            <div class="lead-row">Региональная сеть (7 магазинов)</div>
+            <div class="lead-row">Объём: ~800 тыс. RUB/кв.</div>
+            <div class="lead-interest">Фокус на BY-бренды, лояльная аудитория 25–45 лет</div>
+            <div class="lead-status">✅ Проверен · без задолженностей</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 3: Logistics -->
+    <div class="connector"></div>
+    <div class="agent-step" id="step3">
+      <div class="step-header">
+        <div class="step-icon">🚚</div>
+        <div class="step-title">
+          <h3>Логист</h3>
+          <p>Маршруты · сроки · стоимость доставки · таможня и оплата</p>
+        </div>
+        <div class="step-status status-waiting" id="status3">ожидание</div>
+      </div>
+      <div class="step-body" id="body3">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Клиент</th>
+              <th>Город</th>
+              <th>Маршрут</th>
+              <th>Расстояние</th>
+              <th>Срок</th>
+              <th>Стоимость</th>
+              <th>Пошлины</th>
+              <th>Оплата</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>МегаКосмо</strong></td>
+              <td>СПб</td>
+              <td>Авто (фура)</td>
+              <td>980 км</td>
+              <td>2–3 дн.</td>
+              <td>от 10 000 RUB</td>
+              <td class="threat-low">0% (ЕАЭС)</td>
+              <td>BYN / RUB</td>
+            </tr>
+            <tr>
+              <td><strong>КрасотаДК</strong></td>
+              <td>Москва</td>
+              <td>Авто (фура)</td>
+              <td>720 км</td>
+              <td>2–3 дн.</td>
+              <td>от 8 000 RUB</td>
+              <td class="threat-low">0% (ЕАЭС)</td>
+              <td>BYN / RUB</td>
+            </tr>
+            <tr>
+              <td><strong>Бьюти-Логистик</strong></td>
+              <td>Новосибирск</td>
+              <td>ЖД + авто</td>
+              <td>3 300 км</td>
+              <td>7–10 дн.</td>
+              <td>от 22 000 RUB</td>
+              <td class="threat-low">0% (ЕАЭС)</td>
+              <td>RUB</td>
+            </tr>
+            <tr>
+              <td><strong>Фармация Плюс</strong></td>
+              <td>Краснодар</td>
+              <td>Авто</td>
+              <td>1 700 км</td>
+              <td>3–4 дн.</td>
+              <td>от 12 000 RUB</td>
+              <td class="threat-low">0% (ЕАЭС)</td>
+              <td>RUB</td>
+            </tr>
+            <tr>
+              <td><strong>Косметик-Профи</strong></td>
+              <td>Екатеринбург</td>
+              <td>Авто</td>
+              <td>2 100 км</td>
+              <td>4–5 дн.</td>
+              <td>от 15 000 RUB</td>
+              <td class="threat-low">0% (ЕАЭС)</td>
+              <td>RUB</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="conclusion-box">
+          <strong>Вывод логиста</strong>
+          Беларусь и Россия — участники ЕАЭС. Таможенные пошлины 0%, НДС уплачивается в стране назначения по ставке РФ. Расчёты в BYN или RUB по курсу НБРБ. Оптимальные клиенты по логистике: МегаКосмо (СПб) и КрасотаДК (Москва) — быстро, дёшево, без рисков.
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 4: КП Generator -->
+    <div class="connector"></div>
+    <div class="agent-step" id="step4">
+      <div class="step-header">
+        <div class="step-icon">📝</div>
+        <div class="step-title">
+          <h3>КП-мастер</h3>
+          <p>Персонализированное коммерческое предложение под каждого клиента</p>
+        </div>
+        <div class="step-status status-waiting" id="status4">ожидание</div>
+      </div>
+      <div class="step-body" id="body4">
+        <div class="kp-selector">
+          <label>Выберите клиента:</label>
+          <select class="kp-select" id="kpSelect">
+            <option value="">— выберите —</option>
+            <option value="megakosmo">ООО «МегаКосмо» · Санкт-Петербург</option>
+            <option value="krasota">ООО «КрасотаДК» · Москва</option>
+            <option value="beauty">ООО «Бьюти-Логистик» · Новосибирск</option>
+            <option value="farmacia">ООО «Фармация Плюс» · Краснодар</option>
+            <option value="kosmetik">ИП Тарасов · Екатеринбург</option>
+          </select>
+          <button class="btn-gen" id="btnGen" onclick="generateKP()" disabled>Сгенерировать КП</button>
+        </div>
+        <div class="kp-output" id="kpOutput"></div>
+        <div class="kp-actions" id="kpActions">
+          <button class="btn-copy" onclick="copyKP()">Скопировать</button>
+          <button class="btn-restart" onclick="resetKP()">← Другой клиент</button>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /pipeline -->
+
+  <div class="demo-footer">
+    Демонстрационная версия · Yaselda Studio · yaselda-studio.by<br>
+    Данные частично смоделированы для демонстрации возможностей ИИ-системы
+  </div>
+
+</main>
+
+<script>
+const KP = {
+  megakosmo: `КОММЕРЧЕСКОЕ ПРЕДЛОЖЕНИЕ
+ООО «ЛЮКС-ВИЗАЖ» → ООО «МегаКосмо»
+Санкт-Петербург | Контактное лицо: Дмитрий Коваль
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Уважаемый Дмитрий!
+
+ООО «ЛЮКС-ВИЗАЖ» предлагает сотрудничество по поставке декоративной косметики для реализации на маркетплейсах Wildberries и Ozon.
+
+■ ПОЧЕМУ LUXVISAGE ДЛЯ МАРКЕТПЛЕЙСОВ
+
+• Рейтинг 4.9/5.0 среди белорусских брендов — товар с историей
+• 500+ SKU: широкий выбор для формирования ассортимента
+• Тренд-коллекции обновляются ежеквартально — актуальность карточек
+• Цена на 15–25% ниже Vivienne Sabo при сопоставимом качестве
+• Фасовка адаптирована под WB/Ozon: штрихкоды, маркировка, упаковка
+
+■ УСЛОВИЯ СОТРУДНИЧЕСТВА
+
+Минимальный заказ: от 150 000 RUB (первая поставка)
+Повторные заказы: от 80 000 RUB
+Отсрочка платежа: до 30 дней (с 3-го заказа)
+Региональный эксклюзив: рассматривается при объёме от 2 млн RUB/кв.
+
+■ ЛОГИСТИКА
+
+Маршрут: Засловль (BY) → Санкт-Петербург
+Расстояние: 980 км | Срок: 2–3 рабочих дня
+Таможня: 0% (ЕАЭС), НДС по ставке РФ
+Доставка: от 10 000 RUB (включается в счёт при заказе от 500 000 RUB)
+
+■ ТОП-5 ПОЗИЦИЙ ДЛЯ СТАРТА НА WB/OZON
+
+1. Тушь LUXVISAGE Lash Boom — рейтинг WB: 4.8, высокая оборачиваемость
+2. Помада Velvet Matte — 24 оттенка, средний рейтинг 4.7
+3. Тональный крем Perfect Skin SPF15 — хит весна/лето
+4. Палетка теней Trendy ×12 — рост продаж +38% за квартал
+5. Набор кистей Professional 12 шт. — высокая маржа, низкая конкуренция
+
+■ СЛЕДУЮЩИЙ ШАГ
+
+Готовы выслать прайс-лист, образцы и договор поставки в течение 24 часов.
+
+Telegram: @luxvisage_b2b
+Email: b2b@luxvisage.by | Тел: +375 17-275-11-36
+
+С уважением, отдел B2B продаж ООО «ЛЮКС-ВИЗАЖ»`,
+
+  krasota: `КОММЕРЧЕСКОЕ ПРЕДЛОЖЕНИЕ
+ООО «ЛЮКС-ВИЗАЖ» → ООО «КрасотаДК»
+Москва | Контактное лицо: Ирина Соколова
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Уважаемая Ирина!
+
+Вы работаете с Relouis и ищете альтернативу с более современной упаковкой. LUXVISAGE — именно то решение.
+
+■ НАШИ ПРЕИМУЩЕСТВА ПЕРЕД RELOUIS
+
+• Дизайн упаковки уровня европейских брендов — покупатель берёт с полки
+• Тренд-коллекции: обновление каждый квартал, а не раз в год
+• Сопоставимая цена при заметно лучшем визуальном позиционировании
+• Тот же маршрут доставки BY → Москва, те же условия ЕАЭС
+
+■ УСЛОВИЯ СОТРУДНИЧЕСТВА
+
+Минимальный заказ: от 120 000 RUB
+Повторные заказы: от 70 000 RUB
+Отсрочка платежа: до 21 дня (с 3-го заказа)
+Совместное промо: готовы участвовать в акциях на ваших площадках
+
+■ ЛОГИСТИКА
+
+Маршрут: Засловль (BY) → Москва
+Расстояние: 720 км | Срок: 2–3 рабочих дня
+Таможня: 0% (ЕАЭС)
+Доставка: от 8 000 RUB
+
+■ ПРЕДЛАГАЕМЫЙ СТАРТОВЫЙ АССОРТИМЕНТ
+
+1. Губные продукты (помады, блески, тинты) — 30 SKU
+2. Тональные и корректирующие средства — 20 SKU
+3. Тушь и карандаши для глаз — 15 SKU
+4. Трендовые палетки — 5 SKU
+
+■ СЛЕДУЮЩИЙ ШАГ
+
+Готовы прислать образцы и каталог с вашими ценами в течение 24 часов.
+
+Telegram: @luxvisage_b2b
+Email: b2b@luxvisage.by | Тел: +375 17-275-11-36
+
+С уважением, отдел B2B продаж ООО «ЛЮКС-ВИЗАЖ»`,
+
+  beauty: `КОММЕРЧЕСКОЕ ПРЕДЛОЖЕНИЕ
+ООО «ЛЮКС-ВИЗАЖ» → ООО «Бьюти-Логистик»
+Новосибирск | Контактное лицо: Олег Петренко
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Уважаемый Олег!
+
+Вы развиваете дистрибуцию BY-брендов в Сибири и ДФО — LUXVISAGE готов стать вашим якорным белорусским брендом в категории декоративной косметики.
+
+■ ПОЧЕМУ LUXVISAGE ДЛЯ СИБИРСКОГО РЫНКА
+
+• Рейтинг 4.9/5.0 — самый узнаваемый BY-бренд в декоративке
+• 500+ SKU: хватит для 200 точек продаж с разным ассортиментом
+• Конкурентная цена: ниже Vivienne Sabo на 25%, выше маржа у партнёра
+• Готовы к работе через распределительный центр
+
+■ УСЛОВИЯ СОТРУДНИЧЕСТВА
+
+Минимальный заказ: от 200 000 RUB (крупный регион)
+Повторные заказы: от 100 000 RUB
+Отсрочка платежа: до 45 дней (обсуждается)
+Региональное представительство: готовы рассмотреть эксклюзив по Сибири и ДФО
+
+■ ЛОГИСТИКА
+
+Маршрут: Засловль (BY) → Новосибирск (ЖД + авто)
+Расстояние: 3 300 км | Срок: 7–10 рабочих дней
+Таможня: 0% (ЕАЭС)
+Доставка: от 22 000 RUB (включается при заказе от 700 000 RUB)
+
+■ ПРЕДЛАГАЕМ НАЧАТЬ С ПИЛОТА
+
+50 SKU на 4 недели — проверяем оборачиваемость в ваших точках.
+По результатам — расширяем ассортимент и фиксируем условия.
+
+Telegram: @luxvisage_b2b
+Email: b2b@luxvisage.by | Тел: +375 17-275-11-36
+
+С уважением, отдел B2B продаж ООО «ЛЮКС-ВИЗАЖ»`,
+
+  farmacia: `КОММЕРЧЕСКОЕ ПРЕДЛОЖЕНИЕ
+ООО «ЛЮКС-ВИЗАЖ» → ООО «Фармация Плюс»
+Краснодар | Контактное лицо: Наталья Ермакова
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Уважаемая Наталья!
+
+Вы расширяете декоративный раздел в аптечных сетях с приоритетом на натуральный состав. LUXVISAGE отвечает именно этому запросу.
+
+■ LUXVISAGE В АПТЕЧНОМ ФОРМАТЕ
+
+• Натуральные компоненты, дерматологически тестировано
+• Без парабенов в ключевых SKU — соответствует аптечным стандартам
+• Упаковка информативна: состав, рекомендации — всё на этикетке
+• Ценовой диапазон приемлем для аптечного покупателя
+
+■ РЕКОМЕНДУЕМЫЕ КАТЕГОРИИ ДЛЯ АПТЕКИ
+
+1. Гигиенические помады и бальзамы — высокий оборот
+2. Тональные кремы с SPF — аптечный бестселлер
+3. Тушь и карандаши без отдушек — гипоаллергенная серия
+4. Кисти для макияжа Professional — допродажа
+
+■ УСЛОВИЯ СОТРУДНИЧЕСТВА
+
+Минимальный заказ: от 80 000 RUB
+Отсрочка: до 30 дней
+Поставки: 1 раз в 4–6 недель под ваш цикл закупок
+
+■ ЛОГИСТИКА
+
+Маршрут: Засловль (BY) → Краснодар | 1 700 км | 3–4 дня
+Таможня: 0% (ЕАЭС) | Доставка: от 12 000 RUB
+
+Telegram: @luxvisage_b2b
+Email: b2b@luxvisage.by | Тел: +375 17-275-11-36
+
+С уважением, отдел B2B продаж ООО «ЛЮКС-ВИЗАЖ»`,
+
+  kosmetik: `КОММЕРЧЕСКОЕ ПРЕДЛОЖЕНИЕ
+ООО «ЛЮКС-ВИЗАЖ» → ИП Тарасов А.В. (сеть «Косметик-Профи»)
+Екатеринбург | Контактное лицо: Алексей Тарасов
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Уважаемый Алексей!
+
+Вы строите сеть, ориентированную на BY-бренды для аудитории 25–45 лет. LUXVISAGE — самый узнаваемый белорусский бренд декоративной косметики, рейтинг 4.9/5.0.
+
+■ ЧТО ДАЁТ LUXVISAGE ВАШЕЙ СЕТИ
+
+• Узнаваемость: клиентки уже знают бренд, легче продавать
+• Тренд-коллекции: обновление витрины без смены поставщика
+• Маржа: 35–45% розничная наценка при нашей цене
+• Визуал: упаковка продаёт — без дополнительного продавца
+
+■ СТАРТОВЫЙ ПАКЕТ ДЛЯ 7 МАГАЗИНОВ
+
+Базовый ассортимент 60 SKU на все 7 точек.
+Планограмма выкладки — предоставим готовую.
+Маркетинговые материалы — плакаты, стопперы.
+
+■ УСЛОВИЯ
+
+Минимальный заказ: от 60 000 RUB
+Повторные заказы: от 35 000 RUB
+Отсрочка: до 21 дня (после первого заказа)
+
+■ ЛОГИСТИКА
+
+Маршрут: Засловль (BY) → Екатеринбург | 2 100 км | 4–5 дней
+Таможня: 0% (ЕАЭС) | Доставка: от 15 000 RUB
+
+Telegram: @luxvisage_b2b
+Email: b2b@luxvisage.by | Тел: +375 17-275-11-36
+
+С уважением, отдел B2B продаж ООО «ЛЮКС-ВИЗАЖ»`
+};
+
+// -- Pipeline state machine --
+
+const DELAYS = { step1: 2200, step2: 3200, step3: 2000, step4: 1500 };
+
+function setStatus(id, type, text) {
+  const el = document.getElementById('status' + id);
+  el.className = 'step-status status-' + type;
+  el.textContent = text;
+}
+
+function activateStep(num) {
+  const step = document.getElementById('step' + num);
+  step.classList.add('active');
+  step.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function showBody(num) {
+  const body = document.getElementById('body' + num);
+  body.classList.add('visible');
+}
+
+async function sleep(ms) {
+  return new Promise(r => setTimeout(r, ms));
+}
+
+async function startPipeline() {
+  document.getElementById('btnRun').disabled = true;
+
+  // Step 1
+  activateStep(1);
+  setStatus(1, 'working', '● анализирую...');
+  await sleep(DELAYS.step1);
+  showBody(1);
+  setStatus(1, 'done', 'готово ✓');
+
+  // Step 2
+  await sleep(400);
+  activateStep(2);
+  setStatus(2, 'working', '● ищу лиды...');
+  await sleep(DELAYS.step2);
+  showBody(2);
+  setStatus(2, 'done', 'найдено 5 ✓');
+
+  // Step 3
+  await sleep(400);
+  activateStep(3);
+  setStatus(3, 'working', '● рассчитываю...');
+  await sleep(DELAYS.step3);
+  showBody(3);
+  setStatus(3, 'done', 'готово ✓');
+
+  // Step 4
+  await sleep(400);
+  activateStep(4);
+  setStatus(4, 'working', '● жду выбор...');
+  await sleep(DELAYS.step4);
+  showBody(4);
+  setStatus(4, 'done', 'готово ✓');
+}
+
+// -- KP select change --
+document.getElementById('kpSelect').addEventListener('change', function() {
+  document.getElementById('btnGen').disabled = !this.value;
+  resetKP();
+});
+
+let typingTimer = null;
+
+async function generateKP() {
+  const key = document.getElementById('kpSelect').value;
+  if (!key) return;
+
+  const plan = KP[key];
+  const out = document.getElementById('kpOutput');
+  const actions = document.getElementById('kpActions');
+
+  out.textContent = '';
+  out.classList.add('visible');
+  actions.classList.remove('visible');
+  document.getElementById('btnGen').disabled = true;
+
+  // typewriter
+  let i = 0;
+  function type() {
+    if (i < plan.length) {
+      out.textContent += plan[i];
+      i++;
+      const delay = i < 80 ? 22 : 5;
+      typingTimer = setTimeout(type, delay);
+    } else {
+      actions.classList.add('visible');
+    }
+  }
+  type();
+}
+
+function resetKP() {
+  clearTimeout(typingTimer);
+  const out = document.getElementById('kpOutput');
+  const actions = document.getElementById('kpActions');
+  out.textContent = '';
+  out.classList.remove('visible');
+  actions.classList.remove('visible');
+  const key = document.getElementById('kpSelect').value;
+  document.getElementById('btnGen').disabled = !key;
+}
+
+function copyKP() {
+  const text = document.getElementById('kpOutput').textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.querySelector('.btn-copy');
+    const orig = btn.textContent;
+    btn.textContent = 'Скопировано ✓';
+    setTimeout(() => btn.textContent = orig, 2000);
+  });
+}
+</script>
+</body>
+</html>
