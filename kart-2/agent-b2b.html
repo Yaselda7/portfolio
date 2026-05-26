@@ -53,16 +53,10 @@ body {
   letter-spacing: 0.02em;
 }
 
-.header-badge {
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: #fff;
-  background: var(--water-deep);
-  border: none;
-  padding: 5px 14px;
-  border-radius: 20px;
-  letter-spacing: 0.03em;
-}
+.ys-logo { display:inline-flex; align-items:center; gap:9px; user-select:none; }
+.ys-logo-text { display:flex; flex-direction:column; line-height:1; }
+.ys-logo-name { font-family:'Cormorant Garamond',serif; font-size:18px; font-weight:400; color:var(--water-deep); letter-spacing:3.5px; text-transform:uppercase; }
+.ys-logo-sub { font-family:'Inter',sans-serif; font-size:8px; font-weight:600; color:var(--sage); letter-spacing:4.5px; text-transform:uppercase; margin-top:3px; }
 
 .header-right {
   display: flex;
@@ -615,7 +609,16 @@ body {
 <header class="site-header">
   <span class="header-title">ИИ-система B2B продаж</span>
   <div class="header-right">
-    <span class="header-badge">Демо · Yaselda Studio</span>
+    <div class="ys-logo">
+      <svg width="22" height="14" viewBox="0 0 22 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 1 4 C 4 1, 8 1, 11 4 C 14 7, 18 7, 21 4" stroke="#22B5BE" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+        <path d="M 1 10 C 4 7, 8 7, 11 10 C 14 13, 18 13, 21 10" stroke="#0789A0" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.7"/>
+      </svg>
+      <span class="ys-logo-text">
+        <span class="ys-logo-name">YASELDA</span>
+        <span class="ys-logo-sub">STUDIO</span>
+      </span>
+    </div>
     <a class="back-link" href="../index.html#projects">← На главную</a>
   </div>
 </header>

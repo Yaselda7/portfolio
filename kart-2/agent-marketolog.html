@@ -16,7 +16,10 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 @keyframes drift{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(30px,-20px) scale(1.05)}66%{transform:translate(-20px,30px) scale(.95)}}
 .layout{display:grid;grid-template-columns:260px 1fr;min-height:100vh;position:relative;z-index:1}
 .sidebar{background:rgba(255,255,255,.78);backdrop-filter:blur(12px);border-right:1px solid var(--border);padding:32px 20px;display:flex;flex-direction:column;gap:8px;position:sticky;top:0;height:100vh;overflow-y:auto}
-.sidebar-brand{font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--water-deep);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;font-weight:500}
+.ys-logo{display:inline-flex;align-items:center;gap:9px;user-select:none;margin-bottom:8px}
+.ys-logo-text{display:flex;flex-direction:column;line-height:1}
+.ys-logo-name{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;color:var(--water-deep);letter-spacing:3.5px;text-transform:uppercase}
+.ys-logo-sub{font-family:'Inter',sans-serif;font-size:8px;font-weight:600;color:var(--sage);letter-spacing:4.5px;text-transform:uppercase;margin-top:3px}
 .sidebar-title{font-size:13px;font-weight:600;color:var(--water-deep);letter-spacing:1.5px;text-transform:uppercase;margin:16px 0 8px}
 .persona-btn{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;border:1px solid transparent;background:transparent;cursor:pointer;transition:all .25s;text-align:left;width:100%;font-family:'Inter',sans-serif}
 .persona-btn:hover{background:rgba(34,181,190,.12);border-color:var(--border)}
@@ -89,7 +92,16 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 <div class="blob blob-3"></div>
 <div class="layout">
   <aside class="sidebar">
-    <div class="sidebar-brand">Yaselda Studio</div>
+    <div class="ys-logo">
+      <svg width="22" height="14" viewBox="0 0 22 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 1 4 C 4 1, 8 1, 11 4 C 14 7, 18 7, 21 4" stroke="#22B5BE" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+        <path d="M 1 10 C 4 7, 8 7, 11 10 C 14 13, 18 13, 21 10" stroke="#0789A0" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.7"/>
+      </svg>
+      <span class="ys-logo-text">
+        <span class="ys-logo-name">YASELDA</span>
+        <span class="ys-logo-sub">STUDIO</span>
+      </span>
+    </div>
     <a class="sidebar-back" href="../index.html#projects">← На главную</a>
     <div class="sidebar-title">Выберите нишу</div>
     <button class="persona-btn" onclick="selectPersona('english')"><span class="persona-icon">🎓</span><span class="persona-name">Языковая школа</span></button>
